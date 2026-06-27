@@ -1,0 +1,24 @@
+# NusaPlay
+
+> Platform eksplorasi interaktif 3D untuk melestarikan dan mengenal kekayaan budaya Nusantara — tari, musik, kuliner, dan lebih dari 34 provinsi Indonesia.
+
+NusaPlay adalah aplikasi web edukatif berbasis Three.js yang memungkinkan pengguna menjelajahi warisan budaya Indonesia melalui pengalaman visual interaktif.
+
+## Fitur Utama
+
+- **Peta Interaktif**: Peta Leaflet.js dengan 34 provinsi Indonesia yang dapat diklik
+- **Perjalanan 3D**: Intro animasi penerbangan pesawat 3D menggunakan React Three Fiber
+- **Detail Budaya**: Video YouTube, teks naratif, dan informasi budaya per provinsi
+- **Kuis Budaya**: Kuis interaktif untuk menguji pengetahuan budaya Nusantara
+- **Maskot AI**: Asisten budaya virtual dengan animasi sprite
+
+## Halaman
+
+- [Beranda / Splash](https://nusaplay.vercel.app/)
+- [Peta Budaya](https://nusaplay.vercel.app/map)
+- [Kuis](https://nusaplay.vercel.app/quiz)
+- [Perjalanan 3D](https://nusaplay.vercel.app/journey)
+
+## Teknologi
+
+Next.js 16, React Three Fiber, Leaflet.js, Framer Motion, GSAP
