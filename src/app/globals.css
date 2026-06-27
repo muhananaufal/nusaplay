@@ -4124,6 +4124,7 @@ html, body, #root {
     flex-direction: column;
     height: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
   }
   
   .cl-preview-panel {
@@ -4177,6 +4178,15 @@ html, body, #root {
     padding: 16px 16px 100px;
     height: auto;
     overflow: visible;
+  }
+
+  .cl-category-pills {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
   }
 
   .cl-row {
@@ -4542,6 +4552,83 @@ html, body, #root {
   gap: 15px;
 }
 
+.pd-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: -5px;
+}
+
+.pd-slider-title {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pd-slider-instruction {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--c-accent, #5591b9);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: pulse-hint 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-hint {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.pd-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.pd-thumbnail-item:hover .pd-card-overlay,
+.pd-thumbnail-item.active .pd-card-overlay {
+  opacity: 1;
+}
+
+.pd-card-hover-text {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  padding: 4px 8px;
+  border-radius: 2px;
+  transform: translateY(4px);
+  transition: transform 0.3s ease;
+}
+
+.pd-thumbnail-item:hover .pd-card-hover-text,
+.pd-thumbnail-item.active .pd-card-hover-text {
+  transform: translateY(0);
+}
+
+@media only screen and (max-width: 600px) {
+  .pd-slider-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+
 .pd-thumbnails-row {
   display: flex;
   gap: 15px;
@@ -4882,10 +4969,39 @@ html, body, #root {
 
 .cl-category-pills {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 6px;
+  cursor: grab;
 }
+
+.cl-category-pills::-webkit-scrollbar {
+  display: none;
+}
+
+.cl-drag-hint {
+  font-size: 0.6rem;
+  color: var(--c-text-soft);
+  opacity: 0.5;
+  letter-spacing: 0.05em;
+  margin-top: -12px;
+  margin-bottom: 8px;
+  text-align: left;
+  text-transform: uppercase;
+  pointer-events: none;
+  animation: pulse-drag-hint 3s infinite ease-in-out;
+}
+
+@keyframes pulse-drag-hint {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.65; }
+}
+
 
 .cl-cat-pill {
   background: transparent;
@@ -4898,6 +5014,7 @@ html, body, #root {
   color: var(--c-text-soft);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.24, 0.43, 0.15, 0.97);
+  flex-shrink: 0;
 }
 
 .cl-cat-pill:hover {

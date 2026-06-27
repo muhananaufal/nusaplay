@@ -32,7 +32,55 @@ export const CultureList = ({ visible }) => {
 
   const [hoveredId, setHoveredId] = useState(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
-  const gridRef = useRef(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeftStart = useRef(0);
+  const hasMoved = useRef(false);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onMouseDown = (e: MouseEvent) => {
+      isDragging.current = true;
+      hasMoved.current = false;
+      startX.current = e.pageX - el.offsetLeft;
+      scrollLeftStart.current = el.scrollLeft;
+      el.style.cursor = 'grabbing';
+      el.style.userSelect = 'none';
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isDragging.current) return;
+      const x = e.pageX - el.offsetLeft;
+      const walk = (x - startX.current) * 1.5;
+      if (Math.abs(walk) > 5) {
+        hasMoved.current = true;
+      }
+      el.scrollLeft = scrollLeftStart.current - walk;
+    };
+
+    const onMouseUpOrLeave = () => {
+      isDragging.current = false;
+      el.style.cursor = '';
+      el.style.userSelect = '';
+    };
+
+    el.addEventListener('mousedown', onMouseDown);
+    el.addEventListener('mousemove', onMouseMove);
+    el.addEventListener('mouseup', onMouseUpOrLeave);
+    el.addEventListener('mouseleave', onMouseUpOrLeave);
+
+    return () => {
+      el.removeEventListener('mousedown', onMouseDown);
+      el.removeEventListener('mousemove', onMouseMove);
+      el.removeEventListener('mouseup', onMouseUpOrLeave);
+      el.removeEventListener('mouseleave', onMouseUpOrLeave);
+    };
+  }, []);
 
   useSmoothScroll(gridRef, visible);
 
@@ -215,16 +263,25 @@ export const CultureList = ({ visible }) => {
               )}
             </div>
 
-            <div className="cl-category-pills">
+            <div ref={scrollRef} className="cl-category-pills">
               {availableCategories.map((cat) => (
                 <button
                   key={cat}
                   className={`cl-cat-pill ${activeCategories.includes(cat) ? 'active' : ''}`}
-                  onClick={() => handleCategoryToggle(cat)}
+                  onClick={() => {
+                    if (hasMoved.current) {
+                      hasMoved.current = false;
+                      return;
+                    }
+                    handleCategoryToggle(cat);
+                  }}
                 >
                   {cat}
                 </button>
               ))}
+            </div>
+            <div className="cl-drag-hint">
+              <span>← Geser untuk melihat kategori lainnya →</span>
             </div>
           </div>
 

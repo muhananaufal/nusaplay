@@ -197,13 +197,17 @@ export const ProvinceDestinations = ({ visible }) => {
             <p>{selectedProvince.description}</p>
           </motion.div>
 
-          {/* Category Slider on Right */}
           <motion.div 
             className="pd-slider-block"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
+            <div className="pd-slider-header">
+              <span className="pd-slider-title">Kategori Budaya</span>
+              <span className="pd-slider-instruction">Pilih video untuk menjelajah →</span>
+            </div>
+
             <div ref={sliderRef} className="pd-thumbnails-row">
               {categoryData.map((cat, index) => {
                 const isActive = index === activeIndex;
@@ -224,7 +228,9 @@ export const ProvinceDestinations = ({ visible }) => {
                         alt={cat.name} 
                         loading="lazy" 
                       />
-                      <div className="pd-card-overlay" />
+                      <div className="pd-card-overlay">
+                        <span className="pd-card-hover-text">MASUK</span>
+                      </div>
                     </div>
                   </div>
                 );

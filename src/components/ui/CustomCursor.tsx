@@ -40,7 +40,7 @@ export const CustomCursor = () => {
           gsap.to(cursorText, { opacity: 1, scale: 1, duration: 0.3, overwrite: 'auto' });
           if (cursorText) { cursorText.innerText = 'KLIK'; cursorText.style.color = '#0b0a0a'; cursorText.style.fontSize = '9px'; cursorText.style.letterSpacing = '0.15em'; }
         }
-      } else if (target.closest('#nusaplay-leaflet-map')) {
+      } else if (target.closest('#nusaplay-leaflet-map') || target.closest('.cl-category-pills') || target.closest('.pd-thumbnails-row')) {
         if (currentStyle !== 'drag') {
           currentStyle = 'drag';
           gsap.to(cursor, { width: 56, height: 56, backgroundColor: 'rgba(85, 145, 185, 0.15)', border: '1px solid rgba(85, 145, 185, 0.4)', duration: 0.3, overwrite: 'auto' });
