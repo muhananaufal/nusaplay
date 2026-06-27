@@ -7,7 +7,7 @@ import { useSmoothScroll } from './SmoothScroll';
 import tts from '@/utils/tts';
 
 export const CultureDetail = ({ visible }) => {
-  const { selectedCulture, selectedProvince, goTo } = useAppFlow();
+  const { selectedCulture, selectedProvince, goTo, startQuiz } = useAppFlow();
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -219,6 +219,25 @@ export const CultureDetail = ({ visible }) => {
               </div>
             )}
 
+            {/* Quiz CTA Card */}
+            {selectedProvince && ttsFinished && (
+              <div className="cd-quiz-cta">
+                <div className="cd-quiz-cta-content">
+                  <h4>Siap Menguji Pengetahuanmu?</h4>
+                  <p>Ayo uji pemahamanmu tentang kebudayaan {selectedProvince.name} lewat kuis interaktif!</p>
+                </div>
+                <button 
+                  className="cd-quiz-cta-btn"
+                  onClick={() => {
+                    tts.stop();
+                    startQuiz(selectedProvince);
+                  }}
+                >
+                  Mulai Kuis {selectedProvince.name} →
+                </button>
+              </div>
+            )}
+
           </div>
         </motion.div>
       </div>
@@ -228,8 +247,10 @@ export const CultureDetail = ({ visible }) => {
         {ttsFinished && (
           <StorytellingEndSheet
             cultureName={selectedCulture.title}
+            provinceName={selectedProvince?.name || ''}
             onReplay={startNarration}
             onExplore={() => { tts.stop(); goTo('province'); }}
+            onStartQuiz={() => { tts.stop(); startQuiz(selectedProvince); }}
           />
         )}
       </AnimatePresence>
@@ -242,7 +263,7 @@ const rawIndex = (culture) => {
   return culture?.id ? parseInt(culture.id.replace(/\D/g, '').slice(-2), 10) || 1 : 1;
 };
 
-const StorytellingEndSheet = ({ cultureName, onReplay, onExplore }) => (
+const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, onStartQuiz }) => (
   <motion.div
     className="storytelling-end-backdrop"
     initial={{ opacity: 0 }}
@@ -259,10 +280,35 @@ const StorytellingEndSheet = ({ cultureName, onReplay, onExplore }) => (
       <span className="end-sheet-badge">Narasi Selesai</span>
       <h3 className="end-sheet-title">"{cultureName}"</h3>
       <div className="end-sheet-divider" />
-      <p className="end-sheet-sub">Ingin mendengarkan kembali atau melanjutkan eksplorasi?</p>
-      <div className="end-sheet-actions">
-        <button className="end-btn replay" onClick={onReplay}>Ulangi Cerita</button>
-        <button className="end-btn explore" onClick={onExplore}>Kembali ke Peta</button>
+      <p className="end-sheet-sub" style={{ fontWeight: 600, color: 'var(--c-accent-dark)', marginBottom: '16px' }}>
+        Hebat! Kamu telah menyimak penjelasan budaya ini. Ingin lanjut menguji pengetahuanmu?
+      </p>
+      <div className="end-sheet-actions" style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }}>
+        {onStartQuiz && (
+          <button 
+            className="end-btn start-quiz" 
+            onClick={onStartQuiz}
+            style={{
+              width: '100%',
+              padding: '12px',
+              background: 'var(--c-accent)',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: 600,
+              fontSize: '0.9rem',
+              boxShadow: '0 4px 12px rgba(85, 145, 185, 0.25)',
+              transition: 'transform 0.2s, filter 0.2s',
+            }}
+          >
+            Mulai Kuis {provinceName} →
+          </button>
+        )}
+        <div style={{ display: 'flex', gap: '10px', width: '100%' }}>
+          <button className="end-btn replay" onClick={onReplay} style={{ flex: 1 }}>Ulangi Cerita</button>
+          <button className="end-btn explore" onClick={onExplore} style={{ flex: 1 }}>Kembali ke Peta</button>
+        </div>
       </div>
     </motion.div>
   </motion.div>

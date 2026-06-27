@@ -175,7 +175,7 @@ export const NavigationMenu = () => {
 
       {/* ── Floating Top-Right Hamburger Menu Button ── */}
       <button
-        className={`floating-menu-btn ${(isOpen || showAbout) ? 'menu-open' : ''} ${(phase === PHASES.JOURNEY || play) && !isOpen && !showAbout ? 'menu-hidden' : ''}`}
+        className={`floating-menu-btn ${(isOpen || showAbout) ? 'menu-open' : ''} ${([PHASES.SPLASH, PHASES.JOURNEY].includes(phase)) && !isOpen && !showAbout ? 'menu-hidden' : ''}`}
         onClick={() => {
           if (showAbout) {
             setShowAbout(false);

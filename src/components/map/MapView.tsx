@@ -218,6 +218,9 @@ export const MapView = ({ visible }) => {
             fillOpacity: isUnlocked ? 0.75 : 0.25,
             color: isUnlocked ? '#ffffff' : '#d8d7d4',
             weight: isUnlocked ? 2 : 1,
+            className: isUnlocked 
+              ? `leaflet-province-unlocked province-unlocked-${prov.id}` 
+              : `leaflet-province-locked province-locked-${prov.id}`,
           };
         }
         return {
@@ -236,6 +239,23 @@ export const MapView = ({ visible }) => {
           layersMapRef.current[prov.id] = layer;
         } else {
           layer._matchedProvince = null;
+        }
+
+        // Add class name to the SVG path element dynamically on mount
+        const addPathClasses = () => {
+          if (layer._path) {
+            const isUnlocked = prov && prov.status === 'unlocked';
+            layer._path.classList.add(isUnlocked ? 'leaflet-province-unlocked' : 'leaflet-province-locked');
+            if (prov) {
+              layer._path.classList.add(`province-${isUnlocked ? 'unlocked' : 'locked'}-${prov.id}`);
+            }
+          }
+        };
+
+        if (layer._path) {
+          addPathClasses();
+        } else {
+          layer.on('add', addPathClasses);
         }
 
         layer.on({

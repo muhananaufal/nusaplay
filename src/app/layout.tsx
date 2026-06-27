@@ -7,6 +7,8 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 import { NavigationMenu } from "@/components/ui/NavigationMenu";
 import { PageTransitionOverlay } from "@/components/ui/PageTransitionOverlay";
 import { MascotAssistant } from "@/components/ui/MascotAssistant";
+import { JourneyProgress } from "@/components/ui/JourneyProgress";
+import { JourneySpotlight } from "@/components/ui/JourneySpotlight";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -82,6 +84,8 @@ export default function RootLayout({
         <Providers>
           <RootLayers />
           <CustomCursor />
+          <JourneyProgress />
+          <JourneySpotlight />
           {children}
           <NavigationMenu />
           <MascotAssistant />

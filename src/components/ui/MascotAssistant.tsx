@@ -1,6 +1,8 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
+import { usePlay } from '@/contexts/Play';
+import { getStepFromPhase } from './JourneyProgress';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Types of animation poses
@@ -25,6 +27,7 @@ const FUN_TRIVIA = [
 
 export function MascotAssistant() {
   const { phase, selectedProvince, selectedCulture } = useAppFlow();
+  const { journeyStep, journeyCompleted, setJourneyCompleted, tourActive } = usePlay();
   const [pose, setPose] = useState<PoseType>('idle');
   // frame/direction state removed — sprite cycling is now a pure CSS animation
   // (see .mascot-sprite-body in globals.css) to avoid 4 React re-renders/second.
@@ -49,35 +52,68 @@ export function MascotAssistant() {
 
   // Determine speech text based on app state (no emojis to prevent AI Slop)
   const updateDefaultSpeech = () => {
+    const currentPhaseStep = getStepFromPhase(phase);
+    const isCompletedStep = currentPhaseStep < journeyStep || journeyCompleted;
+
+    if (isCompletedStep) {
+      switch (phase) {
+        case PHASES.MAP:
+          setSpeech("Silakan pilih pulau atau provinsi untuk melihat budayanya!");
+          setPose('idle');
+          break;
+        case PHASES.PROVINCE:
+          setSpeech("Silakan pilih kebudayaan di bawah untuk dipelajari.");
+          setPose('idle');
+          break;
+        case PHASES.LIST:
+          setSpeech("Kamu bisa menyaring kategori budaya atau mencarinya di kolom pencarian.");
+          setPose('idle');
+          break;
+        case PHASES.DETAIL:
+          setSpeech("Selamat menyimak kisah kebudayaan yang agung ini!");
+          setPose('idle');
+          break;
+        case PHASES.QUIZ:
+          setSpeech("Ayo uji wawasanmu dengan menjawab kuis daerah!");
+          setPose('idle');
+          break;
+        default:
+          setSpeech("Mari bersama melestarikan keindahan budaya Nusantara.");
+          setPose('idle');
+      }
+      return;
+    }
+
     switch (phase) {
       case PHASES.SPLASH:
-        setSpeech("Halo! Saya Nusa, pemandumu. Klik 'JELAJAHI SEKARANG' untuk mulai terbang bersamaku.");
+        setSpeech("Langkah 1/4: Pembukaan! Selamat Datang! Saya Nusa, pemandumu. Klik 'JELAJAHI SEKARANG' untuk memulai petualangan.");
         setPose('idle');
         break;
       case PHASES.JOURNEY:
-        setSpeech("Kencangkan sabuk pengamanmu. Kita sedang terbang melintasi kepulauan Nusantara.");
+        setSpeech("Langkah 1/4: Pembukaan! Kencangkan sabuk pengamanmu. Kita sedang terbang melintasi keindahan kepulauan Indonesia.");
         setPose('excited');
         break;
       case PHASES.MAP:
-        setSpeech("Klik salah satu pulau di peta untuk mendarat dan mulai menjelajahi budayanya.");
+        setSpeech("Langkah 2/4: Eksplorasi Peta! Pilih salah satu provinsi pada peta di bawah untuk mendarat.");
         setPose('thinking');
         break;
       case PHASES.PROVINCE:
         const provName = selectedProvince?.name || 'Provinsi';
-        setSpeech(`Selamat datang di ${provName}. Di sini kaya akan budaya unik. Yuk pilih kategori di bawah, atau langsung uji ingatan lewat Kuis.`);
+        setSpeech(`Langkah 2/4: Pilih Kebudayaan! Selamat datang di ${provName}. Silakan pilih kebudayaan di bawah untuk dipelajari.`);
         setPose('idle');
         break;
       case PHASES.LIST:
-        setSpeech("Pilih kategori pil di bawah untuk memfilter kebudayaan, atau cari secara instan lewat kolom pencarian.");
+        setSpeech("Langkah 2/4: Cari Kebudayaan! Kamu bisa menyaring kategori budaya atau mencarinya di kolom pencarian.");
         setPose('thinking');
         break;
       case PHASES.DETAIL:
         const cultName = selectedCulture?.name || 'Kebudayaan';
-        setSpeech(`Wah, indahnya ${cultName}. Klik tombol audio di bawah judul untuk mendengar pembacaan narasi budayanya.`);
+        setSpeech(`Langkah 3/4: Belajar Budaya! Simak cerita ${cultName} ini, putar videonya, lalu klik 'Mulai Kuis'!`);
         setPose('excited');
         break;
       case PHASES.QUIZ:
-        setSpeech("Yuk uji pemahaman budayamu. Pilih salah satu kuis provinsi yang sudah terbuka.");
+        const quizProvName = selectedProvince?.name || 'Provinsi';
+        setSpeech(`Langkah 4/4: Uji Kuis! Jawab kuis ${quizProvName} ini dengan benar untuk melengkapi paspormu.`);
         setPose('thinking');
         break;
       default:
@@ -89,7 +125,10 @@ export function MascotAssistant() {
   // Update default speech when phase or selected items change
   useEffect(() => {
     updateDefaultSpeech();
-  }, [phase, selectedProvince?.id, selectedCulture?.id]);
+    // Auto-maximize mascot when entering a new stage of the journey
+    setIsMinimized(false);
+    setIsExiting(false);
+  }, [phase, selectedProvince?.id, selectedCulture?.id, journeyStep, journeyCompleted]);
 
   // Listen to Quiz custom events (no emojis to prevent AI Slop)
   useEffect(() => {
@@ -116,10 +155,11 @@ export function MascotAssistant() {
     const handleQuizComplete = (e: Event) => {
       const score = (e as CustomEvent).detail?.score ?? 0;
       let review = "Kuis selesai.";
-      if (score === 5) review = "Sempurna! Kamu dapat nilai 5/5. Pengetahuan budayamu luar biasa.";
-      else if (score >= 3) review = `Hebat! Kamu berhasil menjawab ${score}/5 soal dengan benar.`;
-      else review = `Kuis selesai. Kamu menjawab ${score}/5 dengan benar. Terus belajar ya.`;
+      if (score === 5) review = "Selamat! Kamu mendapat nilai 5/5. Petualangan lengkap dan stempel paspormu telah diperbarui!";
+      else if (score >= 3) review = `Hebat! Kamu berhasil menjawab ${score}/5 soal dengan benar. Langkah akhir perjalanan selesai!`;
+      else review = `Kuis selesai. Kamu menjawab ${score}/5 dengan benar. Kamu hebat, mari terus belajar ya!`;
       triggerReaction('excited', review, 6000);
+      setJourneyCompleted(true);
     };
 
     window.addEventListener('nusaplay:quizCorrect', handleQuizCorrect);
@@ -131,7 +171,7 @@ export function MascotAssistant() {
       window.removeEventListener('nusaplay:quizIncorrect', handleQuizIncorrect);
       window.removeEventListener('nusaplay:quizComplete', handleQuizComplete);
     };
-  }, []);
+  }, [setJourneyCompleted]);
 
   // Sprite animation handled by CSS @keyframes — see .mascot-sprite-body in globals.css.
   // The old setInterval that called setFrame every 250ms has been removed;
@@ -202,7 +242,7 @@ export function MascotAssistant() {
           >
             {/* Speech Bubble */}
             <AnimatePresence mode="wait">
-              {speech && !isExiting && (
+              {speech && !isExiting && !tourActive && (
                 <motion.div
                   key={speech}
                   className="mascot-bubble"
