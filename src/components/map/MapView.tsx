@@ -5,6 +5,7 @@ import { PROVINCES } from '@/data/provinces';
 import { CULTURES } from '@/data/cultures';
 import { useAppFlow } from '@/contexts/AppFlow';
 import { getMapAssetsReady } from '@/utils/mapAssetLoader';
+import { useIsMobile } from '@/utils/useIsMobile';
 
 declare const L: any;
 
@@ -119,6 +120,7 @@ export const MapView = ({ visible }) => {
   const [mapReady, setMapReady] = useState(false);
   const [deepZoomActive, setDeepZoomActive] = useState(false);
   const [isTilted, setIsTilted] = useState(false);
+  const isMobile = useIsMobile(1024);
   const { selectProvince, selectedProvince, backToMap, selectCulture, goTo } = useAppFlow();
 
   const selectProvinceRef = useRef(selectProvince);
@@ -592,6 +594,30 @@ export const MapView = ({ visible }) => {
         <div className="map-loading">
           <div className="map-loading-spinner" />
           <span>Memuat peta Indonesia...</span>
+        </div>
+      )}
+
+      {/* Zoom controls for mobile view */}
+      {isMobile && !selectedProvince && (
+        <div className="map-zoom-controls">
+          <button 
+            className="map-zoom-btn zoom-in" 
+            onClick={() => {
+              if (leafletMapRef.current) leafletMapRef.current.zoomIn();
+            }}
+            aria-label="Zoom In"
+          >
+            +
+          </button>
+          <button 
+            className="map-zoom-btn zoom-out" 
+            onClick={() => {
+              if (leafletMapRef.current) leafletMapRef.current.zoomOut();
+            }}
+            aria-label="Zoom Out"
+          >
+            −
+          </button>
         </div>
       )}
     </motion.div>

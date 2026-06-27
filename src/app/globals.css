@@ -3321,7 +3321,7 @@ html, body, #root {
   position: fixed;
   inset: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   z-index: 190;
   display: flex;
   overflow: hidden;
@@ -3331,7 +3331,7 @@ html, body, #root {
 /* Left Panel: Dynamic Media Viewport */
 .nav-menu-left {
   width: 42vw;
-  height: 100vh;
+  height: 100dvh;
   position: relative;
   overflow: hidden;
   background-color: #0f0e0d;
@@ -3355,7 +3355,7 @@ html, body, #root {
 /* Right Panel: Clean Sand-Beige Navigation Block */
 .nav-menu-right {
   width: 58vw;
-  height: 100vh;
+  height: 100dvh;
   background-color: #e2ddd5; /* Premium light sand/sage beige */
   color: #181717; /* Obsidian charcoal */
   padding: 100px 80px 80px;
@@ -3525,12 +3525,28 @@ html, body, #root {
 }
 
 .about-sheet-content {
-  padding: 80px 80px;
+  padding: 100px 80px 80px; /* Aligned with .nav-menu-right */
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(24, 23, 23, 0.15) transparent;
+}
+
+.about-sheet-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.about-sheet-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.about-sheet-content::-webkit-scrollbar-thumb {
+  background: rgba(24, 23, 23, 0.15);
+  border-radius: 2px;
 }
 
 .about-tag {
@@ -3660,7 +3676,7 @@ html, body, #root {
   }
 
   .about-sheet-content {
-    padding: 80px 40px;
+    padding: 100px 40px 60px;
   }
 }
 
@@ -3680,7 +3696,7 @@ html, body, #root {
   }
 
   .about-sheet-content {
-    padding: 80px 24px 40px;
+    padding: 80px 24px 100px;
     gap: 16px;
   }
 
@@ -4607,7 +4623,7 @@ html, body, #root {
 /* Mobile responsive */
 @media only screen and (max-width: 1024px) {
   .pd-container {
-    padding: 96px 24px 30px 24px;
+    padding: 96px 24px 80px 24px;
     height: auto;
     min-height: 100vh;
     justify-content: flex-start;
@@ -4655,7 +4671,6 @@ html, body, #root {
   }
 }
 
-/* ─── FLOATING NAVIGATION BUTTONS ────────────────────────────────────────── */
 .floating-back-btn {
   position: fixed;
   top: 30px;
@@ -4664,9 +4679,12 @@ html, body, #root {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: transparent;
-  border: none;
+  background: rgba(244, 239, 231, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(85, 145, 185, 0.18);
   padding: 0 16px;
+  border-radius: 21px;
   color: var(--c-text);
   font-size: 0.68rem;
   font-weight: 500;
@@ -4674,11 +4692,15 @@ html, body, #root {
   text-transform: uppercase;
   cursor: pointer;
   z-index: 999;
-  transition: color 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.24, 0.43, 0.15, 0.97);
 }
 
 .floating-back-btn:hover {
-  color: var(--c-accent);
+  background: var(--c-accent);
+  color: var(--c-dark);
+  border-color: var(--c-accent);
+  transform: scale(1.05);
 }
 
 .floating-menu-btn {
@@ -5068,7 +5090,7 @@ html, body, #root {
   }
 
   .pd-container {
-    padding: 72px 24px 30px 24px;
+    padding: 72px 24px 80px 24px;
   }
 
   .pd-header {
@@ -6589,6 +6611,56 @@ html, body, #root {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* ─── MAP ZOOM CONTROLS (MOBILE OVERLAY) ────────────────────────────────── */
+.map-zoom-controls {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.map-zoom-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(244, 239, 231, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(85, 145, 185, 0.18);
+  color: var(--c-text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 350;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s cubic-bezier(0.24, 0.43, 0.15, 0.97);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.map-zoom-btn:active {
+  background: var(--c-accent);
+  color: var(--c-dark);
+  border-color: var(--c-accent);
+  transform: scale(0.92);
+}
+
+@media (hover: hover) {
+  .map-zoom-btn:hover {
+    background: var(--c-accent);
+    color: var(--c-dark);
+    border-color: var(--c-accent);
+    transform: translateY(-1px) scale(1.05);
+  }
 }
 
 
