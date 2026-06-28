@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { usePlay } from '@/contexts/Play';
 import { getStepFromPhase } from './JourneyProgress';
+import { Mascot } from './Mascot';
+import { useIsMobile } from '@/utils/useIsMobile';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Konfigurasi panduan sorot untuk setiap fase
@@ -14,19 +16,19 @@ const SPOTLIGHT_CONFIGS: Record<string, { selector: string; title: string; text:
     placement: 'below',
   },
   [PHASES.MAP]: {
-    selector: '.province-center-badge.unlocked',
+    selector: '.province-center-badge.unlocked, .map-zoom-controls',
     title: 'Eksplorasi Peta',
     text: 'Langkah 2/4: Eksplorasi Peta! Klik salah satu provinsi aktif yang berwarna biru (seperti Jawa Tengah, Yogyakarta, atau Papua) untuk mendarat.',
     placement: 'above',
   },
   [PHASES.PROVINCE]: {
-    selector: '.pd-thumbnails-row, .pd-thumbnail-item',
+    selector: '.pd-thumbnails-row',
     title: 'Pilih Kebudayaan',
     text: 'Pilih salah satu item kebudayaan khas provinsi ini untuk mempelajari detail kisahnya.',
     placement: 'above',
   },
   [PHASES.LIST]: {
-    selector: '.cl-row',
+    selector: '.cl-list',
     title: 'Pelajari Budaya',
     text: 'Klik salah satu baris kebudayaan ini untuk membaca narasi sejarah dan memutar videonya.',
     placement: 'below',
@@ -48,6 +50,7 @@ const SPOTLIGHT_CONFIGS: Record<string, { selector: string; title: string; text:
 export function JourneySpotlight() {
   const { phase } = useAppFlow();
   const { journeyStep, journeyCompleted, setTourActive } = usePlay();
+  const isMobile = useIsMobile(768);
   const [rects, setRects] = useState<DOMRect[]>([]);
   const [windowSize, setWindowSize] = useState({ width: 1200, height: 800 });
   const [isTourDisabled, setIsTourDisabled] = useState(false);
@@ -55,6 +58,14 @@ export function JourneySpotlight() {
   const [mounted, setMounted] = useState(false);
   const [hasFinishedAudio, setHasFinishedAudio] = useState(false);
   const [activeSelector, setActiveSelector] = useState('.cd-audio-play-minimal');
+  const [mapSubStep, setMapSubStep] = useState(1);
+  const [listSubStep, setListSubStep] = useState(1);
+
+  // Reset sub-steps on phase change
+  useEffect(() => {
+    setMapSubStep(1);
+    setListSubStep(1);
+  }, [phase]);
 
   // Ambil data status tour dari localStorage saat client-side hydration selesai
   useEffect(() => {
@@ -90,7 +101,42 @@ export function JourneySpotlight() {
           : 'Langkah 3/4: Dengarkan Narasi! Klik tombol putar suara ini untuk mendengarkan cerita legenda kebudayaan ini dari Nusa hingga selesai.',
         placement: hasFinishedAudio ? 'above' as const : 'below' as const,
       }
-    : (baseConfig ? { ...baseConfig, selector: activeSelector || baseConfig.selector } : null);
+    : (phase === PHASES.MAP
+      ? (isMobile && mapSubStep === 2
+        ? {
+            selector: '.map-zoom-controls',
+            title: 'Perbesar Peta',
+            text: 'Kamu juga bisa menggunakan tombol perbesaran (+/-) ini untuk memperbesar atau memperkecil tampilan peta di layar ponselmu.',
+            placement: 'below' as const,
+          }
+        : {
+            selector: '.province-center-badge.unlocked',
+            title: 'Eksplorasi Peta',
+            text: 'Langkah 2/4: Eksplorasi Peta! Klik salah satu provinsi aktif yang berwarna biru (seperti Jawa Tengah, Yogyakarta, atau Papua) untuk mendarat.',
+            placement: 'above' as const,
+          })
+      : (phase === PHASES.LIST
+        ? (listSubStep === 3
+          ? {
+              selector: '.cl-search-wrapper',
+              title: 'Cari Budaya',
+              text: 'Kamu juga bisa mencari warisan budaya secara spesifik dengan mengetikkan namanya di kolom pencarian ini.',
+              placement: 'below' as const,
+            }
+          : (listSubStep === 2
+            ? {
+                selector: '.cl-category-pills',
+                title: 'Filter Kategori',
+                text: 'Kamu bisa menggeser (scroll) bagian kategori ini untuk memfilter kebudayaan sesuai bidangnya.',
+                placement: 'below' as const,
+              }
+            : {
+                selector: '.cl-list',
+                title: 'Pelajari Budaya',
+                text: 'Klik salah satu baris kebudayaan ini untuk membaca narasi sejarah dan memutar videonya.',
+                placement: 'below' as const,
+              }))
+        : (baseConfig ? { ...baseConfig, selector: activeSelector || baseConfig.selector } : null)));
 
   // Scan DOM persistently to detect when active target elements appear (regardless of dismissal)
   useEffect(() => {
@@ -112,11 +158,23 @@ export function JourneySpotlight() {
           setActiveSelector('.cd-audio-play-minimal');
         }
       } else if (phase === PHASES.MAP) {
-        const hasUnlockedProv = !!document.querySelector('.province-center-badge.unlocked');
-        if (hasUnlockedProv) {
-          setActiveSelector('.province-center-badge.unlocked');
+        if (isMobile && mapSubStep === 2) {
+          setActiveSelector('.map-zoom-controls');
         } else {
-          setActiveSelector('.leaflet-container');
+          const hasUnlockedProv = !!document.querySelector('.province-center-badge.unlocked');
+          if (hasUnlockedProv) {
+            setActiveSelector('.province-center-badge.unlocked');
+          } else {
+            setActiveSelector('.leaflet-container');
+          }
+        }
+      } else if (phase === PHASES.LIST) {
+        if (listSubStep === 3) {
+          setActiveSelector('.cl-search-wrapper');
+        } else if (listSubStep === 2) {
+          setActiveSelector('.cl-category-pills');
+        } else {
+          setActiveSelector('.cl-list');
         }
       } else {
         setActiveSelector(SPOTLIGHT_CONFIGS[phase]?.selector || '');
@@ -126,7 +184,7 @@ export function JourneySpotlight() {
     checkActiveElements();
     const interval = setInterval(checkActiveElements, 250);
     return () => clearInterval(interval);
-  }, [mounted, isTourDisabled, phase]);
+  }, [mounted, isTourDisabled, phase, mapSubStep, listSubStep, isMobile]);
 
   // Efek untuk melacak ukuran bounding rect elemen target secara responsif
   useEffect(() => {
@@ -195,22 +253,33 @@ export function JourneySpotlight() {
   const rect = rects[0];
   const cardWidth = 280;
   const cardHeight = 150;
-  let cardLeft = rect.left + rect.width / 2 - cardWidth / 2;
+  const containerWidth = isMobile ? cardWidth : cardWidth + 80 + 12;
+  const containerHeight = isMobile ? cardHeight + 70 + 12 : cardHeight;
+
+  let cardLeft = rect.left + rect.width / 2 - containerWidth / 2;
   let cardTop = rect.bottom + 16; // default: below
 
-  if (config.placement === 'above' || cardTop + cardHeight > windowSize.height) {
-    cardTop = rect.top - cardHeight - 16;
+  if (config.placement === 'above' || cardTop + containerHeight > windowSize.height) {
+    cardTop = rect.top - containerHeight - 16;
   }
   if (config.placement === 'center') {
-    cardTop = windowSize.height / 2 - cardHeight / 2;
-    cardLeft = windowSize.width / 2 - cardWidth / 2;
+    cardTop = windowSize.height / 2 - containerHeight / 2;
+    cardLeft = windowSize.width / 2 - containerWidth / 2;
   }
 
   // Clamping koordinat
-  cardLeft = Math.max(16, Math.min(cardLeft, windowSize.width - cardWidth - 16));
-  cardTop = Math.max(70, Math.min(cardTop, windowSize.height - cardHeight - 16));
+  cardLeft = Math.max(16, Math.min(cardLeft, windowSize.width - containerWidth - 16));
+  cardTop = Math.max(70, Math.min(cardTop, windowSize.height - containerHeight - 16));
 
   const handleDismiss = () => {
+    if (phase === PHASES.MAP && isMobile && mapSubStep === 1) {
+      setMapSubStep(2);
+      return;
+    }
+    if (phase === PHASES.LIST && listSubStep < 3) {
+      setListSubStep(prev => prev + 1);
+      return;
+    }
     const key = getDismissedKey(phase, hasFinishedAudio);
     const updated = { ...dismissedSteps, [key]: true };
     setDismissedSteps(updated);
@@ -223,7 +292,7 @@ export function JourneySpotlight() {
   };
 
   return (
-    <div className="journey-spotlight-root" style={{ position: 'fixed', inset: 0, zIndex: 998, pointerEvents: 'none' }}>
+    <div className="journey-spotlight-root" style={{ position: 'fixed', inset: 0, zIndex: 10005, pointerEvents: 'none' }}>
       {/* SVG Overlay Masking (Cut-out) */}
       <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
         <defs>
@@ -276,33 +345,47 @@ export function JourneySpotlight() {
         />
       ))}
 
-      {/* Floating Tutorial Card */}
-      <motion.div 
-        className="journey-spotlight-card"
+      {/* Floating Tutorial Wrapper (Card + Mascot) */}
+      <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         style={{
           position: 'absolute',
           top: cardTop,
           left: cardLeft,
-          width: cardWidth,
+          width: containerWidth,
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '12px',
           pointerEvents: 'auto',
           zIndex: 9999,
         }}
       >
-        <div className="spotlight-card-header">
-          {/* Miniature Nusa Avatar */}
-          <div className="spotlight-avatar">Nusa</div>
-          <span className="spotlight-card-title">{config.title}</span>
-        </div>
-        <p className="spotlight-card-text">{config.text}</p>
-        <div className="spotlight-card-actions">
-          <button className="spotlight-btn-skip" onClick={handleDisableTour}>
-            Lewati Panduan
-          </button>
-          <button className="spotlight-btn-ok" onClick={handleDismiss}>
-            Paham!
-          </button>
+        <Mascot pose="excited" size={isMobile ? 70 : 80} />
+
+        <div 
+          className="journey-spotlight-card"
+          style={{
+            width: cardWidth,
+            margin: 0,
+          }}
+        >
+          <div className="spotlight-card-header">
+            {/* Miniature Nusa Avatar */}
+            <div className="spotlight-avatar">Nusa</div>
+            <span className="spotlight-card-title">{config.title}</span>
+          </div>
+          <p className="spotlight-card-text">{config.text}</p>
+          <div className="spotlight-card-actions">
+            <button className="spotlight-btn-skip" onClick={handleDisableTour}>
+              Lewati Panduan
+            </button>
+            <button className="spotlight-btn-ok" onClick={handleDismiss}>
+              Paham!
+            </button>
+          </div>
         </div>
       </motion.div>
     </div>

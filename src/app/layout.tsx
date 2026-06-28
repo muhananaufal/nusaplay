@@ -88,7 +88,6 @@ export default function RootLayout({
           <JourneySpotlight />
           {children}
           <NavigationMenu />
-          <MascotAssistant />
           <PageTransitionOverlay />
         </Providers>
       </body>

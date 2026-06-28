@@ -75,6 +75,79 @@ export const QUIZZES = {
     },
   ],
 
+  'jawa-tengah': [
+    {
+      id: 'jateng-q1',
+      question: 'Candi Buddha terbesar di dunia yang terletak di Magelang, Jawa Tengah dan diakui sebagai warisan budaya dunia oleh UNESCO adalah?',
+      options: ['Candi Prambanan', 'Candi Borobudur', 'Candi Mendut', 'Candi Pawon'],
+      correctIndex: 1,
+      explanation: 'Candi Borobudur dibangun pada abad ke-8 oleh Dinasti Syailendra, merupakan candi Buddha terbesar di dunia dengan 504 arca Buddha dan 2.672 panel relief.',
+    },
+    {
+      id: 'jateng-q2',
+      question: 'Keraton bersejarah di Jawa Tengah yang didirikan oleh Susuhunan Pakubuwana II setelah perpindahan dari Kartasura adalah?',
+      options: ['Pura Mangkunegaran', 'Keraton Yogyakarta', 'Keraton Surakarta Hadiningrat', 'Pura Pakualaman'],
+      correctIndex: 2,
+      explanation: 'Keraton Surakarta Hadiningrat didirikan pada tahun 1744 sebagai kelanjutan dari Kerajaan Mataram Islam setelah istana di Kartasura hancur akibat Geger Pecinan.',
+    },
+    {
+      id: 'jateng-q3',
+      question: 'Pakaian adat khas Jawa Tengah untuk wanita berupa kain kemben atau kebaya yang dilengkapi stagen dan kain tapih pinjung disebut?',
+      options: ['Beskap', 'Kebaya Jawa', 'Jawi Jangkep', 'Kanigaran'],
+      correctIndex: 1,
+      explanation: 'Kebaya Jawa merupakan busana tradisional wanita Jawa Tengah yang melambangkan keanggunan, kesopanan, dan kepatuhan.',
+    },
+    {
+      id: 'jateng-q4',
+      question: 'Alat musik gamelan Jawa Tengah yang memiliki bilah-bilah perunggu tebal berbentuk pencon (tombol) dan diletakkan di atas rancakan kayu adalah?',
+      options: ['Gong', 'Bonang', 'Saron', 'Kenong'],
+      correctIndex: 1,
+      explanation: 'Bonang terdiri atas kumpulan pot perunggu (pencon) yang diletakkan mendatar di rancakan kayu, dimainkan menggunakan pemukul berlapis kain untuk memandu melodi gamelan.',
+    },
+    {
+      id: 'jateng-q5',
+      question: 'Rumah adat tradisional Jawa Tengah yang memiliki ciri khas atap berbentuk tinggi menjulang menyerupai gunung disebut?',
+      options: ['Rumah Joglo', 'Rumah Limasan', 'Rumah Kampung', 'Rumah Panggang Pe'],
+      correctIndex: 0,
+      explanation: 'Rumah Joglo memiliki bentuk atap khas yang disebut Tajug, disangga oleh empat tiang utama (Soko Guru) yang mencerminkan status sosial pemiliknya.',
+    },
+    {
+      id: 'jateng-q6',
+      question: 'Senjata tradisional Jawa Tengah yang diakui UNESCO sebagai warisan budaya takbenda dunia dan memiliki lekukan (luk) berjumlah ganjil adalah?',
+      options: ['Mandau', 'Kujang', 'Keris', 'Rencong'],
+      correctIndex: 2,
+      explanation: 'Keris adalah senjata tikam khas Jawa Tengah dengan keindahan pamor pada bilah logamnya dan jumlah lekukan (luk) yang selalu ganjil sesuai filosofi Jawa.',
+    },
+    {
+      id: 'jateng-q7',
+      question: 'Cerita rakyat terkenal dari Jawa Tengah tentang legenda asal-usul candi Rara Jonggrang yang melibatkan seribu candi dibangun dalam satu malam adalah?',
+      options: ['Timun Mas', 'Roro Mendut', 'Sangkuriang', 'Bandung Bondowoso (Rara Jonggrang)'],
+      correctIndex: 3,
+      explanation: 'Legenda Rara Jonggrang mengisahkan Bandung Bondowoso yang gagal menikahi Rara Jonggrang setelah candi keseribu yang dimintanya tidak selesai sebelum fajar karena tipu muslihat.',
+    },
+    {
+      id: 'jateng-q8',
+      question: 'Upacara adat khas masyarakat nelayan di pantai selatan Jawa Tengah (seperti Cilacap) sebagai wujud syukur atas rezeki hasil laut berupa pelarungan sesaji disebut?',
+      options: ['Ruwatan Bumi', 'Sedekah Laut', 'Grebeg Mulud', 'Sekaten'],
+      correctIndex: 1,
+      explanation: 'Sedekah Laut adalah ritual tahunan melarung jolen berisi sesaji ke Samudra Hindia sebagai bentuk rasa syukur para nelayan kepada Sang Pangcipta atas kelimpahan hasil laut.',
+    },
+    {
+      id: 'jateng-q9',
+      question: 'Motif batik klasik asal Solo/Surakarta yang bermakna tuntunan atau kasih sayang yang tumbuh kembali (biasanya dipakai orang tua pengantin) adalah?',
+      options: ['Motif Parang', 'Motif Truntum', 'Motif Kawung', 'Motif Sidomukti'],
+      correctIndex: 1,
+      explanation: 'Truntum diciptakan oleh Kanjeng Ratu Kencana (Permaisuri Pakubuwana III) yang bermakna cinta yang tumbuh kembali, melambangkan kasih sayang yang tulus.',
+    },
+    {
+      id: 'jateng-q10',
+      question: 'Istana kadipaten di Surakarta yang memiliki koleksi naskah kuno berharga di Perpustakaan Rekso Pustoko dan terkenal dengan keindahan Pendopo Pamecutannya adalah?',
+      options: ['Pura Mangkunegaran', 'Keraton Kartasura', 'Pura Pakualaman', 'Keraton Kasunanan'],
+      correctIndex: 0,
+      explanation: 'Pura Mangkunegaran adalah istana resmi milik Kadipaten Mangkunegaran di Surakarta yang didirikan setelah Perjanjian Salatiga pada tahun 1757.',
+    },
+  ],
+
   'kalimantan-barat': [
     {
       id: 'kalbar-q1',

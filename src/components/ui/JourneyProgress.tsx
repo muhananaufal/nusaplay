@@ -45,8 +45,8 @@ export function JourneyProgress() {
     setJourneyStep(step);
   }, [phase, journeyCompleted, setJourneyStep]);
 
-  // Jangan tampilkan stepper pada splash screen atau jika tour sudah selesai sepenuhnya
-  if (journeyCompleted || phase === PHASES.SPLASH) return null;
+  // Jangan tampilkan stepper pada splash screen, jika tour sudah selesai sepenuhnya, atau di perangkat mobile
+  if (journeyCompleted || phase === PHASES.SPLASH || isMobile) return null;
 
   const activeStepInfo = STEPS[journeyStep - 1];
 

@@ -3,7 +3,9 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getQuizByProvince } from '@/data/quizzes';
 import { useAppFlow } from '@/contexts/AppFlow';
+import { usePlay } from '@/contexts/Play';
 import { UNLOCKED_PROVINCES } from '@/data/provinces';
+import { Mascot } from './Mascot';
 
 // Pre-computed at module load time — Math.random() in JSX causes different
 // positions on every render and makes confetti jump unpredictably if the
@@ -105,6 +107,7 @@ const getGrade = (score: number, total: number) => {
 
 export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { visible: boolean; selectionOnly?: boolean; activeOnly?: boolean }) => {
   const { quizProvince, startQuiz, backToMap } = useAppFlow();
+  const { setJourneyCompleted } = usePlay();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
@@ -188,6 +191,11 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
       setTimeout(() => setShakeWrong(false), 600);
       window.dispatchEvent(new CustomEvent('nusaplay:quizIncorrect'));
     }
+
+    // Complete the journey immediately on answering the final question to hide the stepper early
+    if (currentIndex + 1 >= questions.length) {
+      setJourneyCompleted(true);
+    }
   };
 
   const handleTimerExpire = () => {
@@ -196,12 +204,18 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
       setSelected(-1); // No selection = timed out
       setTimerActive(false);
       window.dispatchEvent(new CustomEvent('nusaplay:quizIncorrect'));
+
+      // Complete the journey immediately on final question timeout to hide the stepper early
+      if (currentIndex + 1 >= questions.length) {
+        setJourneyCompleted(true);
+      }
     }
   };
 
   const handleNext = () => {
     if (currentIndex + 1 >= questions.length) {
       setDone(true);
+      setJourneyCompleted(true);
       window.dispatchEvent(new CustomEvent('nusaplay:quizComplete', { detail: { score } }));
     } else {
       setCurrentIndex(i => i + 1);
@@ -491,6 +505,16 @@ const QuizResult = ({ score, total, provinceName, onRetry, onMap }: any) => {
       >
         {g.desc}
       </motion.p>
+
+      {/* Animated Mascot in the Center of Quiz Result */}
+      <motion.div
+        style={{ display: 'flex', justifyContent: 'center', margin: '16px 0' }}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 0.75, type: 'spring' }}
+      >
+        <Mascot pose={score >= 3 ? "excited" : "sad"} size={110} />
+      </motion.div>
 
       {/* Star rating */}
       <div className="result-stars">

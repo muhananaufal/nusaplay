@@ -5,6 +5,7 @@ import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { getCategoryIcon } from './PremiumIcons';
 import { useSmoothScroll } from './SmoothScroll';
 import tts from '@/utils/tts';
+import { Mascot } from './Mascot';
 
 export const CultureDetail = ({ visible }) => {
   const { selectedCulture, selectedProvince, goTo, startQuiz } = useAppFlow();
@@ -280,6 +281,9 @@ const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, 
       <span className="end-sheet-badge">Narasi Selesai</span>
       <h3 className="end-sheet-title">"{cultureName}"</h3>
       <div className="end-sheet-divider" />
+      <div style={{ display: 'flex', justifyContent: 'center', margin: '12px 0 16px 0' }}>
+        <Mascot pose="excited" size={100} />
+      </div>
       <p className="end-sheet-sub" style={{ fontWeight: 600, color: 'var(--c-accent-dark)', marginBottom: '16px' }}>
         Hebat! Kamu telah menyimak penjelasan budaya ini. Ingin lanjut menguji pengetahuanmu?
       </p>
