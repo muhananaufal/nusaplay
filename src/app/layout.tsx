@@ -9,7 +9,8 @@ import { PageTransitionOverlay } from "@/components/ui/PageTransitionOverlay";
 import { MascotAssistant } from "@/components/ui/MascotAssistant";
 import { JourneyProgress } from "@/components/ui/JourneyProgress";
 import { JourneySpotlight } from "@/components/ui/JourneySpotlight";
-import { NewStampCelebration } from "@/components/ui/NewStampCelebration";
+// Client-component wrapper that lazy-loads NewStampCelebration with ssr:false
+import { NewStampCelebrationLoader } from "@/components/ui/NewStampCelebrationLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -87,7 +88,7 @@ export default function RootLayout({
           <CustomCursor />
           <JourneyProgress />
           <JourneySpotlight />
-          <NewStampCelebration />
+          <NewStampCelebrationLoader />
           {children}
           <NavigationMenu />
           <PageTransitionOverlay />

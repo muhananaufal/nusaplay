@@ -7787,47 +7787,73 @@ html, body, #root {
 .stamp-fullscreen-overlay {
   position: fixed;
   inset: 0;
-  background: #0b0a0a; /* Deep charcoal full bleed */
+  background: #0b0a0a;
   z-index: 10010;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: auto;
   overflow: hidden;
+  /* Isolate the overlay's stacking context — prevents repaint bleed to the rest of the page */
+  contain: layout style;
+  /* Prime the GPU compositor layer upfront */
+  will-change: opacity;
 }
 
-/* Decorative pulsing rings behind the seal */
+/* Pure-CSS ring fade-in — zero JS cost */
+@keyframes ringFadeIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
 .stamp-bg-ring {
   position: absolute;
   border-radius: 50%;
   border: 1.5px solid rgba(200, 169, 110, 0.18);
   pointer-events: none;
+  /* GPU-composited: only transform + opacity, no layout */
+  will-change: transform, opacity;
+  animation: ringFadeIn 0.8s ease-out both;
 }
 
 .stamp-bg-ring--outer {
   width: 580px;
   height: 580px;
+  animation-delay: 0.28s;
 }
 
 .stamp-bg-ring--inner {
   width: 380px;
   height: 380px;
   border-color: rgba(200, 169, 110, 0.28);
+  animation-delay: 0.42s;
 }
 
-/* Sparkle particles — reused from passport stamp */
+/* Sparkle particles */
 .celebration-particles {
   position: absolute;
   width: 0;
   height: 0;
+  pointer-events: none;
 }
 
 .celebration-sparkle {
   position: absolute;
   border-radius: 50%;
   background: #ebd2a3;
-  box-shadow: 0 0 8px #c8a96e;
-  pointer-events: none;
+  /* No box-shadow — avoids per-frame paint; use background glow instead */
+  will-change: transform, opacity;
+}
+
+/* Pure-CSS keyframes for text reveal — zero JS cost */
+@keyframes stampFadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes stampScaleX {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
 /* Content column */
@@ -7839,6 +7865,8 @@ html, body, #root {
   padding: 24px;
   position: relative;
   z-index: 2;
+  /* isolation prevents z-index bleed without creating an expensive compositing layer */
+  isolation: isolate;
 }
 
 .stamp-fs-label {
@@ -7849,6 +7877,7 @@ html, body, #root {
   letter-spacing: 0.22em;
   color: #c8a96e;
   margin-bottom: 36px;
+  animation: stampFadeUp 0.42s ease-out 0.30s both;
 }
 
 /* The giant gold wax seal */
@@ -7868,11 +7897,12 @@ html, body, #root {
   user-select: none;
   position: relative;
   margin-bottom: 36px;
+  /* Simplified shadow — fewer layers = faster paint */
   box-shadow:
-    inset 0 4px 10px rgba(255, 255, 255, 0.55),
-    inset 0 -4px 10px rgba(0, 0, 0, 0.35),
-    0 0 60px rgba(200, 169, 110, 0.35),
-    0 20px 50px rgba(0, 0, 0, 0.5);
+    inset 0 4px 10px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.3),
+    0 0 48px rgba(200, 169, 110, 0.3);
+  will-change: transform, opacity;
 }
 
 /* Glossy highlight arc on the seal */
@@ -7882,7 +7912,7 @@ html, body, #root {
   left: 14%;
   width: 42%;
   height: 32%;
-  background: radial-gradient(ellipse, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 100%);
+  background: radial-gradient(ellipse, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
   border-radius: 50%;
   transform: rotate(-30deg);
   pointer-events: none;
@@ -7903,6 +7933,7 @@ html, body, #root {
   background: linear-gradient(90deg, transparent, #c8a96e, transparent);
   margin-bottom: 16px;
   transform-origin: center;
+  animation: stampScaleX 0.40s ease-out 0.88s both;
 }
 
 .stamp-fs-desc {
@@ -7912,6 +7943,7 @@ html, body, #root {
   color: rgba(252, 251, 250, 0.55);
   max-width: 320px;
   margin-bottom: 40px;
+  animation: stampFadeUp 0.42s ease-out 1.02s both;
 }
 
 .stamp-fs-desc strong {
@@ -7930,13 +7962,20 @@ html, body, #root {
   font-weight: 800;
   letter-spacing: 0.06em;
   cursor: pointer;
-  transition: background 0.25s ease, box-shadow 0.25s ease;
+  /* All transitions are composite-safe (transform, opacity, background, box-shadow) */
+  transition: background 0.22s ease, box-shadow 0.22s ease, transform 0.18s ease;
   box-shadow: 0 8px 24px rgba(200, 169, 110, 0.35);
+  animation: stampFadeUp 0.42s ease-out 1.26s both;
 }
 
 .stamp-fs-btn:hover {
   background: #ebd2a3;
   box-shadow: 0 12px 32px rgba(200, 169, 110, 0.5);
+  transform: scale(1.04);
+}
+
+.stamp-fs-btn:active {
+  transform: scale(0.97);
 }
 
 @media only screen and (max-width: 480px) {
@@ -7951,15 +7990,16 @@ html, body, #root {
   }
 
   .stamp-bg-ring--outer {
-    width: 360px;
-    height: 360px;
+    width: 340px;
+    height: 340px;
   }
 
   .stamp-bg-ring--inner {
-    width: 240px;
-    height: 240px;
+    width: 220px;
+    height: 220px;
   }
 }
+
 
 
 
