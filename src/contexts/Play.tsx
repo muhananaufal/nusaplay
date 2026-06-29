@@ -14,23 +14,10 @@ export const PlayProvider = ({ children }: { children: React.ReactNode }) => {
   const [journeyCompleted, setJourneyCompletedState] = useState(false);
   const [tourActive, setTourActive] = useState(false);
 
-  // Sync state from localStorage on mount (client-side only to prevent SSR mismatch)
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const step = localStorage.getItem('nusaplay:journey_step');
-      if (step) {
-        setJourneyStepState(parseInt(step, 10));
-      }
-      const completed = localStorage.getItem('nusaplay:journey_completed') === 'true';
-      setJourneyCompletedState(completed);
-    }
-  }, []);
-
   const setJourneyStep = (step: number) => {
     setJourneyStepState(prev => {
       // Only allow forward progress
       if (step > prev) {
-        localStorage.setItem('nusaplay:journey_step', String(step));
         return step;
       }
       return prev;
@@ -39,7 +26,6 @@ export const PlayProvider = ({ children }: { children: React.ReactNode }) => {
 
   const setJourneyCompleted = (completed: boolean) => {
     setJourneyCompletedState(completed);
-    localStorage.setItem('nusaplay:journey_completed', String(completed));
   };
 
   return (

@@ -68,7 +68,7 @@ export const NavigationMenu = () => {
     selectProvince
   } = useAppFlow();
   
-  const { play, setPlay, setEnd } = usePlay();
+  const { play, setPlay, setEnd, end } = usePlay();
   const { visitedProvinces, visitCount } = usePassport();
 
   // matchMedia-based â€” fires only when threshold is crossed, not every pixel
@@ -99,7 +99,8 @@ export const NavigationMenu = () => {
       title: 'Peta Nusantara',
       action: () => {
         setIsOpen(false);
-        backToMap();
+        const shouldTransition = phase !== PHASES.MAP && phase !== PHASES.PROVINCE;
+        backToMap(false, shouldTransition);
       },
       image: '/img/menu_map.webp'
     },
@@ -136,7 +137,7 @@ export const NavigationMenu = () => {
       if (quizProvince) {
         startQuiz(null);
       } else {
-        backToMap();
+        backToMap(false, true);
       }
     }
   };
@@ -175,7 +176,7 @@ export const NavigationMenu = () => {
 
       {/* ── Floating Top-Right Hamburger Menu Button ── */}
       <button
-        className={`floating-menu-btn ${(isOpen || showAbout) ? 'menu-open' : ''} ${(phase === PHASES.JOURNEY || play) && !isOpen && !showAbout ? 'menu-hidden' : ''}`}
+        className={`floating-menu-btn ${(isOpen || showAbout) ? 'menu-open' : ''} ${(phase === PHASES.JOURNEY || (play && !end)) && !isOpen && !showAbout ? 'menu-hidden' : ''}`}
         onClick={() => {
           if (showAbout) {
             setShowAbout(false);
@@ -349,27 +350,7 @@ export const NavigationMenu = () => {
                         </div>
                       </div>
 
-                      {/* Passport Stamps Section */}
-                      <div className="about-passport-section">
-                        <span className="tech-stack-title">PASPOR PERJALANAN ({visitCount}/3 Provinsi)</span>
-                        <div className="passport-stamps-row">
-                          {[
-                            { id: 'diy', name: 'Yogyakarta', stamp: '✦' },
-                            { id: 'kalimantan-barat', name: 'Kalbar', stamp: '❈' },
-                            { id: 'papua', name: 'Papua', stamp: '✹' },
-                          ].map(p => {
-                            const visited = visitedProvinces.has(p.id);
-                            return (
-                              <div key={p.id} className={`passport-stamp-item ${visited ? 'visited' : ''}`}>
-                                <div className="stamp-circle">
-                                  <span>{visited ? p.stamp : '?'}</span>
-                                </div>
-                                <span className="stamp-name">{p.name}</span>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
+
 
                       {/* Creators Section */}
                       <div className="about-creators-section">

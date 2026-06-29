@@ -6,6 +6,103 @@ import { useAppFlow } from '@/contexts/AppFlow';
 import { usePlay } from '@/contexts/Play';
 import { UNLOCKED_PROVINCES } from '@/data/provinces';
 import { Mascot } from './Mascot';
+import { usePassport } from '@/contexts/Passport';
+
+// Synthesized sound effects using native Web Audio API
+const playCorrectSound = () => {
+  try {
+    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+    if (!AudioContextClass) return;
+    const ctx = new AudioContextClass();
+    const playNote = (freq: number, start: number, duration: number) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, start);
+      gain.gain.setValueAtTime(0.12, start);
+      gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(start);
+      osc.stop(start + duration);
+    };
+    const now = ctx.currentTime;
+    playNote(523.25, now, 0.12); // C5
+    playNote(783.99, now + 0.08, 0.22); // G5
+  } catch (e) {
+    console.warn('Web Audio not supported', e);
+  }
+};
+
+const playIncorrectSound = () => {
+  try {
+    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+    if (!AudioContextClass) return;
+    const ctx = new AudioContextClass();
+    
+    const playTone = (freq1: number, freq2: number, start: number, duration: number) => {
+      const osc1 = ctx.createOscillator();
+      const osc2 = ctx.createOscillator();
+      const gain = ctx.createGain();
+      const filter = ctx.createBiquadFilter();
+      
+      osc1.type = 'sawtooth';
+      osc2.type = 'sawtooth';
+      osc1.frequency.setValueAtTime(freq1, start);
+      osc2.frequency.setValueAtTime(freq2, start);
+      
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(800, start); // Smooth out the sawtooth harshness
+      
+      gain.gain.setValueAtTime(0.22, start); // Clear, loud gain
+      gain.gain.linearRampToValueAtTime(0.001, start + duration);
+      
+      osc1.connect(filter);
+      osc2.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc1.start(start);
+      osc2.start(start);
+      osc1.stop(start + duration);
+      osc2.stop(start + duration);
+    };
+    
+    const now = ctx.currentTime;
+    // Play two quick discordant buzzy notes in sequence (bomp-bomp)
+    playTone(293.66, 300.0, now, 0.18); // Note 1: Out-of-tune D4
+    playTone(220.00, 225.0, now + 0.1, 0.28); // Note 2: Out-of-tune A3
+  } catch (e) {
+    console.warn('Web Audio not supported', e);
+  }
+};
+
+const playSuccessSound = () => {
+  try {
+    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+    if (!AudioContextClass) return;
+    const ctx = new AudioContextClass();
+    const playNote = (freq: number, start: number, duration: number) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, start);
+      gain.gain.setValueAtTime(0.1, start);
+      gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(start);
+      osc.stop(start + duration);
+    };
+    const now = ctx.currentTime;
+    playNote(261.63, now, 0.15); // C4
+    playNote(329.63, now + 0.08, 0.15); // E4
+    playNote(392.00, now + 0.16, 0.15); // G4
+    playNote(523.25, now + 0.24, 0.4); // C5
+  } catch (e) {
+    console.warn('Web Audio not supported', e);
+  }
+};
 
 // Pre-computed at module load time — Math.random() in JSX causes different
 // positions on every render and makes confetti jump unpredictably if the
@@ -108,7 +205,9 @@ const getGrade = (score: number, total: number) => {
 export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { visible: boolean; selectionOnly?: boolean; activeOnly?: boolean }) => {
   const { quizProvince, startQuiz, backToMap } = useAppFlow();
   const { setJourneyCompleted } = usePlay();
+  const { completeQuiz, completedQuizzes, visitedProvinces } = usePassport();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [lockedProvData, setLockedProvData] = useState<any | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
   const [score, setScore] = useState(0);
@@ -186,10 +285,12 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
       setTimeout(() => setShowConfetti(false), 2500);
       setTimeout(() => setShowScorePop(false), 1500);
       window.dispatchEvent(new CustomEvent('nusaplay:quizCorrect'));
+      playCorrectSound();
     } else {
       setShakeWrong(true);
       setTimeout(() => setShakeWrong(false), 600);
       window.dispatchEvent(new CustomEvent('nusaplay:quizIncorrect'));
+      playIncorrectSound();
     }
 
     // Complete the journey immediately on answering the final question to hide the stepper early
@@ -217,6 +318,10 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
       setDone(true);
       setJourneyCompleted(true);
       window.dispatchEvent(new CustomEvent('nusaplay:quizComplete', { detail: { score } }));
+      playSuccessSound();
+
+      // Mark the quiz as completed upon finishing, regardless of the score!
+      completeQuiz(quizProvince.id);
     } else {
       setCurrentIndex(i => i + 1);
       setSelected(null);
@@ -263,19 +368,42 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
         </motion.p>
         
         <div className="quiz-province-cards">
-          {UNLOCKED_PROVINCES.map((prov, i) => (
-            <motion.div
-              key={prov.id}
-              className="quiz-province-card"
-              onClick={() => startQuiz(prov)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.08, duration: 0.4 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-            >
-              {/* Large Index Number */}
-              <div className="quiz-card-index">0{i + 1}</div>
-              <div className="quiz-card-header">
+          {UNLOCKED_PROVINCES.map((prov, i) => {
+            const isQuizDone = completedQuizzes.has(prov.id);
+            const isVisited = visitedProvinces.has(prov.id);
+            return (
+              <motion.div
+                key={prov.id}
+                className={`quiz-province-card ${!isVisited ? 'locked' : ''}`}
+                onClick={() => {
+                  if (!isVisited) {
+                    setLockedProvData(prov);
+                    return;
+                  }
+                  startQuiz(prov);
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08, duration: 0.4 }}
+                whileHover={isVisited ? { y: -6, transition: { duration: 0.2 } } : {}}
+                style={{ position: 'relative' }}
+              >
+                {isQuizDone && (
+                  <div className="quiz-card-badge-completed" title="Kuis Selesai! Kamu mendapatkan lencana emas!">
+                    🏆 TUNTAS
+                  </div>
+                )}
+                {isVisited && !isQuizDone && (
+                  <div className="quiz-card-badge-uncompleted" title="Kuis Belum Selesai! Selesaikan kuis ini untuk mendapatkan lencana emas!">
+                    ❓ BELUM TUNTAS
+                  </div>
+                )}
+                {!isVisited && (
+                  <div className="quiz-card-badge-locked" title="Kuis Terkunci! Kunjungi provinsi ini di peta terlebih dahulu.">
+                    🔒 TERKUNCI
+                  </div>
+                )}
+                <div className="quiz-card-header">
                 <span className="quiz-card-count">{prov.cultureCount} RAGAM BUDAYA</span>
                 <h2 className="quiz-card-name">{prov.name}</h2>
                 <p className="quiz-card-tagline">{prov.tagline}</p>
@@ -291,13 +419,85 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
                 </div>
               )}
               
-              <button className="quiz-card-btn">
-                Mulai Kuis
-                <span>→</span>
-              </button>
-            </motion.div>
-          ))}
+                <button className="quiz-card-btn">
+                  Mulai Kuis
+                  <span>→</span>
+                </button>
+              </motion.div>
+            );
+          })}
         </div>
+
+        <AnimatePresence>
+          {lockedProvData && (
+            <motion.div 
+              className="storytelling-end-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              style={{ zIndex: 2000 }}
+            >
+              <motion.div 
+                className="storytelling-end-sheet"
+                initial={{ y: 80, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 80, opacity: 0 }}
+                transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+              >
+                <span className="end-sheet-badge">Kuis Terkunci</span>
+                <h3 className="end-sheet-title">{lockedProvData.name}</h3>
+                <div className="end-sheet-divider" />
+                
+                <div style={{ display: 'flex', justifyContent: 'center', margin: '12px 0 16px 0' }}>
+                  <Mascot pose="sad" size={100} />
+                </div>
+                
+                <p className="end-sheet-sub" style={{ fontWeight: 600, color: 'var(--c-accent-dark)', marginBottom: '16px' }}>
+                  Silakan kunjungi <strong>{lockedProvData.name}</strong> di peta dan eksplorasi salah satu kategorinya terlebih dahulu untuk membuka kuis ini!
+                </p>
+                
+                <div className="end-sheet-actions" style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', marginTop: '16px' }}>
+                  <button 
+                    className="end-btn start-quiz"
+                    onClick={() => {
+                      setLockedProvData(null);
+                      backToMap();
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '12px',
+                      background: 'var(--c-accent)',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      boxShadow: '0 4px 12px rgba(85, 145, 185, 0.25)',
+                      transition: 'transform 0.2s, filter 0.2s',
+                    }}
+                  >
+                    Ke Peta →
+                  </button>
+                  <button 
+                    className="end-btn replay"
+                    onClick={() => setLockedProvData(null)}
+                    style={{
+                      width: '100%',
+                      padding: '12px',
+                      borderRadius: '4px',
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Batal
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     );
   }

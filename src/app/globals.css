@@ -2378,7 +2378,8 @@ html, body, #root {
 
 .result-star.lit {
   opacity: 1;
-  color: var(--c-accent);
+  color: #c8a96e;
+  text-shadow: 0 0 12px rgba(200, 169, 110, 0.65);
 }
 
 .result-title {
@@ -5278,6 +5279,45 @@ html, body, #root {
   height: 26px;
   font-size: 0.75rem;
   border: 1.5px solid var(--c-primary);
+  position: relative !important;
+}
+
+.province-center-badge .badge-count {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden !important;
+  z-index: 1;
+}
+
+@keyframes markerShimmer {
+  0% {
+    left: -150%;
+  }
+  30%, 100% {
+    left: 150%;
+  }
+}
+
+.province-center-badge.unlocked.visited .badge-count::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  animation: markerShimmer 4s infinite linear;
 }
 
 .province-center-badge.locked {
@@ -7291,6 +7331,637 @@ html, body, #root {
     border-color: #ffd28f;
   }
 }
+
+/* ─── MAP VISITED PROVINCE ACHIEVEMENTS ─────────────────────────────────── */
+.province-center-badge.unlocked.visited {
+  background: #c8a96e !important;
+  color: #0b0a0a !important;
+  border-color: #0b0a0a !important;
+  box-shadow: 0 0 14px rgba(200, 169, 110, 0.65), 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.province-center-badge.unlocked.visited .badge-count {
+  color: #0b0a0a !important;
+}
+
+.province-center-badge .badge-star {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  color: #c8a96e;
+  font-size: 13px;
+  z-index: 5;
+  line-height: 1;
+  text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.75), 0 0 4px rgba(200, 169, 110, 0.5);
+  pointer-events: none;
+  animation: starStamp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes starStamp {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* ─── FLOATING MAP PASSPORT WIDGET ──────────────────────────────────────── */
+.map-passport-widget {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  z-index: 45;
+  background: rgba(252, 251, 250, 0.85); /* Luxury glassmorphic cream */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(24, 23, 23, 0.08);
+  border-radius: 24px; /* Pill shaped by default */
+  box-shadow: 0 16px 40px rgba(24, 23, 23, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: auto;
+  transition: border-color var(--transition), background var(--transition), border-radius 0.3s ease;
+}
+
+.map-passport-widget.collapsed {
+  width: 86px;
+  padding: 8px 12px;
+  align-items: center;
+}
+
+.map-passport-widget.expanded {
+  width: 240px;
+  padding: 12px 16px;
+  border-radius: 8px; /* More rectangular when expanded */
+}
+
+.map-passport-widget:hover {
+  border-color: rgba(24, 23, 23, 0.16);
+  background: rgba(252, 251, 250, 0.95);
+}
+
+.map-passport-widget .widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.map-passport-widget.expanded .widget-header {
+  border-bottom: 1px solid rgba(24, 23, 23, 0.06);
+  padding-bottom: 6px;
+}
+
+.map-passport-widget .widget-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.map-passport-widget.pinned {
+  border-color: var(--c-accent, #5591b9);
+  box-shadow: 0 16px 40px rgba(85, 145, 185, 0.08);
+}
+
+.map-passport-widget .passport-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--c-accent, #5591b9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: var(--c-accent, #5591b9);
+  background: transparent;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(85, 145, 185, 0.1);
+}
+
+.map-passport-widget .widget-title {
+  font-family: monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--c-text-soft);
+  white-space: nowrap;
+}
+
+.map-passport-widget .widget-progress {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #0b0a0a;
+  background: #c8a96e;
+  padding: 2px 6px;
+  border-radius: 10px;
+  line-height: 1;
+}
+
+.map-passport-widget .widget-stamps {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.map-passport-widget .widget-stamp-dot {
+  width: 36px;
+  height: 36px;
+  /* Organic wavy wax seal shape */
+  border-radius: 48% 52% 50% 50% / 40% 40% 60% 60%;
+  border: 1px dashed rgba(24, 23, 23, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--c-text-soft);
+  background: rgba(24, 23, 23, 0.02);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.map-passport-widget .widget-stamp-dot.visited {
+  border-style: solid;
+  border-color: #9c8052; /* Slightly darker gold outline */
+  background: #c8a96e; /* Luxury gold color */
+  color: #0b0a0a;
+  /* Premium 3D wax seal shadow effect */
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.45), 
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2), 
+    0 4px 10px rgba(200, 169, 110, 0.35);
+  font-weight: bold;
+  border-radius: 42% 58% 52% 48% / 45% 45% 55% 55%;
+  transform: scale(1.05) rotate(4deg);
+}
+
+.widget-stamp-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  overflow: hidden !important;
+  z-index: 1;
+}
+
+.widget-stamp-inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  transition: none;
+}
+
+.map-passport-widget .widget-stamp-dot.visited:hover {
+  transform: scale(1.15) rotate(-3deg);
+}
+
+.map-passport-widget .widget-stamp-dot.visited:hover .widget-stamp-inner::after {
+  left: 150%;
+  transition: left 0.75s ease-in-out !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .map-passport-widget {
+    bottom: 85px; /* Sits above mobile zoom buttons */
+    right: 20px;
+  }
+  .map-passport-widget.collapsed {
+    width: 86px;
+  }
+  .map-passport-widget.expanded {
+    left: 20px;
+    right: 20px;
+    width: auto;
+  }
+}
+
+/* ─── PASSPORT STAMP CUSTOM TOOLTIPS ────────────────────────────────────── */
+.map-passport-widget .stamp-tooltip {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #181717; /* Obsidian dark background */
+  color: #f4efe7; /* Cream light text */
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* Tooltip arrow pointer pointing down to the stamp dot */
+.map-passport-widget .stamp-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #181717;
+}
+
+.map-passport-widget .stamp-tooltip .tooltip-province {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.map-passport-widget .stamp-tooltip .tooltip-status {
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ─── PROVINCE TITLE GOLD STAMP SEAL ─────────────────────────────────────── */
+.pd-province-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-wrap: wrap !important;
+}
+
+.pd-stamp-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 42% 58% 52% 48% / 45% 45% 55% 55%;
+  background: #c8a96e; /* Gold color */
+  border: 1.5px solid #9c8052;
+  color: #0b0a0a;
+  font-size: 1.15rem;
+  font-weight: bold;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.5), 
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2), 
+    0 4px 12px rgba(200, 169, 110, 0.45);
+  cursor: help;
+  user-select: none;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  line-height: 1;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.pd-stamp-seal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: none;
+  pointer-events: none;
+}
+
+.pd-stamp-seal:hover {
+  transform: scale(1.2) rotate(-6deg) !important;
+}
+
+.pd-stamp-seal:hover::after {
+  left: 150%;
+  transition: left 0.75s ease-in-out !important;
+}
+
+/* ─── CINEMATIC HERO TRANSITION ─────────────────────────────────────────── */
+.transition-fade-out {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+  pointer-events: none !important;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.pd-thumbnail-item {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.pd-thumbnail-item.transition-zoom-in {
+  transform: scale(1.3) translateY(-16px) !important;
+  z-index: 50 !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ─── QUIZ COMPLETED GOLD MEDAL BADGE ───────────────────────────────────── */
+.quiz-province-card {
+  position: relative !important;
+}
+
+.quiz-card-badge-completed {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #c8a96e; /* Gold wax seal color */
+  color: #0b0a0a;
+  font-family: monospace;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 10px rgba(200, 169, 110, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #9c8052;
+  z-index: 10;
+  overflow: hidden !important;
+}
+
+.quiz-card-badge-completed::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: none;
+  pointer-events: none;
+}
+
+.quiz-province-card:hover .quiz-card-badge-completed::after {
+  left: 150%;
+  transition: left 0.75s ease-in-out !important;
+}
+
+.quiz-card-badge-locked {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(24, 23, 23, 0.08); /* Muted slate background */
+  color: var(--c-text-soft, #777);
+  font-family: monospace;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(24, 23, 23, 0.15);
+  z-index: 10;
+}
+
+.quiz-province-card.locked {
+  opacity: 0.65;
+  filter: grayscale(0.4);
+  cursor: not-allowed !important;
+}
+
+.quiz-province-card.locked:hover {
+  transform: none !important;
+}
+
+.quiz-province-card.locked .quiz-card-btn {
+  background: rgba(24, 23, 23, 0.05) !important;
+  color: rgba(24, 23, 23, 0.4) !important;
+  border-color: rgba(24, 23, 23, 0.1) !important;
+  cursor: not-allowed !important;
+}
+
+.quiz-card-badge-uncompleted {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(24, 23, 23, 0.03);
+  color: var(--c-text-soft, #777);
+  font-family: monospace;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  border: 1px dashed rgba(24, 23, 23, 0.25);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ─── STAMP CELEBRATION FULL-PAGE CINEMATIC ──────────────────────────────── */
+.stamp-fullscreen-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0b0a0a; /* Deep charcoal full bleed */
+  z-index: 10010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+/* Decorative pulsing rings behind the seal */
+.stamp-bg-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 169, 110, 0.18);
+  pointer-events: none;
+}
+
+.stamp-bg-ring--outer {
+  width: 580px;
+  height: 580px;
+}
+
+.stamp-bg-ring--inner {
+  width: 380px;
+  height: 380px;
+  border-color: rgba(200, 169, 110, 0.28);
+}
+
+/* Sparkle particles — reused from passport stamp */
+.celebration-particles {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.celebration-sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: #ebd2a3;
+  box-shadow: 0 0 8px #c8a96e;
+  pointer-events: none;
+}
+
+/* Content column */
+.stamp-fullscreen-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.stamp-fs-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #c8a96e;
+  margin-bottom: 36px;
+}
+
+/* The giant gold wax seal */
+.stamp-fs-seal {
+  width: 180px;
+  height: 180px;
+  border-radius: 42% 58% 52% 48% / 45% 45% 55% 55%;
+  background: radial-gradient(circle at 38% 35%, #ebd2a3 0%, #c8a96e 60%, #9c8052 100%);
+  border: 4px solid #9c8052;
+  color: #0b0a0a;
+  font-size: 6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  user-select: none;
+  position: relative;
+  margin-bottom: 36px;
+  box-shadow:
+    inset 0 4px 10px rgba(255, 255, 255, 0.55),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.35),
+    0 0 60px rgba(200, 169, 110, 0.35),
+    0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Glossy highlight arc on the seal */
+.stamp-fs-seal-gloss {
+  position: absolute;
+  top: 12%;
+  left: 14%;
+  width: 42%;
+  height: 32%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 100%);
+  border-radius: 50%;
+  transform: rotate(-30deg);
+  pointer-events: none;
+}
+
+.stamp-fs-province {
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fcfbfa;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.stamp-fs-divider {
+  width: 60px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #c8a96e, transparent);
+  margin-bottom: 16px;
+  transform-origin: center;
+}
+
+.stamp-fs-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: rgba(252, 251, 250, 0.55);
+  max-width: 320px;
+  margin-bottom: 40px;
+}
+
+.stamp-fs-desc strong {
+  color: rgba(252, 251, 250, 0.85);
+  font-weight: 700;
+}
+
+.stamp-fs-btn {
+  background: #c8a96e;
+  color: #0b0a0a;
+  border: none;
+  border-radius: 100px;
+  padding: 14px 36px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 24px rgba(200, 169, 110, 0.35);
+}
+
+.stamp-fs-btn:hover {
+  background: #ebd2a3;
+  box-shadow: 0 12px 32px rgba(200, 169, 110, 0.5);
+}
+
+@media only screen and (max-width: 480px) {
+  .stamp-fs-seal {
+    width: 130px;
+    height: 130px;
+    font-size: 4.2rem;
+  }
+
+  .stamp-fs-province {
+    font-size: 1.5rem;
+  }
+
+  .stamp-bg-ring--outer {
+    width: 360px;
+    height: 360px;
+  }
+
+  .stamp-bg-ring--inner {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+
 
 
 

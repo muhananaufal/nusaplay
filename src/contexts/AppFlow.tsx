@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useContext, useState, useMemo, useCallback } from 'react';
+import { createContext, useContext, useState, useMemo, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export const PHASES = {
@@ -34,6 +34,21 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setIsTransitioning(true);
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+      }, 550);
+      return () => clearTimeout(timer);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
   const resetListUI = useCallback(() => {
     setSearchQuery('');
@@ -80,7 +95,10 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
       }
     };
     
-    const isBypassCurtain = nextPhase === PHASES.MAP || nextPhase === PHASES.PROVINCE || nextPhase === PHASES.JOURNEY;
+    const isBypassCurtain = 
+      nextPhase === PHASES.MAP || 
+      nextPhase === PHASES.JOURNEY ||
+      (nextPhase === PHASES.PROVINCE && phase === PHASES.MAP);
     if (skipPush === true || isBypassCurtain) {
       doNav();
     } else {
@@ -164,7 +182,7 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     }
   }, [router, triggerNavigation]);
 
-  const backToMap = useCallback((skipPush: any = false) => {
+  const backToMap = useCallback((skipPush: any = false, useCurtain: boolean = false) => {
     const doNav = () => {
       setSelectedProvince(null);
       setSelectedCategory(null);
@@ -176,9 +194,12 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
       }
     };
     
-    // Always skip curtain wipe to allow smooth Leaflet zoom-out
-    doNav();
-  }, [resetListUI, router]);
+    if (useCurtain) {
+      triggerNavigation(doNav);
+    } else {
+      doNav();
+    }
+  }, [resetListUI, router, triggerNavigation]);
 
   const appFlowValue = useMemo(() => ({
     phase,

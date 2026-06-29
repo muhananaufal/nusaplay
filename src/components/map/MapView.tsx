@@ -1,11 +1,12 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PROVINCES } from '@/data/provinces';
 import { CULTURES } from '@/data/cultures';
 import { useAppFlow } from '@/contexts/AppFlow';
 import { getMapAssetsReady } from '@/utils/mapAssetLoader';
 import { useIsMobile } from '@/utils/useIsMobile';
+import { usePassport } from '@/contexts/Passport';
 
 declare const L: any;
 
@@ -120,8 +121,14 @@ export const MapView = ({ visible }) => {
   const [mapReady, setMapReady] = useState(false);
   const [deepZoomActive, setDeepZoomActive] = useState(false);
   const [isTilted, setIsTilted] = useState(false);
+  const [isPassportPinned, setIsPassportPinned] = useState(false);
+  const [isPassportHovered, setIsPassportHovered] = useState(false);
+  const [activeStampTooltip, setActiveStampTooltip] = useState<string | null>(null);
+  const [pinnedStampTooltip, setPinnedStampTooltip] = useState<string | null>(null);
+  const isPassportExpanded = isPassportPinned || isPassportHovered;
   const isMobile = useIsMobile(1024);
   const { selectProvince, selectedProvince, backToMap, selectCulture, goTo } = useAppFlow();
+  const { visitedProvinces, visitCount } = usePassport();
 
   const selectProvinceRef = useRef(selectProvince);
   const backToMapRef = useRef(backToMap);
@@ -310,6 +317,7 @@ export const MapView = ({ visible }) => {
         const centerLatLng = getFeatureCenter(feature, layer);
         if (centerLatLng) {
           if (prov) {
+            const isVisited = visitedProvinces.has(prov.id);
             const tooltip = L.tooltip({
               permanent: true,
               direction: 'center',
@@ -317,8 +325,9 @@ export const MapView = ({ visible }) => {
             })
             .setLatLng(centerLatLng)
             .setContent(
-              `<div class="province-center-badge ${prov.status}">
+              `<div class="province-center-badge ${prov.status} ${isVisited ? 'visited' : ''}" data-province-id="${prov.id}">
                 <span class="badge-count">${prov.cultureCount}</span>
+                ${isVisited ? '<span class="badge-star">★</span>' : ''}
                 <div class="badge-hover-info">
                   <div class="hover-info-header">
                     <span class="province-title">${prov.name}</span>
@@ -326,7 +335,7 @@ export const MapView = ({ visible }) => {
                   <div class="hover-info-body">
                     <span class="culture-stat"><strong>${prov.cultureCount}</strong> Budaya Tersedia</span>
                   </div>
-                  <span class="status-tag">${prov.status === 'unlocked' ? 'Jelajahi' : 'Segera Hadir'}</span>
+                  <span class="status-tag">${prov.status === 'unlocked' ? (isVisited ? 'Sudah Dikunjungi' : 'Jelajahi') : 'Segera Hadir'}</span>
                 </div>
                </div>`
             );
@@ -403,6 +412,35 @@ export const MapView = ({ visible }) => {
       markersGroupRef.current = null;
     };
   }, [visible]);
+
+  // Dynamically update map badges when visitedProvinces changes in the current session
+  useEffect(() => {
+    if (!mapReady) return;
+
+    visitedProvinces.forEach(id => {
+      const badgeEl = document.querySelector(`.province-center-badge[data-province-id="${id}"]`);
+      if (badgeEl && !badgeEl.classList.contains('visited')) {
+        badgeEl.classList.add('visited');
+        
+        const statusTag = badgeEl.querySelector('.status-tag');
+        if (statusTag) {
+          statusTag.textContent = 'Sudah Dikunjungi';
+        }
+        
+        if (!badgeEl.querySelector('.badge-star')) {
+          const starEl = document.createElement('span');
+          starEl.className = 'badge-star';
+          starEl.textContent = '★';
+          const hoverInfo = badgeEl.querySelector('.badge-hover-info');
+          if (hoverInfo) {
+            badgeEl.insertBefore(starEl, hoverInfo);
+          } else {
+            badgeEl.appendChild(starEl);
+          }
+        }
+      }
+    });
+  }, [visitedProvinces, mapReady]);
 
   // Effect to handle zooming and highlighting when selectedProvince changes
   useEffect(() => {
@@ -615,6 +653,106 @@ export const MapView = ({ visible }) => {
           <div className="map-loading-spinner" />
           <span>Memuat peta Indonesia...</span>
         </div>
+      )}
+
+      {/* Floating Travel Passport Widget */}
+      {!selectedProvince && mapReady && (
+        <motion.div
+          className={`map-passport-widget ${isPassportExpanded ? 'expanded' : 'collapsed'} ${isPassportPinned ? 'pinned' : ''}`}
+          onMouseEnter={() => !isMobile && setIsPassportHovered(true)}
+          onMouseLeave={() => !isMobile && setIsPassportHovered(false)}
+          onClick={() => setIsPassportPinned(prev => !prev)}
+          layout
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 20, opacity: 0 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          style={{ cursor: 'pointer' }}
+        >
+          <motion.div className="widget-header" layout>
+            <motion.div className="widget-title-wrapper" layout>
+              <span className="passport-icon">❈</span>
+              <AnimatePresence mode="wait">
+                {isPassportExpanded && (
+                  <motion.span 
+                    className="widget-title"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    PASPOR PERJALANAN
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </motion.div>
+            <motion.span className="widget-progress" layout>
+              {visitCount}/4
+            </motion.span>
+          </motion.div>
+
+          <AnimatePresence>
+            {isPassportExpanded && (
+              <motion.div 
+                className="widget-stamps"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2, delay: 0.05 }}
+              >
+                {[
+                  { id: 'jawa-tengah', name: 'Jawa Tengah', stamp: '✿' },
+                  { id: 'diy', name: 'Yogyakarta', stamp: '✦' },
+                  { id: 'kalimantan-barat', name: 'Kalimantan Barat', stamp: '❈' },
+                  { id: 'papua', name: 'Papua', stamp: '✹' },
+                ].map(p => {
+                  const visited = visitedProvinces.has(p.id);
+                  return (
+                    <div 
+                      key={p.id} 
+                      className={`widget-stamp-dot ${visited ? 'visited' : ''}`}
+                      onMouseEnter={() => setActiveStampTooltip(p.id)}
+                      onMouseLeave={() => setActiveStampTooltip(null)}
+                      onClick={(e) => {
+                        e.stopPropagation(); // prevent collapsing/unpinning the passport widget
+                        setPinnedStampTooltip(prev => prev === p.id ? null : p.id);
+                      }}
+                      style={{ position: 'relative' }}
+                    >
+                      {visited ? (
+                        <span className="widget-stamp-inner">
+                          {p.stamp}
+                        </span>
+                      ) : (
+                        <span>?</span>
+                      )}
+
+                      <AnimatePresence>
+                        {(activeStampTooltip === p.id || pinnedStampTooltip === p.id) && (
+                          <motion.div
+                            className="stamp-tooltip"
+                            initial={{ opacity: 0, y: 8, scale: 0.9, x: '-50%' }}
+                            animate={{ opacity: 1, y: 0, scale: 1, x: '-50%' }}
+                            exit={{ opacity: 0, y: 8, scale: 0.9, x: '-50%' }}
+                            transition={{ duration: 0.15 }}
+                          >
+                            <span className="tooltip-province">{p.name}</span>
+                            <span 
+                              className="tooltip-status" 
+                              style={{ color: visited ? '#c8a96e' : '#88aac3' }}
+                            >
+                              {visited ? '✓ Terkumpul' : 'Belum Dikunjungi'}
+                            </span>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       )}
 
       {/* Zoom controls for mobile view */}

@@ -6,6 +6,7 @@ import { getCategoryIcon } from './PremiumIcons';
 import { useSmoothScroll } from './SmoothScroll';
 import tts from '@/utils/tts';
 import { Mascot } from './Mascot';
+import { usePassport } from '@/contexts/Passport';
 
 export const CultureDetail = ({ visible }) => {
   const { selectedCulture, selectedProvince, goTo, startQuiz } = useAppFlow();
@@ -19,6 +20,14 @@ export const CultureDetail = ({ visible }) => {
   const infoPanelRef = useRef(null);
 
   useSmoothScroll(infoPanelRef, visible);
+
+  const { stampProvince } = usePassport();
+
+  useEffect(() => {
+    if (ttsFinished && selectedProvince?.id) {
+      stampProvince(selectedProvince.id);
+    }
+  }, [ttsFinished, selectedProvince?.id, stampProvince]);
 
   useEffect(() => {
     setIsSpeaking(false);

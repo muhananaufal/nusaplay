@@ -4,6 +4,7 @@ import { usePlay } from '@/contexts/Play';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { WayangLoader } from './WayangLoader';
 import { useEffect, useRef, useState, useCallback } from 'react';
+import gsap from 'gsap';
 
 // ── YouTube Facade ─────────────────────────────────────────────────────────────
 // Mounting a YouTube iframe immediately triggers 10+ network requests and starts
@@ -49,7 +50,10 @@ const HAIKUS = [
 ];
 
 const HaikuModal = ({ onClose }: { onClose: () => void }) => {
-  const haiku = HAIKUS[Math.floor(Math.random() * HAIKUS.length)];
+  const [haiku] = useState(() => {
+    // eslint-disable-next-line react-hooks/purity
+    return HAIKUS[Math.floor(Math.random() * HAIKUS.length)];
+  });
   return (
     <motion.div
       className="haiku-backdrop"
@@ -155,6 +159,48 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
   const [logoClickCount, setLogoClickCount] = useState(0);
   const [showHaiku, setShowHaiku] = useState(false);
   const startTimeoutRef = useRef<any>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  // ── GSAP 3D Tilt / Parallax Effect ──────────────────────────────────────────
+  useEffect(() => {
+    if (play || progress !== 100) return;
+
+    const hero = heroRef.current;
+    if (!hero) return;
+
+    gsap.set(hero, { transformPerspective: 1000, transformStyle: 'preserve-3d' });
+
+    const rotateXTo = gsap.quickTo(hero, 'rotateX', { duration: 0.5, ease: 'power2.out' });
+    const rotateYTo = gsap.quickTo(hero, 'rotateY', { duration: 0.5, ease: 'power2.out' });
+    const xTo = gsap.quickTo(hero, 'x', { duration: 0.5, ease: 'power2.out' });
+    const yTo = gsap.quickTo(hero, 'y', { duration: 0.5, ease: 'power2.out' });
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      const xVal = (e.clientX / innerWidth) - 0.5;
+      const yVal = (e.clientY / innerHeight) - 0.5;
+
+      rotateXTo(-yVal * 16); // Up to 8 degrees tilt
+      rotateYTo(xVal * 16);  // Up to 8 degrees tilt
+      xTo(xVal * 24);        // Up to 12px horizontal parallax translation
+      yTo(yVal * 24);        // Up to 12px vertical parallax translation
+    };
+
+    const handleMouseLeave = () => {
+      rotateXTo(0);
+      rotateYTo(0);
+      xTo(0);
+      yTo(0);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [play, progress]);
 
   const handleStart = () => {
     setPlay(true);
@@ -280,18 +326,33 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
               transition={{ duration: 1.2, delay: 0.3 }}
               className="splash-hero-content"
             >
-              {/* <span className="splash-hero-overline">EKSPLORASI INTERAKTIF</span> */}
-              <h1 className="splash-hero-title">
-                MENERBANGI <br />
-                <em>Keindahan</em> NUSANTARA
-              </h1>
-              <div className="splash-hero-line" />
-              
-              {/* Mobile-only Start Button */}
-              <button className="splash-mobile-start-btn" onClick={handleStart}>
-                Mulai Perjalanan
-                <span className="btn-arrow">→</span>
-              </button>
+              {/* Inner wrapper for 3D Tilt & Parallax using GSAP */}
+              <div 
+                ref={heroRef} 
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  transformStyle: 'preserve-3d',
+                  backfaceVisibility: 'hidden'
+                }}
+              >
+                {/* <span className="splash-hero-overline">EKSPLORASI INTERAKTIF</span> */}
+                <h1 className="splash-hero-title">
+                  MENERBANGI <br />
+                  <em>Keindahan</em> NUSANTARA
+                </h1>
+                <div className="splash-hero-line" />
+                
+                {/* Mobile-only Start Button */}
+                <button className="splash-mobile-start-btn" onClick={handleStart}>
+                  Mulai Perjalanan
+                  <span className="btn-arrow">→</span>
+                </button>
+              </div>
             </motion.div>
           </div>
 

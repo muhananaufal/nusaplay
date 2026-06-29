@@ -60,23 +60,19 @@ export function JourneySpotlight() {
   const [activeSelector, setActiveSelector] = useState('.cd-audio-play-minimal');
   const [mapSubStep, setMapSubStep] = useState(1);
   const [listSubStep, setListSubStep] = useState(1);
+  const [provinceSubStep, setProvinceSubStep] = useState(1);
 
   // Reset sub-steps on phase change
   useEffect(() => {
     setMapSubStep(1);
     setListSubStep(1);
+    setProvinceSubStep(1);
   }, [phase]);
 
-  // Ambil data status tour dari localStorage saat client-side hydration selesai
+  // Sync state on client-side mount
   useEffect(() => {
     setMounted(true);
     if (typeof window !== 'undefined') {
-      const disabled = localStorage.getItem('nusaplay:tour_disabled') === 'true';
-      setIsTourDisabled(disabled);
-      
-      const dismissed = JSON.parse(localStorage.getItem('nusaplay:tour_dismissed_steps') || '{}');
-      setDismissedSteps(dismissed);
-      
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
     }
   }, []);
@@ -102,19 +98,26 @@ export function JourneySpotlight() {
         placement: hasFinishedAudio ? 'above' as const : 'below' as const,
       }
     : (phase === PHASES.MAP
-      ? (isMobile && mapSubStep === 2
+      ? (mapSubStep === (isMobile ? 3 : 2)
         ? {
-            selector: '.map-zoom-controls',
-            title: 'Perbesar Peta',
-            text: 'Kamu juga bisa menggunakan tombol perbesaran (+/-) ini untuk memperbesar atau memperkecil tampilan peta di layar ponselmu.',
-            placement: 'below' as const,
-          }
-        : {
-            selector: '.province-center-badge.unlocked',
-            title: 'Eksplorasi Peta',
-            text: 'Langkah 2/4: Eksplorasi Peta! Klik salah satu provinsi aktif yang berwarna biru (seperti Jawa Tengah, Yogyakarta, atau Papua) untuk mendarat.',
+            selector: '.map-passport-widget',
+            title: 'Paspor Perjalanan',
+            text: 'Ini adalah Paspor Perjalananmu! Kumpulkan stempel dari 4 provinsi dengan berkunjung dan menyelesaikan kuis budaya.',
             placement: 'above' as const,
-          })
+          }
+        : (isMobile && mapSubStep === 2
+          ? {
+              selector: '.map-zoom-controls',
+              title: 'Perbesar Peta',
+              text: 'Kamu juga bisa menggunakan tombol perbesaran (+/-) ini untuk memperbesar atau memperkecil tampilan peta di layar ponselmu.',
+              placement: 'below' as const,
+            }
+          : {
+              selector: '.province-center-badge.unlocked',
+              title: 'Eksplorasi Peta',
+              text: 'Langkah 2/4: Eksplorasi Peta! Klik salah satu provinsi aktif yang berwarna biru (seperti Jawa Tengah, Yogyakarta, atau Papua) untuk mendarat.',
+              placement: 'above' as const,
+            }))
       : (phase === PHASES.LIST
         ? (listSubStep === 3
           ? {
@@ -135,8 +138,22 @@ export function JourneySpotlight() {
                 title: 'Pelajari Budaya',
                 text: 'Klik salah satu baris kebudayaan ini untuk membaca narasi sejarah dan memutar videonya.',
                 placement: 'below' as const,
-              }))
-        : (baseConfig ? { ...baseConfig, selector: activeSelector || baseConfig.selector } : null)));
+               }))
+         : (phase === PHASES.PROVINCE
+           ? (provinceSubStep === 2
+             ? {
+                 selector: '.pd-bg-click-area',
+                 title: 'Eksplorasi Interaktif',
+                 text: 'Kamu juga bisa mengetuk/mengeklik di mana saja pada area video latar belakang ini untuk langsung menjelajah kebudayaan kategori pilihanmu.',
+                 placement: 'center' as const,
+               }
+             : {
+                 selector: '.pd-thumbnails-row',
+                 title: 'Pilih Kebudayaan',
+                 text: 'Pilih salah satu bidang kebudayaan khas provinsi ini di bawah ini untuk mempelajari kisah lengkapnya.',
+                 placement: 'above' as const,
+               })
+           : (baseConfig ? { ...baseConfig, selector: activeSelector || baseConfig.selector } : null))));
 
   // Scan DOM persistently to detect when active target elements appear (regardless of dismissal)
   useEffect(() => {
@@ -158,7 +175,9 @@ export function JourneySpotlight() {
           setActiveSelector('.cd-audio-play-minimal');
         }
       } else if (phase === PHASES.MAP) {
-        if (isMobile && mapSubStep === 2) {
+        if (mapSubStep === (isMobile ? 3 : 2)) {
+          setActiveSelector('.map-passport-widget');
+        } else if (isMobile && mapSubStep === 2) {
           setActiveSelector('.map-zoom-controls');
         } else {
           const hasUnlockedProv = !!document.querySelector('.province-center-badge.unlocked');
@@ -176,6 +195,12 @@ export function JourneySpotlight() {
         } else {
           setActiveSelector('.cl-list');
         }
+      } else if (phase === PHASES.PROVINCE) {
+        if (provinceSubStep === 2) {
+          setActiveSelector('.pd-bg-click-area');
+        } else {
+          setActiveSelector('.pd-thumbnails-row');
+        }
       } else {
         setActiveSelector(SPOTLIGHT_CONFIGS[phase]?.selector || '');
       }
@@ -184,7 +209,7 @@ export function JourneySpotlight() {
     checkActiveElements();
     const interval = setInterval(checkActiveElements, 250);
     return () => clearInterval(interval);
-  }, [mounted, isTourDisabled, phase, mapSubStep, listSubStep, isMobile]);
+  }, [mounted, isTourDisabled, phase, mapSubStep, listSubStep, provinceSubStep, isMobile]);
 
   // Efek untuk melacak ukuran bounding rect elemen target secara responsif
   useEffect(() => {
@@ -272,9 +297,17 @@ export function JourneySpotlight() {
   cardTop = Math.max(70, Math.min(cardTop, windowSize.height - containerHeight - 16));
 
   const handleDismiss = () => {
-    if (phase === PHASES.MAP && isMobile && mapSubStep === 1) {
-      setMapSubStep(2);
-      return;
+    if (phase === PHASES.MAP) {
+      if (mapSubStep < (isMobile ? 3 : 2)) {
+        setMapSubStep(prev => prev + 1);
+        return;
+      }
+    }
+    if (phase === PHASES.PROVINCE) {
+      if (provinceSubStep < 2) {
+        setProvinceSubStep(prev => prev + 1);
+        return;
+      }
     }
     if (phase === PHASES.LIST && listSubStep < 3) {
       setListSubStep(prev => prev + 1);
@@ -283,12 +316,10 @@ export function JourneySpotlight() {
     const key = getDismissedKey(phase, hasFinishedAudio);
     const updated = { ...dismissedSteps, [key]: true };
     setDismissedSteps(updated);
-    localStorage.setItem('nusaplay:tour_dismissed_steps', JSON.stringify(updated));
   };
 
   const handleDisableTour = () => {
     setIsTourDisabled(true);
-    localStorage.setItem('nusaplay:tour_disabled', 'true');
   };
 
   return (
