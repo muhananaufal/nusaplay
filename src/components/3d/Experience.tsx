@@ -210,7 +210,7 @@ export const Experience = () => {
 
   const airplane = useRef<any>(null);
   const tl = useRef<any>(null);
-  const backgroundColors = useRef({ colorA: "#eae3d5", colorB: "#dfd7c7" });
+  const backgroundColors = useRef({ colorA: "#F2F2F2", colorB: "#CFD8E1" });
   const planeInTl = useRef<any>(null);
   const planeOutTl = useRef<any>(null);
   const journeyProgress = useRef(0); // Track for dynamic sky updates

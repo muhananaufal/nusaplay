@@ -22,7 +22,7 @@ export const PageTransitionOverlay = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: '#f4efe7', // Sand-beige theme color
+            background: 'var(--c-dark)', // Mascot White theme color
             zIndex: 999999,
             display: 'flex',
             alignItems: 'center',
@@ -37,7 +37,7 @@ export const PageTransitionOverlay = () => {
             exit={{ opacity: 0, scale: 0.75 }}
             transition={{ duration: 0.4, delay: 0.05 }}
             className="wayang-scene"
-            style={{ color: '#181717', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+            style={{ color: 'var(--c-text)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
           >
             <Mascot pose="excited" size={140} />
             <div className="wayang-shadow" style={{ background: 'radial-gradient(ellipse, rgba(24, 23, 23, 0.2) 0%, transparent 70%)', marginBottom: '8px', width: '100px' }} />

@@ -334,7 +334,7 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
 
   if (activeOnly && !quizProvince) {
     return (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', background: '#f4efe7' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', background: '#F2F2F2' }}>
         <div style={{ width: '30px', height: '30px', border: '3px solid var(--c-primary)', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
       </div>
     );

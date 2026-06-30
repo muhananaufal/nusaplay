@@ -92,7 +92,7 @@ export function JourneyProgress() {
             {/* Progress Fill Line */}
             <div 
               className="journey-stepper-line-fill" 
-              style={isMobile ? { height: `${((journeyStep - 1) / (STEPS.length - 1)) * 100}%` } : { width: `${((journeyStep - 1) / (STEPS.length - 1)) * 100}%` }}
+              style={isMobile ? { height: `${((journeyStep - 1) / (STEPS.length - 1)) * 100}%` } : { width: `${((journeyStep - 1) / (STEPS.length - 1)) * 84}%` }}
             />
 
             {/* Step Nodes */}

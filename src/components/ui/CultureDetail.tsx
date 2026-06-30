@@ -298,29 +298,81 @@ const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, 
       </p>
       <div className="end-sheet-actions" style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }}>
         {onStartQuiz && (
-          <button 
+          <motion.button 
             className="end-btn start-quiz" 
             onClick={onStartQuiz}
             style={{
               width: '100%',
               padding: '12px',
-              background: 'var(--c-accent)',
+              background: 'var(--c-primary)',
               color: '#fff',
               border: 'none',
-              borderRadius: '4px',
+              borderRadius: 'var(--radius-sm)',
               cursor: 'pointer',
               fontWeight: 600,
               fontSize: '0.9rem',
-              boxShadow: '0 4px 12px rgba(85, 145, 185, 0.25)',
-              transition: 'transform 0.2s, filter 0.2s',
+              boxShadow: '0 4px 12px rgba(27, 79, 156, 0.2)',
+              transition: 'none',
+            }}
+            whileHover={{
+              scale: 1.02,
+              background: '#0D1B2A',
+              boxShadow: '0 6px 16px rgba(13, 27, 42, 0.3)',
+            }}
+            whileTap={{
+              scale: 0.98,
+            }}
+            transition={{
+              type: 'spring',
+              stiffness: 400,
+              damping: 15
             }}
           >
             Mulai Kuis {provinceName} →
-          </button>
+          </motion.button>
         )}
         <div style={{ display: 'flex', gap: '10px', width: '100%' }}>
-          <button className="end-btn replay" onClick={onReplay} style={{ flex: 1 }}>Ulangi Cerita</button>
-          <button className="end-btn explore" onClick={onExplore} style={{ flex: 1 }}>Kembali ke Peta</button>
+          <motion.button 
+            className="end-btn replay" 
+            onClick={onReplay} 
+            style={{ flex: 1, transition: 'none' }}
+            whileHover={{
+              scale: 1.02,
+              background: 'rgba(27, 79, 156, 0.06)',
+              borderColor: 'var(--c-primary)',
+              color: 'var(--c-primary)',
+            }}
+            whileTap={{
+              scale: 0.98,
+            }}
+            transition={{
+              type: 'spring',
+              stiffness: 400,
+              damping: 15
+            }}
+          >
+            Ulangi Cerita
+          </motion.button>
+          <motion.button 
+            className="end-btn explore" 
+            onClick={onExplore} 
+            style={{ flex: 1, transition: 'none' }}
+            whileHover={{
+              scale: 1.02,
+              background: '#0D1B2A',
+              borderColor: '#0D1B2A',
+            }}
+            whileTap={{
+              scale: 0.98,
+            }}
+            transition={{
+              type: 'spring',
+              stiffness: 400,
+              damping: 15
+            }}
+          >
+            Kembali ke Peta
+          </motion.button>
         </div>
       </div>
     </motion.div>

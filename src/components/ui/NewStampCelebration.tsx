@@ -24,20 +24,63 @@ const PARTICLES = Array.from({ length: 14 }, (_, i) => {
   };
 });
 
-// Framer Motion variants for the two elements that genuinely need JS animation:
-//  1. Overlay — needs exit tracking (AnimatePresence)
-//  2. Seal    — needs spring physics
-// All other elements animate via pure CSS (see globals.css stampFadeUp / stampScaleX)
+// Framer Motion variants for premium coordinated entrance:
 const overlayVariants = {
   hidden: { opacity: 0 },
   show:   { opacity: 1, transition: { duration: 0.4, ease: 'easeOut' } },
   exit:   { opacity: 0, transition: { duration: 0.4, ease: 'easeIn'  } },
 };
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.15,
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 35 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      type: 'spring', 
+      damping: 18, 
+      stiffness: 110 
+    } 
+  }
+};
+
+const dividerVariants = {
+  hidden: { opacity: 0, scaleX: 0 },
+  show: { 
+    opacity: 1, 
+    scaleX: 1, 
+    transition: { 
+      type: 'spring', 
+      damping: 15, 
+      stiffness: 90,
+      delay: 0.55 // sync with stagger sequence
+    } 
+  }
+};
+
 const sealVariants = {
-  hidden: { scale: 0, rotate: -30, opacity: 0 },
-  show:   { scale: 1, rotate: 6,   opacity: 1,
-    transition: { type: 'spring', damping: 13, stiffness: 160, delay: 0.45 } },
+  hidden: { scale: 0, rotate: -40, opacity: 0 },
+  show: { 
+    scale: 1, 
+    rotate: 6, 
+    opacity: 1,
+    transition: { 
+      type: 'spring', 
+      damping: 12, 
+      stiffness: 150, 
+      delay: 0.35 // pops in bouncy early on
+    } 
+  }
 };
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -75,39 +118,101 @@ export const NewStampCelebration = () => {
             ))}
           </div>
 
-          {/* Content — plain HTML + CSS animations, no Framer Motion overhead */}
-          <div className="stamp-fullscreen-content">
-            {/* CSS: stampFadeUp delay 0.30s */}
-            <p className="stamp-fs-label">Stempel Baru Diperoleh</p>
+          {/* Content container — Framer Motion staggered entrance */}
+          <motion.div 
+            className="stamp-fullscreen-content"
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+          >
+            {/* Step label */}
+            <motion.p className="stamp-fs-label" variants={itemVariants}>
+              Stempel Baru Diperoleh
+            </motion.p>
 
-            {/* Spring bounce — kept in Framer Motion */}
+            {/* Giant Gold Wax Seal: Spring Entrance + Continuous Float Loop + Hover/Tap Interactions */}
             <motion.div
-              className="stamp-fs-seal"
               variants={sealVariants}
               initial="hidden"
               animate="show"
+              style={{ display: 'flex', justifyContent: 'center', width: '100%', pointerEvents: 'none' }}
             >
-              {stampChar}
-              <div className="stamp-fs-seal-gloss" />
+              <motion.div
+                className="stamp-fs-seal"
+                style={{ pointerEvents: 'auto' }} // Allow mouse events on seal only
+                animate={{
+                  y: [0, -8, 0],
+                }}
+                transition={{
+                  y: {
+                    repeat: Infinity,
+                    duration: 4,
+                    ease: 'easeInOut',
+                  }
+                }}
+                whileHover={{
+                  scale: 1.08,
+                  rotate: 12,
+                  filter: 'drop-shadow(0 15px 30px rgba(212, 175, 55, 0.65))',
+                  transition: { type: 'spring', stiffness: 300, damping: 15 }
+                }}
+                whileTap={{
+                  scale: 0.95,
+                  rotate: -4,
+                  transition: { type: 'spring', stiffness: 400, damping: 10 }
+                }}
+              >
+                {stampChar}
+                <div className="stamp-fs-seal-gloss" />
+              </motion.div>
             </motion.div>
 
-            {/* CSS: stampFadeUp delay 0.72s */}
-            <h2 className="stamp-fs-province">{prov.name.toUpperCase()}</h2>
+            {/* Province Name with hover effect */}
+            <motion.h2 
+              className="stamp-fs-province"
+              variants={itemVariants}
+              whileHover={{ 
+                scale: 1.04, 
+                color: '#D4AF37',
+                transition: { duration: 0.2 } 
+              }}
+            >
+              {prov.name.toUpperCase()}
+            </motion.h2>
 
-            {/* CSS: stampScaleX delay 0.88s */}
-            <div className="stamp-fs-divider" />
+            {/* Divider scale entrance */}
+            <motion.div className="stamp-fs-divider" variants={dividerVariants} />
 
-            {/* CSS: stampFadeUp delay 1.02s */}
-            <p className="stamp-fs-desc">
+            {/* Description text */}
+            <motion.p className="stamp-fs-desc" variants={itemVariants}>
               Kamu telah menyimak narasi budaya dan berhasil mengoleksi stempel{' '}
               <strong>{prov.name}</strong> ke dalam Paspor Perjalananmu.
-            </p>
+            </motion.p>
 
-            {/* CSS: stampFadeUp delay 1.26s + CSS :hover/:active scale */}
-            <button className="stamp-fs-btn" onClick={dismissStamp}>
+            {/* Interactive button with custom spring hover/active curves */}
+            <motion.button 
+              className="stamp-fs-btn" 
+              onClick={dismissStamp}
+              variants={itemVariants}
+              whileHover={{
+                scale: 1.06,
+                backgroundColor: '#F4E5A9',
+                boxShadow: '0 12px 32px rgba(212, 175, 55, 0.6)',
+                y: -2,
+              }}
+              whileTap={{
+                scale: 0.96,
+                y: 0
+              }}
+              transition={{
+                type: 'spring',
+                stiffness: 400,
+                damping: 15
+              }}
+            >
               Lanjutkan Perjalanan →
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

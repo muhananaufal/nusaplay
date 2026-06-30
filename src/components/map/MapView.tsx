@@ -19,16 +19,17 @@ const PROVINCE_NAME_MAP = {
   'Papua': 'papua',
 };
 
-// Helper function to calculate province color based on cultureCount (theme-based HSL)
 const getProvinceColor = (count) => {
-  const minCount = 6;
-  const maxCount = 31;
-  const t = Math.max(0, Math.min(1, (count - minCount) / (maxCount - minCount)));
-  // HSL: Hue 204 (Heritage/Juzcar Blue), saturation 30% to 70%, lightness 88% down to 38%
-  const hue = 204;
-  const saturation = Math.round(30 + t * 40);
-  const lightness = Math.round(88 - t * 50);
-  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  if (count < 12) {
+    // Level 1: Biru Muda (Light Blue - very soft pastel ice-blue)
+    return 'hsl(216, 45%, 85%)';
+  } else if (count < 22) {
+    // Level 2: Biru (Medium Blue - made darker and more saturated for maximum separation)
+    return 'hsl(216, 80%, 44%)';
+  } else {
+    // Level 3: Biru Tua (Dark Blue - deep midnight navy)
+    return 'hsl(216, 95%, 20%)';
+  }
 };
 
 // Helper to calculate the true visual center of a GeoJSON feature (mainland centroid)
@@ -222,18 +223,18 @@ export const MapView = ({ visible }) => {
           const isUnlocked = prov.status === 'unlocked';
           return {
             fillColor: getProvinceColor(prov.cultureCount),
-            fillOpacity: isUnlocked ? 0.75 : 0.25,
-            color: isUnlocked ? '#ffffff' : '#d8d7d4',
-            weight: isUnlocked ? 2 : 1,
+            fillOpacity: isUnlocked ? 0.85 : 0.7,
+            color: isUnlocked ? '#ffffff' : '#B0C2D9',
+            weight: isUnlocked ? 2.5 : 1.5,
             className: isUnlocked 
               ? `leaflet-province-unlocked province-unlocked-${prov.id}` 
               : `leaflet-province-locked province-locked-${prov.id}`,
           };
         }
         return {
-          fillColor: '#0c152b', // Using dark blue overlay to produce cool slate-grey
-          fillOpacity: 0.08,    // Low opacity so it appears as a clean cool slate-grey
-          color: '#b1bec8',     // Liberty Grey border
+          fillColor: '#0D1B2A', // Mascot Dark Navy
+          fillOpacity: 0.12,    // Slightly darker for contrast
+          color: '#CFD8E1',     // Cool slate blue border
           weight: 1.5,
         };
       };
@@ -279,14 +280,14 @@ export const MapView = ({ visible }) => {
 
             if (prov && prov.status === 'unlocked') {
               l.setStyle({
-                fillOpacity: 0.9,
-                color: '#181717',
+                fillOpacity: 0.95,
+                color: '#0D1B2A',
                 weight: 2.5,
               });
             } else {
               l.setStyle({ 
-                fillOpacity: 0.4, // Faint highlight for locked provinces
-                color: '#88aac3',   // Accent slate-blue border
+                fillOpacity: 0.85, // Highlight for locked provinces
+                color: '#1B4F9C',   // Mascot Medium Blue border
                 weight: 1.5,
               });
             }
@@ -496,7 +497,7 @@ export const MapView = ({ visible }) => {
               });
             } else {
               layer.setStyle({
-                fillColor: '#0c152b',
+                fillColor: '#0D1B2A',
                 fillOpacity: 0.02,
                 color: 'transparent',
                 weight: 0,
@@ -739,7 +740,7 @@ export const MapView = ({ visible }) => {
                             <span className="tooltip-province">{p.name}</span>
                             <span 
                               className="tooltip-status" 
-                              style={{ color: visited ? '#c8a96e' : '#88aac3' }}
+                              style={{ color: visited ? '#D4AF37' : '#1B4F9C' }}
                             >
                               {visited ? '✓ Terkumpul' : 'Belum Dikunjungi'}
                             </span>
@@ -765,7 +766,10 @@ export const MapView = ({ visible }) => {
             }}
             aria-label="Zoom In"
           >
-            +
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
           </button>
           <button 
             className="map-zoom-btn zoom-out" 
@@ -774,7 +778,9 @@ export const MapView = ({ visible }) => {
             }}
             aria-label="Zoom Out"
           >
-            −
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter">
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
           </button>
         </div>
       )}
