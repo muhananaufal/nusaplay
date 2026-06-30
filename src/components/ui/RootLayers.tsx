@@ -1,5 +1,5 @@
 'use client';
-import { useMemo, useEffect, useState, Suspense } from 'react';
+import { useMemo, useEffect, useState, Suspense, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { usePlay } from '@/contexts/Play';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
@@ -20,7 +20,7 @@ const MapView = dynamic(
 
 export function RootLayers() {
   const { play, end, setEnd } = usePlay();
-  const { phase, goTo } = useAppFlow();
+  const { phase, goTo, selectedProvince } = useAppFlow();
   const [modelProgress, setModelProgress] = useState(0);
   // Track whether the map chunk has been requested yet, so we only mount
   // <MapView> after the user actually navigates to the map phase.
@@ -95,6 +95,81 @@ export function RootLayers() {
       goTo(PHASES.MAP);
     }
   }, [phase, goTo]);
+
+  // ── Backsound player for provinces ─────────────────────────────────────────
+  const PROVINCE_BACKSOUNDS: Record<string, string> = {
+    diy: '/music/backsound-diy.m4a',
+    'jawa-tengah': '/music/backsound-jateng.m4a',
+    'kalimantan-barat': '/music/backsound-kalbar.m4a',
+    papua: '/music/backsound-papua.m4a',
+  };
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const currentTrackRef = useRef<string | null>(null);
+  const [isNarrationPlaying, setIsNarrationPlaying] = useState(false);
+
+  // Listen to narration events to control volume ducking
+  useEffect(() => {
+    const handleStart = () => setIsNarrationPlaying(true);
+    const handleEnd = () => setIsNarrationPlaying(false);
+
+    window.addEventListener('nusaplay:narrationStart', handleStart);
+    window.addEventListener('nusaplay:narrationPause', handleEnd);
+    window.addEventListener('nusaplay:narrationEnd', handleEnd);
+
+    return () => {
+      window.removeEventListener('nusaplay:narrationStart', handleStart);
+      window.removeEventListener('nusaplay:narrationPause', handleEnd);
+      window.removeEventListener('nusaplay:narrationEnd', handleEnd);
+    };
+  }, []);
+
+  // Update volume when narration state changes
+  useEffect(() => {
+    if (audioRef.current) {
+      // Lower volume during narration, restore otherwise
+      audioRef.current.volume = isNarrationPlaying ? 0.08 : 0.3;
+    }
+  }, [isNarrationPlaying]);
+
+  useEffect(() => {
+    const targetTrack = selectedProvince?.id ? PROVINCE_BACKSOUNDS[selectedProvince.id] : null;
+
+    if (targetTrack) {
+      // If a different track is already playing, stop it first
+      if (audioRef.current && currentTrackRef.current !== targetTrack) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+
+      if (!audioRef.current) {
+        audioRef.current = new Audio(targetTrack);
+        audioRef.current.loop = true;
+        audioRef.current.volume = isNarrationPlaying ? 0.08 : 0.3;
+        currentTrackRef.current = targetTrack;
+      }
+
+      audioRef.current.play().catch((err) => {
+        console.warn('Failed to play backsound audio:', err);
+      });
+    } else {
+      // No backsound for this province, stop playback
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+        currentTrackRef.current = null;
+      }
+    }
+  }, [selectedProvince?.id]);
+
+  // Clean up on unmount
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+    };
+  }, []);
 
   return (
     <>

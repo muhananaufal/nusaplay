@@ -92,6 +92,7 @@ export default function RootLayout({
           {children}
           <NavigationMenu />
           <PageTransitionOverlay />
+          <MascotAssistant />
         </Providers>
       </body>
     </html>

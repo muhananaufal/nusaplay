@@ -6645,36 +6645,25 @@ html, body, #root {
 .mascot-click-target {
   cursor: pointer;
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 170px;
+  height: 170px;
   overflow: hidden;
 }
 
 .mascot-sprite-body {
-  width: 120px;
-  height: 120px;
-  background-size: 330% 330%;
-  background-repeat: no-repeat;
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
   transition: transform 0.2s ease;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.06));
-  /* ── Pure-CSS sprite cycling ─────────────────────────────────────────────
-     Replaces the old setInterval + setFrame(React state) that caused 4
-     component re-renders per second. Sprite sheet has 3 frames at
-     background-position: 0% | 50% | 100%.
-     The animation pingpongs: 0 → 50 → 100 → 50 → 0 … every 1s (250ms/frame). */
-  animation: spriteWalk 1s steps(1) infinite;
-}
-
-@keyframes spriteWalk {
-  0%   { background-position: 0%   50%; }
-  25%  { background-position: 50%  50%; }
-  50%  { background-position: 100% 50%; }
-  75%  { background-position: 50%  50%; }
-  100% { background-position: 0%   50%; }
+  mix-blend-mode: screen;
 }
 
 .mascot-sprite-minimized {
-  animation: spriteWalk 1s steps(1) infinite;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  mix-blend-mode: screen;
 }
 
 .mascot-click-target:hover .mascot-sprite-body {
@@ -6688,8 +6677,8 @@ html, body, #root {
 /* Minimized State Button */
 .mascot-minimized-btn {
   pointer-events: auto;
-  width: 52px;
-  height: 52px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background: transparent;
   border: none;
@@ -6705,13 +6694,6 @@ html, body, #root {
 
 .mascot-minimized-btn:hover {
   transform: scale(1.15);
-}
-
-.mascot-sprite-minimized {
-  width: 42px;
-  height: 42px;
-  background-size: 330% 330%;
-  background-repeat: no-repeat;
 }
 
 /* Responsive Overrides */
@@ -6731,28 +6713,26 @@ html, body, #root {
   }
 
   .mascot-click-target {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
   }
 
   .mascot-sprite-body {
-    width: 90px;
-    height: 90px;
-    background-size: 330% 330%;
+    width: 120px;
+    height: 120px;
   }
   
   .mascot-minimized-btn {
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     background: transparent;
     border: none;
     box-shadow: none;
   }
   
   .mascot-sprite-minimized {
-    width: 34px;
-    height: 34px;
-    background-size: 330% 330%;
+    width: 42px;
+    height: 42px;
   }
 }
 

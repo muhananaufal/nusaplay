@@ -8,13 +8,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Types of animation poses
 type PoseType = 'idle' | 'excited' | 'thinking' | 'sad';
 
-// Mapping of sheets to image files
-const POSE_SHEETS: Record<PoseType, string> = {
-  idle: '/images/mascot/idle_sheet.png',
-  excited: '/images/mascot/excited_sheet.png',
-  thinking: '/images/mascot/thinking_sheet.png',
-  sad: '/images/mascot/sad_sheet.png',
-};
 
 // Indonesian cultural fun trivia pool (no emojis)
 const FUN_TRIVIA = [
@@ -203,11 +196,13 @@ export function MascotAssistant() {
             whileHover={{ scale: 1.1 }}
             title="Buka Pemandu Nusa"
           >
-            <div 
+            <video 
+              src="/mascot/maskot.webm"
+              autoPlay
+              loop
+              muted
+              playsInline
               className="mascot-sprite-minimized" 
-              style={{
-                backgroundImage: `url(${POSE_SHEETS.idle})`,
-              }}
             />
           </motion.button>
         ) : (
@@ -269,11 +264,13 @@ export function MascotAssistant() {
 
             {/* Interactive Mascot Sprite */}
             <div className="mascot-click-target" onClick={handleMascotClick}>
-              <div 
+              <video 
+                src="/mascot/maskot.webm"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className={`mascot-sprite-body ${pose}`}
-                style={{
-                  backgroundImage: `url(${POSE_SHEETS[pose]})`,
-                }}
               />
             </div>
           </motion.div>

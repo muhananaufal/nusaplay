@@ -35,12 +35,14 @@ export const CultureDetail = ({ visible }) => {
     setProgress(0);
     setTtsFinished(false);
     tts.stop();
+    window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
   }, [selectedCulture]);
 
   useEffect(() => {
     return () => {
       tts.stop();
       clearInterval(progressInterval.current);
+      window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
     };
   }, []);
 
@@ -61,10 +63,12 @@ export const CultureDetail = ({ visible }) => {
         setProgress(100);
         setTtsFinished(true);
         clearInterval(progressInterval.current);
+        window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
       },
     });
     setIsSpeaking(true);
     setIsPaused(false);
+    window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
 
     clearInterval(progressInterval.current);
     progressInterval.current = setInterval(() => {
@@ -79,9 +83,11 @@ export const CultureDetail = ({ visible }) => {
     if (isPaused) {
       tts.resume();
       setIsPaused(false);
+      window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
     } else {
       tts.pause();
       setIsPaused(true);
+      window.dispatchEvent(new CustomEvent('nusaplay:narrationPause'));
     }
   };
 
@@ -91,6 +97,7 @@ export const CultureDetail = ({ visible }) => {
     setIsPaused(false);
     setProgress(0);
     clearInterval(progressInterval.current);
+    window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
   };
 
   if (!visible || !selectedCulture) return null;
