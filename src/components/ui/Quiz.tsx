@@ -7,6 +7,7 @@ import { usePlay } from '@/contexts/Play';
 import { UNLOCKED_PROVINCES } from '@/data/provinces';
 import { Mascot } from './Mascot';
 import { usePassport } from '@/contexts/Passport';
+import { SearchIcon } from './PremiumIcons';
 
 // Synthesized sound effects using native Web Audio API
 const playCorrectSound = () => {
@@ -216,6 +217,23 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
   const [showScorePop, setShowScorePop] = useState(false);
   const [shakeWrong, setShakeWrong] = useState(false);
   const [timerActive, setTimerActive] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Reset search query when visible state changes or province is chosen
+  useEffect(() => {
+    if (!visible || quizProvince) {
+      setSearchQuery('');
+    }
+  }, [visible, quizProvince]);
+
+  const filteredProvinces = useMemo(() => {
+    if (!searchQuery.trim()) return UNLOCKED_PROVINCES;
+    const q = searchQuery.toLowerCase().trim();
+    return UNLOCKED_PROVINCES.filter(prov => 
+      prov.name.toLowerCase().includes(q) || 
+      (prov.tagline && prov.tagline.toLowerCase().includes(q))
+    );
+  }, [searchQuery]);
 
   // Reset quiz states whenever selected province changes
   useEffect(() => {
@@ -366,67 +384,101 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
         >
           Pilih provinsi untuk mulai menguji pemahaman budayamu
         </motion.p>
-        
-        <div className="quiz-province-cards">
-          {UNLOCKED_PROVINCES.map((prov, i) => {
-            const isQuizDone = completedQuizzes.has(prov.id);
-            const isVisited = visitedProvinces.has(prov.id);
-            return (
-              <motion.div
-                key={prov.id}
-                className={`quiz-province-card ${!isVisited ? 'locked' : ''}`}
-                onClick={() => {
-                  if (!isVisited) {
-                    setLockedProvData(prov);
-                    return;
-                  }
-                  startQuiz(prov);
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.08, duration: 0.4 }}
-                whileHover={isVisited ? { y: -6, transition: { duration: 0.2 } } : {}}
-                style={{ position: 'relative' }}
-              >
-                {isQuizDone && (
-                  <div className="quiz-card-badge-completed" title="Kuis Selesai! Kamu mendapatkan lencana emas!">
-                    🏆 TUNTAS
-                  </div>
-                )}
-                {isVisited && !isQuizDone && (
-                  <div className="quiz-card-badge-uncompleted" title="Kuis Belum Selesai! Selesaikan kuis ini untuk mendapatkan lencana emas!">
-                    ❓ BELUM TUNTAS
-                  </div>
-                )}
-                {!isVisited && (
-                  <div className="quiz-card-badge-locked" title="Kuis Terkunci! Kunjungi provinsi ini di peta terlebih dahulu.">
-                    🔒 TERKUNCI
-                  </div>
-                )}
-                <div className="quiz-card-header">
-                <span className="quiz-card-count">{prov.cultureCount} RAGAM BUDAYA</span>
-                <h2 className="quiz-card-name">{prov.name}</h2>
-                <p className="quiz-card-tagline">{prov.tagline}</p>
-              </div>
 
-              {/* Category tags */}
-              {prov.categories && (
-                <div className="quiz-card-categories">
-                  {prov.categories.slice(0, 3).map((cat: string) => (
-                    <span key={cat} className="quiz-card-cat-tag">{cat}</span>
-                  ))}
-                  {prov.categories.length > 3 && <span className="quiz-card-cat-tag">+ Lainnya</span>}
-                </div>
-              )}
-              
-                <button className="quiz-card-btn">
-                  Mulai Kuis
-                  <span>→</span>
-                </button>
-              </motion.div>
-            );
-          })}
-        </div>
+        {/* Search input with expandable slide transition matching the details page */}
+        <motion.div
+          className={`cl-search-wrapper quiz-search-wrapper ${searchQuery ? 'has-query' : ''}`}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.5 }}
+        >
+          <SearchIcon size={16} />
+          <input
+            type="text"
+            placeholder="Cari provinsi..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          {searchQuery && (
+            <button className="cl-search-clear" onClick={() => setSearchQuery('')}>&times;</button>
+          )}
+        </motion.div>
+        
+        {filteredProvinces.length === 0 ? (
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--c-text-soft-dark)', width: '100%' }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+              <Mascot pose="sad" size={90} />
+            </div>
+            <p style={{ fontSize: '0.95rem', fontWeight: 500, letterSpacing: '0.02em' }}>
+              Provinsi "{searchQuery}" tidak ditemukan
+            </p>
+          </motion.div>
+        ) : (
+          <div className="quiz-province-cards">
+            {filteredProvinces.map((prov, i) => {
+              const isQuizDone = completedQuizzes.has(prov.id);
+              const isVisited = visitedProvinces.has(prov.id);
+              return (
+                <motion.div
+                  key={prov.id}
+                  className={`quiz-province-card ${!isVisited ? 'locked' : ''}`}
+                  onClick={() => {
+                    if (!isVisited) {
+                      setLockedProvData(prov);
+                      return;
+                    }
+                    startQuiz(prov);
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  whileHover={isVisited ? { y: -6, transition: { duration: 0.2 } } : {}}
+                  style={{ position: 'relative' }}
+                >
+                  {isQuizDone && (
+                    <div className="quiz-card-badge-completed" title="Kuis Selesai! Kamu mendapatkan lencana emas!">
+                      🏆 TUNTAS
+                    </div>
+                  )}
+                  {isVisited && !isQuizDone && (
+                    <div className="quiz-card-badge-uncompleted" title="Kuis Belum Selesai! Selesaikan kuis ini untuk mendapatkan lencana emas!">
+                      ❓ BELUM TUNTAS
+                    </div>
+                  )}
+                  {!isVisited && (
+                    <div className="quiz-card-badge-locked" title="Kuis Terkunci! Kunjungi provinsi ini di peta terlebih dahulu.">
+                      🔒 TERKUNCI
+                    </div>
+                  )}
+                  <div className="quiz-card-header">
+                    <span className="quiz-card-count">{prov.cultureCount} RAGAM BUDAYA</span>
+                    <h2 className="quiz-card-name">{prov.name}</h2>
+                    <p className="quiz-card-tagline">{prov.tagline}</p>
+                  </div>
+
+                  {/* Category tags */}
+                  {prov.categories && (
+                    <div className="quiz-card-categories">
+                      {prov.categories.slice(0, 3).map((cat: string) => (
+                        <span key={cat} className="quiz-card-cat-tag">{cat}</span>
+                      ))}
+                      {prov.categories.length > 3 && <span className="quiz-card-cat-tag">+ Lainnya</span>}
+                    </div>
+                  )}
+                
+                  <button className="quiz-card-btn">
+                    Mulai Kuis
+                    <span>→</span>
+                  </button>
+                </motion.div>
+              );
+            })}
+          </div>
+        )}
 
         <AnimatePresence>
           {lockedProvData && (

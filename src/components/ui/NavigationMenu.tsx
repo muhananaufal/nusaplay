@@ -234,7 +234,7 @@ export const NavigationMenu = () => {
             >
               {/* Discover Pages Section */}
               <div>
-                <div className="nav-section-title">Discover Pages</div>
+                <div className="nav-section-title">Jelajahi Halaman</div>
                 
                 <div className="nav-links-list-single">
                   {mainMenuItems.map((item, index) => {
@@ -265,13 +265,13 @@ export const NavigationMenu = () => {
               {/* Bottom: Contact Us & Connected Socials */}
               <div className="nav-details-row">
                 <div className="nav-contact-block">
-                  <span className="nav-contact-label">Contact Us</span>
+                  <span className="nav-contact-label">Hubungi Kami</span>
                   <span className="nav-contact-value">hello@nusaplay.id</span>
                   <span className="nav-contact-value">+62 821 3178 796</span>
                 </div>
 
                 <div className="nav-socials-block">
-                  <span className="nav-contact-label">Stay Connected</span>
+                  <span className="nav-contact-label">Tetap Terhubung</span>
                   <div className="nav-socials-icons">
                     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="nav-social-icon-link">
                       <InstagramIcon />

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { usePlay } from '@/contexts/Play';
 import { useIsMobile } from '@/utils/useIsMobile';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 // Definisi langkah-langkah dalam perjalanan (Total 4 langkah)
 const STEPS = [
@@ -34,8 +34,8 @@ export const getStepFromPhase = (phase: string): number => {
 
 export function JourneyProgress() {
   const { phase } = useAppFlow();
-  const { journeyStep, setJourneyStep, journeyCompleted } = usePlay();
-  const [isExpanded, setIsExpanded] = useState(false);
+  const { journeyStep, setJourneyStep, journeyCompleted, tourActive, tourSelector } = usePlay();
+  const [isExpanded, setIsExpanded] = useState(true);
   const isMobile = useIsMobile(768);
 
   // Jalankan efek pencatatan langkah aktif secara sekuensial (hanya bisa maju)
@@ -45,37 +45,57 @@ export function JourneyProgress() {
     setJourneyStep(step);
   }, [phase, journeyCompleted, setJourneyStep]);
 
+  // Hanya sembunyikan jika tour aktif dan target spotlight BUKAN widget ini
+  const isTargeted = tourSelector === '.journey-progress-wrapper';
+  const shouldHide = tourActive && !isTargeted;
+
   // Jangan tampilkan stepper pada splash screen, jika tour sudah selesai sepenuhnya, atau di perangkat mobile
   if (journeyCompleted || phase === PHASES.SPLASH || isMobile) return null;
 
   const activeStepInfo = STEPS[journeyStep - 1];
 
   return (
-    <div className="journey-progress-wrapper">
-      {/* 
-        Capsule bar utama dengan kelas CSS 'expanded' / 'collapsed'.
-        Framer motion 'layout' dihapus agar tidak bentrok dengan CSS max-height transition 
-        yang jauh lebih mulus tanpa stuttering (patah).
-      */}
+    <motion.div
+      className={`journey-progress-wrapper ${isExpanded ? 'is-expanded' : 'is-collapsed'}`}
+      drag
+      dragMomentum={false}
+      dragElastic={0}
+      whileDrag={{ scale: 1.01 }}
+      style={{ cursor: 'grab', display: shouldHide ? 'none' : 'block' }}
+    >
+      {/* Subtle 6-dot grip indicator */}
+      <div className="journey-drag-handle">
+        <div className="journey-drag-dots">
+          {[...Array(6)].map((_, i) => <span key={i} />)}
+        </div>
+      </div>
+
       <div className={`journey-progress-container ${isExpanded ? 'expanded' : 'collapsed'}`}>
-        <div className="journey-progress-header" onClick={() => setIsExpanded(!isExpanded)}>
-          {/* Status Singkat */}
+        <div
+          className="journey-progress-header"
+          onClick={() => setIsExpanded(!isExpanded)}
+          style={{ cursor: 'pointer' }}
+        >
+          {/* Badge selalu tampil */}
           <div className="journey-progress-badge">
             <span className="badge-pulse"></span>
             Langkah {journeyStep} / 4
           </div>
-          
-          <div className="journey-progress-title-active">
-            {activeStepInfo?.label}
-          </div>
 
-          <button className="journey-expand-btn" aria-label={isExpanded ? "Sembunyikan detail" : "Tampilkan detail"}>
-            <svg 
-              width="12" 
-              height="12" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
+          {/* Judul hanya muncul saat expanded */}
+          {isExpanded && (
+            <div className="journey-progress-title-active">
+              {activeStepInfo?.label}
+            </div>
+          )}
+
+          <button className="journey-expand-btn" aria-label={isExpanded ? 'Sembunyikan detail' : 'Tampilkan detail'}>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
               strokeWidth="2.5"
               style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}
             >
@@ -84,15 +104,18 @@ export function JourneyProgress() {
           </button>
         </div>
 
-        {/* Stepper Dots & Line (Selalu di DOM, tinggi diatur mulus oleh CSS max-height) */}
+        {/* Stepper Dots & Line */}
         <div className="journey-stepper-body">
           <div className="journey-stepper-line-container">
             {/* Background Line */}
             <div className="journey-stepper-line" />
             {/* Progress Fill Line */}
-            <div 
-              className="journey-stepper-line-fill" 
-              style={isMobile ? { height: `${((journeyStep - 1) / (STEPS.length - 1)) * 100}%` } : { width: `${((journeyStep - 1) / (STEPS.length - 1)) * 84}%` }}
+            <div
+              className="journey-stepper-line-fill"
+              style={isMobile
+                ? { height: `${((journeyStep - 1) / (STEPS.length - 1)) * 100}%` }
+                : { width: `${((journeyStep - 1) / (STEPS.length - 1)) * 84}%` }
+              }
             />
 
             {/* Step Nodes */}
@@ -100,14 +123,13 @@ export function JourneyProgress() {
               {STEPS.map((step) => {
                 const isActive = step.number === journeyStep;
                 const isCompleted = step.number < journeyStep;
-                
+
                 return (
-                  <div 
+                  <div
                     key={step.number}
                     className={`journey-step-node-wrapper ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
-                    style={{ cursor: 'default' }} // Cursor default agar pengguna tahu tidak bisa diklik manual
+                    style={{ cursor: 'default' }}
                   >
-                    {/* Node Bulat */}
                     <div className="journey-step-dot">
                       {isCompleted ? (
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4">
@@ -118,7 +140,6 @@ export function JourneyProgress() {
                       )}
                     </div>
 
-                    {/* Label Langkah */}
                     <div className="journey-step-node-label">{step.label}</div>
                   </div>
                 );
@@ -127,6 +148,6 @@ export function JourneyProgress() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

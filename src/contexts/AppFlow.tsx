@@ -28,6 +28,8 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const [selectedCulture, setSelectedCulture] = useState<any>(null);
   const [quizProvince, setQuizProvince] = useState<any>(null);
+  const [visitedByProvince, setVisitedByProvince] = useState<Record<string, string[]>>({});
+  const [listenedByProvince, setListenedByProvince] = useState<Record<string, string[]>>({});
 
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategories, setActiveCategories] = useState(['Semua']);
@@ -87,7 +89,11 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
         }
         else if (nextPhase === PHASES.LIST && selectedProvince) {
           const cat = selectedCategory || 'Semua';
-          router.push(`/province/${selectedProvince.id}/list?category=${cat}`);
+          if (cat === 'Semua') {
+            router.push(`/province/${selectedProvince.id}/list`);
+          } else {
+            router.push(`/province/${selectedProvince.id}/list?category=${cat}`);
+          }
         }
         else if (nextPhase === PHASES.DETAIL && selectedCulture) {
           router.push(`/culture/${selectedCulture.id}`);
@@ -135,7 +141,11 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
       setTotalPages(1);
       setPhase(PHASES.LIST);
       if (skipPush !== true && selectedProvince) {
-        router.push(`/province/${selectedProvince.id}/list?category=${category}`);
+        if (category === 'Semua') {
+          router.push(`/province/${selectedProvince.id}/list`);
+        } else {
+          router.push(`/province/${selectedProvince.id}/list?category=${category}`);
+        }
       }
     };
     
@@ -150,6 +160,17 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     const doNav = () => {
       setSelectedCulture(culture);
       setPhase(PHASES.DETAIL);
+      // Mark as visited under its provinceId (in-memory, no localStorage)
+      if (culture?.id && culture?.provinceId) {
+        setVisitedByProvince(prev => {
+          const list = prev[culture.provinceId] || [];
+          if (list.includes(culture.id)) return prev;
+          return {
+            ...prev,
+            [culture.provinceId]: [...list, culture.id]
+          };
+        });
+      }
       if (skipPush !== true && culture) {
         router.push(`/culture/${culture.id}`);
       }
@@ -182,6 +203,17 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     }
   }, [router, triggerNavigation]);
 
+  const markCultureListened = useCallback((id: string, provinceId: string) => {
+    setListenedByProvince(prev => {
+      const list = prev[provinceId] || [];
+      if (list.includes(id)) return prev;
+      return {
+        ...prev,
+        [provinceId]: [...list, id]
+      };
+    });
+  }, []);
+
   const backToMap = useCallback((skipPush: any = false, useCurtain: boolean = false) => {
     const doNav = () => {
       setSelectedProvince(null);
@@ -208,9 +240,12 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     selectedCategory,
     selectedCulture,
     quizProvince,
+    visitedByProvince,
+    listenedByProvince,
     selectProvince,
     selectCategory,
     selectCulture,
+    markCultureListened,
     startQuiz,
     backToMap,
     setPhase,
@@ -220,8 +255,8 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     setQuizProvince,
     isTransitioning,
   }), [
-    phase, selectedProvince, selectedCategory, selectedCulture, quizProvince, isTransitioning,
-    goTo, selectProvince, selectCategory, selectCulture, startQuiz, backToMap,
+    phase, selectedProvince, selectedCategory, selectedCulture, quizProvince, visitedByProvince, listenedByProvince, isTransitioning,
+    goTo, selectProvince, selectCategory, selectCulture, markCultureListened, startQuiz, backToMap,
   ]);
 
   const listUIValue = useMemo(() => ({

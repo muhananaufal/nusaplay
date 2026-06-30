@@ -13,6 +13,7 @@ export const PlayProvider = ({ children }: { children: React.ReactNode }) => {
   const [journeyStep, setJourneyStepState] = useState(1);
   const [journeyCompleted, setJourneyCompletedState] = useState(false);
   const [tourActive, setTourActive] = useState(false);
+  const [tourSelector, setTourSelector] = useState('');
 
   const setJourneyStep = (step: number) => {
     setJourneyStepState(prev => {
@@ -35,9 +36,10 @@ export const PlayProvider = ({ children }: { children: React.ReactNode }) => {
       end, setEnd,
       journeyStep, setJourneyStep,
       journeyCompleted, setJourneyCompleted,
-      tourActive, setTourActive
+      tourActive, setTourActive,
+      tourSelector, setTourSelector
     }}>
       {children}
     </PlayContext.Provider>
   );
-};
+}

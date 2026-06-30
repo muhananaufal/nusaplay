@@ -255,7 +255,7 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
           • user has made their first pointer interaction OR 3s have passed idle.
           This keeps page load network budget focused on the 3D model. */}
       {progress === 100 && (
-        <YouTubeFacade videoId="cyJ9fpoYh_M" />
+        <YouTubeFacade videoId="UEWCCkSZIY8" />
       )}
 
 
@@ -313,9 +313,6 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
               <button className="splash-nav-link" onClick={handleKuisNusantara}>Kuis Nusantara</button>
               <button className="splash-nav-link" onClick={handleTentang}>Tentang</button>
             </div>
-            <MagneticButton className="splash-join-btn" onClick={handleStart}>
-              Mulai Perjalanan →
-            </MagneticButton>
           </div>
 
           {/* Middle: Big Hero Text */}
@@ -347,18 +344,18 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
                 </h1>
                 <div className="splash-hero-line" />
                 
-                {/* Mobile-only Start Button */}
-                <button className="splash-mobile-start-btn" onClick={handleStart}>
+                {/* Start Button — below gold line on all screen sizes */}
+                <MagneticButton className="splash-mobile-start-btn" onClick={handleStart}>
                   Mulai Perjalanan
                   <span className="btn-arrow">→</span>
-                </button>
+                </MagneticButton>
               </div>
             </motion.div>
           </div>
 
           <div className="splash-marquee-container">
             <div className="splash-marquee-content">
-              Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · 
+              Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan ·
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['192.168.1.18', '192.168.1.18:3000'],
+  allowedDevOrigins: ['192.168.1.35', '192.168.1.18:3000'],
 
   // ── Transpile Three.js ecosystem so Next.js can tree-shake it ────────────
   transpilePackages: [
