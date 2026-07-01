@@ -11,9 +11,14 @@ export function ProvincePageClient({ id }: { id: string }) {
   const { selectProvince } = useAppFlow();
 
   useEffect(() => {
-    const province = PROVINCES.find(p => p.id === id);
+    const normalizedId = id.replace(/_/g, '-');
+    const province = PROVINCES.find(p => p.id === normalizedId);
     if (province) {
-      selectProvince(province, true);
+      if (id !== province.id) {
+        router.replace(`/province/${province.id}`);
+      } else {
+        selectProvince(province, true);
+      }
     } else {
       router.replace('/map');
     }

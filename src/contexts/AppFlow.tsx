@@ -11,6 +11,7 @@ export const PHASES = {
   DETAIL: 'detail',
   STORYTELLING_END: 'storytelling_end',
   QUIZ: 'quiz',
+  ACHIEVEMENT: 'achievement',
 } as const;
 
 export type Phase = typeof PHASES[keyof typeof PHASES];
@@ -97,6 +98,9 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
         }
         else if (nextPhase === PHASES.DETAIL && selectedCulture) {
           router.push(`/culture/${selectedCulture.id}`);
+        }
+        else if (nextPhase === 'achievement') {
+          router.push('/achievement');
         }
       }
     };

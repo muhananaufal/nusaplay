@@ -6,7 +6,6 @@ import { usePlay } from '@/contexts/Play';
 import { UNLOCKED_PROVINCES } from '@/data/provinces';
 import tts from '@/utils/tts';
 import { useIsMobile } from '@/utils/useIsMobile';
-import { usePassport } from '@/contexts/Passport';
 
 // Pure CSS animated Hamburger and Close (X) icon — works in all browsers with 0 FPS overhead
 const MenuButtonIcon = ({ isOpen }: { isOpen: boolean }) => {
@@ -69,7 +68,6 @@ export const NavigationMenu = () => {
   } = useAppFlow();
   
   const { play, setPlay, setEnd, end } = usePlay();
-  const { visitedProvinces, visitCount } = usePassport();
 
   // matchMedia-based â€” fires only when threshold is crossed, not every pixel
   const isMobile = useIsMobile(1024);
@@ -111,6 +109,14 @@ export const NavigationMenu = () => {
         startQuiz(null);
       },
       image: '/img/menu_quiz.webp'
+    },
+    {
+      title: 'Pencapaian Nusantara',
+      action: () => {
+        setIsOpen(false);
+        goTo('achievement');
+      },
+      image: '/img/menu_welcome.webp'
     },
     {
       title: 'Tentang NusaPlay',
@@ -267,7 +273,7 @@ export const NavigationMenu = () => {
                 <div className="nav-contact-block">
                   <span className="nav-contact-label">Hubungi Kami</span>
                   <span className="nav-contact-value">hello@nusaplay.id</span>
-                  <span className="nav-contact-value">+62 821 3178 796</span>
+                  {/* <span className="nav-contact-value">+62 821 3178 796</span> */}
                 </div>
 
                 <div className="nav-socials-block">

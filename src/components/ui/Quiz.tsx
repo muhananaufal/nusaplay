@@ -206,13 +206,15 @@ const getGrade = (score: number, total: number) => {
 export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { visible: boolean; selectionOnly?: boolean; activeOnly?: boolean }) => {
   const { quizProvince, startQuiz, backToMap } = useAppFlow();
   const { setJourneyCompleted } = usePlay();
-  const { completeQuiz, completedQuizzes, visitedProvinces } = usePassport();
+  const { completeQuiz, completedQuizzes, visitedProvinces, bestScores, bestScoreTotals } = usePassport();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lockedProvData, setLockedProvData] = useState<any | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
   const [score, setScore] = useState(0);
+  const scoreRef = useRef(0); // always reflects latest score, avoids stale closure
   const [done, setDone] = useState(false);
+  const [finalScore, setFinalScore] = useState<number | null>(null); // snapshot taken when quiz ends
   const [showConfetti, setShowConfetti] = useState(false);
   const [showScorePop, setShowScorePop] = useState(false);
   const [shakeWrong, setShakeWrong] = useState(false);
@@ -235,12 +237,22 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
     );
   }, [searchQuery]);
 
+  // When quiz finishes, record the finalScore snapshot into passport (fires AFTER score state settles)
+  useEffect(() => {
+    if (done && finalScore !== null && quizProvince) {
+      completeQuiz(quizProvince.id, finalScore, questions.length);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [done, finalScore]);
+
   // Reset quiz states whenever selected province changes
   useEffect(() => {
     setCurrentIndex(0);
     setSelected(null);
     setAnswered(false);
     setScore(0);
+    scoreRef.current = 0;
+    setFinalScore(null);
     setDone(false);
     setShowConfetti(false);
     setShakeWrong(false);
@@ -297,7 +309,7 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
     setTimerActive(false);
     const correct = idx === currentQ.correctIndex;
     if (correct) {
-      setScore(s => s + 1);
+      setScore(s => { const n = s + 1; scoreRef.current = n; return n; });
       setShowConfetti(true);
       setShowScorePop(true);
       setTimeout(() => setShowConfetti(false), 2500);
@@ -333,13 +345,13 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
 
   const handleNext = () => {
     if (currentIndex + 1 >= questions.length) {
+      const snapshotScore = scoreRef.current;
+      setFinalScore(snapshotScore);
       setDone(true);
       setJourneyCompleted(true);
-      window.dispatchEvent(new CustomEvent('nusaplay:quizComplete', { detail: { score } }));
+      window.dispatchEvent(new CustomEvent('nusaplay:quizComplete', { detail: { score: snapshotScore } }));
       playSuccessSound();
-
-      // Mark the quiz as completed upon finishing, regardless of the score!
-      completeQuiz(quizProvince.id);
+      // completeQuiz is called via useEffect once done+finalScore are committed to state
     } else {
       setCurrentIndex(i => i + 1);
       setSelected(null);
@@ -441,17 +453,17 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
                 >
                   {isQuizDone && (
                     <div className="quiz-card-badge-completed" title="Kuis Selesai! Kamu mendapatkan lencana emas!">
-                      🏆 TUNTAS
+                      TUNTAS
                     </div>
                   )}
                   {isVisited && !isQuizDone && (
                     <div className="quiz-card-badge-uncompleted" title="Kuis Belum Selesai! Selesaikan kuis ini untuk mendapatkan lencana emas!">
-                      ❓ BELUM TUNTAS
+                      BELUM TUNTAS
                     </div>
                   )}
                   {!isVisited && (
                     <div className="quiz-card-badge-locked" title="Kuis Terkunci! Kunjungi provinsi ini di peta terlebih dahulu.">
-                      🔒 TERKUNCI
+                      TERKUNCI
                     </div>
                   )}
                   <div className="quiz-card-header">
@@ -460,15 +472,37 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
                     <p className="quiz-card-tagline">{prov.tagline}</p>
                   </div>
 
-                  {/* Category tags */}
-                  {prov.categories && (
-                    <div className="quiz-card-categories">
-                      {prov.categories.slice(0, 3).map((cat: string) => (
-                        <span key={cat} className="quiz-card-cat-tag">{cat}</span>
-                      ))}
-                      {prov.categories.length > 3 && <span className="quiz-card-cat-tag">+ Lainnya</span>}
-                    </div>
-                  )}
+                  {/* Best score star rating */}
+                  <div className="quiz-card-stars">
+                    {(() => {
+                      const best = bestScores[prov.id];
+                      const total = bestScoreTotals[prov.id] || 1;
+                      if (best === undefined || !isVisited) {
+                        // Not yet attempted — show 5 empty stars
+                        return Array.from({ length: 5 }).map((_, si) => (
+                          <svg key={si} className="quiz-star quiz-star--empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                          </svg>
+                        ));
+                      }
+                      // Map score to 0-5 stars
+                      const ratio = best / total;
+                      const filledCount = Math.round(ratio * 5);
+                      return Array.from({ length: 5 }).map((_, si) => (
+                        <svg key={si} className={`quiz-star ${si < filledCount ? 'quiz-star--filled' : 'quiz-star--empty'}`} viewBox="0 0 24 24" fill={si < filledCount ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                      ));
+                    })()}
+                    {bestScores[prov.id] !== undefined && isVisited && (
+                      <span className="quiz-star-label">
+                        Skor terbaik: {bestScores[prov.id]} / {bestScoreTotals[prov.id] || 1}
+                      </span>
+                    )}
+                    {(bestScores[prov.id] === undefined || !isVisited) && (
+                      <span className="quiz-star-label quiz-star-label--empty">Belum dimainkan</span>
+                    )}
+                  </div>
                 
                   <button className="quiz-card-btn">
                     Mulai Kuis
@@ -768,15 +802,15 @@ const QuizResult = ({ score, total, provinceName, onRetry, onMap }: any) => {
         <Mascot pose={score >= 3 ? "excited" : "sad"} size={110} />
       </motion.div>
 
-      {/* Star rating */}
+      {/* Star rating — 5 stars, same formula as the quiz card list */}
       <div className="result-stars">
-        {Array.from({ length: 3 }).map((_, i) => (
+        {Array.from({ length: 5 }).map((_, i) => (
           <motion.span
             key={i}
-            className={`result-star ${i < Math.ceil((score / total) * 3) ? 'lit' : ''}`}
+            className={`result-star ${i < Math.round((score / total) * 5) ? 'lit' : ''}`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.7 + i * 0.15, type: 'spring' }}
+            transition={{ delay: 0.7 + i * 0.1, type: 'spring' }}
           >
             ★
           </motion.span>

@@ -14,10 +14,18 @@ export default function ProvinceListPage() {
 
   useEffect(() => {
     if (!id) return;
-    const pId = typeof id === 'string' ? id : id[0];
+    const currentPathId = typeof id === 'string' ? id : id[0];
+    const pId = currentPathId.replace(/_/g, '-');
     const province = PROVINCES.find(p => p.id === pId);
+    
     if (province) {
       const category = searchParams.get('category') || 'Semua';
+      
+      // If the URL used an underscore, redirect to the clean hyphenated URL
+      if (currentPathId !== province.id) {
+        router.replace(`/province/${province.id}/list${category !== 'Semua' ? `?category=${category}` : ''}`);
+        return;
+      }
       
       // Only select if different to prevent infinite reset loops
       if (selectedProvince?.id !== province.id) {

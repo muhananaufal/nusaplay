@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { usePlay } from '@/contexts/Play';
-import { getStepFromPhase } from './JourneyProgress';
+import { getStepFromPhase } from '@/utils/journey';
 import { Mascot } from './Mascot';
 import { useIsMobile } from '@/utils/useIsMobile';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -99,20 +99,11 @@ export function JourneySpotlight() {
       }
     : (phase === PHASES.MAP
       ? (
-          // Desktop: step1=map, step2=passport, step3=stepper widget
-          // Mobile:  step1=map, step2=zoom, step3=passport
-          (!isMobile && mapSubStep === 3)
+          ((!isMobile && mapSubStep === 2) || (isMobile && mapSubStep === 3))
           ? {
-              selector: '.journey-progress-wrapper',
-              title: 'Widget Perjalanan',
-              text: 'Widget ini bisa kamu seret ke mana saja! Kalau sewaktu-waktu menutupi konten, tinggal tarik ke sudut layar yang kamu inginkan.',
-              placement: 'below' as const,
-            }
-          : ((!isMobile && mapSubStep === 2) || (isMobile && mapSubStep === 3))
-          ? {
-              selector: '.map-passport-widget',
-              title: 'Paspor Perjalanan',
-              text: 'Ini adalah Paspor Perjalananmu! Kumpulkan stempel dari 4 provinsi dengan berkunjung dan menyelesaikan kuis budaya.',
+              selector: '.map-achievement-btn',
+              title: 'Pencapaian Nusantara',
+              text: 'Ini adalah tombol Pencapaianmu! Klik tombol piala ini untuk melihat lencana dan progres pencapaian yang telah berhasil kamu selesaikan selama menjelajah.',
               placement: 'above' as const,
             }
           : (isMobile && mapSubStep === 2)
@@ -180,11 +171,8 @@ export function JourneySpotlight() {
           setActiveSelector('.cd-audio-play-minimal');
         }
       } else if (phase === PHASES.MAP) {
-        if (mapSubStep === 3) {
-          // Desktop substep 3 & mobile substep 3: stepper widget
-          setActiveSelector('.journey-progress-wrapper');
-        } else if (mapSubStep === (isMobile ? 3 : 2) || (!isMobile && mapSubStep === 2)) {
-          setActiveSelector('.map-passport-widget');
+        if ((isMobile && mapSubStep === 3) || (!isMobile && mapSubStep === 2)) {
+          setActiveSelector('.map-achievement-btn');
         } else if (isMobile && mapSubStep === 2) {
           setActiveSelector('.map-zoom-controls');
         } else {
@@ -310,7 +298,7 @@ export function JourneySpotlight() {
 
   const handleDismiss = () => {
     if (phase === PHASES.MAP) {
-      if (mapSubStep < (isMobile ? 3 : 3)) {
+      if (mapSubStep < (isMobile ? 3 : 2)) {
         setMapSubStep(prev => prev + 1);
         return;
       }

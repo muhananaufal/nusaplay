@@ -7,7 +7,6 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 import { NavigationMenu } from "@/components/ui/NavigationMenu";
 import { PageTransitionOverlay } from "@/components/ui/PageTransitionOverlay";
 import { MascotAssistant } from "@/components/ui/MascotAssistant";
-import { JourneyProgress } from "@/components/ui/JourneyProgress";
 import { JourneySpotlight } from "@/components/ui/JourneySpotlight";
 // Client-component wrapper that lazy-loads NewStampCelebration with ssr:false
 import { NewStampCelebrationLoader } from "@/components/ui/NewStampCelebrationLoader";
@@ -86,7 +85,6 @@ export default function RootLayout({
         <Providers>
           <RootLayers />
           <CustomCursor />
-          <JourneyProgress />
           <JourneySpotlight />
           <NewStampCelebrationLoader />
           {children}

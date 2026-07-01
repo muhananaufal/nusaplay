@@ -112,6 +112,16 @@ const CountUp = ({ end, duration = 1.8, suffix = '' }: { end: number; duration?:
 };
 
 
+const TrophyIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'transform 0.3s ease' }}>
+    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+    <path d="M4 22h16" />
+    <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34" />
+    <path d="M12 2a6 6 0 0 1 6 6v3.5a6 6 0 0 1-12 0V8a6 6 0 0 1 6-6z" />
+  </svg>
+);
+
 export const MapView = ({ visible }) => {
   const mapRef = useRef(null);
   const leafletMapRef = useRef(null);
@@ -122,14 +132,24 @@ export const MapView = ({ visible }) => {
   const [mapReady, setMapReady] = useState(false);
   const [deepZoomActive, setDeepZoomActive] = useState(false);
   const [isTilted, setIsTilted] = useState(false);
-  const [isPassportPinned, setIsPassportPinned] = useState(false);
-  const [isPassportHovered, setIsPassportHovered] = useState(false);
-  const [activeStampTooltip, setActiveStampTooltip] = useState<string | null>(null);
-  const [pinnedStampTooltip, setPinnedStampTooltip] = useState<string | null>(null);
-  const isPassportExpanded = isPassportPinned || isPassportHovered;
   const isMobile = useIsMobile(1024);
   const { selectProvince, selectedProvince, backToMap, selectCulture, goTo } = useAppFlow();
-  const { visitedProvinces, visitCount } = usePassport();
+  const { visitedProvinces } = usePassport();
+  const [achievementBtnPos, setAchievementBtnPos] = useState({ x: 0, y: 0 });
+  const achievementBtnRef = useRef<HTMLButtonElement>(null);
+
+  const handleAchievementMouseMove = (e: React.MouseEvent) => {
+    if (isMobile) return;
+    const rect = achievementBtnRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = e.clientX - (rect.left + rect.width / 2);
+    const y = e.clientY - (rect.top + rect.height / 2);
+    setAchievementBtnPos({ x: x * 0.35, y: y * 0.35 });
+  };
+
+  const handleAchievementMouseLeave = () => {
+    setAchievementBtnPos({ x: 0, y: 0 });
+  };
 
   const selectProvinceRef = useRef(selectProvince);
   const backToMapRef = useRef(backToMap);
@@ -656,104 +676,25 @@ export const MapView = ({ visible }) => {
         </div>
       )}
 
-      {/* Floating Travel Passport Widget */}
+      {/* Floating Travel Achievement Trigger Button */}
       {!selectedProvince && mapReady && (
-        <motion.div
-          className={`map-passport-widget ${isPassportExpanded ? 'expanded' : 'collapsed'} ${isPassportPinned ? 'pinned' : ''}`}
-          onMouseEnter={() => !isMobile && setIsPassportHovered(true)}
-          onMouseLeave={() => !isMobile && setIsPassportHovered(false)}
-          onClick={() => setIsPassportPinned(prev => !prev)}
-          layout
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 20, opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
-          style={{ cursor: 'pointer' }}
+        <motion.button
+          ref={achievementBtnRef}
+          className="map-achievement-btn"
+          onClick={() => goTo('achievement')}
+          onMouseMove={handleAchievementMouseMove}
+          onMouseLeave={handleAchievementMouseLeave}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1, x: achievementBtnPos.x, y: achievementBtnPos.y }}
+          exit={{ scale: 0, opacity: 0 }}
+          transition={achievementBtnPos.x === 0 && achievementBtnPos.y === 0 
+            ? { type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }
+            : { type: 'spring', stiffness: 300, damping: 20, mass: 0.1 }
+          }
+          aria-label="Buka Pencapaian"
         >
-          <motion.div className="widget-header" layout>
-            <motion.div className="widget-title-wrapper" layout>
-              <span className="passport-icon">❈</span>
-              <AnimatePresence mode="wait">
-                {isPassportExpanded && (
-                  <motion.span 
-                    className="widget-title"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -10 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    PASPOR PERJALANAN
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </motion.div>
-            <motion.span className="widget-progress" layout>
-              {visitCount}/4
-            </motion.span>
-          </motion.div>
-
-          <AnimatePresence>
-            {isPassportExpanded && (
-              <motion.div 
-                className="widget-stamps"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.2, delay: 0.05 }}
-              >
-                {[
-                  { id: 'jawa-tengah', name: 'Jawa Tengah', stamp: '✿' },
-                  { id: 'diy', name: 'Yogyakarta', stamp: '✦' },
-                  { id: 'kalimantan-barat', name: 'Kalimantan Barat', stamp: '❈' },
-                  { id: 'papua', name: 'Papua', stamp: '✹' },
-                ].map(p => {
-                  const visited = visitedProvinces.has(p.id);
-                  return (
-                    <div 
-                      key={p.id} 
-                      className={`widget-stamp-dot ${visited ? 'visited' : ''}`}
-                      onMouseEnter={() => setActiveStampTooltip(p.id)}
-                      onMouseLeave={() => setActiveStampTooltip(null)}
-                      onClick={(e) => {
-                        e.stopPropagation(); // prevent collapsing/unpinning the passport widget
-                        setPinnedStampTooltip(prev => prev === p.id ? null : p.id);
-                      }}
-                      style={{ position: 'relative' }}
-                    >
-                      {visited ? (
-                        <span className="widget-stamp-inner">
-                          {p.stamp}
-                        </span>
-                      ) : (
-                        <span>?</span>
-                      )}
-
-                      <AnimatePresence>
-                        {(activeStampTooltip === p.id || pinnedStampTooltip === p.id) && (
-                          <motion.div
-                            className="stamp-tooltip"
-                            initial={{ opacity: 0, y: 8, scale: 0.9, x: '-50%' }}
-                            animate={{ opacity: 1, y: 0, scale: 1, x: '-50%' }}
-                            exit={{ opacity: 0, y: 8, scale: 0.9, x: '-50%' }}
-                            transition={{ duration: 0.15 }}
-                          >
-                            <span className="tooltip-province">{p.name}</span>
-                            <span 
-                              className="tooltip-status" 
-                              style={{ color: visited ? '#D4AF37' : '#1B4F9C' }}
-                            >
-                              {visited ? '✓ Terkumpul' : 'Belum Dikunjungi'}
-                            </span>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  );
-                })}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+          <TrophyIcon />
+        </motion.button>
       )}
 
       {/* Zoom controls for mobile view */}
