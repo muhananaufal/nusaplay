@@ -119,8 +119,16 @@ const CharReveal = ({ text, className, delay = 0 }: { text: string; className?: 
 const MagneticButton = ({ children, onClick, className }: { children: React.ReactNode; onClick: () => void; className?: string }) => {
   const ref = useRef<HTMLButtonElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
+  const { tourActive } = usePlay();
+
+  useEffect(() => {
+    if (tourActive) {
+      setPos({ x: 0, y: 0 });
+    }
+  }, [tourActive]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (tourActive) return;
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
@@ -154,16 +162,23 @@ const MagneticButton = ({ children, onClick, className }: { children: React.Reac
 };
 
 export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
-  const { play, setPlay, end } = usePlay();
+  const { play, setPlay, end, tourActive } = usePlay();
   const { goTo } = useAppFlow();
   const [logoClickCount, setLogoClickCount] = useState(0);
   const [showHaiku, setShowHaiku] = useState(false);
   const startTimeoutRef = useRef<any>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
+  // Reset GSAP tilt when tour becomes active
+  useEffect(() => {
+    if (tourActive && heroRef.current) {
+      gsap.to(heroRef.current, { rotateX: 0, rotateY: 0, x: 0, y: 0, duration: 0.4, ease: 'power2.out' });
+    }
+  }, [tourActive]);
+
   // ── GSAP 3D Tilt / Parallax Effect ──────────────────────────────────────────
   useEffect(() => {
-    if (play || progress !== 100) return;
+    if (play || progress !== 100 || tourActive) return;
 
     const hero = heroRef.current;
     if (!hero) return;
@@ -200,7 +215,7 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [play, progress]);
+  }, [play, progress, tourActive]);
 
   const handleStart = () => {
     setPlay(true);

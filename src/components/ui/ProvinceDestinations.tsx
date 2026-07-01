@@ -5,6 +5,7 @@ import { useAppFlow } from '@/contexts/AppFlow';
 import { getCulturesByProvince } from '@/data/cultures';
 import { useIsMobile } from '@/utils/useIsMobile';
 import { usePassport } from '@/contexts/Passport';
+import { usePlay } from '@/contexts/Play';
 
 const STAMP_SYMBOLS: Record<string, string> = {
   'jawa-tengah': '✿',
@@ -16,16 +17,24 @@ const STAMP_SYMBOLS: Record<string, string> = {
 export const ProvinceDestinations = ({ visible }) => {
   const { selectedProvince, selectCategory, backToMap, visitedByProvince, listenedByProvince } = useAppFlow();
   const { visitedProvinces } = usePassport();
+  const { tourActive } = usePlay();
 
   const isMobile = useIsMobile(768);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [magneticPos, setMagneticPos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (tourActive) {
+      setMagneticPos({ x: 0, y: 0 });
+    }
+  }, [tourActive]);
 
   // Track cursor position to simulate a magnetic pull on the explore button
   useEffect(() => {
     if (isMobile) return;
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (tourActive) return;
       const btn = buttonRef.current;
       if (btn) {
         const rect = btn.getBoundingClientRect();
@@ -48,7 +57,7 @@ export const ProvinceDestinations = ({ visible }) => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [isMobile]);
+  }, [isMobile, tourActive]);
 
   const isVisited = selectedProvince ? visitedProvinces.has(selectedProvince.id) : false;
 
