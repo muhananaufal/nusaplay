@@ -31,8 +31,9 @@ export const CULTURES = [
     description:
       "Tari Bedhaya merupakan tarian sakral dari tradisi Keraton Yogyakarta yang dipentaskan pada acara-acara tertentu. Tarian ini melambangkan keharmonisan, kesetiaan, dan keseimbangan dalam kehidupan melalui gerakan para penari yang serempak dan penuh makna.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/tari-bedhaya-ketawang.mp3",
     narrator:
-      "Tari Bedhaya adalah tarian sakral Keraton Yogyakarta yang tampil dalam momen-momen adat penting. Formasi penari yang serempak menghadirkan suasana khidmat dan menggambarkan keharmonisan, kesetiaan, serta keseimbangan hidup.",
+      "Tari Bedhaya Ketawang adalah tarian sakral Keraton Jawa yang dipentaskan dalam upacara penobatan raja atau peringatan naik takhta. Gerakan sembilan penari yang lambat, anggun, dan serempak diiringi musik gamelan menciptakan atmosfer khidmat dan penuh misteri spiritual.",
     location: "Keraton Kasunanan Surakarta, D.I. Yogyakarta",
     period: "Era Mataram Islam, abad ke-17",
     image: "/img/cultures/bedhaya-ketawang.jpg",
@@ -46,8 +47,9 @@ export const CULTURES = [
     description:
       "Tari Serimpi merupakan salah satu tarian klasik yang berasal dari lingkungan Keraton Yogyakarta. Gerakannya yang lembut dan teratur mencerminkan kehalusan, kesabaran, ketenangan, serta pengendalian diri yang dijunjung tinggi dalam budaya Jawa.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/tari-serimpi.mp3",
     narrator:
-      "Tari Serimpi tampil anggun dengan gerak yang tenang dan teratur, membawa nuansa sakral khas Keraton Yogyakarta. Di balik kelembutannya, tarian ini menyampaikan pesan tentang keseimbangan antara kekuatan dan ketenangan dalam kehidupan masyarakat Jawa.",
+      "Tari Srimpi lahir dari istana Keraton Yogyakarta sebagai simbol keanggunan dan kekuasaan. Empat penari mementaskan gerakan anggun yang melambangkan kehalusan budi pekerti, kesabaran, dan moralitas luhur wanita Jawa.",
     location: "Keraton Yogyakarta, D.I. Yogyakarta",
     period: "Masa Kesultanan Yogyakarta, abad ke-18",
     image: "/img/cultures/tari-srimpi.jpg",
@@ -95,8 +97,9 @@ export const CULTURES = [
     description:
       "Gamelan Jawa merupakan ansambel musik tradisional yang menjadi bagian penting dari budaya masyarakat Yogyakarta. Gamelan terdiri dari berbagai instrumen seperti saron, gong, kenong, bonang, kendang, dan lainnya yang dimainkan bersama untuk menghasilkan harmoni yang khas.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/alat-musik-gamelan.mp3",
     narrator:
-      "Gamelan Jawa adalah suara harmoni masyarakat Yogyakarta. Setiap instrumen memiliki peran yang berbeda, namun saling melengkapi untuk menciptakan alunan yang tenang, mendalam, dan penuh makna dalam berbagai upacara serta pertunjukan budaya.",
+      "Gamelan Jawa telah menggema selama berabad-abad di tanah Yogyakarta. Setiap instrumennya memiliki jiwa, yang jika dimainkan bersama akan menghasilkan harmoni suara tenang yang melambangkan kebersamaan dan kedamaian hidup.",
     location: "Seluruh D.I. Yogyakarta",
     period: "Sejak abad ke-8 Masehi",
     image: "/img/cultures/gamelan-jawa.jpg",
@@ -129,6 +132,7 @@ export const CULTURES = [
     description:
       "Rebab merupakan alat musik gesek tradisional yang telah lama menjadi bagian dari musik gamelan Jawa. Alat musik ini memiliki dua senar dan dimainkan dengan alat gesek khusus untuk menghasilkan suara yang lembut dan ekspresif.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/alat-musik-rebab.mp3",
     narrator:
       "Rebab menghadirkan melodi yang lembut dan emosional dalam gamelan Jawa. Suaranya yang halus sering membawa nuansa tenang, haru, dan kerinduan di tengah pertunjukan tradisional.",
     location: "D.I. Yogyakarta",
@@ -224,8 +228,9 @@ export const CULTURES = [
     description:
       "Keris Yogyakarta memiliki ragam bentuk (dhapur), pamor, dan tangguh yang khas. Dalam tradisi Jawa, keris bukan sekadar senjata tajam, melainkan lambang pusaka keluarga yang diyakini membawa perlindungan, wibawa, dan keseimbangan spiritual bagi pemiliknya.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/senjata-keris.mp3",
     narrator:
-      "Keris Yogyakarta adalah lambang pusaka kejantanan dan status spiritual pria Jawa, diukir dengan detail estetika yang sarat makna leluhur.",
+      "Keris merupakan senjata tradisional yang sangat melekat dengan budaya Jawa, termasuk Daerah Istimewa Yogyakarta. Senjata ini memiliki bilah yang ramping dengan bentuk lurus atau berlekuk, serta dibuat melalui proses tempa yang membutuhkan ketelitian dan keahlian tinggi. Di Yogyakarta, keris tidak hanya dikenal sebagai senjata, tetapi juga sebagai pusaka yang diwariskan dari generasi ke generasi. Bagi masyarakat Yogyakarta, keris melambangkan kehormatan, kebijaksanaan, keberanian, dan tanggung jawab. Setiap keris memiliki bentuk, motif, dan pamor yang berbeda, yang dipercaya mencerminkan harapan serta karakter pemiliknya. Nilai tersebut menunjukkan bahwa kekuatan sejati tidak hanya berasal dari senjata, tetapi juga dari kebijaksanaan dalam menggunakannya. Keris digunakan dalam berbagai upacara adat, prosesi pernikahan, hingga acara resmi Keraton Yogyakarta sebagai bagian dari busana adat. Keunikannya terletak pada motif pamor yang terbentuk secara alami saat proses penempaan, sehingga setiap keris memiliki corak yang berbeda dan tidak ada yang benar-benar sama.",
     location: "Keraton Yogyakarta, D.I. Yogyakarta",
     period: "Sejak era Mataram Islam, abad ke-16",
     image: "/img/cultures/keris.jpg",
@@ -272,6 +277,7 @@ export const CULTURES = [
     description:
       "Paes Ageng merupakan busana adat yang berasal dari lingkungan Keraton Yogyakarta dan biasanya dikenakan dalam upacara pernikahan adat Jawa. Busana ini dikenal karena tampilannya yang megah, anggun, serta dipadukan dengan riasan paes berwarna hitam yang menghiasi dahi pengantin.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/pakaian-adat-paes-ageng.mp3",
     narrator:
       "Paes Ageng adalah busana pernikahan adat Keraton Yogyakarta yang megah dan anggun. Setiap bagian busana serta riasannya mengandung harapan agar pasangan pengantin menjalani rumah tangga dengan bijaksana, harmonis, dan penuh tanggung jawab.",
     location: "Keraton Yogyakarta, D.I. Yogyakarta",
@@ -288,6 +294,7 @@ export const CULTURES = [
     description:
       "Kebaya Yogyakarta merupakan pakaian tradisional perempuan yang dikenal karena tampilannya yang anggun dan elegan. Kebaya ini biasanya dipadukan dengan kain batik serta sanggul atau hiasan rambut yang memperkuat kesan khas budaya Jawa.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/pakaian-adat-kebaya-yogya.mp3",
     narrator:
       "Kebaya Yogyakarta menampilkan kelembutan, kesopanan, dan keanggunan yang dihargai dalam budaya Jawa. Busana ini menjadi simbol keseimbangan antara keindahan luar dan kepribadian yang santun.",
     location: "D.I. Yogyakarta",
@@ -354,6 +361,7 @@ export const CULTURES = [
     description:
       "Labuhan merupakan upacara adat Keraton Yogyakarta yang dilakukan dengan menghanyutkan atau melarungkan berbagai sesaji ke tempat-tempat yang dianggap memiliki nilai penting, seperti Pantai Parangtritis dan kawasan Gunung Merapi. Tradisi ini mencerminkan rasa syukur serta penghormatan terhadap alam yang telah menjadi bagian dari kehidupan masyarakat Yogyakarta. Melalui Labuhan, masyarakat diajak untuk menjaga hubungan yang harmonis antara manusia, alam, dan Sang Pencipta. Nilai tersebut menjadi bagian penting dari pandangan hidup masyarakat Jawa yang menekankan keseimbangan dalam kehidupan. Labuhan biasanya dipimpin oleh pihak Keraton dan dilaksanakan pada waktu-waktu tertentu yang berkaitan dengan tradisi kerajaan. Keunikannya terletak pada perpaduan antara unsur budaya, spiritualitas, dan penghormatan terhadap alam yang masih dijaga hingga sekarang.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/upacara-adat-labuhan.mp3",
     narrator:
       "Labuhan merupakan upacara adat Keraton Yogyakarta dengan melarungkan sesaji ke tempat-tempat sakral, seperti Pantai Parangtritis dan Gunung Merapi. Tradisi ini mencerminkan rasa syukur serta penghormatan terhadap alam yang menjadi bagian penting kehidupan masyarakat. Labuhan mengajak kita menjaga hubungan harmonis dan seimbang antara manusia, alam semesta, dan Sang Pencipta.",
     location: "Pantai Parangtritis dan Gunung Merapi, D.I. Yogyakarta",
@@ -379,39 +387,7 @@ export const CULTURES = [
 
 
   // Kuliner
-  {
-    id: "diy-gudeg",
-    provinceId: "diy",
-    category: "Kuliner",
-    title: "Gudeg Yogyakarta",
-    coordinates: [-7.804, 110.367],
-    isLandmark: true,
-    description:
-      "Gudeg adalah masakan khas Yogyakarta yang terbuat dari nangka muda yang dimasak berjam-jam dengan santan dan rempah-rempah. Rasanya manis dan gurih, menjadi ciri khas kuliner Jawa. Gudeg Kraton yang legendaris konon telah ada sejak zaman kerajaan Mataram dan menjadi hidangan wajib dalam berbagai upacara adat.",
-    youtubeId: "cyJ9fpoYh_M",
-    narrator:
-      "Aroma gudeg yang harum menguar dari kuali tanah liat yang dimasak semalaman. Nangka muda menyerap bumbu rempah yang kaya hingga ke serat-seratnya. Inilah kuliner yang menjadi jiwa Yogyakarta — setiap suapan membawa serta sejarah panjang peradaban Jawa.",
-    location: "Seluruh D.I. Yogyakarta",
-    period: "Sejak era Kerajaan Mataram",
-    image: "/img/cultures/gudeg.jpg",
-    tags: ["Makanan", "Nangka", "Tradisional"],
-  },
-  {
-    id: "diy-bakpia",
-    provinceId: "diy",
-    category: "Kuliner",
-    title: "Bakpia Pathok",
-    description:
-      "Bakpia Pathok adalah kuliner ikonik Yogyakarta berupa kue panggang bulat tipis berisi kacang hijau manis yang dipengaruhi budaya Tionghoa. Nama Pathok merujuk pada sebuah kampung di Yogyakarta tempat asal mula industri bakpia berkembang pesat.",
-    youtubeId: "cyJ9fpoYh_M",
-    narrator:
-      "Bakpia Pathok adalah bukti nyata asimilasi budaya Tionghoa dan Jawa di Yogyakarta, menghasilkan kudapan manis legendaris yang disukai wisatawan.",
-    location: "Kampung Pathok, Yogyakarta",
-    period: "Awal abad ke-20",
-    image: "/img/cultures/bakpia.jpg",
-    tags: ["Kuliner", "Kudapan", "Asimilasi"],
-  },
-  {
+{
     id: "diy-kipo",
     provinceId: "diy",
     category: "Kuliner",
@@ -428,22 +404,7 @@ export const CULTURES = [
   },
   
   // Batik
-  {
-    id: "diy-batik-kraton",
-    provinceId: "diy",
-    category: "Batik",
-    title: "Batik Keraton Yogyakarta",
-    description:
-      "Batik tulis Yogyakarta memiliki ciri khas warna putih-hitam-coklat (sogan) dengan motif-motif simbolis seperti Parang Rusak, Sido Mukti, dan Kawung. Setiap motif memiliki makna filosofis dan hierarki penggunaannya — beberapa motif hanya boleh dipakai oleh keluarga kerajaan. Proses membatik adalah meditasi tersendiri.",
-    youtubeId: "cyJ9fpoYh_M",
-    narrator:
-      "Sehelai batik tulis Yogyakarta menyimpan ribuan titik canting yang dikerjakan selama berbulan-bulan. Motif Parang Rusak yang bergelombang terus-menerus melambangkan semangat yang pantang menyerah, sementara Kawung menggambarkan empat arah mata angin alam semesta.",
-    location: "D.I. Yogyakarta",
-    period: "Masa Mataram Islam, abad ke-17-18",
-    image: "/img/cultures/batik-kraton.jpg",
-    tags: ["UNESCO", "Kain", "Motif"],
-  },
-  {
+{
     id: "diy-batik-kayu",
     provinceId: "diy",
     category: "Batik",
@@ -495,25 +456,6 @@ export const CULTURES = [
   image: "/img/cultures/sekaten.jpg",
   tags: ["Maulid", "Gamelan", "Keraton"],
 },
-
-{
-  id: "diy-labuhan",
-  provinceId: "diy",
-  category: "Upacara Adat",
-  title: "Upacara Labuhan",
-  coordinates: [-8.024, 110.329],
-  isLandmark: false,
-  description:
-    "Labuhan merupakan upacara adat Keraton Yogyakarta yang dilakukan dengan menghanyutkan atau melarungkan berbagai sesaji ke tempat-tempat yang dianggap memiliki nilai penting, seperti Pantai Parangtritis dan kawasan Gunung Merapi. Tradisi ini mencerminkan rasa syukur serta penghormatan terhadap alam yang telah menjadi bagian dari kehidupan masyarakat Yogyakarta. Melalui Labuhan, masyarakat diajak untuk menjaga hubungan yang harmonis antara manusia, alam, dan Sang Pencipta. Nilai tersebut menjadi bagian penting dari pandangan hidup masyarakat Jawa yang menekankan keseimbangan dalam kehidupan. Labuhan biasanya dipimpin oleh pihak Keraton dan dilaksanakan pada waktu-waktu tertentu yang berkaitan dengan tradisi kerajaan. Keunikannya terletak pada perpaduan antara unsur budaya, spiritualitas, dan penghormatan terhadap alam yang masih dijaga hingga sekarang.",
-  youtubeId: "cyJ9fpoYh_M",
-  narrator:
-    "Labuhan merupakan tradisi Keraton Yogyakarta yang dilakukan dengan melarungkan sesaji ke tempat-tempat sakral seperti Pantai Parangtritis dan Gunung Merapi. Upacara ini menjadi simbol rasa syukur sekaligus penghormatan terhadap alam. Hingga kini, Labuhan masih dilestarikan sebagai bentuk menjaga keseimbangan antara manusia, alam, dan Sang Pencipta.",
-  location: "Pantai Parangtritis dan Gunung Merapi, D.I. Yogyakarta",
-  period: "Dilaksanakan pada waktu tertentu sesuai tradisi Keraton",
-  image: "/img/cultures/labuhan.jpg",
-  tags: ["Sesaji", "Keraton", "Spiritual"],
-},
-
 {
   id: "diy-mubeng-beteng",
   provinceId: "diy",
@@ -524,6 +466,7 @@ export const CULTURES = [
   description:
     "Mubeng Beteng merupakan tradisi berjalan kaki mengelilingi benteng Keraton Yogyakarta pada malam hari, khususnya menjelang Tahun Baru Jawa atau malam 1 Suro. Tradisi ini telah dilakukan secara turun-temurun dan masih diikuti oleh banyak masyarakat hingga saat ini. Bagi masyarakat Jawa, Mubeng Beteng bukan sekadar berjalan kaki, melainkan sarana untuk melakukan introspeksi diri dan merenungkan perjalanan hidup. Selama prosesi berlangsung, peserta biasanya berjalan dengan tenang tanpa banyak berbicara sebagai simbol pengendalian diri dan ketenangan batin. Tradisi ini mengajarkan pentingnya kesabaran, kedisiplinan, dan kemampuan memahami diri sendiri. Keunikannya terletak pada suasana yang hening dan khidmat, di mana ribuan orang berjalan bersama dalam ketenangan untuk menyambut lembaran kehidupan yang baru.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/upacara-adat-mubeng-beteng.mp3",
   narrator:
     "Mubeng Beteng adalah tradisi berjalan kaki mengelilingi benteng Keraton Yogyakarta pada malam 1 Suro. Dalam prosesi ini, peserta berjalan dengan hening tanpa banyak berbicara sebagai bentuk introspeksi diri dan pengendalian batin. Tradisi turun-temurun ini mengajarkan kesabaran, ketenangan, dan refleksi dalam menyambut tahun baru Jawa.",
   location: "Benteng Keraton Yogyakarta, D.I. Yogyakarta",
@@ -543,6 +486,7 @@ export const CULTURES = [
   description:
     "Batik Yogyakarta merupakan salah satu warisan budaya yang telah berkembang sejak masa Keraton Yogyakarta dan menjadi identitas penting masyarakat setempat. Kain batik dibuat melalui proses menggambar motif menggunakan malam atau lilin panas pada kain, kemudian diberi warna melalui beberapa tahapan yang membutuhkan ketelitian dan kesabaran. Bagi masyarakat Yogyakarta, batik bukan sekadar kain atau pakaian. Setiap motif memiliki makna dan pesan tersendiri yang mencerminkan nilai kehidupan, harapan, serta pandangan masyarakat Jawa. Beberapa motif bahkan dahulu hanya boleh digunakan oleh keluarga kerajaan sebagai simbol kedudukan dan kehormatan. Batik digunakan dalam berbagai acara adat, kegiatan resmi, hingga kehidupan sehari-hari. Keunikan Batik Yogyakarta terletak pada motifnya yang khas dengan dominasi warna-warna klasik seperti hitam, putih, dan cokelat sogan. Selain itu, setiap goresan pada kain mencerminkan kesabaran, ketelitian, dan kecintaan terhadap budaya yang diwariskan dari generasi ke generasi.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/kerajinan-batik-yogya.mp3",
   narrator:
     "Batik Yogyakarta merupakan warisan budaya yang telah berkembang sejak masa Keraton Yogyakarta. Bagi masyarakat Jawa, batik bukan sekadar kain, melainkan simbol nilai kehidupan, harapan, dan identitas budaya. Keunikan batik ini terletak pada motif khas dengan dominasi warna klasik seperti hitam, putih, dan cokelat sogan yang diwariskan secara turun-temurun.",
   location: "D.I. Yogyakarta",
@@ -568,25 +512,6 @@ export const CULTURES = [
   image: "/img/cultures/perak-kotagede.jpg",
   tags: ["Perak", "Kotagede", "Kerajinan Tradisional"],
 },
-
-{
-  id: "diy-wayang-kulit",
-  provinceId: "diy",
-  category: "Kerajinan",
-  title: "Wayang Kulit",
-  coordinates: [-7.805, 110.364],
-  isLandmark: false,
-  description:
-    "Wayang Kulit merupakan salah satu karya seni tradisional yang sangat melekat dengan budaya Jawa, termasuk Yogyakarta. Wayang dibuat dari kulit hewan yang diproses dan dipahat secara detail sehingga membentuk tokoh-tokoh pewayangan yang digunakan dalam pertunjukan wayang kulit. Bagi masyarakat Jawa, wayang bukan hanya hiburan, tetapi juga sarana untuk menyampaikan nilai moral, ajaran kehidupan, dan kisah-kisah yang penuh makna. Melalui tokoh-tokoh pewayangan, masyarakat diajarkan tentang kejujuran, keberanian, kesetiaan, dan kebijaksanaan dalam menghadapi berbagai persoalan hidup. Wayang Kulit digunakan dalam pertunjukan seni, upacara adat, dan berbagai kegiatan budaya. Keunikannya terletak pada detail pahatan yang rumit, bentuk tokoh yang khas, serta kemampuannya menjadi media pendidikan dan pelestarian budaya selama berabad-abad.",
-  youtubeId: "cyJ9fpoYh_M",
-  narrator:
-    "Wayang Kulit merupakan karya seni tradisional yang telah menjadi bagian penting dari budaya Jawa. Selain digunakan sebagai hiburan, wayang juga berfungsi sebagai media penyampaian nilai moral dan ajaran kehidupan. Keunikan Wayang Kulit terletak pada detail pahatan yang rumit serta kemampuannya menjadi sarana pendidikan dan pelestarian budaya selama berabad-abad.",
-  location: "D.I. Yogyakarta",
-  period: "Dilestarikan secara turun-temurun sejak masa kerajaan",
-  image: "/img/cultures/wayang-kulit.jpg",
-  tags: ["Wayang", "Pewayangan", "Budaya Jawa"],
-},
-
 {
   id: "diy-gerabah-kasongan",
   provinceId: "diy",
@@ -597,6 +522,7 @@ export const CULTURES = [
   description:
     "Gerabah Kasongan merupakan kerajinan tradisional yang berasal dari Desa Kasongan, Kabupaten Bantul, Yogyakarta. Kerajinan ini dibuat dari tanah liat yang dibentuk, dikeringkan, lalu dibakar hingga menjadi berbagai produk yang memiliki nilai guna dan nilai seni. Keberadaan Gerabah Kasongan menunjukkan bagaimana masyarakat mampu memanfaatkan sumber daya alam di sekitarnya menjadi karya yang bernilai ekonomi dan budaya. Tradisi ini juga mencerminkan kreativitas serta kemampuan masyarakat dalam beradaptasi dengan lingkungan tempat mereka tinggal. Produk gerabah yang dihasilkan sangat beragam, mulai dari vas bunga, guci, patung, hingga perlengkapan rumah tangga. Keunikan Gerabah Kasongan terletak pada bentuknya yang artistik, proses pembuatannya yang masih banyak dilakukan secara tradisional, serta kemampuannya berkembang menjadi salah satu ikon kerajinan Yogyakarta yang dikenal hingga mancanegara.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/kerajinan-gerabah-kasongan.mp3",
   narrator:
     "Gerabah Kasongan merupakan kerajinan tradisional khas Yogyakarta yang dibuat dari tanah liat. Melalui kreativitas dan keterampilan yang diwariskan secara turun-temurun, masyarakat Kasongan menghasilkan berbagai karya seni seperti guci, vas, dan patung. Keunikan gerabah ini terletak pada bentuknya yang artistik dan proses pembuatannya yang masih mempertahankan teknik tradisional.",
   location: "Desa Kasongan, Bantul, D.I. Yogyakarta",
@@ -616,6 +542,7 @@ export const CULTURES = [
     description:
       "Legenda Roro Jonggrang merupakan cerita rakyat populer dari Yogyakarta yang mengisahkan asal-usul Candi Sewu dan patung dewi di Candi Prambanan. Kisah ini menceritakan Bandung Bondowoso yang ingin menikahi putri Roro Jonggrang setelah menaklukkan Kerajaan Prambanan. Untuk menolaknya secara halus, Roro Jonggrang meminta syarat pembangunan seribu candi dan dua sumur dalam waktu semalam. Bandung Bondowoso hampir berhasil dibantu pasukan jin, namun digagalkan oleh taktik cerdik Roro Jonggrang yang membuat suasana seolah hari telah pagi. Murka karena dikelabui, Bandung Bondowoso akhirnya mengutuk Roro Jonggrang menjadi patung batu penggenap candi keseribu.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/cerita-rakyat-legenda-roro-jonggrang.mp3",
     narrator:
       "Pada zaman dahulu terdapat dua buah kerajaan sama besar yang saling bertetangga, kerajaan Prambanan dan kerajaan Pengging. Kerajaan Prambanan dipimpin oleh Raja Boko yang memiliki putri sangat cantik bernama Roro Jonggrang. Sedangkan kerajaan Pengging dipimpin oleh raja Pengging yang terkenal sangat haus kekuasaan. Suatu ketika, Raja Pengging memerintahkan ksatria perkasa bernama Bandung Bondowoso untuk menyerang kerajaan Prambanan. Bandung Bondowoso berhasil menaklukan kerajaan tersebut dan membunuh Raja Boko. Setelah itu, Bandung Bondowoso yang tertarik pada kecantikan Roro Jonggrang memintanya untuk menjadi istrinya. Roro Jonggrang yang membenci pembunuh ayahnya mengajukan syarat yang hampir mustahil: membangun seribu candi serta dua buah sumur hanya dalam waktu satu malam. Bandung Bondowoso menyanggupinya dan mengerahkan ribuan pasukan jin. Saat malam hampir berakhir dan pembangunan tersisa satu patung lagi, Roro Jonggrang cemas lalu menyuruh dayang-dayangnya membakar jerami serta memukul lesung agar para jin mengira hari telah pagi. Pasukan jin pun lari berhamburan. Mengetahui dirinya dikelabui, Bandung Bondowoso yang terlanjur marah mengutuk Roro Jonggrang menjadi patung batu untuk melengkapi candi keseribu.",
     location: "Sleman, D.I. Yogyakarta",
@@ -650,6 +577,7 @@ export const CULTURES = [
     description:
       "Legenda Ratu Kidul mengisahkan penguasa spiritual Laut Selatan Jawa yang memiliki hubungan erat dengan Keraton Yogyakarta. Cerita ini memiliki dua versi populer: kisah Ratna Suwida dari Pajajaran yang mengasingkan diri untuk bertapa di pantai selatan, serta kisah Dewi Kadita (Dewi Srengenge) yang dikutuk berpenyakit kulit oleh ibu tirinya lalu menceburkan diri ke Laut Selatan dan sembuh menjadi penguasa samudera. Mitos Ratu Kidul sangat dihormati oleh Keraton Yogyakarta melalui upacara adat Labuhan dan tarian Bedhaya Semang.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/cerita-rakyat-legenda-ratu-kidul.mp3",
     narrator:
       "Legenda Kanjeng Ratu Kidul atau Ratu Pantai Selatan memiliki beberapa versi cerita rakyat yang sangat populer. Versi pertama menceritakan tentang Ratna Suwida, seorang bibi dari pangeran Joko Suruh dari Pajajaran, yang mengasingkan diri untuk bertapa di bukit pantai selatan Jawa dan menjadi penguasa spiritual di sana. Ia berjanji akan membantu dan menikahi para keturunan pangeran yang berkuasa di dekat Gunung Merapi. Versi kedua mengisahkan tentang Dewi Kadita atau Dewi Srengenge, putri cantik Raja Munding Wangi dari Pajajaran. Karena sirik, ibu tirinya Dewi Mutiara menyuruh dukun mengutuk Kadita sehingga tubuhnya dipenuhi bisul busuk. Diusir dari istana, Kadita berjalan hingga ke Samudera Selatan. Saat menceburkan diri ke dalam air laut yang jernih, penyakitnya lenyap secara ajaib dan ia dinobatkan menjadi penguasa spiritual Laut Selatan. Dalam sejarah Keraton Yogyakarta, hubungan spiritual dengan Ratu Kidul diaktualisasikan melalui upacara Labuhan di Pantai Parangtritis serta pementasan tarian sakral Bedhaya untuk menghormati sang Ratu.",
     location: "Pantai Parangtritis, D.I. Yogyakarta",
@@ -693,24 +621,7 @@ export const CULTURES = [
   },
 
   // Senjata
-  {
-    id: "diy-keris",
-    provinceId: "diy",
-    category: "Senjata",
-    title: "Keris Yogyakarta",
-    coordinates: [-7.805, 110.364],
-    isLandmark: true,
-    description:
-      "Keris merupakan senjata tradisional Jawa berbilah ramping dengan bentuk lurus atau berlekuk yang dibuat melalui proses tempa bersuhu tinggi. Bagi masyarakat Yogyakarta, keris melambangkan kehormatan, kebijaksanaan, keberanian, dan tanggung jawab. Setiap keris memiliki corak pamor unik yang terbentuk secara alami saat penempaan logam, mencerminkan karakter serta harapan sang pemilik.",
-    youtubeId: "cyJ9fpoYh_M",
-    narrator:
-      "Keris merupakan senjata tradisional yang sangat melekat dengan budaya Jawa, termasuk Daerah Istimewa Yogyakarta. Senjata ini memiliki bilah yang ramping dengan bentuk lurus atau berlekuk, serta dibuat melalui proses tempa yang membutuhkan ketelitian dan keahlian tinggi. Di Yogyakarta, keris tidak hanya dikenal sebagai senjata, tetapi juga sebagai pusaka yang diwariskan dari generasi ke generasi. Bagi masyarakat Yogyakarta, keris melambangkan kehormatan, kebijaksanaan, keberanian, dan tanggung jawab. Setiap keris memiliki bentuk, motif, dan pamor yang berbeda, yang dipercaya mencerminkan harapan serta karakter pemiliknya. Nilai tersebut menunjukkan bahwa kekuatan sejati tidak hanya berasal dari senjata, tetapi juga dari kebijaksanaan dalam menggunakannya. Keris digunakan dalam berbagai upacara adat, prosesi pernikahan, hingga acara resmi Keraton Yogyakarta sebagai bagian dari busana adat. Keunikannya terletak pada motif pamor yang terbentuk secara alami saat proses penempaan, sehingga setiap keris memiliki corak yang berbeda dan tidak ada yang benar-benar sama.",
-    location: "Keraton Yogyakarta, D.I. Yogyakarta",
-    period: "Masa Mataram Islam hingga sekarang",
-    image: "/img/cultures/keris-yogyakarta.jpg",
-    tags: ["Senjata", "Pusaka", "Filosofis"],
-  },
-  {
+{
     id: "diy-tombak-kyai-plered",
     provinceId: "diy",
     category: "Senjata",
@@ -720,6 +631,7 @@ export const CULTURES = [
     description:
       "Tombak Kyai Plered merupakan salah satu senjata pusaka paling penting dan sakral milik Keraton Yogyakarta. Lebih dari sekadar senjata perang, tombak ini menjadi lambang kewibawaan, kepemimpinan, dan tanggung jawab pemimpin dalam melindungi rakyat. Dalam tradisi Kesultanan, pusaka ini melambangkan keberanian dan kebijaksanaan dalam memegang amanah.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/senjata-tombak-kyai-plered.mp3",
     narrator:
       "Tombak Kyai Plered merupakan salah satu pusaka penting yang dimiliki oleh Keraton Yogyakarta. Tombak ini tidak hanya dipandang sebagai senjata, tetapi juga sebagai simbol kewibawaan, kepemimpinan, dan tanggung jawab seorang pemimpin dalam melindungi rakyatnya. Dalam tradisi Keraton, pusaka seperti Tombak Kyai Plered memiliki makna yang mendalam karena menjadi bagian dari warisan sejarah Kesultanan Yogyakarta. Keberadaannya mengingatkan masyarakat akan pentingnya menjaga nilai keberanian, kebijaksanaan, dan rasa tanggung jawab dalam menjalankan amanah. Saat ini, Tombak Kyai Plered lebih sering ditampilkan dalam prosesi adat dan kirab budaya Keraton daripada digunakan sebagai senjata. Keunikannya terletak pada statusnya sebagai pusaka kerajaan yang memiliki nilai sejarah tinggi dan tetap dijaga sebagai bagian dari identitas budaya Yogyakarta.",
     location: "Keraton Yogyakarta, D.I. Yogyakarta",
@@ -790,6 +702,7 @@ export const CULTURES = [
     description:
       "Bangsal Kencono merupakan bangunan utama megah di Keraton Yogyakarta yang berfungsi untuk menyelenggarakan upacara adat dan menerima tamu kehormatan Kesultanan. Arsitekturnya yang berornamen emas melambangkan kewibawaan, kepemimpinan bijaksana, serta keagungan budaya Jawa.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/rumah-adat-bangsal-kencono.mp3",
     narrator:
       "Bangsal Kencono merupakan bangunan utama yang berada di lingkungan Keraton Yogyakarta. Berbeda dengan rumah tinggal biasa, bangunan ini berfungsi sebagai tempat penyelenggaraan upacara adat, penerimaan tamu kehormatan, dan berbagai kegiatan resmi Kesultanan Yogyakarta. Bangunan ini mencerminkan kewibawaan, kehormatan, dan kebesaran budaya Keraton. Setiap bagian arsitekturnya dirancang dengan penuh ketelitian sebagai simbol kepemimpinan yang bijaksana serta penghormatan terhadap adat istiadat yang telah diwariskan selama berabad-abad. Bangsal Kencono dikenal dengan arsitekturnya yang megah, dihiasi ukiran kayu berlapis warna emas dan ornamen khas Jawa yang bernilai seni tinggi. Keunikannya tidak hanya terletak pada keindahan bangunannya, tetapi juga pada fungsinya sebagai pusat berbagai kegiatan budaya dan simbol kejayaan Kesultanan Yogyakarta.",
     location: "Keraton Yogyakarta, D.I. Yogyakarta",
@@ -807,6 +720,7 @@ export const CULTURES = [
     description:
       "Rumah Limasan adalah rumah tradisional Jawa beratap limas yang kokoh dan sangat adaptif terhadap iklim tropis. Desain atapnya yang bercabang empat melambangkan kesederhanaan, keseimbangan, serta kebersamaan erat antar anggota keluarga dalam menjalani kehidupan yang harmonis.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/rumah-adat-limasan.mp3",
     narrator:
       "Rumah Limasan merupakan salah satu rumah tradisional yang banyak dijumpai di Yogyakarta dan berbagai wilayah Jawa. Rumah ini memiliki bentuk atap yang sederhana namun kokoh, sehingga sesuai dengan kondisi iklim tropis di Indonesia. Rumah Limasan mencerminkan kehidupan masyarakat Jawa yang mengutamakan kesederhanaan, keseimbangan, dan kebersamaan. Tata ruangnya dibuat agar setiap anggota keluarga dapat berinteraksi dengan nyaman, sekaligus menunjukkan pentingnya menjaga hubungan yang harmonis dalam kehidupan sehari-hari. Selain digunakan sebagai tempat tinggal, Rumah Limasan juga sering menjadi tempat berkumpul keluarga dan melaksanakan kegiatan masyarakat. Keunikannya terletak pada konstruksi atap yang kuat, sirkulasi udara yang baik, serta desain yang mampu memberikan kenyamanan bagi penghuninya.",
     location: "Yogyakarta, D.I. Yogyakarta",
@@ -833,22 +747,7 @@ export const CULTURES = [
   },
 
   // Wayang
-  {
-    id: "diy-wayang-kulit",
-    provinceId: "diy",
-    category: "Wayang",
-    title: "Wayang Kulit",
-    description:
-      "Seni pertunjukan boneka bayangan dari kulit kerbau yang dimainkan oleh seorang Dalang. Cerita yang dibawakan umumnya bersumber dari epos Mahabharata dan Ramayana, disesuaikan dengan nilai-nilai kearifan lokal Jawa. Pertunjukan wayang kulit bisa berlangsung semalam suntuk, mulai senja hingga fajar.",
-    youtubeId: "cyJ9fpoYh_M",
-    narrator:
-      "Di balik layar putih yang disinari lampu blencong, sang Dalang menghidupkan ratusan tokoh sekaligus. Wayang kulit bukan sekadar hiburan — ia adalah media dakwah, pendidikan moral, dan ritual spiritual yang menyatu dalam satu malam penuh magis.",
-    location: "D.I. Yogyakarta",
-    period: "Sejak abad ke-10 Masehi",
-    image: "/img/cultures/wayang-kulit.jpg",
-    tags: ["UNESCO", "Dalang", "Epos"],
-  },
-  {
+{
     id: "diy-ketoprak",
     provinceId: "diy",
     category: "Wayang",
@@ -875,6 +774,7 @@ export const CULTURES = [
     description:
       "Benteng Vredeburg merupakan benteng kolonial Belanda bergaya Eropa abad ke-18 yang terletak tepat di depan Keraton Yogyakarta. Dahulu difungsikan sebagai markas militer Belanda untuk mengawasi aktivitas Kesultanan, benteng bersejarah ini kini dilestarikan sebagai museum perjuangan nasional.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/bangunan-bersejarah-benteng-vredeburg.mp3",
     narrator:
       "Benteng Vredeburg merupakan salah satu bangunan bersejarah yang berada di pusat Kota Yogyakarta, tepat di depan kawasan Keraton Yogyakarta. Benteng ini dibangun pada masa pemerintahan kolonial Belanda pada abad ke-18 dan awalnya berfungsi sebagai benteng pertahanan sekaligus pusat pengawasan terhadap aktivitas Keraton Yogyakarta. Seiring perjalanan waktu, Benteng Vredeburg menjadi saksi berbagai peristiwa penting dalam sejarah Indonesia, mulai dari masa kolonial, perjuangan kemerdekaan, hingga perkembangan Yogyakarta sebagai salah satu pusat budaya dan pendidikan. Keberadaan benteng ini mengingatkan masyarakat akan pentingnya menghargai perjuangan para pahlawan serta menjaga persatuan dalam menghadapi berbagai tantangan. Saat ini, Benteng Vredeburg berfungsi sebagai museum yang menyimpan diorama, koleksi sejarah, dan berbagai informasi mengenai perjalanan bangsa Indonesia. Keunikannya terletak pada arsitektur bergaya Eropa yang masih terawat dengan baik, serta kemampuannya menggabungkan nilai sejarah, pendidikan, dan pariwisata dalam satu kawasan.",
     location: "Kota Yogyakarta, D.I. Yogyakarta",
@@ -926,6 +826,7 @@ export const CULTURES = [
     description:
       "Tugu Yogyakarta (Tugu Golong Gilig) merupakan monumen ikonik kota yang dibangun oleh Sri Sultan Hamengku Buwono I. Menjadi poros filosofis penting antara Gunung Merapi, Keraton, dan Laut Selatan, tugu ini melambangkan semangat persatuan raja, rakyat, dan Sang Pencipta.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/diy/bangunan-bersejarah-tugu-yogya.mp3",
     narrator:
       "Tugu Yogyakarta merupakan salah satu ikon paling terkenal di Daerah Istimewa Yogyakarta. Tugu ini pertama kali dibangun pada masa Sri Sultan Hamengku Buwono I sebagai simbol persatuan antara raja, rakyat, dan Sang Pencipta. Bagi masyarakat Yogyakarta, Tugu Yogyakarta memiliki makna yang lebih dari sekadar monumen. Tugu ini melambangkan semangat persatuan, keseimbangan hidup, dan hubungan yang harmonis antara manusia dengan Tuhan serta alam sekitarnya. Filosofi tersebut menjadi bagian penting dari budaya masyarakat Jawa yang menjunjung tinggi keharmonisan dalam kehidupan. Hingga kini, Tugu Yogyakarta menjadi simbol kota sekaligus salah satu tujuan wisata yang paling banyak dikunjungi. Keunikannya terletak pada nilai filosofis yang melekat pada keberadaannya, posisinya yang berada di garis imajiner antara Gunung Merapi, Keraton Yogyakarta, dan Laut Selatan, serta perannya sebagai ikon budaya yang dikenal hingga mancanegara.",
     location: "Kota Yogyakarta, D.I. Yogyakarta",
@@ -946,6 +847,7 @@ export const CULTURES = [
     description:
       "Batik Solo merupakan salah satu warisan budaya paling penting dari Kota Surakarta yang telah berkembang sejak masa Kerajaan Mataram Islam, khususnya setelah berdirinya Keraton Surakarta Hadiningrat pada tahun 1745. Dikenal dengan warna sogan klasik perpaduan cokelat, hitam, dan krem, Batik Solo melambangkan kesederhanaan, ketenangan, serta kebijaksanaan.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Batik Solo merupakan salah satu warisan budaya paling penting dari Kota Surakarta dan telah berkembang sejak masa Kerajaan Mataram Islam. Tradisi membatik di Solo mulai berkembang pesat setelah berdirinya Keraton Surakarta Hadiningrat pada tahun 1745. Pada masa itu, kegiatan membatik awalnya hanya dilakukan oleh keluarga kerajaan dan para abdi dalem keraton. Motif-motif tertentu seperti Parang, Sidomukti, Truntum, dan Sawat bahkan hanya boleh dikenakan oleh kalangan bangsawan karena dianggap memiliki nilai filosofis dan simbol status sosial. Seiring berjalannya waktu, keterampilan membatik mulai menyebar ke masyarakat umum, terutama di Kampung Laweyan dan Kampung Kauman. Ciri khas Batik Solo terletak pada penggunaan warna sogan, yaitu perpaduan warna cokelat, hitam, putih, dan krem yang mencerminkan sifat sederhana, tenang, serta penuh kebijaksanaan sesuai filosofi masyarakat Jawa.",
     location: "Kampung Laweyan, Surakarta, Jawa Tengah",
@@ -980,6 +882,7 @@ export const CULTURES = [
     description:
       "Keris Surakarta merupakan mahakarya seni tempa logam oleh seorang empu yang memadukan berbagai logam membentuk pamor unik. Keris ini melambangkan kepemimpinan, identitas budaya, serta status sosial.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Keris Surakarta merupakan salah satu mahakarya budaya Jawa yang memiliki nilai sejarah, seni, dan spiritual yang sangat tinggi. Tradisi pembuatan keris di wilayah Surakarta diperkirakan telah berkembang sejak masa Kerajaan Mataram Islam dan terus dilestarikan oleh Keraton Surakarta hingga sekarang. Pembuatan keris dilakukan oleh seorang empu, yaitu ahli pembuat keris yang tidak hanya menguasai teknik penempaan logam, tetapi juga memahami filosofi dan tradisi spiritual Jawa. Sebuah keris dibuat melalui proses panjang dengan memadukan berbagai jenis logam sehingga menghasilkan motif khas yang disebut pamor. Dalam budaya Jawa, keris bukan hanya berfungsi sebagai senjata, tetapi juga sebagai pusaka, simbol status sosial, lambang kepemimpinan, dan identitas budaya.",
     location: "Surakarta, Jawa Tengah",
@@ -1033,6 +936,7 @@ export const CULTURES = [
     description:
       "Legenda Kyai Slamet berkisah tentang kerbau albino keramat keturunan pusaka Keraton Surakarta yang diarak setiap Malam 1 Suro dalam Kirab Pusaka sebagai simbol keselamatan dan keberkahan bagi masyarakat.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Legenda Kyai Slamet merupakan salah satu tradisi paling terkenal di Surakarta. Kyai Slamet adalah sebutan bagi kerbau albino keturunan kerbau pusaka Keraton Surakarta yang dipercaya memiliki kekuatan spiritual dan mampu membawa keselamatan bagi masyarakat. Menurut kepercayaan masyarakat, kerbau tersebut merupakan hewan kesayangan Susuhunan Pakubuwono yang kemudian dianggap sebagai hewan keramat. Setiap malam 1 Suro, yaitu pergantian Tahun Baru Jawa, keturunan Kyai Slamet selalu diikutsertakan dalam Kirab Pusaka Keraton Surakarta. Tradisi ini selalu menarik ribuan masyarakat yang datang untuk mengikuti kirab. Banyak warga percaya bahwa berjalan di belakang iring-iringan Kyai Slamet dapat membawa keberuntungan dan keselamatan.",
     location: "Keraton Surakarta Hadiningrat, Jawa Tengah",
@@ -1050,6 +954,7 @@ export const CULTURES = [
     description:
       "Legenda Joko Tingkir berkisah tentang Mas Karebet (Joko Tingkir), pendiri Kesultanan Pajang, yang berhasil menaklukkan buaya-buaya ganas di Sungai Bengawan Solo dalam perjalanannya mengabdi ke Demak.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Joko Tingkir atau Mas Karebet merupakan tokoh legendaris yang sangat dikenal oleh masyarakat Solo dan sekitarnya. Ia merupakan pendiri Kesultanan Pajang yang menjadi cikal bakal lahirnya kerajaan-kerajaan besar di Jawa. Salah satu kisah paling terkenal adalah ketika Joko Tingkir berhasil menaklukakkan buaya-buaya ganas di Sungai Bengawan Solo. Dalam cerita rakyat, Joko Tingkir harus menyeberangi sungai untuk memenuhi tugas dari Kesultanan Demak. Berkat kesaktian dan keberaniannya, ia berhasil melewati berbagai rintangan, menaklukkan kawanan buaya, dan akhirnya memperoleh kepercayaan Sultan Demak. Kisah ini terus diwariskan secara turun-temurun oleh masyarakat sebagai simbol keberanian, kepemimpinan, dan perjuangan dalam menghadapi tantangan hidup.",
     location: "Sungai Bengawan Solo, Surakarta, Jawa Tengah",
@@ -1103,6 +1008,7 @@ export const CULTURES = [
     description:
       "Tombak Pusaka Keraton merupakan senjata tradisional sakral seperti Kyai Plered dan Kyai Baru Klinting yang melambangkan kekuasaan, kewibawaan, dan legitimasi kepemimpinan raja Surakarta.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Tombak Pusaka Keraton merupakan salah satu senjata tradisional yang memiliki kedudukan penting dalam budaya Keraton Surakarta. Sejak masa Kerajaan Mataram Islam, tombak tidak hanya digunakan sebagai perlengkapan perang, tetapi juga menjadi lambang kekuasaan, kewibawaan, dan legitimasi seorang raja. Berbagai tombak pusaka hingga kini masih tersimpan dengan baik di Keraton Surakarta dan dianggap sebagai benda sakral yang memiliki nilai sejarah tinggi. Setiap tombak pusaka biasanya memiliki nama khusus, seperti Kyai Plered atau Kyai Baru Klinting. Pada masa lalu, tombak digunakan oleh prajurit kerajaan ketika menjaga keamanan keraton maupun saat menghadapi peperangan, namun kini lebih banyak ditampilkan dalam prosesi kirab pusaka keraton.",
     location: "Keraton Surakarta Hadiningrat, Jawa Tengah",
@@ -1137,6 +1043,7 @@ export const CULTURES = [
     description:
       "Pedang Keraton Jawa merupakan perlengkapan perang prajurit Kasunanan Surakarta pada masa lalu yang kini digunakan sebagai atribut upacara seremonial dan kirab adat prajurit keraton.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Pedang Keraton Jawa merupakan salah satu perlengkapan militer yang pernah digunakan oleh prajurit Kasunanan Surakarta pada masa lalu. Pedang ini umumnya digunakan oleh pasukan kerajaan sebagai senjata tempur ketika menjaga keamanan wilayah maupun saat menghadapi konflik bersenjata. Pedang menjadi salah satu perlengkapan utama yang digunakan oleh pasukan pengawal keraton maupun pasukan khusus kerajaan. Seiring berakhirnya masa peperangan tradisional, fungsi pedang mulai berubah menjadi bagian dari atribut seremonial. Hingga kini, pedang masih sering digunakan oleh prajurit Keraton Surakarta dalam berbagai prosesi adat, kirab budaya, serta upacara resmi kerajaan.",
     location: "Keraton Surakarta Hadiningrat, Jawa Tengah",
@@ -1156,6 +1063,7 @@ export const CULTURES = [
     description:
       "Rumah Joglo merupakan arsitektur hunian utama bangsawan Jawa beratap tinggi yang ditopang soko guru (empat tiang utama) sebagai simbol keseimbangan hidup manusia, sesama, alam, dan Pencipta.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Rumah Joglo merupakan rumah adat utama masyarakat Jawa yang berkembang pesat di wilayah Surakarta dan sekitarnya. Arsitektur Joglo telah dikenal sejak masa Kerajaan Mataram dan kemudian mengalami perkembangan yang signifikan di lingkungan Keraton Surakarta. Pada masa lalu, rumah Joglo umumnya hanya dimiliki oleh kalangan bangsawan, pejabat kerajaan, dan keluarga priyayi karena proses pembangunannya memerlukan biaya yang besar serta keterampilan khusus. Ciri utama rumah Joglo terletak pada bentuk atapnya yang menjulang tinggi dan ditopang oleh empat tiang utama yang disebut soko guru. Keempat tiang tersebut memiliki makna filosofis yang mendalam, yaitu melambangkan hubungan harmonis antara manusia dengan Tuhan, sesama manusia, alam, dan dirinya sendiri.",
     location: "Surakarta, Jawa Tengah",
@@ -1207,6 +1115,7 @@ export const CULTURES = [
     description:
       "Pendopo Ageng merupakan bangunan utama tanpa dinding di Keraton Surakarta yang melambangkan keterbukaan raja dengan rakyatnya, menjadi pusat upacara adat dan pelestarian gamelan serta tarian.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Pendopo Ageng merupakan bangunan utama yang berada di kompleks Keraton Surakarta Hadiningrat dan menjadi salah satu ikon arsitektur tradisional Kota Solo. Bangunan ini berfungsi sebagai pusat penyelenggaraan berbagai kegiatan kerajaan, mulai dari upacara adat, penerimaan tamu kehormatan, pertunjukan seni, hingga kegiatan kenegaraan pada masa Kasunanan Surakarta. Pendopo Ageng dibangun dengan konsep arsitektur Joglo yang megah dan terbuka tanpa dinding di bagian samping. Desain terbuka tersebut mencerminkan filosofi masyarakat Jawa yang menjunjung tinggi keterbukaan, kebersamaan, dan hubungan harmonis antara pemimpin dengan rakyatnya. Bangunan ini juga menjadi pusat perkembangan seni tradisional Jawa, seperti gamelan, tari klasik, dan wayang kulit.",
     location: "Keraton Surakarta Hadiningrat, Jawa Tengah",
@@ -1226,6 +1135,8 @@ export const CULTURES = [
     description:
       "Tari Gambyong merupakan tarian klasik Surakarta yang berkembang dari tarian panen rakyat sebagai ungkapan syukur. Gerakannya yang lembut dan luwes menyimbolkan kesopanan, budi pekerti, dan keramahan.",
     youtubeId: "cyJ9fpoYh_M",
+
+    audio: "/music/jateng/Tarian - Tari Gambyong.mp3",
     narrator:
       "Tari Gambyong merupakan tarian tradisional yang berasal dari Kota Surakarta atau Solo. Awalnya, tarian ini berkembang dari tari rakyat yang dipentaskan sebagai ungkapan rasa syukur atas hasil panen. Seiring waktu, Tari Gambyong mengalami penyempurnaan di lingkungan Pura Mangkunegaran sehingga menjadi tarian klasik yang dikenal hingga saat ini. Kini, Tari Gambyong sering digunakan sebagai tari penyambutan tamu kehormatan maupun pertunjukan budaya. Gerakan Tari Gambyong yang lembut dan anggun mencerminkan keramahan, kesopanan, serta kelembutan budi yang menjadi ciri khas budaya masyarakat Jawa. Setiap gerakan tangan, kepala, dan langkah kaki dilakukan secara selaras dengan iringan gamelan, menggambarkan kehidupan yang harmonis dan penuh penghormatan kepada orang lain.",
     location: "Surakarta, Jawa Tengah",
@@ -1277,6 +1188,8 @@ export const CULTURES = [
     description:
       "Tari Bondan merupakan tarian tradisional asal Surakarta yang mengisahkan kasih sayang, ketulusan, dan kesabaran seorang ibu dalam mengasuh bayinya menggunakan properti kendi, boneka, dan payung.",
     youtubeId: "cyJ9fpoYh_M",
+
+    audio: "/music/jateng/Tarian - Tari Bondan.mp3",
     narrator:
       "Tari Bondan merupakan tarian tradisional yang berasal dari Surakarta dan menggambarkan kehidupan seorang ibu dalam merawat anaknya dengan penuh kasih sayang. Tarian ini biasanya dibawakan oleh seorang penari perempuan yang menampilkan berbagai gerakan lembut sambil membawa boneka sebagai simbol seorang bayi. Melalui Tari Bondan, masyarakat Jawa mengajarkan pentingnya kasih sayang, tanggung jawab, kesabaran, dan ketulusan dalam membesarkan anak. Tarian ini juga menunjukkan bahwa peran seorang ibu sangat dihargai sebagai sosok yang memberikan cinta, perhatian, dan pendidikan pertama bagi anak-anaknya. Keunikannya terletak pada penggunaan properti seperti boneka, payung, atau kendi.",
     location: "Surakarta, Jawa Tengah",
@@ -1330,6 +1243,7 @@ export const CULTURES = [
     description:
       "Siter merupakan alat musik petik kawat di atas resonator kayu yang dipetik menggunakan kuku ibu jari untuk menghadirkan alunan melodi lembut penenang jiwa dalam ensambel gamelan.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Siter merupakan alat musik petik tradisional yang memiliki bentuk menyerupai kotak kayu dengan sejumlah senar yang direntangkan di bagian atasnya. Alat musik ini dimainkan dengan cara dipetik menggunakan jari sehingga menghasilkan suara yang jernih dan menenangkan. Bagi masyarakat Solo, siter memberikan sentuhan halus yang memperkaya warna musik gamelan. Suaranya yang lembut mencerminkan ketenangan, kesederhanaan, dan kelembutan hati yang menjadi bagian dari filosofi hidup masyarakat Jawa. Kehadirannya menunjukkan bahwa keindahan dapat tercipta melalui perpaduan nada-nada yang sederhana namun selaras. Siter digunakan dalam pertunjukan gamelan, tembang Jawa, dan berbagai acara budaya.",
     location: "Surakarta, Jawa Tengah",
@@ -1347,6 +1261,7 @@ export const CULTURES = [
     description:
       "Gong Ageng adalah instrumen gamelan terbesar berlubang tengah yang dipukul lembut untuk menutup siklus melodi gending, menyimbolkan awal dan akhir kehidupan serta keseimbangan paripurna.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Gong Ageng merupakan instrumen terbesar dalam seperangkat gamelan Surakarta. Alat musik ini terbuat dari logam berbentuk bundar dengan tonjolan di bagian tengah dan dimainkan dengan cara dipukul menggunakan pemukul khusus yang dilapisi bahan lunak. Dalam budaya Jawa, Gong Ageng memiliki peran yang sangat penting karena menjadi penanda awal, akhir, atau pergantian bagian dalam sebuah komposisi gamelan. Kehadirannya melambangkan kebesaran, keseimbangan, dan kesempurnaan. Masyarakat Jawa memaknai bunyi gong sebagai pengingat bahwa setiap perjalanan hidup memiliki awal dan akhir yang harus menjalani lembaran baru dengan penuh kebijaksanaan.",
     location: "Surakarta, Jawa Tengah",
@@ -1366,6 +1281,7 @@ export const CULTURES = [
     description:
       "Beskap Solo merupakan jas pria resmi adat Jawa berkerah tegak tanpa lipatan kerah yang dipadukan dengan jarik, blangkon, dan keris, melambangkan kesopanan, wibawa, dan tata krama.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Beskap Solo merupakan pakaian adat resmi yang dikenakan oleh laki-laki dalam berbagai acara adat di Kota Surakarta. Pakaian ini memiliki potongan yang rapi dengan kerah tegak dan kancing yang tersusun secara khas di bagian depan. Beskap biasanya dipadukan dengan jarik batik, blangkon, serta keris sebagai pelengkap busana. Bagi masyarakat Solo, Beskap bukan sekadar pakaian adat, tetapi juga melambangkan kewibawaan, kesopanan, dan tanggung jawab. Cara mengenakannya mencerminkan etika masyarakat Jawa yang menjunjung tinggi tata krama dan penghormatan kepada orang lain. Nilai tersebut masih dijaga hingga kini dalam berbagai acara resmi maupun upacara adat.",
     location: "Surakarta, Jawa Tengah",
@@ -1383,6 +1299,7 @@ export const CULTURES = [
     description:
       "Kebaya Solo adalah kebaya anggun berpotongan longgar elegan yang melambangkan kelembutan, kesopanan budi pekerti, serta keanggunan sejati perempuan Jawa dalam bersikap sehari-hari.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Kebaya Solo merupakan pakaian tradisional perempuan yang dikenal karena tampilannya yang anggun, sederhana, dan elegan. Kebaya ini umumnya dipadukan dengan kain batik Solo, sanggul, serta berbagai aksesori tradisional yang mempercantik penampilan. Dalam budaya Solo, Kebaya melambangkan kelembutan, kesopanan, dan keanggunan perempuan Jawa. Selain memperlihatkan keindahan busana, kebaya juga mengajarkan bahwa kecantikan seseorang tercermin dari sikap, tutur kata, dan perilakunya. Nilai inilah yang menjadikan kebaya tetap dihormati sebagai salah satu simbol budaya Jawa.",
     location: "Surakarta, Jawa Tengah",
@@ -1436,6 +1353,7 @@ export const CULTURES = [
     description:
       "Sekaten merupakan perayaan tahunan memperingati Maulid Nabi Muhammad SAW dengan membunyikan gamelan pusaka Kyai Guntur Madu dan Kyai Guntur Sari di halaman Masjid Agung Surakarta.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Sekaten merupakan tradisi budaya yang telah berlangsung sejak masa Kesultanan Demak dan kemudian dilestarikan oleh Keraton Kasunanan Surakarta. Upacara ini diselenggarakan untuk memperingati kelahiran Nabi Muhammad SAW dan menjadi salah satu perayaan budaya terbesar di Kota Solo. Melalui Sekaten, masyarakat diajak untuk mengenang nilai-nilai keagamaan sekaligus mempererat hubungan antarsesama. Tradisi ini menunjukkan bahwa budaya dan agama dapat berjalan berdampingan dalam kehidupan masyarakat Jawa. Sekaten biasanya diawali dengan membunyikan gamelan pusaka Keraton di halaman Masjid Agung dan diakhiri dengan prosesi Grebeg Mulud.",
     location: "Keraton Surakarta Hadiningrat, Jawa Tengah",
@@ -1470,6 +1388,7 @@ export const CULTURES = [
     description:
       "Tingalan Jumenengan Dalem merupakan upacara adat memperingati penobatan Susuhunan Surakarta Hadiningrat yang diisi dengan pembacaan doa keselamatan, kirab, dan tari sakral Bedhaya.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Tingalan Jumenengan Dalem merupakan upacara adat Keraton Kasunanan Surakarta yang diselenggarakan setiap tahun untuk memperingati hari penobatan atau kenaikan takhta raja. Tradisi ini menjadi salah satu bentuk penghormatan terhadap sejarah Kesultanan Surakarta yang masih dilestarikan hingga sekarang. Upacara ini mencerminkan rasa hormat kepada para pemimpin serta pentingnya menjaga kesinambungan nilai-nilai budaya dan adat istiadat. Prosesi Tingalan Jumenengan Dalem diisi dengan berbagai kegiatan adat seperti kirab pusaka, pertunjukan seni tradisional tari Bedhaya Ketawang, dan doa bersama.",
     location: "Keraton Surakarta Hadiningrat, Jawa Tengah",
@@ -1506,6 +1425,7 @@ export const CULTURES = [
     description:
       "Keraton Surakarta Hadiningrat merupakan istana resmi Kasunanan Surakarta yang didirikan pada tahun 1745 oleh Susuhunan Pakubuwono II. Bangunan bersejarah ini menjadi saksi bisu transisi pemerintahan Mataram Islam dan pusat pelestarian kebudayaan Jawa hingga hari ini.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Keraton Surakarta Hadiningrat didirikan oleh Susuhunan Pakubuwono II pada tahun 1745 sebagai pengganti Keraton Kartasura yang hancur akibat peristiwa Geger Pecinan. Pemindahan istana ini diiringi prosesi arak-arakan besar-besaran yang membawa seluruh pusaka kerajaan ke Desa Sala. Arsitektur keraton memadukan gaya tradisional Jawa dengan sentuhan kolonial Eropa pada ornamen-ornamennya, yang dirancang oleh para arsitek keraton berkolaborasi dengan Belanda. Kompleks keraton terdiri dari berbagai pelataran seperti Alun-alun Lor, Sasana Sewaka, dan panggung Songgobuwono yang legendaris, sebuah menara tinggi yang dahulu digunakan untuk mengintai musuh sekaligus tempat bermeditasi bagi raja. Hingga kini, Keraton Surakarta tetap berfungsi sebagai kediaman keluarga kerajaan sekaligus pusat budaya utama di Kota Solo.",
     location: "Kota Surakarta, Jawa Tengah",
@@ -1523,6 +1443,7 @@ export const CULTURES = [
     description:
       "Pura Mangkunegaran adalah istana resmi Kadipaten Mangkunegaran yang didirikan pada tahun 1757 oleh Raden Mas Said (Pangeran Sambernyawa). Istana ini memiliki pendopo ageng tanpa tiang penyangga tengah terbesar di Indonesia.",
     youtubeId: "cyJ9fpoYh_M",
+
     narrator:
       "Pura Mangkunegaran didirikan setelah ditandatanganinya Perjanjian Salatiga pada tahun 1757, yang menetapkan Raden Mas Said atau Pangeran Sambernyawa sebagai KGPAA Mangkunegara I. Kompleks istana ini menghadap ke arah selatan dan memiliki daya tarik utama berupa Pendopo Ageng, sebuah balairung raksasa berbentuk joglo tanpa tiang tengah yang dibangun menggunakan kayu jati utuh dari hutan Kedu. Pura Mangkunegaran memadukan konsep arsitektur Jawa Klasik dengan gaya Art Nouveau Eropa, terlihat dari lampu gantung kristal dan pilar besi impor dari Eropa. Di dalam istana terdapat museum yang menyimpan koleksi perhiasan emas raja, senjata tradisional, gamelan pusaka Kyai Kanyut Mesem, serta koleksi naskah kuno berharga di perpustakaan reksa pustaka.",
     location: "Kota Surakarta, Jawa Tengah",
@@ -1577,8 +1498,9 @@ export const CULTURES = [
   description:
     "Tari Monong merupakan tarian tradisional masyarakat Dayak yang berasal dari Kalimantan Barat. Tarian ini dikenal sebagai bagian dari ritual pengobatan tradisional yang dilakukan oleh seorang Balian atau pemimpin adat untuk membantu proses penyembuhan seseorang yang sedang sakit. Tari Monong lahir dari kepercayaan masyarakat Dayak yang meyakini bahwa kesehatan tidak hanya berkaitan dengan kondisi fisik, tetapi juga keseimbangan antara manusia, alam, dan kekuatan spiritual. Oleh karena itu, tarian ini menjadi wujud doa, harapan, dan kepedulian masyarakat terhadap sesama. Pada masa kini, Tari Monong tidak hanya ditampilkan dalam ritual adat, tetapi juga dipentaskan dalam berbagai festival budaya dan pertunjukan seni sebagai bentuk pelestarian warisan budaya Dayak. Keunikan tarian ini terletak pada gerakannya yang khas, suasana sakral yang menyertainya, serta makna mendalam yang menggambarkan hubungan harmonis antara manusia dan alam.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Tarian - Tari Monong.mp3",
   narrator:
-    "Ketika seseorang jatuh sakit, seorang Balian akan memimpin ritual Tari Monong. Dengan iringan mantra dan gerakan penuh makna, sang Balian memohon pertolongan kepada leluhur agar keseimbangan hidup kembali pulih. Bagi masyarakat Dayak, Tari Monong bukan sekadar tarian, melainkan warisan spiritual yang menghubungkan manusia, alam, dan dunia leluhur.",
+    "Tari Monong merupakan salah satu tarian ritual yang sangat sakral bagi masyarakat Dayak di Kalimantan Barat. Tarian ini dimainkan ketika ada anggota suku yang jatuh sakit keras. Seorang Balian atau pemimpin adat akan memimpin ritual penyembuhan ini dengan melafalkan mantra-mantra kuno, diiringi oleh kepulan asap kemenyan dan ketukan alat musik tradisional yang mistis. Para penari bergerak dengan penuh penghayatan, menirukan gerakan menangkal roh-roh jahat yang dipercaya mengganggu kesehatan si sakit. Bagi masyarakat Dayak, penyakit tidak hanya menyerang fisik, melainkan menandakan adanya ketidakseimbangan spiritual dengan alam semesta. Melalui gerakan magis Tari Monong, sang Balian memohon kesembuhan kepada Sang Pencipta dan kekuatan leluhur agar keseimbangan hidup kembali pulih seperti sediakala.",
   location: "Kabupaten Landak, Kalimantan Barat",
   period: "Tradisi Dayak Kanayatn, diwariskan turun-temurun",
   image: "/img/cultures/tari-monong.jpg",
@@ -1595,7 +1517,7 @@ export const CULTURES = [
     "Tari Pingan merupakan salah satu tarian tradisional suku Dayak yang berasal dari Kalimantan Barat. Tarian ini biasanya dibawakan oleh perempuan dengan membawa piring atau properti tertentu sebagai bagian dari pertunjukan. Tari Pingan menggambarkan rasa syukur masyarakat Dayak atas kehidupan, hasil panen, dan keberkahan yang mereka terima. Gerakan-gerakannya yang lembut dan teratur mencerminkan keseimbangan, ketelitian, serta keharmonisan yang dijunjung tinggi dalam kehidupan sehari-hari. Tarian ini sering ditampilkan dalam acara adat, penyambutan tamu, perayaan budaya, dan festival daerah. Keunikan Tari Pingan terletak pada kemampuan penari menjaga keseimbangan saat menggunakan properti yang dibawa, dipadukan dengan gerakan yang anggun dan iringan musik tradisional yang khas.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Dengan langkah yang anggun, para penari Dayak menampilkan Tari Pingan sambil membawa piring sebagai simbol rasa syukur. Setiap gerakan menggambarkan keharmonisan hidup dan penghormatan atas hasil yang diberikan alam. Hingga kini, Tari Pingan terus dipentaskan sebagai warisan budaya yang mempererat hubungan antara manusia, alam, dan tradisi leluhur.",
+    "Tari Pingan merupakan tarian tradisional yang lahir sebagai ungkapan rasa syukur masyarakat Dayak di Kalimantan Barat atas berlimpahnya hasil panen dan keselamatan hidup yang mereka terima. Nama tarian ini diambil dari kata 'pingan' yang berarti piring dalam bahasa lokal. Dalam pertunjukannya, para penari perempuan yang anggun menari dengan lincah sambil membawa dua buah piring di telapak tangan mereka. Keunikan utama tari ini adalah kemampuan para penari untuk mengayunkan piring-piring tersebut dengan kecepatan tinggi tanpa terjatuh, sambil terkadang melakukan gerakan atraktif mengetukkan cincin ke piring sehingga menghasilkan bunyi yang ritmis dan merdu. Gerakan gemulai berpadu dengan ketangkasan ini melambangkan keanggunan, kerja keras, dan keharmonisan hidup masyarakat Dayak yang senantiasa bersyukur atas rahmat dari alam semesta.",
   location: "Kalimantan Barat",
   period: "Tradisi masyarakat Dayak",
   image: "/img/cultures/tari-pingan.jpg",
@@ -1611,8 +1533,9 @@ export const CULTURES = [
   description:
     "Tari Jonggan merupakan tarian tradisional masyarakat Dayak Kanayatn yang berasal dari Kalimantan Barat. Tarian ini dikenal sebagai salah satu bentuk hiburan rakyat yang telah diwariskan secara turun-temurun dan masih sering ditampilkan hingga saat ini. Tari Jonggan lahir dari kebiasaan masyarakat yang gemar berkumpul setelah menyelesaikan kegiatan adat, panen, maupun pekerjaan sehari-hari. Melalui tarian ini, masyarakat mempererat hubungan persaudaraan dan menciptakan suasana yang penuh kegembiraan. Tarian ini biasanya diiringi oleh musik tradisional dan melibatkan interaksi antara penari dengan masyarakat yang hadir. Keunikan Tari Jonggan terletak pada suasana yang akrab dan meriah, karena penonton sering kali diajak untuk ikut menari bersama sehingga menciptakan pengalaman yang menyenangkan dan penuh kebersamaan.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Tarian - Tari Jonggan.mp3",
   narrator:
-    "Setelah panen atau upacara adat selesai, masyarakat Dayak berkumpul untuk menari Jonggan. Diiringi musik tradisional, para penari mengajak siapa saja untuk ikut bergembira. Tarian ini bukan hanya hiburan, tetapi juga menjadi simbol persaudaraan, kebersamaan, dan kegembiraan yang telah diwariskan turun-temurun oleh masyarakat Dayak.",
+    "Tari Jonggan merupakan tarian pergaulan tradisional masyarakat Dayak Kanayatn di Kalimantan Barat yang sarat akan nilai kegembiraan dan kebersamaan. Biasanya, tarian ini dipentaskan setelah musim panen padi selesai atau saat menyambut tamu kehormatan sebagai sarana hiburan rakyat. Jonggan sendiri memiliki arti kebersamaan yang mendatangkan kebahagiaan. Pertunjukan diawali dengan penari perempuan yang bergerak gemulai mengundang para penonton, terutama kaum laki-laki, untuk ikut masuk ke tengah kalangan dan menari bersama. Suasana akrab segera tercipta seiring alunan musik tradisional yang riang dan dinamis. Tari Jonggan menjadi simbol kuatnya tali persaudaraan antarwarga, di mana segala sekat sosial melebur dalam senyuman, tawa, dan gerak tari bersama yang penuh rasa syukur.",
   location: "Kabupaten Landak dan sekitarnya, Kalimantan Barat",
   period: "Tradisi masyarakat Dayak Kanayatn",
   image: "/img/cultures/tari-jonggan.jpg",
@@ -1629,7 +1552,7 @@ export const CULTURES = [
     "Tari Zapin Tembung merupakan tarian tradisional masyarakat Melayu yang berkembang di Kalimantan Barat. Tarian ini mendapat pengaruh budaya Melayu dan Islam yang telah lama menjadi bagian dari kehidupan masyarakat setempat. Tari Zapin Tembung tidak hanya berfungsi sebagai hiburan, tetapi juga menjadi sarana untuk menyampaikan nilai-nilai kesopanan, keharmonisan, dan kebersamaan. Gerakan yang teratur dan selaras dengan irama musik menggambarkan pentingnya menjaga keseimbangan dalam kehidupan serta menjalin hubungan yang baik dengan sesama. Tarian ini sering ditampilkan dalam acara adat, perayaan budaya, penyambutan tamu, dan berbagai kegiatan masyarakat. Keunikan Tari Zapin Tembung terletak pada gerakan kaki yang cepat dan ritmis, dipadukan dengan iringan musik Melayu yang khas sehingga menghasilkan pertunjukan yang dinamis namun tetap elegan.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Alunan musik Melayu mulai terdengar, diikuti langkah kaki para penari yang bergerak cepat dan selaras. Tari Zapin Tembung lahir dari perpaduan budaya Melayu dan nilai-nilai Islam yang berkembang di Kalimantan Barat. Hingga kini, tarian ini terus dipentaskan sebagai simbol kesopanan, keharmonisan, dan kebersamaan masyarakat Melayu.",
+    "Tari Zapin Tembung merupakan salah satu seni tari klasik masyarakat Melayu di Kalimantan Barat yang menunjukkan kuatnya pengaruh akulturasi budaya Islam. Tarian ini dibawakan secara berpasangan dengan gerakan kaki yang sangat lincah, dinamis, dan ritmis, mengikuti ketukan rebana dan petikan gambus yang riang. Ciri khas tarian ini terletak pada penggunaan sebilah kayu pendek yang disebut 'tembung' sebagai properti tari, yang saling diketukkan oleh para penari untuk menciptakan bunyi ritmis tambahan. Setiap gerakan dalam Zapin Tembung tidak hanya mengutamakan keindahan visual, tetapi juga sarat akan pesan moral tentang kesopanan, menjaga kehormatan, dan kebersamaan dalam pergaulan sehari-hari. Tarian ini terus dilestarikan dalam berbagai upacara pernikahan dan festival budaya sebagai warisan kebanggaan kaum Melayu.",
   location: "Pontianak dan wilayah Melayu Kalimantan Barat",
   period: "Tradisi masyarakat Melayu Kalimantan Barat",
   image: "/img/cultures/tari-zapin-tembung.jpg",
@@ -1648,8 +1571,9 @@ export const CULTURES = [
   description:
     "Sape atau Sampek merupakan alat musik petik tradisional masyarakat Dayak di Kalimantan Barat. Alat musik ini dibuat dari sebatang kayu yang dipahat hingga membentuk badan dan leher alat musik, kemudian dipasangi beberapa senar. Bagi masyarakat Dayak, Sape tidak hanya berfungsi sebagai hiburan, tetapi juga menjadi sarana untuk mengekspresikan perasaan, menceritakan kehidupan, serta mengiringi berbagai kegiatan adat. Alunan nadanya yang lembut sering dikaitkan dengan kedamaian, keharmonisan, dan kedekatan manusia dengan alam. Sape dimainkan dalam upacara adat, penyambutan tamu, pertunjukan budaya, maupun sebagai hiburan sehari-hari. Keunikan alat musik ini terletak pada ukiran khas Dayak yang menghiasi tubuhnya serta suaranya yang menenangkan.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/alat-musik-sape.mp3",
   narrator:
-    "Di tengah hutan Borneo yang sunyi, jemari seorang pemain mulai memetik Sape. Perlahan, alunan merdunya mengalir seperti bisikan angin yang menyusuri pepohonan. Bagi masyarakat Dayak, setiap nada Sape bukan sekadar musik, melainkan cerita tentang alam, kehidupan, dan hubungan manusia dengan leluhur.",
+    "Sape atau Sampek adalah alat musik petik tradisional legendaris yang menjadi identitas spiritual masyarakat Dayak di Kalimantan Barat. Dibuat dari sebatang kayu pilihan yang dipahat dengan teliti membentuk tubuh ramping menyerupai perahu, Sape dihiasi dengan ukiran khas Dayak yang sangat artistik. Ketika senar Sape dipetik, ia menghasilkan alunan nada yang sangat lembut, meditatif, dan menenangkan jiwa, menyerupai suara gemercik air dan desau angin di tengah hutan belantara Borneo. Dahulu, Sape dimainkan sebagai sarana komunikasi dengan leluhur dan pengiring ritual penyembuhan. Kini, alunan Sape tetap berkumandang indah mengiringi tarian adat, penyambutan tamu, maupun sebagai sarana mengekspresikan kedamaian serta keharmonisan hidup berdampingan dengan alam.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak, ratusan tahun silam",
   image: "/img/cultures/sape.jpg",
@@ -1667,7 +1591,7 @@ export const CULTURES = [
     "Tuma' merupakan alat musik tradisional masyarakat Dayak yang dimainkan dengan cara dipukul. Alat musik ini umumnya dibuat dari kayu dan digunakan sebagai pengiring dalam berbagai kegiatan adat maupun pertunjukan seni tradisional. Dalam budaya Dayak, Tuma' memiliki peran penting sebagai pengatur irama sekaligus penanda dalam berbagai kegiatan masyarakat. Bunyi yang dihasilkan membantu menciptakan suasana yang hidup dan penuh semangat ketika dimainkan bersama alat musik tradisional lainnya. Tuma' sering digunakan dalam upacara adat, tarian tradisional, dan festival budaya. Keunikan alat musik ini terletak pada fungsinya sebagai penjaga ritme yang membuat pertunjukan menjadi lebih harmonis dan teratur.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Dentingan Tuma' terdengar berpadu dengan irama alat musik lainnya, menghidupkan suasana upacara adat Dayak. Setiap pukulannya menjadi penanda kebersamaan, mengiringi langkah para penari dan menyatukan seluruh masyarakat dalam satu irama budaya.",
+    "Tuma' merupakan alat musik membranofon tradisional sejenis gendang panjang yang dimainkan dengan cara ditabuh oleh masyarakat Dayak di Kalimantan Barat. Alat musik ini terbuat dari batang kayu bulat yang dilubangi bagian tengahnya, dengan satu ujung ditutup oleh kulit binatang seperti kulit lembu atau kambing yang dikencangkan menggunakan jalinan rotan. Suara Tuma' yang berat dan berdentum kuat berfungsi sebagai pengatur tempo dan penjaga ritme dalam ansambel musik tradisional Dayak. Ketika dimainkan bersama alat musik lain seperti kolintang dan gong, ketukan Tuma' memberikan nyawa pada pertunjukan adat, membakar semangat para penari, serta menyatukan seluruh masyarakat dalam satu detak kebersamaan yang harmonis saat upacara adat berlangsung.",
   location: "Kalimantan Barat",
   period: "Tradisi masyarakat Dayak",
   image: "/img/cultures/tuma.jpg",
@@ -1684,8 +1608,9 @@ export const CULTURES = [
   description:
     "Gong merupakan alat musik pukul tradisional yang banyak digunakan oleh masyarakat Dayak dan Melayu di Kalimantan Barat. Alat musik ini terbuat dari logam berbentuk bundar dengan tonjolan di bagian tengah yang menghasilkan suara nyaring dan bergema ketika dipukul. Dalam kehidupan masyarakat, gong tidak hanya berfungsi sebagai alat musik, tetapi juga menjadi sarana komunikasi untuk menandai dimulainya upacara adat, mengumpulkan masyarakat, atau mengiringi berbagai pertunjukan seni. Gong biasanya dimainkan bersama alat musik tradisional lainnya dalam berbagai acara adat dan festival budaya. Keunikan gong terletak pada suaranya yang kuat dan bergema sehingga mampu menciptakan suasana yang khidmat maupun meriah.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/alat-musik-gong-dayak.mp3",
   narrator:
-    "Suara gong menggema memecah keheningan, menandakan dimulainya sebuah upacara adat. Getarannya menyebar ke seluruh penjuru kampung, memanggil masyarakat untuk berkumpul dan merayakan tradisi yang telah diwariskan turun-temurun.",
+    "Gong memegang peranan yang teramat penting dalam kehidupan sosial dan spiritual masyarakat adat di Kalimantan Barat, baik suku Dayak maupun Melayu. Terbuat dari tembaga atau kuningan berbentuk bundar dengan pencu di bagian tengahnya, Gong menghasilkan suara yang nyaring, dalam, dan bergema jauh ketika dipukul dengan pemukul kayu berlapis kain. Lebih dari sekadar alat musik, Gong di masa lalu berfungsi sebagai alat komunikasi massa untuk memanggil warga berkumpul, menandai keadaan darurat, serta menjadi lambang status sosial sebuah keluarga. Dalam ritual adat dan festival budaya saat ini, dentuman Gong yang megah senantiasa menjadi penanda agung dimulainya prosesi sakral, menyebarkan getaran kedamaian dan kebersamaan ke seluruh penjuru kampung.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak dan Melayu",
   image: "/img/cultures/gong.jpg",
@@ -1703,7 +1628,7 @@ export const CULTURES = [
     "Kangkuang merupakan alat musik tradisional Kalimantan Barat yang terbuat dari bambu dan dimainkan dengan cara dipukul. Alat musik ini menghasilkan bunyi ritmis yang khas dan sering digunakan sebagai pengiring dalam berbagai pertunjukan seni tradisional. Penggunaan bambu sebagai bahan utama menunjukkan bagaimana masyarakat memanfaatkan sumber daya alam di sekitar mereka untuk menciptakan karya budaya yang bernilai. Kangkuang biasanya dimainkan dalam acara adat, pertunjukan seni, dan festival budaya daerah. Keunikan alat musik ini terletak pada suara khas yang dihasilkan dari bambu serta bentuknya yang sederhana namun mampu menghasilkan irama yang menarik ketika dimainkan secara bersama-sama.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Dari bilah-bilah bambu sederhana, Kangkuang menghasilkan irama yang khas dan penuh semangat. Suaranya menggambarkan kedekatan masyarakat Kalimantan Barat dengan alam, sekaligus menjadi pengiring yang menghidupkan berbagai pertunjukan budaya.",
+    "Kangkuang adalah alat musik perkusi tradisional yang sangat unik dari Kalimantan Barat, terbuat dari bilah-bilah bambu pilihan yang dipasang pada wadah resonator kayu sederhana. Alat musik ini dimainkan dengan cara dipukul menggunakan sepasang kayu pemukul khusus untuk menghasilkan bunyi ritmis yang khas dan berkarakter alami. Pemanfaatan bambu sebagai bahan utama Kangkuang mencerminkan kearifan lokal masyarakat dalam memanfaatkan kekayaan alam di sekitarnya tanpa merusak lingkungan. Biasanya dimainkan dalam suasana santai setelah bekerja di ladang atau sebagai pengiring tarian rakyat, ketukan ritmis Kangkuang yang ceria menghadirkan rasa tenang sekaligus kegembiraan komunal yang menyatukan hati warga desa.",
   location: "Kalimantan Barat",
   period: "Tradisi masyarakat Kalimantan Barat",
   image: "/img/cultures/kangkuang.jpg",
@@ -1721,8 +1646,9 @@ export const CULTURES = [
   description:
     "Sumpit merupakan senjata tradisional masyarakat Dayak yang digunakan untuk berburu di hutan. Senjata ini berupa tabung panjang yang terbuat dari kayu pilihan dan digunakan untuk melontarkan anak sumpit dengan cara ditiup. Bagi masyarakat Dayak, sumpit mencerminkan kecerdikan, ketelitian, serta kemampuan bertahan hidup yang diwariskan secara turun-temurun. Pada masa lalu, sumpit banyak digunakan untuk berburu karena dapat digunakan tanpa menimbulkan suara keras. Saat ini, sumpit lebih sering ditampilkan dalam festival budaya dan berbagai kegiatan pelestarian tradisi. Keunikan sumpit terletak pada cara penggunaannya yang membutuhkan konsentrasi tinggi, ketepatan sasaran, dan penguasaan teknik pernapasan.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/senjata-sumpit.mp3",
   narrator:
-    "Di tengah lebatnya hutan Borneo, seorang pemburu Dayak mengarahkan sumpitnya dengan tenang. Dengan satu hembusan napas yang terukur, anak sumpit melesat tepat menuju sasaran. Bagi masyarakat Dayak, sumpit bukan sekadar senjata, melainkan simbol ketelitian, kesabaran, dan keharmonisan dengan alam.",
+    "Sumpit merupakan senjata tradisional legendaris yang mencerminkan kecerdasan dan ketangkasan berburu masyarakat Dayak di Kalimantan Barat. Terbuat dari kayu ulin atau kayu keras pilihan yang dibor secara manual membentuk pipa panjang yang lurus sempurna, sumpit bekerja menggunakan kekuatan hembusan napas untuk melesatkan anak sumpit yang tajam yang disebut damek. Keunggulan sumpit terletak pada akurasinya yang tinggi dan kemampuannya melumpuhkan sasaran secara senyap di tengah rimbunnya hutan belantara Borneo. Dahulu digunakan untuk berburu hewan liar dan pertahanan diri dalam perang, kini sumpit telah bertransisi menjadi olahraga tradisional dan bagian dari atraksi seni budaya yang melambangkan konsentrasi, kesabaran, dan ketepatan jiwa.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak, ratusan tahun silam",
   image: "/img/cultures/sumpit.jpg",
@@ -1739,8 +1665,9 @@ export const CULTURES = [
   description:
     "Mandau merupakan senjata tradisional yang sangat identik dengan masyarakat Dayak di Kalimantan Barat. Senjata ini berbentuk seperti parang dengan bilah tajam yang dibuat secara teliti dan dihiasi dengan ukiran khas Dayak pada gagang maupun sarungnya. Bagi masyarakat Dayak, Mandau bukan hanya alat untuk berburu atau melindungi diri, tetapi juga simbol keberanian, kehormatan, dan tanggung jawab. Mandau sering diwariskan dari generasi ke generasi sebagai pusaka keluarga. Selain digunakan dalam kehidupan sehari-hari pada masa lampau, Mandau juga menjadi bagian penting dalam berbagai upacara adat dan pertunjukan budaya. Keunikan Mandau terletak pada ukiran artistik dan nilai filosofis yang melekat pada setiap bagiannya.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/senjata-mandau.mp3",
   narrator:
-    "Mandau terselip di pinggang seorang pejuang Dayak sebagai lambang keberanian dan kehormatan. Setiap ukiran pada gagang dan sarungnya menyimpan cerita leluhur yang diwariskan turun-temurun. Bagi masyarakat Dayak, Mandau bukan sekadar senjata, melainkan identitas budaya yang dijaga dengan penuh kebanggaan.",
+    "Mandau adalah senjata tajam tradisional yang menjadi simbol kehormatan, keberanian, dan identitas sakral laki-laki Dayak di Kalimantan Barat. Berbeda dengan parang biasa, bilah Mandau ditempa dengan teknik khusus dari baja berkualitas tinggi dan sering dihiasi ukiran bermotif rumit serta tatahan logam mulia. Gagang Mandau biasanya diukir indah menyerupai kepala burung enggang dari bahan tanduk rusa atau kayu keras, lengkap dengan hiasan rambut manusia atau bulu burung. Bagi masyarakat Dayak, Mandau bukan sekadar alat pelindung diri, melainkan pusaka suci yang diyakini memiliki kekuatan spiritual pelindung keluarga dan selalu diwariskan turun-temurun dengan penuh penghormatan.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak, sejak masa lampau",
   image: "/img/cultures/mandau.jpg",
@@ -1758,7 +1685,7 @@ export const CULTURES = [
     "Tombak merupakan salah satu senjata tradisional yang telah lama digunakan oleh masyarakat Dayak di Kalimantan Barat. Senjata ini terdiri dari gagang panjang berbahan kayu dengan ujung tajam yang digunakan untuk berburu maupun melindungi diri. Dalam kehidupan masyarakat Dayak, tombak melambangkan keberanian, ketangguhan, dan kesiapan menghadapi berbagai tantangan. Pada masa lalu, tombak menjadi alat penting bagi masyarakat yang hidup berdampingan dengan hutan. Kini, tombak lebih sering dijumpai dalam pertunjukan budaya, upacara adat, dan festival daerah sebagai simbol semangat masyarakat Dayak. Keunikan tombak terletak pada desainnya yang sederhana namun efektif serta tetap bertahan sebagai warisan budaya hingga saat ini.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Sejak dahulu, tombak telah menemani kehidupan masyarakat Dayak dalam berburu dan menjaga wilayahnya. Dengan gagang panjang dan ujung yang tajam, senjata ini menjadi simbol keberanian serta ketangguhan masyarakat Borneo. Hingga kini, tombak tetap hadir sebagai bagian penting dari tradisi Dayak.",
+    "Tombak Dayak merupakan salah satu senjata berburu dan pertahanan diri tradisional yang memiliki nilai sejarah mendalam di Kalimantan Barat. Senjata ini terdiri dari mata pisau baja yang sangat tajam dan runcing yang dipasang kokoh pada ujung gagang kayu panjang yang kuat namun ringan. Selain digunakan untuk berburu hewan besar di hutan belantara, tombak di masa lalu merupakan senjata utama prajurit Dayak saat mempertahankan desa mereka dari serangan musuh. Struktur gagangnya yang panjang memungkinkan serangan jarak menengah yang efektif. Dalam upacara adat hari ini, tombak sering dipamerkan oleh para tetua adat dalam tarian perang seremonial sebagai simbol kewaspadaan, kekuatan, dan kesiapan menjaga keutuhan tanah leluhur.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak, sejak masa lampau",
   image: "/img/cultures/tombak-dayak.jpg",
@@ -1776,7 +1703,7 @@ export const CULTURES = [
     "Talawang merupakan perisai tradisional masyarakat Dayak yang digunakan sebagai alat pertahanan diri. Perisai ini umumnya terbuat dari kayu keras dan dihiasi dengan ukiran khas Dayak yang sarat makna budaya. Talawang tidak hanya berfungsi sebagai pelindung, tetapi juga melambangkan keberanian, perlindungan, dan kekuatan masyarakat Dayak. Motif-motif yang menghiasi Talawang sering menggambarkan harapan akan keselamatan serta keseimbangan dalam kehidupan. Pada masa lalu, Talawang digunakan bersama Mandau dan Tombak dalam berbagai aktivitas. Saat ini, Talawang lebih banyak dijumpai dalam upacara adat, pertunjukan seni, dan pameran budaya. Keunikan Talawang terletak pada perpaduan fungsi pertahanan dan nilai seni yang menjadikannya salah satu simbol budaya Dayak.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Di balik ukiran yang indah, Talawang menyimpan makna perlindungan dan keberanian. Perisai tradisional ini dahulu digunakan oleh para pejuang Dayak untuk menjaga diri dan komunitasnya. Kini, Talawang tetap berdiri sebagai simbol kekuatan serta warisan budaya masyarakat Borneo.",
+    "Talawang adalah perisai tradisional pelindung diri yang sangat ikonik dari Kalimantan Barat, digunakan bersama Mandau oleh prajurit Dayak dalam pertempuran. Terbuat dari kayu liat yang ringan namun sangat kuat, seperti kayu pelai, Talawang diukir menyerupai bentuk prisma segi enam memanjang. Bagian depan Talawang dihiasi dengan lukisan bermotif ukiran Dayak yang khas, biasanya menggambarkan wajah kamang atau roh pelindung yang berpenampilan menyeramkan untuk menggentarkan nyali musuh. Lukisan ini menggunakan pewarna alami dari getah pohon dan tanah liat. Selain berfungsi sebagai tameng pertahanan yang tangguh, Talawang kini menjadi bagian penting dalam pertunjukan tari perang dan dekorasi rumah adat yang melambangkan perlindungan dan keselamatan.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak, sejak masa lampau",
   image: "/img/cultures/talawang.jpg",
@@ -1795,8 +1722,9 @@ export const CULTURES = [
   description:
     "Naik Dango merupakan upacara adat masyarakat Dayak Kanayatn di Kalimantan Barat yang dilaksanakan sebagai bentuk rasa syukur atas hasil panen yang diperoleh. Tradisi ini telah diwariskan secara turun-temurun dan menjadi salah satu perayaan adat terpenting bagi masyarakat Dayak. Bagi masyarakat Dayak, hasil panen bukan hanya hasil kerja keras manusia, tetapi juga anugerah yang harus disyukuri. Oleh karena itu, Naik Dango menjadi momen untuk mengungkapkan rasa terima kasih sekaligus mempererat hubungan antara masyarakat, alam, dan Sang Pencipta. Perayaan ini biasanya diisi dengan tarian tradisional, musik daerah, permainan rakyat, dan doa bersama. Keunikan Naik Dango terletak pada suasananya yang meriah serta kemampuannya menjaga nilai-nilai budaya Dayak agar tetap hidup di tengah perkembangan zaman.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Upacara Adat - Naik Dango.mp3",
   narrator:
-    "Setelah musim panen berakhir, masyarakat Dayak berkumpul dalam perayaan Naik Dango. Irama musik tradisional, tarian, dan doa syukur memenuhi suasana. Bagi masyarakat Dayak, perayaan ini bukan sekadar pesta, melainkan ungkapan terima kasih kepada alam dan Sang Pencipta atas kehidupan yang terus berlanjut.",
+    "Naik Dango merupakan salah satu upacara adat terbesar dan paling penting bagi masyarakat Dayak Kanayatn di Kalimantan Barat. Ritual tahunan ini diselenggarakan sebagai perwujudan rasa syukur yang mendalam kepada Jubata atau Sang Pencipta atas keberhasilan panen padi yang melimpah. Upacara ini ditandai dengan prosesi menyimpan padi hasil panen pertama ke dalam dango, yaitu lumbung padi tradisional. Seluruh warga kampung berkumpul mengenakan pakaian adat terbaik mereka, mengadakan doa bersama memohon keberkahan untuk musim tanam berikutnya, serta menyajikan berbagai makanan tradisional. Suasana perayaan diperiah dengan pertunjukan seni tari, permainan musik tradisional, dan lomba olahraga rakyat yang memupuk rasa kekeluargaan dan persatuan.",
   location: "Kabupaten Landak dan wilayah Dayak Kanayatn, Kalimantan Barat",
   period: "Tradisi Dayak Kanayatn, turun-temurun",
   image: "/img/cultures/naik-dango.jpg",
@@ -1813,8 +1741,9 @@ export const CULTURES = [
   description:
     "Robo-Robo merupakan tradisi adat masyarakat Melayu di Kalimantan Barat, khususnya di wilayah Mempawah. Upacara ini dilaksanakan untuk mengenang kedatangan tokoh penting dalam sejarah Kerajaan Mempawah sekaligus sebagai ungkapan rasa syukur kepada Tuhan atas keselamatan dan keberkahan yang diberikan. Tradisi Robo-Robo menunjukkan kuatnya nilai kebersamaan dan penghormatan terhadap sejarah yang dimiliki masyarakat setempat. Pelaksanaannya biasanya ditandai dengan doa bersama, makan bersama, dan berbagai kegiatan budaya yang melibatkan masyarakat. Keunikan Robo-Robo terletak pada perpaduan antara unsur sejarah, budaya Melayu, dan nilai keagamaan yang masih terjaga hingga saat ini.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Upacara Adat - Robo-Robo.mp3",
   narrator:
-    "Di tepian Sungai Mempawah, masyarakat berkumpul untuk melaksanakan Robo-Robo. Doa dipanjatkan, makanan dibagikan, dan kisah sejarah kembali dikenang. Tradisi ini menjadi pengingat bahwa sejarah, kebersamaan, dan rasa syukur selalu hidup dalam budaya Melayu Kalimantan Barat.",
+    "Robo-Robo merupakan upacara adat tahunan yang sarat nilai sejarah dan budaya bagi masyarakat Melayu di Mempawah, Kalimantan Barat. Diselenggarakan pada hari Rabu terakhir bulan Safar, tradisi ini berawal dari napak tilas kedatangan Opu Daeng Manambon, pendiri Kerajaan Mempawah, pada abad ke-18. Ritual dimulai dengan pembacaan doa tolak bala bersama di dermaga pelabuhan, diikuti dengan makan bersama secara lesehan di sepanjang jalan dan bantaran sungai yang dikenal dengan istilah saprahan. Melalui Robo-Robo, masyarakat mempererat silaturahmi, memohon keselamatan agar terhindar dari bencana, serta melestarikan keagungan sejarah dan kebudayaan Melayu yang telah mengakar kuat selama ratusan tahun.",
   location: "Mempawah, Kalimantan Barat",
   period: "Tradisi masyarakat Melayu Mempawah",
   image: "/img/cultures/robo-robo.jpg",
@@ -1832,7 +1761,7 @@ export const CULTURES = [
     "Gawai Dayak merupakan perayaan adat masyarakat Dayak sebagai ungkapan rasa syukur atas hasil panen dan keberlangsungan kehidupan yang telah diberikan sepanjang tahun. Perayaan ini menjadi salah satu tradisi budaya terbesar yang dimiliki masyarakat Dayak di Kalimantan Barat. Melalui Gawai Dayak, masyarakat memperkuat rasa persaudaraan, menghargai hasil kerja bersama, serta menjaga hubungan harmonis dengan alam yang menjadi sumber kehidupan mereka. Dalam pelaksanaannya, Gawai Dayak diisi dengan berbagai pertunjukan seni, tarian tradisional, musik daerah, pameran budaya, dan kegiatan adat lainnya. Keunikan perayaan ini terletak pada kemeriahan acaranya yang melibatkan banyak komunitas Dayak dari berbagai daerah sehingga menjadi simbol persatuan dan kebanggaan budaya.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Saat Gawai Dayak dimulai, rumah-rumah panjang dipenuhi tawa, tarian, dan alunan musik tradisional. Masyarakat berkumpul untuk merayakan hasil panen sekaligus mempererat persaudaraan. Gawai bukan sekadar perayaan, tetapi simbol rasa syukur dan kebanggaan akan budaya Dayak yang terus diwariskan dari generasi ke generasi.",
+    "Gawai Dayak adalah festival budaya akbar tahunan yang menjadi pesta rakyat bagi seluruh sub-suku Dayak di Kalimantan Barat sebagai bentuk syukur atas berlalunya musim panen padi. Perayaan yang berpusat di Rumah Panjang ini menjadi ajang berkumpulnya ribuan warga untuk bersukacita dan bersilaturahmi. Suasana festival dipenuhi dengan dentuman gong yang megah, tarian sambutan, dan sajian tuak tradisional. Berbagai perlombaan seni budaya digelar, seperti melukis perisai, menyumpit, memperagakan busana adat, hingga pemilihan bujang dan dara Dayak. Gawai Dayak menjadi cermin kebersamaan yang kokoh serta penegasan komitmen masyarakat Dayak untuk senantiasa melestarikan adat istiadat leluhur di tengah arus modernisasi.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi tahunan masyarakat Dayak",
   image: "/img/cultures/gawai.jpg",
@@ -1850,7 +1779,7 @@ export const CULTURES = [
     "Tolak Bala merupakan upacara adat yang dilakukan oleh masyarakat Kalimantan Barat untuk memohon keselamatan dan perlindungan dari berbagai hal yang dianggap dapat membawa kesulitan atau bencana. Tradisi ini masih dilestarikan oleh beberapa komunitas adat sebagai warisan budaya leluhur. Upacara ini mencerminkan harapan masyarakat akan kehidupan yang aman, damai, dan sejahtera. Selain sebagai bentuk doa bersama, Tolak Bala juga menjadi sarana mempererat hubungan sosial karena melibatkan banyak anggota masyarakat. Pelaksanaannya biasanya dipimpin oleh tokoh adat dan disertai berbagai simbol serta perlengkapan tradisional. Keunikan upacara ini terletak pada nilai kebersamaan yang kuat, di mana seluruh masyarakat berkumpul untuk memohon keselamatan dan kebaikan bagi lingkungan mereka.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Dalam suasana yang khidmat, masyarakat berkumpul mengikuti prosesi Tolak Bala. Doa-doa dipanjatkan, harapan disampaikan, dan seluruh warga bersatu memohon perlindungan. Tradisi ini menjadi simbol kuatnya kebersamaan serta keyakinan masyarakat Kalimantan Barat dalam menjaga keharmonisan hidup.",
+    "Upacara Tolak Bala merupakan ritual keagamaan tradisional yang dilaksanakan oleh masyarakat adat di Kalimantan Barat untuk memohon perlindungan dari mara bahaya, wabah penyakit, dan bencana alam. Dipimpin oleh tetua adat atau pemuka agama, ritual ini melibatkan pembacaan doa-doa keselamatan di batas desa atau persimpangan jalan penting. Warga kampung biasanya menyiapkan sesaji berupa hasil bumi dan anyaman janur khusus sebagai simbol permohonan maaf dan damai kepada alam semesta. Selama ritual berlangsung, suasana hening dan khidmat meliputi seluruh desa. Tradisi Tolak Bala mengajarkan pentingnya menjaga keselarasan hidup, kerendahan hati manusia di hadapan Pencipta, serta kepedulian bersama untuk saling melindungi keselamatan lingkungan tempat tinggal.",
   location: "Berbagai wilayah di Kalimantan Barat",
   period: "Tradisi masyarakat adat Kalimantan Barat",
   image: "/img/cultures/tolak-bala.jpg",
@@ -1868,8 +1797,9 @@ export const CULTURES = [
   description:
     "Rumah Radakng merupakan rumah adat masyarakat Dayak yang berasal dari Kalimantan Barat. Rumah ini dikenal sebagai salah satu rumah adat terpanjang di Indonesia karena dapat mencapai puluhan hingga ratusan meter dan dihuni oleh banyak keluarga dalam satu bangunan yang sama. Bentuk Rumah Radakng mencerminkan kehidupan masyarakat Dayak yang menjunjung tinggi kebersamaan dan gotong royong. Pada masa lalu, beberapa keluarga hidup bersama di dalam rumah panjang ini sehingga memudahkan mereka untuk saling membantu, menjaga keamanan, dan mempererat hubungan kekeluargaan. Selain berfungsi sebagai tempat tinggal, Rumah Radakng juga menjadi pusat berbagai kegiatan adat, musyawarah, dan perayaan budaya. Di dalam rumah ini, nilai-nilai budaya dan pengetahuan tradisional diwariskan dari generasi ke generasi. Keunikan Rumah Radakng terletak pada ukurannya yang sangat panjang, bentuk panggung yang melindungi penghuni dari banjir dan hewan liar, serta ukiran khas Dayak yang menghiasi bagian-bagian rumah.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Rumah Adat - Rumah Radakng.mp3",
   narrator:
-    "Di tengah hutan Kalimantan, berdiri sebuah rumah panjang yang menjadi simbol persatuan masyarakat Dayak. Di bawah satu atap, puluhan keluarga hidup berdampingan, berbagi cerita, menjaga tradisi, dan saling membantu. Rumah Radakng bukan sekadar tempat tinggal, melainkan pusat kehidupan dan warisan budaya Dayak yang terus dijaga hingga kini.",
+    "Rumah Radakng merupakan rumah adat masyarakat Dayak yang berasal dari Kalimantan Barat. Rumah ini dikenal sebagai salah satu rumah adat terpanjang di Indonesia karena dapat mencapai puluhan hingga ratusan meter dan dihuni oleh banyak keluarga dalam satu bangunan yang sama. Bentuk Rumah Radakng mencerminkan kehidupan masyarakat Dayak yang menjunjung tinggi kebersamaan dan gotong royong. Pada masa lalu, beberapa keluarga hidup bersama di dalam rumah panjang ini sehingga memudahkan mereka untuk saling membantu, menjaga keamanan, dan mempererat hubungan kekeluargaan. Selain berfungsi sebagai tempat tinggal, Rumah Radakng juga menjadi pusat berbagai kegiatan adat, musyawarah, dan perayaan budaya. Di dalam rumah ini, nilai-nilai budaya dan pengetahuan tradisional diwariskan dari generasi ke generasi. Keunikan Rumah Radakng terletak pada ukurannya yang sangat panjang, bentuk panggung yang melindungi penghuni dari banjir dan hewan liar, serta ukiran khas Dayak yang menghiasi bagian-bagian rumah.",
   location: "Pontianak, Kalimantan Barat",
   period: "Arsitektur tradisional Dayak, ratusan tahun silam",
   image: "/img/cultures/rumah-radakng.jpg",
@@ -1886,7 +1816,7 @@ export const CULTURES = [
     "Rumah Betang merupakan rumah adat yang banyak ditemukan pada masyarakat Dayak di wilayah Kalimantan, termasuk Kalimantan Barat. Rumah ini dibangun dalam bentuk panggung dengan ukuran yang besar dan mampu menampung banyak keluarga dalam satu atap. Keberadaan Rumah Betang lahir dari kebutuhan masyarakat untuk hidup bersama dalam lingkungan yang aman dan harmonis. Tinggal dalam satu rumah mengajarkan pentingnya toleransi, saling menghormati, dan menjaga kebersamaan. Selain sebagai tempat tinggal, Rumah Betang juga digunakan untuk berbagai kegiatan adat, pertemuan masyarakat, dan upacara tradisional. Keunikan rumah ini terletak pada bentuk panggung yang tinggi untuk menghindari banjir serta kemampuannya menjadi simbol persatuan dalam kehidupan masyarakat Dayak.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Rumah Betang berdiri kokoh sebagai lambang kehidupan bersama masyarakat Dayak. Dalam satu rumah panjang, banyak keluarga hidup berdampingan dengan semangat gotong royong dan saling menghormati. Dari rumah inilah nilai persatuan, tradisi, dan cerita leluhur diwariskan dari generasi ke generasi.",
+    "Rumah Betang adalah rumah panjang tradisional khas suku Dayak di Kalimantan Barat yang menjadi simbol persatuan dan keharmonisan hidup komunal. Dibangun tinggi di atas tiang-tiang kayu raksasa untuk menghindari banjir tahunan dan serangan binatang liar, Rumah Betang memiliki deretan bilik keluarga yang memanjang di satu sisi dan selasar luas tanpa sekat di sisi lainnya. Di selasar inilah seluruh warga berkumpul untuk melakukan berbagai aktivitas sosial, mulai dari menganyam kerajinan, mendiskusikan hukum adat, hingga menggelar upacara besar. Tinggal bersama di Rumah Betang mengajarkan warga tentang toleransi yang tinggi, saling menghormati perbedaan, gotong royong tanpa batas, serta pentingnya menjaga keutuhan komunitas adat.",
   location: "Kapuas Hulu, Kalimantan Barat",
   period: "Arsitektur tradisional Dayak",
   image: "/img/cultures/rumah-betang.jpg",
@@ -1903,7 +1833,7 @@ export const CULTURES = [
     "Rumah Melayu Pontianak merupakan rumah adat masyarakat Melayu yang berkembang di Kalimantan Barat, khususnya di wilayah Pontianak dan sekitarnya. Rumah ini umumnya dibangun dalam bentuk rumah panggung dengan struktur yang disesuaikan dengan kondisi lingkungan yang banyak dipengaruhi oleh sungai dan lahan rawa. Rumah Melayu Pontianak mencerminkan nilai kesopanan, keteraturan, dan keterbukaan yang menjadi bagian dari budaya Melayu. Tata ruang rumah biasanya dirancang untuk memudahkan interaksi antaranggota keluarga sekaligus menyambut tamu dengan baik. Keunikan rumah ini terletak pada bentuk arsitektur yang elegan, penggunaan ornamen khas Melayu, serta kemampuannya beradaptasi dengan lingkungan sungai di Kalimantan Barat.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Di tepian sungai Kalimantan Barat, Rumah Melayu Pontianak berdiri anggun di atas tiang-tiang kayu. Setiap ruangnya mencerminkan keramahan, kesopanan, dan keterbukaan masyarakat Melayu. Rumah ini menjadi saksi berbagai tradisi keluarga yang terus hidup dari masa ke masa.",
+    "Rumah Melayu Pontianak merupakan representasi arsitektur tradisional masyarakat Melayu yang bermukim di tepian Sungai Kapuas, Kalimantan Barat. Rumah panggung ini dirancang dengan tiang-tiang tinggi untuk beradaptasi dengan pasang surut air sungai dan tanah rawa yang basah. Bentuk atapnya yang tinggi dan bersudut curam melambangkan kesopanan serta berfungsi mengalirkan air hujan dengan cepat. Memiliki jendela-jendela besar di sekeliling dinding kayu untuk ventilasi udara yang maksimal, Rumah Melayu memiliki pembagian ruang yang jelas, termasuk serambi depan untuk menerima tamu luar dengan ramah. Arsitektur ini mencerminkan keterbukaan, kesantunan bertutur kata, dan keanggunan budaya Melayu yang harmonis dengan alam bantaran sungai.",
   location: "Pontianak, Kalimantan Barat",
   period: "Arsitektur tradisional Melayu",
   image: "/img/cultures/rumah-melayu.jpg",
@@ -1919,8 +1849,9 @@ export const CULTURES = [
   description:
     "Rumah Baluk merupakan rumah adat masyarakat Dayak Bidayuh di Kalimantan Barat. Berbeda dengan rumah adat lainnya yang berfungsi sebagai tempat tinggal, Rumah Baluk lebih banyak digunakan sebagai tempat pelaksanaan upacara adat dan kegiatan penting masyarakat. Rumah ini dibangun sebagai pusat kegiatan bersama yang memperkuat hubungan sosial dalam komunitas. Melalui berbagai ritual dan pertemuan yang dilaksanakan di dalamnya, masyarakat menjaga tradisi, mempererat persaudaraan, dan mewariskan nilai-nilai budaya kepada generasi berikutnya. Keunikan Rumah Baluk terletak pada bentuk bangunannya yang bundar dan fungsinya sebagai pusat kehidupan adat masyarakat Dayak Bidayuh.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Rumah Adat - Rumah Baluk.mp3",
   narrator:
-    "Rumah Baluk menjadi pusat kehidupan adat masyarakat Dayak Bidayuh. Di dalam bangunan berbentuk bundar ini, berbagai ritual, musyawarah, dan tradisi diwariskan kepada generasi muda. Rumah Baluk bukan sekadar bangunan, melainkan simbol persatuan dan penjaga identitas budaya Dayak.",
+    "Rumah Baluk adalah rumah adat yang sangat unik dan sakral milik suku Dayak Bidayuh di Kabupaten Bengkayang, Kalimantan Barat. Berbeda dengan rumah panjang pada umumnya, Rumah Baluk berbentuk bundar menyerupai tabung dengan atap kerucut menjulang tinggi, ditopang oleh puluhan tiang kayu ulin setinggi belasan meter dari tanah. Akses masuknya menggunakan satu tangga kayu gantung tunggal. Bangunan sakral ini tidak digunakan sebagai tempat tinggal sehari-hari, melainkan sebagai tempat menyimpan tengkorak leluhur hasil ritual masa lalu, serta pusat pelaksanaan ritual adat Nyobeng untuk memohon kesuburan tanah dan keselamatan desa. Bentuk bundarnya melambangkan kesatuan tekad bulat masyarakat Bidayuh.",
   location: "Kabupaten Bengkayang, Kalimantan Barat",
   period: "Tradisi Dayak Bidayuh",
   image: "/img/cultures/rumah-baluk.jpg",
@@ -1939,8 +1870,9 @@ export const CULTURES = [
   description:
     "Tenun Ikat Dayak merupakan salah satu kerajinan tradisional yang diwariskan secara turun-temurun oleh masyarakat Dayak di Kalimantan Barat. Kain ini dibuat melalui proses menenun yang rumit, di mana benang terlebih dahulu diikat dan diberi warna sebelum ditenun menjadi sebuah kain yang indah. Bagi masyarakat Dayak, kain tenun bukan sekadar bahan pakaian. Setiap motif yang ditampilkan mengandung cerita, identitas, dan nilai budaya yang diwariskan dari generasi ke generasi. Motif-motif tersebut biasanya terinspirasi oleh alam, kehidupan masyarakat, serta simbol-simbol yang memiliki makna khusus dalam budaya Dayak. Selain digunakan sebagai pakaian adat, Tenun Ikat Dayak juga sering digunakan dalam berbagai upacara adat dan acara penting masyarakat. Keunikan kerajinan ini terletak pada proses pembuatannya yang membutuhkan ketelitian tinggi serta motif khas yang menjadikan setiap kain memiliki karakter tersendiri.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Kerajinan - Tenun Ikat Dayak.mp3",
   narrator:
-    "Di beranda rumah panjang, seorang perempuan Dayak dengan sabar menenun benang demi benang. Setiap motif yang tercipta bukan sekadar hiasan, melainkan kisah tentang alam, leluhur, dan kehidupan masyarakat Dayak. Dari tangan-tangan terampil inilah warisan budaya Kalimantan Barat terus hidup hingga sekarang.",
+    "Tenun Dayak merupakan karya seni kerajinan tekstil tradisional yang sarat akan keindahan estetika dan makna spiritual di Kalimantan Barat. Dibuat menggunakan alat tenun bukan mesin tradisional dari benang kapas alami, kain tenun ini dihiasi dengan motif-motif geometris rumit yang menggambarkan flora, fauna hutan tropis, serta simbol-simbol mistis pelindung. Proses pewarnaannya menggunakan bahan-bahan alami dari akar pohon, daun-daun hutan, dan lumpur untuk menghasilkan warna-warna bumi yang khas. Bagi masyarakat Dayak, menenun bukan sekadar keterampilan tangan, melainkan sarana mencurahkan doa, harapan, dan identitas budaya yang mencerminkan ketekunan, kesabaran, serta kehalusan jiwa sang penenun perempuan.",
   location: "Kabupaten Sintang, Kalimantan Barat",
   period: "Tradisi Dayak, ratusan tahun",
   image: "/img/cultures/tenun-dayak.jpg",
@@ -1957,8 +1889,9 @@ export const CULTURES = [
   description:
     "Anyaman Bidai merupakan kerajinan tradisional masyarakat Dayak yang dibuat dari rotan, bambu, atau bahan alami lainnya yang banyak ditemukan di hutan Kalimantan. Kerajinan ini umumnya berbentuk tikar dan digunakan dalam kehidupan sehari-hari. Kehadiran Bidai menunjukkan bagaimana masyarakat Dayak memanfaatkan sumber daya alam secara bijaksana untuk memenuhi kebutuhan hidup mereka. Selain digunakan sebagai perlengkapan rumah tangga, Bidai juga sering dijadikan hiasan dan cendera mata khas Kalimantan Barat. Keunikannya terletak pada pola anyaman yang rapi, kuat, dan memiliki motif khas yang berbeda di setiap daerah.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Kerajinan - Anyaman Bidai.mp3",
   narrator:
-    "Dari rotan dan bambu yang tumbuh di hutan Kalimantan, masyarakat Dayak menciptakan Anyaman Bidai yang kuat dan indah. Dengan ketelitian tinggi, helai demi helai disusun menjadi pola yang khas. Anyaman ini bukan hanya perlengkapan rumah, tetapi juga cerminan kedekatan masyarakat Dayak dengan alam.",
+    "Bidai adalah kerajinan anyaman tikar tradisional khas masyarakat Dayak di Kalimantan Barat yang terkenal karena kekuatan dan ketahanannya yang luar biasa. Kerajinan ini dianyam secara manual dari belahan rotan pilihan dan kulit kayu pohon kapuak yang seratnya sangat kuat. Bidai dihiasi dengan motif-motif hiasan tradisional yang sederhana namun elegan. Selain digunakan sebagai alas lantai rumah panjang untuk menyambut tamu atau berkumpul bersama keluarga, Bidai juga berfungsi penting dalam menjemur hasil panen padi di bawah terik matahari. Keterampilan menganyam Bidai diwariskan dari para ibu kepada anak-anak perempuan mereka sebagai lambang ketelitian, kedekatan dengan alam, dan kemandirian ekonomi keluarga.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak, turun-temurun",
   image: "/img/cultures/bidai.jpg",
@@ -1976,7 +1909,7 @@ export const CULTURES = [
     "Ukiran Dayak merupakan salah satu bentuk seni tradisional yang berkembang dalam kehidupan masyarakat Dayak di Kalimantan Barat. Ukiran ini biasanya diterapkan pada rumah adat, perisai, peralatan tradisional, hingga berbagai benda budaya lainnya. Bagi masyarakat Dayak, ukiran bukan hanya hiasan, melainkan media untuk menyampaikan identitas, nilai budaya, dan hubungan mereka dengan alam. Motif-motif yang digunakan sering kali menggambarkan tumbuhan, hewan, atau simbol-simbol yang dianggap penting dalam kehidupan masyarakat. Keunikan kerajinan ini terletak pada detail motif yang rumit dan bentuknya yang khas sehingga mudah dikenali sebagai bagian dari budaya Dayak.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Pada sepotong kayu, pengrajin Dayak memahat garis demi garis hingga membentuk motif yang sarat makna. Setiap ukiran menggambarkan hubungan manusia dengan alam, leluhur, dan kehidupan. Melalui ukiran inilah identitas budaya Dayak diwariskan dari satu generasi ke generasi berikutnya.",
+    "Ukiran Dayak adalah mahakarya seni rupa tradisional yang menghiasi hampir setiap sudut kehidupan masyarakat Dayak di Kalimantan Barat. Dipahat pada kayu ulin, tanduk rusa, atau bambu, ukiran ini memiliki ciri khas bentuk meliuk-liuk yang dinamis dan saling sambung-menyambung. Motif yang paling sering digambarkan adalah burung enggang yang melambangkan kebebasan dan kesucian, naga air yang melambangkan kekuatan alam bawah, serta motif kamang atau wajah leluhur pelindung. Ukiran ini dapat ditemukan pada dinding rumah adat, gagang mandau, perisai talawang, hingga tiang kubur pusaka. Seni mengukir ini menjadi media visual bagi seniman Dayak untuk menuturkan sejarah, mitologi, dan nilai-nilai spiritual leluhur.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak, turun-temurun",
   image: "/img/cultures/ukiran-dayak.jpg",
@@ -1994,7 +1927,7 @@ export const CULTURES = [
     "Kerajinan Manik-Manik Dayak merupakan karya seni tradisional yang dibuat dari rangkaian manik-manik berwarna-warni yang disusun menjadi berbagai bentuk, seperti kalung, gelang, hiasan kepala, hingga aksesoris pakaian adat. Dalam budaya Dayak, manik-manik memiliki peran penting karena sering digunakan dalam berbagai kegiatan adat dan perayaan budaya. Warna serta pola yang digunakan tidak hanya berfungsi sebagai hiasan, tetapi juga mencerminkan identitas dan kekayaan budaya masyarakat Dayak. Saat ini, kerajinan manik-manik juga banyak dijadikan suvenir dan karya seni khas Kalimantan Barat.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Warna-warni manik tersusun rapi di tangan para pengrajin Dayak. Setiap pola yang dirangkai menghadirkan keindahan sekaligus mencerminkan identitas budaya yang kaya. Dari kalung hingga hiasan pakaian adat, manik-manik Dayak menjadi simbol kreativitas dan kebanggaan masyarakat Kalimantan Barat.",
+    "Kerajinan Manik Dayak merupakan seni merangkai manik-manik kecil berwarna-warni yang menjadi bagian integral dari busana adat dan aksesoris masyarakat Dayak di Kalimantan Barat. Manik-manik ini dirangkai membentuk motif-motif tradisional yang kaya akan simbolisme, seperti motif burung enggang, tameng pelindung, atau wajah roh leluhur. Warna yang digunakan biasanya didominasi oleh merah, kuning, hijau, hitam, dan putih, yang masing-masing melambangkan unsur alam dan kehidupan spiritual. Hasil rajutan manik dipasang pada topi adat, sabuk, gendongan bayi, tas, hingga pakaian resmi upacara. Kerajinan manik ini mencerminkan keindahan citarasa seni, ketelitian yang tinggi, serta identitas budaya yang dijaga dengan bangga.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak, turun-temurun",
   image: "/img/cultures/manik-dayak.jpg",
@@ -2012,8 +1945,9 @@ export const CULTURES = [
   description:
     "King Bibinge merupakan pakaian adat perempuan masyarakat Dayak di Kalimantan Barat. Pakaian ini biasanya dibuat dari kain tradisional dan dihiasi dengan berbagai ornamen khas Dayak yang menampilkan keindahan serta kekayaan budaya daerah. Bagi masyarakat Dayak, King Bibinge bukan hanya pakaian yang dikenakan untuk menutupi tubuh, tetapi juga menjadi simbol identitas dan kebanggaan budaya. Motif dan hiasan yang terdapat pada pakaian ini sering terinspirasi dari alam, seperti tumbuhan dan hewan yang memiliki hubungan erat dengan kehidupan masyarakat Dayak. King Bibinge biasanya dikenakan dalam upacara adat, penyambutan tamu, pertunjukan seni, dan berbagai perayaan budaya. Keunikannya terletak pada perpaduan warna yang mencolok, hiasan manik-manik yang detail, serta aksesoris tradisional yang membuat tampilannya semakin khas dan menarik.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Pakaian Adat - King Bibinge.mp3",
   narrator:
-    "Dengan balutan kain berwarna cerah dan hiasan manik-manik yang indah, perempuan Dayak mengenakan King Bibinge sebagai simbol kebanggaan budaya mereka. Setiap motif dan ornamen yang menghiasi pakaian ini menggambarkan kedekatan masyarakat Dayak dengan alam serta warisan leluhur yang terus dijaga hingga kini.",
+    "King Bibinge merupakan pakaian adat tradisional perempuan suku Dayak di Kalimantan Barat yang terbuat dari bahan alami kulit kayu kapuak atau ampuro. Kulit kayu tersebut dipukul-pukul hingga lunak dan tipis menyerupai kain, kemudian dijahit menjadi rompi tanpa lengan dan kain bawahan bermotif indah. Pakaian ini dihiasi dengan anyaman manik-manik berwarna-warni yang dirangkai membentuk motif burung enggang atau flora hutan, serta dipercantik dengan ikat kepala berhiaskan bulu burung enggang yang suci. King Bibinge dikenakan oleh para perempuan Dayak saat upacara adat, pesta panen, dan pernikahan, memancarkan aura keanggunan alami, keteguhan hati, serta ikatan batin yang erat dengan kelestarian hutan belantara.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak, turun-temurun",
   image: "/img/cultures/king-bibinge.jpg",
@@ -2030,8 +1964,9 @@ export const CULTURES = [
   description:
     "King Baba merupakan pakaian adat laki-laki masyarakat Dayak di Kalimantan Barat. Pakaian ini sering dipadukan dengan berbagai perlengkapan tradisional seperti ikat kepala, perhiasan khas Dayak, dan senjata adat sebagai pelengkap busana. Kehadiran King Baba mencerminkan keberanian, tanggung jawab, dan penghormatan terhadap tradisi yang diwariskan oleh para leluhur. Pakaian ini juga menunjukkan hubungan masyarakat Dayak dengan alam karena pada masa lalu sebagian bahan pembuatannya berasal dari sumber daya alam yang tersedia di sekitar mereka. King Baba biasanya digunakan dalam upacara adat, festival budaya, dan pertunjukan seni tradisional. Keunikannya terletak pada motif khas Dayak, penggunaan aksesoris tradisional, serta tampilannya yang mencerminkan karakter kuat masyarakat Dayak.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Pakaian Adat - King Baba.mp3",
   narrator:
-    "King Baba dikenakan oleh laki-laki Dayak dalam berbagai upacara adat dan perayaan budaya. Dilengkapi dengan ikat kepala, perhiasan, dan perlengkapan tradisional lainnya, pakaian ini melambangkan keberanian, kehormatan, serta semangat menjaga warisan budaya yang diwariskan oleh para leluhur.",
+    "King Baba adalah pakaian adat tradisional laki-laki suku Dayak di Kalimantan Barat yang menunjukkan keunikan kearifan lokal dalam memanfaatkan hasil hutan. Pakaian ini terdiri dari rompi tanpa lengan dan ikat pinggang yang seluruhnya dibuat dari serat kulit kayu pohon kapuak yang dikeringkan dan diolah secara tradisional. Untuk menunjukkan kegagahan sang pemakai, King Baba dilengkapi dengan ikat kepala yang dihiasi sehelai bulu burung enggang gading yang panjang, serta senjata tradisional Mandau yang terselip di pinggang. Dikenakan dalam upacara adat besar dan ritual penyambutan tamu, King Baba melambangkan kewibawaan, keberanian, dan tanggung jawab seorang laki-laki Dayak sebagai pelindung keluarga dan penjaga tradisi leluhur.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Dayak, turun-temurun",
   image: "/img/cultures/king-baba.jpg",
@@ -2049,7 +1984,7 @@ export const CULTURES = [
     "Telok Belanga merupakan pakaian tradisional masyarakat Melayu yang berkembang di Kalimantan Barat. Pakaian ini terdiri dari baju berlengan panjang yang dipadukan dengan celana panjang serta kain samping yang dikenakan di bagian luar. Bagi masyarakat Melayu, Telok Belanga mencerminkan nilai kesopanan, kehormatan, dan tata krama yang dijunjung tinggi dalam kehidupan sehari-hari. Desainnya yang sederhana namun rapi menunjukkan pentingnya menjaga sikap dan penampilan saat berinteraksi dengan orang lain. Pakaian ini biasanya dikenakan dalam acara adat, kegiatan keagamaan, perayaan budaya, dan berbagai kegiatan resmi lainnya. Keunikan Telok Belanga terletak pada desainnya yang elegan, nyaman digunakan, serta tetap mempertahankan ciri khas budaya Melayu hingga saat ini.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Dengan potongan yang sederhana namun elegan, Telok Belanga menjadi simbol kesopanan masyarakat Melayu Kalimantan Barat. Pakaian ini kerap dikenakan dalam berbagai acara adat dan keagamaan, mencerminkan nilai tata krama, kehormatan, dan keramahan yang dijunjung tinggi dalam budaya Melayu.",
+    "Telok Belanga merupakan pakaian adat resmi laki-laki Melayu di Kalimantan Barat yang sarat akan nilai kesopanan, kerapian, dan keagungan budaya. Busana ini terdiri dari baju kurung berkerah bulat tanpa lipatan dengan kancing tunggal di bagian leher, dipadukan dengan celana panjang longgar berwarna senada. Ciri khas Telok Belanga terletak pada penggunaan kain samping bermotif songket Melayu yang dililitkan di pinggang hingga batas lutut, serta penutup kepala berupa peci hitam atau tanjak kain yang elegan. Pakaian ini mencerminkan kesantunan berprilaku, kewibawaan, dan kepatuhan terhadap nilai-nilai keagamaan, biasa dikenakan dalam menghadiri pesta pernikahan adat, upacara resmi kerajaan, dan perayaan hari besar keagamaan.",
   location: "Pontianak, Kalimantan Barat",
   period: "Tradisi Melayu, turun-temurun",
   image: "/img/cultures/telok-belanga.jpg",
@@ -2067,7 +2002,7 @@ export const CULTURES = [
     "Baju Kurung Melayu merupakan pakaian adat perempuan Melayu yang banyak digunakan di Kalimantan Barat. Pakaian ini terdiri dari baju longgar yang dipadukan dengan kain panjang atau rok sehingga memberikan kesan anggun dan sopan. Baju Kurung mencerminkan nilai kesederhanaan, kesopanan, dan penghormatan terhadap norma-norma yang berlaku dalam masyarakat Melayu. Bentuknya yang longgar dirancang untuk memberikan kenyamanan sekaligus mencerminkan budaya berpakaian yang santun. Pakaian ini sering dikenakan dalam acara keluarga, perayaan budaya, kegiatan keagamaan, dan upacara adat. Keunikannya terletak pada desain yang sederhana namun elegan, serta kemampuannya bertahan sebagai salah satu simbol identitas masyarakat Melayu dari generasi ke generasi.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Baju Kurung Melayu hadir dengan desain yang sederhana namun anggun. Dikenakan dalam berbagai acara adat, perayaan, dan kegiatan keagamaan, pakaian ini mencerminkan nilai kesopanan, kelembutan, serta identitas budaya Melayu yang tetap lestari dari generasi ke generasi.",
+    "Baju Kurung merupakan busana tradisional perempuan Melayu di Kalimantan Barat yang melambangkan keanggunan, kesopanan budi pekerti, dan kepatuhan terhadap norma adat. Pakaian ini memiliki potongan longgar yang menutup tubuh dengan sopan, panjang bajunya menjuntai hingga batas lutut atau paha, serta memiliki kerah bulat khas Melayu. Baju Kurung dipadukan dengan kain bawahan panjang bermotif songket indah yang dililitkan rapi. Dikenakan dalam berbagai upacara adat, pernikahan, dan hari besar keagamaan, Baju Kurung memancarkan keindahan wanita Melayu yang anggun, menjaga kehormatan diri, menjunjung tinggi kesantunan bertata krama, serta melestarikan kehalusan adat istiadat leluhur.",
   location: "Seluruh Kalimantan Barat",
   period: "Tradisi Melayu, turun-temurun",
   image: "/img/cultures/baju-kurung.jpg",
@@ -2083,10 +2018,11 @@ export const CULTURES = [
   coordinates: [0.5, 109.3],
   isLandmark: true,
   description:
-    "Batu Menangis merupakan cerita rakyat terkenal dari Kalimantan Barat yang mengisahkan seorang gadis cantik bernama Darmi yang memiliki sifat sombong dan durhaka kepada ibunya. Darmi merasa malu memiliki ibu yang miskin dan sering menyangkal bahwa wanita tua tersebut adalah ibunya. Sikap buruknya akhirnya membuat sang ibu sangat sedih hingga memohon kepada Tuhan agar anaknya diberi pelajaran. Doa tersebut terkabul dan Darmi perlahan berubah menjadi batu. Legenda ini diwariskan secara turun-temurun sebagai pengingat pentingnya menghormati orang tua, terutama ibu yang telah berjuang membesarkan anak-anaknya.",
+    "Batu Menangis adalah legenda populer Kalimantan Barat tentang Darmi, seorang gadis cantik jelita yang durhaka kepada ibunya. Karena merasa malu dengan keadaan sang ibu yang miskin, Darmi menyangkal ibu kandungnya sendiri di depan banyak orang. Hati yang terluka membuat ibunya berdoa memohon keadilan, hingga akhirnya Darmi dikutuk berubah menjadi batu yang terus meneteskan air mata penyesalan.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Cerita Rakyat - Batu Menangis.mp3",
   narrator:
-    "Pada zaman dahulu, hiduplah seorang janda miskin bersama putrinya yang bernama Darmi. Darmi memiliki wajah yang sangat cantik, tetapi sifatnya sangat sombong dan pemalas. Sang ibu bekerja keras setiap hari mencari nafkah demi memenuhi kebutuhan mereka, sedangkan Darmi hanya sibuk berdandan dan tidak pernah membantu ibunya. Suatu hari, Darmi mengajak ibunya pergi ke pasar untuk membeli pakaian baru. Di sepanjang perjalanan, banyak orang bertanya tentang wanita tua yang berjalan di belakangnya. Karena malu memiliki ibu yang miskin, Darmi berulang kali mengatakan bahwa wanita itu hanyalah pembantunya. Mendengar perkataan tersebut, hati sang ibu sangat sedih. Dengan penuh kesedihan, ia berdoa kepada Tuhan agar anaknya diberi pelajaran. Tiba-tiba langit menjadi gelap dan petir menyambar. Darmi yang ketakutan mencoba melarikan diri, tetapi tubuhnya perlahan berubah menjadi batu. Darmi menyesal dan memohon ampun kepada ibunya, namun semuanya sudah terlambat. Hingga kini, Batu Menangis dipercaya sebagai simbol penyesalan seorang anak yang durhaka kepada ibunya.",
+    "Batu Menangis merupakan cerita rakyat terkenal dari Kalimantan Barat yang mengisahkan seorang gadis cantik bernama Darmi yang memiliki sifat sombong dan durhaka kepada ibunya. Darmi merasa malu memiliki ibu yang miskin dan sering menyangkal bahwa wanita tua tersebut adalah ibunya. Sikap buruknya akhirnya membuat sang ibu sangat sedih hingga memohon kepada Tuhan agar anaknya diberi pelajaran. Doa tersebut terkabul dan Darmi perlahan berubah menjadi batu. Legenda ini diwariskan secara turun-temurun sebagai pengingat pentingnya menghormati orang tua, terutama ibu yang telah berjuang membesarkan anak-anaknya.",
   location: "Kalimantan Barat",
   period: "Cerita rakyat turun-temurun",
   image: "/img/cultures/batu-menangis.jpg",
@@ -2101,10 +2037,10 @@ export const CULTURES = [
   coordinates: [0.7, 110.1],
   isLandmark: true,
   description:
-    "Si Bungsu Tujuh Bersaudara merupakan cerita rakyat yang menceritakan tentang seorang anak bungsu yang cerdas, baik hati, dan penuh kasih sayang. Bersama enam saudaranya, ia mengalami berbagai cobaan setelah ditinggalkan oleh kedua orang tuanya di tengah hutan. Berkat kecerdasan, sifat suka menolong, dan ketulusannya, si Bungsu selalu memperoleh pertolongan dalam menghadapi kesulitan. Kisah ini mengajarkan pentingnya sikap tolong-menolong, ketulusan, kesabaran, dan sifat pemaaf dalam kehidupan sehari-hari.",
+    "Si Bungsu Tujuh Bersaudara mengisahkan petualangan seorang anak bungsu yang cerdas dan berhati emas. Ditinggalkan oleh orang tua mereka di tengah hutan rimba, ia memimpin kakak-kakaknya menghadapi bahaya. Melalui ketulusan dan kebesaran hati untuk memaafkan, kisah ini menjadi teladan tentang kekuatan kebaikan dalam meluluhkan kebencian.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Dahulu kala, hiduplah tujuh orang saudari bersama kedua orang tua mereka. Karena hidup dalam kemiskinan, kedua orang tua mereka memutuskan meninggalkan ketujuh anaknya di tengah hutan. Namun, si Bungsu yang cerdas telah menandai jalan dengan buah kemiri sehingga mereka berhasil pulang. Tidak lama kemudian, mereka kembali ditinggalkan di hutan. Kali ini, tanda jalan yang dibuat si Bungsu hilang sehingga mereka tersesat. Dalam perjalanan, mereka menghadapi berbagai bahaya, termasuk bertemu dengan sepasang raksasa. Berkat kecerdikan si Bungsu, mereka berhasil selamat. Si Bungsu juga dikenal sebagai anak yang baik hati dan suka menolong. Kebaikannya membuat ia mendapatkan banyak pertolongan, bahkan ketika menghadapi cobaan berat. Pada akhirnya, si Bungsu hidup bahagia bersama suaminya dan tetap memaafkan saudara-saudaranya yang pernah berbuat jahat kepadanya. Kisah ini mengajarkan bahwa kebaikan, keikhlasan, dan sifat pemaaf akan membawa kebahagiaan dalam hidup.",
+    "Alkisah, di tengah belantara Kalimantan Barat, hiduplah tujuh anak perempuan yatim piatu. Kakak-kakaknya sering bersikap malas, sementara si Bungsu adalah gadis kecil yang rajin, sabar, dan penuh kasih. Suatu ketika, karena kelaparan melanda desa, kakak-kakaknya berniat membuang si Bungsu ke dalam hutan rimba yang dihuni raksasa jahat. Mereka mengajaknya mencari kayu bakar dan meninggalkannya sendirian di tengah kegelapan malam yang pekat. Berkat ketulusan hatinya, alam bersahabat dengan si Bungsu; kunang-kunang menerangi jalannya, dan burung-burung hutan membisikkan arah pulang. Saat sampai di rumah, si Bungsu tidak menaruh dendam sedikit pun. Ia justru memeluk kakak-kakaknya dengan hangat dan membagikan buah-bahahan manis yang ia temukan. Ketulusan luar biasa si Bungsu akhirnya meluluhkan hati keras kakak-kakaknya. Mereka menangis menyesali perbuatannya dan berjanji akan selalu hidup rukun bersamanya. Dongeng ini mengajarkan kita bahwa ketulusan, kesabaran, dan kebesaran hati untuk memaafkan selalu memiliki kekuatan magis untuk mengubah kebencian menjadi kasih sayang.",
   location: "Kalimantan Barat",
   period: "Cerita rakyat turun-temurun",
   image: "/img/cultures/si-bungsu.jpg",
@@ -2119,10 +2055,11 @@ export const CULTURES = [
   coordinates: [0.3, 111.5],
   isLandmark: true,
   description:
-    "Kisah Bujang Beji merupakan legenda masyarakat Kalimantan Barat yang menceritakan seorang tokoh sakti bernama Bujang Beji yang memiliki sifat iri, serakah, dan sombong. Ia merasa iri terhadap Temenggung Marubai yang selalu memperoleh hasil tangkapan ikan lebih banyak. Karena rasa dengkinya, Bujang Beji berusaha menguasai seluruh sumber ikan dengan berbagai cara. Namun, semua usahanya gagal dan justru membawa kehancuran bagi dirinya sendiri. Cerita ini menjadi pengingat bahwa sifat iri hati dan keserakahan hanya akan mendatangkan kerugian.",
+    "Kisah Bujang Beji menceritakan pertarungan watak antara dua tokoh sakti di hulu Sungai Melawi: Temenggung Marubai yang bijaksana dan Bujang Beji yang serakah. Kedengkian Bujang Beji membawanya pada rencana jahat membendung sungai dengan puncak bukit raksasa, yang berakhir dengan kehancuran dirinya sendiri.",
   youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Cerita Rakyat - Kisah Bujang Beji.mp3",
   narrator:
-    "Pada zaman dahulu, hiduplah dua pemimpin yang memiliki sifat sangat berbeda, yaitu Bujang Beji dan Temenggung Marubai. Temenggung Marubai dikenal baik hati dan bijaksana, sedangkan Bujang Beji terkenal sombong dan serakah. Bujang Beji merasa iri karena hasil tangkapan ikan Temenggung Marubai selalu lebih banyak. Karena rasa dengkinya, ia berusaha menguasai seluruh sumber ikan dengan berbagai cara, termasuk mencoba menutup aliran Sungai Melawi menggunakan sebuah bukit besar. Dengan kesaktiannya, Bujang Beji membawa puncak bukit tersebut, tetapi di tengah perjalanan ia mengalami berbagai hambatan hingga bukit itu terjatuh. Bujang Beji terus berusaha membalas dendam dan mengejar ambisinya. Namun, kesombongan dan keserakahannya justru membawa kehancuran bagi dirinya sendiri. Kisah ini mengajarkan bahwa sifat iri hati dan serakah hanya akan mendatangkan kerugian dan penyesalan.",
+    "Kisah Bujang Beji merupakan legenda masyarakat Kalimantan Barat yang menceritakan seorang tokoh sakti bernama Bujang Beji yang memiliki sifat iri, serakah, dan sombong. Ia merasa iri terhadap Temenggung Marubai yang selalu memperoleh hasil tangkapan ikan lebih banyak. Karena rasa dengkinya, Bujang Beji berusaha menguasai seluruh sumber ikan dengan berbagai cara. Namun, semua usahanya gagal dan justru membawa kehancuran bagi dirinya sendiri. Cerita ini menjadi pengingat bahwa sifat iri hati dan keserakahan hanya akan mendatangkan kerugian.",
   location: "Kabupaten Sintang, Kalimantan Barat",
   period: "Legenda masyarakat Dayak",
   image: "/img/cultures/bujang-beji.jpg",
@@ -2137,15 +2074,52 @@ export const CULTURES = [
   coordinates: [0.1, 111.5],
   isLandmark: true,
   description:
-    "Legenda Bukit Kelam merupakan cerita rakyat yang sangat terkenal di Kalimantan Barat, khususnya di Kabupaten Sintang. Legenda ini berkisah tentang Bujang Beji yang berusaha memindahkan sebuah bukit besar untuk menutup aliran Sungai Melawi karena rasa iri terhadap Temenggung Marubai. Namun, usahanya gagal setelah puncak bukit tersebut terjatuh dan akhirnya dipercaya menjelma menjadi Bukit Kelam yang dikenal hingga saat ini. Cerita ini mengandung pesan moral tentang bahaya sifat iri hati, keserakahan, dan pentingnya hidup dengan rendah hati.",
+    "Legenda Bukit Kelam berkisah tentang asal-usul terbentuknya landmark batu hitam raksasa di Kabupaten Sintang. Lahir dari kegagalan Bujang Beji memindahkan bukit akibat digagalkan oleh dewi-dewi kahyangan yang murka melihat keserakahannya, bukit ini berdiri kokoh sebagai simbol runtuhnya kesombongan manusia.",
   youtubeId: "cyJ9fpoYh_M",
   narrator:
-    "Menurut cerita rakyat masyarakat Sintang, dahulu hiduplah seorang tokoh sakti bernama Bujang Beji. Ia merasa iri terhadap Temenggung Marubai yang selalu mendapatkan hasil tangkapan ikan melimpah. Karena rasa dengki, Bujang Beji berniat menutup aliran Sungai Melawi agar semua ikan berpindah ke wilayahnya. Dengan kesaktiannya, ia mengangkat puncak sebuah bukit besar untuk dipindahkan. Namun, di tengah perjalanan, puncak bukit tersebut terjatuh akibat berbagai rintangan yang dihadapinya. Bukit yang jatuh itu kemudian dipercaya berubah menjadi Bukit Kelam. Meskipun gagal, Bujang Beji tetap berusaha membalas dendam hingga akhirnya semua rencananya berakhir sia-sia. Legenda Bukit Kelam diwariskan secara turun-temurun sebagai pengingat bahwa sifat iri hati, kesombongan, dan keserakahan hanya akan membawa kehancuran bagi diri sendiri.",
+    "Menurut legenda masyarakat Sintang, Bukit Kelam yang menjulang megah di Kalimantan Barat adalah bukti nyata dari runtuhnya kesombongan seorang manusia bernama Bujang Beji. Kala itu, Bujang Beji terbakar api cemburu karena Temenggung Marubai selalu berhasil menangkap ikan melimpah. Didorong rasa dengki yang tiada tara, ia memahat puncak bukit raksasa di daerah Nanga Jetak untuk digunakan menyumbat aliran sungai. Dengan kekuatan sihirnya, ia memikul bongkahan batu hitam raksasa itu melintasi hutan. Di tengah jalan, dewi-dewi kahyangan yang tidak menyukai keserakahan manusia menertawakannya. Mendengar tawa mengejek itu, Bujang Beji mendongak marah. Namun naas, pijakannya goyah dan tali pemikulnya putus seketika. Bongkahan batu hitam yang teramat besar itu jatuh menghantam bumi dengan guncangan yang dahsyat, menindih impian jahatnya. Batu hitam raksasa yang terhempas itulah yang kini kita kenal sebagai Bukit Kelam, tegak berdiri sebagai monumen abadi yang memperingatkan manusia akan bahayanya memelihara rasa iri hati dan keserakahan.",
   location: "Kabupaten Sintang, Kalimantan Barat",
   period: "Legenda masyarakat Dayak",
   image: "/img/cultures/bukit-kelam.jpg",
   tags: ["Legenda", "Bukit Kelam", "Pesan Moral"],
 },
+  // Bangunan Bersejarah
+  {
+    id: "kalbar-istana-kadriah",
+    provinceId: "kalimantan-barat",
+    category: "Bangunan Bersejarah",
+    title: "Istana Kadriah",
+    coordinates: [-0.026, 109.344],
+    isLandmark: true,
+    description:
+      "Istana Kadriah merupakan istana kesultanan Melayu yang didirikan pada tahun 1771 oleh Sultan Syarif Abdurrahman Alkadrie, pendiri kota Pontianak. Terbuat dari kayu belian yang kokoh, bangunan ini memadukan arsitektur tradisional Melayu dengan sentuhan kolonial Eropa, menjadikannya ikon sejarah yang sangat berharga di Kalimantan Barat.",
+    youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Bangunan Bersejarah - Istana Kadriah Kesultanan Pontianak.mp3",
+    narrator:
+      "Berdiri megah di dekat persimpangan Sungai Kapuas dan Sungai Landak, Istana Kadriah adalah saksi bisu lahirnya Kota Pontianak pada tahun 1771. Didirikan oleh Sultan Syarif Abdurrahman Alkadrie, bangunan panggung ini hampir seluruhnya dibangun menggunakan kayu belian atau kayu besi yang terkenal sangat kuat. Arsitekturnya yang anggun memadukan gaya lokal Melayu dengan sentuhan kolonial Prancis dan Belanda, terlihat dari jajaran jendela besar dan kaca patri berwarna-warni. Di dalam istana, pengunjung dapat melihat berbagai peninggalan sejarah kesultanan, mulai dari singgasana emas, meriam kuno pemberian bangsa Eropa, hingga cermin kaca seribu yang legendaris. Istana Kadriah tetap tegak berdiri sebagai simbol kejayaan budaya Melayu di Kalimantan Barat.",
+    location: "Pontianak, Kalimantan Barat",
+    period: "Didirikan pada tahun 1771 oleh Sultan Syarif Abdurrahman Alkadrie",
+    image: "/img/cultures/istana-kadriah.jpg",
+    tags: ["Istana", "Kesultanan", "Pontianak", "Sejarah"],
+  },
+  {
+    id: "kalbar-masjid-jami",
+    provinceId: "kalimantan-barat",
+    category: "Bangunan Bersejarah",
+    title: "Masjid Jami Pontianak",
+    coordinates: [-0.024, 109.343],
+    isLandmark: true,
+    description:
+      "Masjid Jami Sultan Syarif Abdurrahman adalah masjid tertua di Kota Pontianak, Kalimantan Barat, yang didirikan bersamaan dengan pembangunan Istana Kadriah pada tahun 1771. Dengan arsitektur panggung berbahan kayu belian dan atap tumpang bergaya tradisional, masjid ini menjadi simbol penyebaran agama Islam di tanah Khatulistiwa.",
+    youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/kalimantan/Bangunan Bersejarah - Masjid Jami Sultan Syarif Abdurrahman.mp3",
+    narrator:
+      "Masjid Jami Sultan Syarif Abdurrahman adalah jantung spiritual yang mengiringi berdirinya Kota Pontianak sejak tahun 1771. Terletak tidak jauh dari Istana Kadriah, masjid tertua di Kalimantan Barat ini didirikan oleh pendiri kota, Sultan Syarif Abdurrahman Alkadrie. Bangunan masjid yang berbentuk panggung ini ditopang oleh tiang-tiang raksasa dari kayu belian pilihan yang kokoh menghadapi cuaca dan aliran sungai. Desain arsitekturnya sangat unik dengan atap tumpang bertingkat khas Nusantara dan jendela-jendela besar khas Melayu untuk sirkulasi udara yang sejuk. Di dalam masjid, nuansa kedamaian begitu terasa dengan mimbar kayu yang diukir indah serta tiang penyangga yang kokoh. Masjid Jami ini tetap menjadi pusat ibadah dan simbol abadi penyebaran agama Islam di bumi Khatulistiwa.",
+    location: "Pontianak, Kalimantan Barat",
+    period: "Didirikan pada tahun 1771",
+    image: "/img/cultures/masjid-jami.jpg",
+    tags: ["Masjid", "Sejarah", "Pontianak", "Religi"],
+  },
 
   // ─── PAPUA ─────────────────────────────────────────────────────────────────
   // Tarian
@@ -2159,6 +2133,7 @@ export const CULTURES = [
     description:
       "Tari Yospan adalah salah satu tarian adapt merauke,yang sering dipakai dalam kondisi tertentu. yospan juga merupakan tarian persahabatan masyarakat papua.Karena hampir seluruh masyarakat papua mengenal tarian yospan. Selain yospan,merauke juga memiliki beberapa tarian adat,antara lain,tari perang,dan tari gatsi.Tari perang biasanya dilakukan pada upacara- upacara adapt tertentu,dan juga pada festival kota merauke yang diadakan satu tahun sekali, dalam memperingati ulang tahun kota Merauke.Sedangkan tari gatsi dilakukan pada acara acara tertentu dan upacara adat tertentu,tarian ini adalah tarian adat suku asli kota merauke,yaitu suku marind.Alat-alat musik yang digunakan untuk mengiringi tarian ini adalah tifa yang terbuat dari kayu yang dibolongi atau di kosongkan isinya, dan pada satu sisinya diberi penutup.Penutupnya terbuat dari kulit rusa dan juga kulit biawak yang dikeringi,agar bunyinya menjadi lebih indah.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/tari-yospan.mp3",
     narrator:
       "Ketika drum tifa mulai berdentum dan kaki-kaki mulai bergerak, semangat Papua mengalir bebas dalam Tari Yospan. Ini adalah tarian yang lahir dari jiwa muda Papua yang dinamis — memadukan tradisi leluhur dengan semangat zaman baru. Setiap langkah adalah ekspresi kebanggaan menjadi orang Papua.",
     location: "Seluruh Papua",
@@ -2176,8 +2151,9 @@ export const CULTURES = [
     description:
       "Tari Selamat Datang merupakan tarian tradisional khas masyarakat Papua yang digunakan sebagai bentuk penghormatan dan ungkapan kegembiraan dalam menyambut tamu. Tarian ini dikenal dengan gerakannya yang energik dan dinamis, serta penggunaan berbagai aksesoris khas seperti kalung, hiasan kepala dari kerang, gigi, dan tulang hewan. Tari Selamat Datang biasanya dibawakan oleh sekelompok penari pria yang mengenakan pakaian adat Papua lengkap dengan tameng dan tombak. Tarian ini diiringi oleh musik tradisional seperti tifa, gitar, ukulele, dan stem bass yang menambah semarak suasana penyambutan.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/tari-selamat-datang.mp3",
     narrator:
-      "Tari Selamat Datang adalah simbol keramahan masyarakat Papua. Dengan gerakan yang penuh semangat dan iringan musik yang meriah, tarian ini menjadi wujud penghormatan dan sukacita dalam menyambut setiap tamu yang datang ke Tanah Papua.",
+      "Tari Selamat Datang merupakan tarian tradisional khas masyarakat Papua yang digunakan sebagai bentuk penghormatan dan ungkapan kegembiraan dalam menyambut tamu. Tarian ini dikenal dengan gerakannya yang energik dan dinamis, serta penggunaan berbagai aksesoris khas seperti kalung, hiasan kepala dari kerang, gigi, dan tulang hewan. Tari Selamat Datang biasanya dibawakan oleh sekelompok penari pria yang mengenakan pakaian adat Papua lengkap dengan tameng dan tombak. Tarian ini diiringi oleh musik tradisional seperti tifa, gitar, ukulele, dan stem bass yang menambah semarak suasana penyambutan.",
     location: "Papua Timur dan berbagai wilayah di Papua",
     period: "Tradisional, diwariskan secara turun-temurun",
     image: "/img/cultures/tari-selamat-datang.jpg",
@@ -2229,6 +2205,7 @@ export const CULTURES = [
     description:
       "Tifa adalah alat musik drum tradisional Papua dan Maluku yang terbuat dari kayu berongga dengan kulit biawak atau rusa sebagai membran. Ukurannya bervariasi dari kecil hingga sangat besar. Dalam budaya Papua, Tifa bukan hanya instrumen musik — ia adalah media komunikasi antar kampung dan sarana ritual adat yang sakral.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/alat-musik-tifa.mp3",
     narrator:
       "Dentuman Tifa terdengar jauh menembus hutan Papua, membawa pesan dari kampung ke kampung. Setiap ritme yang dipukul menceritakan sesuatu — perayaan kemenangan, peringatan bahaya, atau undangan pesta. Tifa adalah suara Papua yang paling murni dan paling kuat.",
     location: "Seluruh Papua",
@@ -2247,8 +2224,9 @@ export const CULTURES = [
     description:
       "Triton merupakan alat musik tradisional Papua yang terbuat dari kulit kerang laut dan dimainkan dengan cara ditiup. Alat musik ini banyak ditemukan di wilayah pesisir seperti Biak, Yapen, Waropen, Nabire, Wondama, hingga Raja Ampat. Pada awalnya, Triton digunakan sebagai sarana komunikasi, penanda peristiwa penting, atau alat pemanggil masyarakat. Seiring perkembangan zaman, Triton juga digunakan sebagai alat musik tradisional dan sarana hiburan.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/alat-musik-triton.mp3",
     narrator:
-      "Triton adalah alat musik tiup khas Papua yang berasal dari kulit kerang laut. Dahulu, suaranya digunakan untuk memanggil masyarakat, memberi tanda, dan menyampaikan pesan antarkampung. Kini, Triton juga menjadi bagian penting dalam pertunjukan seni dan pelestarian budaya Papua.",
+      "Triton adalah alat musik tiup khas Papua yang berasal dari kulit kerang laut. Dahulu, suaranya digunakan untuk memanggil masyarakat, memberi tanda, dan menyampaikan pesan antarkampung. Kini, Triton juga menjadi bagian penting dalam pertunjukan seni and pelestarian budaya Papua.",
     location:
       "Wilayah pesisir Papua, terutama Biak, Yapen, Waropen, Nabire, Wondama, dan Raja Ampat",
     period:
@@ -2306,6 +2284,7 @@ export const CULTURES = [
     description:
       "Koteka merupakan pakaian adat tradisional Papua yang umumnya dikenakan oleh laki-laki, terutama masyarakat di wilayah pegunungan. Pakaian ini terbuat dari labu air yang dikeringkan dan dibentuk sesuai tradisi masing-masing suku. Bagi masyarakat Papua, koteka bukan sekadar pakaian, melainkan simbol identitas budaya yang diwariskan dari generasi ke generasi. Hingga kini, koteka masih digunakan dalam upacara adat, festival budaya, dan berbagai pertunjukan seni tradisional.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/pakaian-adat-koteka.mp3",
     narrator:
       "Koteka adalah simbol identitas budaya masyarakat Papua. Terbuat dari labu air yang dikeringkan, pakaian tradisional ini mencerminkan kedekatan masyarakat Papua dengan alam serta menjadi warisan budaya yang terus dijaga hingga saat ini.",
     location: "Wilayah Pegunungan Papua",
@@ -2357,6 +2336,7 @@ export const CULTURES = [
     description:
       "Rok Rumbai merupakan pakaian adat khas Papua yang terbuat dari serat tumbuhan alami seperti daun sagu atau daun pandan yang dikeringkan dan dianyam menjadi rumbai-rumbai. Pakaian ini digunakan oleh laki-laki maupun perempuan dalam berbagai kegiatan adat, tarian tradisional, dan festival budaya. Keunikan bahan pembuatannya mencerminkan kedekatan masyarakat Papua dengan alam.",
     youtubeId: "",
+    audio: "/music/papua/pakaian-adat-rok-rumbai.mp3",
     narrator:
       "Dibuat dari serat tumbuhan alami, Rok Rumbai menjadi simbol kearifan masyarakat Papua dalam memanfaatkan alam. Hingga kini, pakaian tradisional ini masih digunakan dalam berbagai upacara adat dan pertunjukan budaya.",
     location: "Berbagai wilayah di Papua",
@@ -2376,6 +2356,7 @@ export const CULTURES = [
     description:
       "Upacara Bakar Batu merupakan tradisi adat masyarakat Papua, terutama suku Dani, Lani, dan Yali, yang dilaksanakan untuk merayakan berbagai peristiwa penting seperti kelahiran, pernikahan, penyambutan tamu, hingga perdamaian. Dalam upacara ini, batu-batu dipanaskan hingga membara untuk memasak ubi, sayuran, dan daging secara bersama-sama. Tradisi ini mencerminkan nilai kebersamaan, rasa syukur, dan persaudaraan yang kuat dalam kehidupan masyarakat Papua.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/upacara-adat-bakar-batu.mp3",
     narrator:
       "Asap mengepul dari batu-batu yang membara, sementara seluruh masyarakat berkumpul dalam suasana penuh kebersamaan. Bagi masyarakat Papua, Upacara Bakar Batu bukan sekadar tradisi memasak, melainkan simbol persaudaraan, rasa syukur, dan keharmonisan antar sesama.",
     location: "Wilayah Pegunungan Papua",
@@ -2410,6 +2391,7 @@ export const CULTURES = [
     description:
       "Wor merupakan tradisi adat masyarakat Biak yang memadukan nyanyian, doa, tarian, dan ungkapan budaya dalam satu rangkaian kegiatan. Tradisi ini dilaksanakan dalam berbagai peristiwa penting seperti kelahiran, pernikahan, penyambutan tamu, serta permohonan keselamatan. Syair-syair dalam Wor mengandung pesan moral dan nilai kehidupan yang diwariskan dari generasi ke generasi.",
     youtubeId: "",
+    audio: "/music/papua/upacara-adat-wor.mp3",
     narrator:
       "Melalui lantunan syair, tarian, dan doa, masyarakat Biak menyampaikan rasa syukur, harapan, serta penghormatan kepada leluhur. Tradisi Wor menjadi salah satu warisan budaya yang menjaga identitas masyarakat Biak hingga saat ini.",
     location: "Pulau Biak, Papua",
@@ -2446,6 +2428,7 @@ export const CULTURES = [
     description:
       "Noken merupakan tas tradisional khas Papua yang dibuat secara manual menggunakan serat tumbuhan, kulit kayu, atau benang yang dianyam dengan teknik khusus. Noken digunakan untuk membawa berbagai kebutuhan sehari-hari, seperti hasil panen, kayu bakar, hingga menggendong bayi. Bagi masyarakat Papua, noken bukan sekadar tas, tetapi juga simbol kerja keras, tanggung jawab, dan kedekatan dengan alam. Karena nilai budayanya yang tinggi, UNESCO telah menetapkan Noken sebagai Warisan Budaya Tak Benda yang perlu dilestarikan.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/kerajinan-noken.mp3",
     narrator:
       "Setiap simpul pada Noken menyimpan kisah tentang kehidupan masyarakat Papua. Dibuat dengan penuh kesabaran, Noken bukan hanya alat untuk membawa barang, tetapi juga simbol kasih sayang, tanggung jawab, dan warisan budaya yang terus diwariskan dari generasi ke generasi.",
     location: "Seluruh Papua",
@@ -2463,6 +2446,7 @@ export const CULTURES = [
     description:
       "Ukiran Asmat merupakan kerajinan tradisional khas masyarakat Asmat di Papua Selatan yang dibuat dari kayu pilihan dan dipahat secara manual. Setiap ukiran memiliki motif yang berbeda, menggambarkan kehidupan masyarakat, alam, hewan, maupun kisah para leluhur. Bagi masyarakat Asmat, ukiran tidak hanya dipandang sebagai karya seni, tetapi juga sebagai sarana untuk menjaga hubungan dengan sejarah dan tradisi leluhur.",
     youtubeId: "",
+    audio: "/music/papua/kerajinan-ukiran-asmat.mp3",
     narrator:
       "Di tangan para pengrajin Asmat, sepotong kayu berubah menjadi karya seni yang penuh makna. Setiap pahatan menceritakan kisah tentang leluhur, kehidupan, dan hubungan erat masyarakat Asmat dengan alam sekitarnya.",
     location: "Kabupaten Asmat, Papua Selatan",
@@ -2516,6 +2500,7 @@ export const CULTURES = [
     description:
       "Di daerah Fakfak, tepatnya di Pegunungan Bumberi, hiduplah seorang perempuan tua bersama seekor anjing betina. Keduanya hidup bahagia dengan mengandalkan hasil hutan untuk bertahan hidup. Suatu hari, setelah memakan buah pandan, anjing tersebut melahirkan seekor anak anjing, sementara perempuan tua itu melahirkan seorang anak laki-laki bernama Kweiya. Kweiya tumbuh menjadi pemuda yang rajin membuka hutan untuk berkebun. Suatu ketika, seorang pria tua datang dan membantu Kweiya dengan memberikan kapak besi. Pria tersebut kemudian diterima sebagai bagian dari keluarga dan memiliki beberapa anak bersama ibu Kweiya. Namun, seiring waktu, saudara-saudara tiri Kweiya merasa iri dan menyakitinya. Merasa sedih dan kecewa, Kweiya mengasingkan diri hingga akhirnya berubah menjadi seekor burung yang indah bersama ibunya. Burung tersebut kemudian dikenal sebagai Burung Cenderawasih. Sementara saudara-saudaranya yang menyesal juga berubah menjadi berbagai jenis burung lain yang memenuhi hutan Papua. Legenda ini menjelaskan asal mula munculnya Burung Cenderawasih serta berbagai jenis burung yang hidup di hutan Papua.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/cerita-rakyat-burung-cendrawasih.mp3",
     narrator:
       "Dahulu di Pegunungan Bumberi, hiduplah seorang pemuda bernama Kweiya bersama ibunya. Kweiya dikenal sebagai anak yang rajin dan baik hati. Namun, rasa iri dari saudara-saudara tirinya membuat hidupnya berubah. Setelah disakiti oleh mereka, Kweiya memilih mengasingkan diri. Dalam kesedihan yang mendalam, ia dan ibunya berubah menjadi burung yang sangat indah. Masyarakat Papua percaya bahwa sejak saat itulah Burung Cenderawasih hadir sebagai lambang keindahan, kasih sayang, dan warisan leluhur Papua.",
     location: "Pegunungan Bumberi, Fakfak, Papua Barat",
@@ -2533,6 +2518,7 @@ export const CULTURES = [
     description:
       "Menurut cerita rakyat masyarakat Sentani, dahulu penduduk Kampung Yomoko hidup tanpa air dan api. Haboi bersama Ondofolo Wally kemudian melakukan perjalanan menuju Gunung Dobonsolo untuk meminta air kepada Dobonai, penguasa air. Setelah melalui perjalanan panjang dan memenuhi syarat yang diberikan, mereka berhasil memperoleh air suci. Namun, dalam perjalanan pulang mereka tergoda untuk berburu sehingga wadah yang berisi air tersebut pecah. Air suci itu kemudian mengalir deras dan menggenangi dataran rendah hingga membentuk sebuah danau yang sangat luas. Danau tersebut kemudian dikenal sebagai Danau Sentani. Legenda ini menjadi bagian penting dari identitas budaya masyarakat Sentani serta menggambarkan hubungan erat manusia dengan alam.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/cerita-rakyat-danau-sentani.mp3",
     narrator:
       "Konon, Haboi dan Ondofolo Wally melakukan perjalanan panjang ke Gunung Dobonsolo untuk mendapatkan air bagi masyarakatnya. Setelah berhasil membawa pulang air suci, mereka tergoda berburu di tengah perjalanan. Tanpa disadari, wadah berisi air itu pecah dan airnya mengalir deras hingga membentuk sebuah danau yang sangat luas. Masyarakat Papua percaya bahwa peristiwa inilah yang melahirkan Danau Sentani, sumber kehidupan yang masih lestari hingga sekarang.",
     location: "Danau Sentani, Kabupaten Jayapura, Papua",
@@ -2558,6 +2544,81 @@ export const CULTURES = [
     tags: ["Fabel", "Burung", "Pesan Moral", "Kasuari", "Dara Mahkota"],
   },
 
+  // Rumah Adat
+  {
+  id: "papua-honai",
+  provinceId: "papua",
+  category: "Rumah Adat",
+  title: "Rumah Honai",
+  coordinates: [-4.083, 138.950],
+  isLandmark: true,
+  description:
+    "Rumah Honai merupakan rumah adat khas masyarakat suku Dani yang mendiami wilayah Lembah Baliem di Papua Pegunungan. Rumah ini memiliki bentuk bulat dengan atap kerucut yang terbuat dari jerami atau ilalang, serta dinding yang disusun dari kayu. Berbeda dengan rumah pada umumnya, Honai tidak memiliki jendela dan hanya memiliki satu pintu kecil. Desain tersebut dibuat untuk menjaga suhu di dalam rumah tetap hangat karena wilayah pegunungan Papua memiliki udara yang sangat dingin, terutama pada malam hari.\n\nSelain sebagai tempat tinggal, Honai menjadi pusat kehidupan keluarga masyarakat Dani. Di dalam rumah inilah anggota keluarga berkumpul, beristirahat, berdiskusi, serta mewariskan berbagai pengetahuan, adat istiadat, dan nilai-nilai kehidupan kepada generasi muda. Bangunan ini juga menjadi bukti bagaimana masyarakat Papua mampu memanfaatkan bahan-bahan alami yang tersedia di lingkungan sekitar untuk menciptakan hunian yang nyaman.\n\nHingga sekarang, Rumah Honai tetap menjadi salah satu ikon budaya Papua. Keunikannya terletak pada bentuk arsitekturnya yang sederhana namun mampu menjaga kehangatan secara alami, sekaligus mencerminkan nilai kebersamaan, kekeluargaan, dan keharmonisan masyarakat dengan alam.",
+  youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/Rumah adat - Honai.mp3",
+  narrator:
+    "Rumah Honai merupakan rumah adat khas masyarakat suku Dani yang mendiami wilayah Lembah Baliem di Papua Pegunungan. Rumah ini memiliki bentuk bulat dengan atap kerucut yang terbuat dari jerami atau ilalang, serta dinding yang disusun dari kayu. Berbeda dengan rumah pada umumnya, Honai tidak memiliki jendela dan hanya memiliki satu pintu kecil. Desain tersebut dibuat untuk menjaga suhu di dalam rumah tetap hangat karena wilayah pegunungan Papua memiliki udara yang sangat dingin, terutama pada malam hari.\n\nSelain sebagai tempat tinggal, Honai menjadi pusat kehidupan keluarga masyarakat Dani. Di dalam rumah inilah anggota keluarga berkumpul, beristirahat, berdiskusi, serta mewariskan berbagai pengetahuan, adat istiadat, dan nilai-nilai kehidupan kepada generasi muda. Bangunan ini juga menjadi bukti bagaimana masyarakat Papua mampu memanfaatkan bahan-bahan alami yang tersedia di lingkungan sekitar untuk menciptakan hunian yang nyaman.\n\nHingga sekarang, Rumah Honai tetap menjadi salah satu ikon budaya Papua. Keunikannya terletak pada bentuk arsitekturnya yang sederhana namun mampu menjaga kehangatan secara alami, sekaligus mencerminkan nilai kebersamaan, kekeluargaan, dan keharmonisan masyarakat dengan alam.",
+  location: "Lembah Baliem, Papua Pegunungan",
+  period: "Tradisi masyarakat suku Dani",
+  image: "/img/cultures/honai.jpg",
+  tags: ["Honai", "Suku Dani", "Lembah Baliem", "Rumah Adat"],
+},
+
+{
+  id: "papua-ebei",
+  provinceId: "papua",
+  category: "Rumah Adat",
+  title: "Rumah Ebei",
+  coordinates: [-4.082, 138.951],
+  isLandmark: true,
+  description:
+    "Rumah Ebei merupakan rumah adat yang digunakan oleh perempuan dan anak-anak dalam kehidupan masyarakat suku Dani di Papua. Bentuk bangunannya hampir menyerupai Rumah Honai dengan atap jerami berbentuk kerucut dan dinding kayu, namun memiliki fungsi yang berbeda sesuai pembagian peran dalam kehidupan adat.\n\nRumah ini menjadi tempat para perempuan menjalankan berbagai aktivitas sehari-hari, mulai dari beristirahat, mengurus kebutuhan keluarga, hingga mengajarkan keterampilan hidup kepada anak-anak. Berbagai nilai budaya, adat istiadat, serta kebiasaan masyarakat diwariskan dari generasi ke generasi melalui kehidupan sehari-hari di dalam Ebei.\n\nKeberadaan Rumah Ebei menunjukkan bahwa masyarakat Dani memiliki sistem kehidupan keluarga yang teratur dan saling melengkapi. Rumah ini menjadi simbol pentingnya peran perempuan dalam menjaga keharmonisan keluarga sekaligus melestarikan tradisi budaya Papua.",
+  youtubeId: "cyJ9fpoYh_M",
+  narrator:
+    "Rumah Ebei merupakan rumah adat yang diperuntukkan bagi perempuan dan anak-anak dalam masyarakat suku Dani. Bentuknya hampir sama dengan Rumah Honai, tetapi memiliki fungsi yang berbeda dalam kehidupan sehari-hari. Di rumah inilah para ibu mengurus keluarga, mendidik anak-anak, serta mengajarkan berbagai keterampilan dan nilai budaya yang diwariskan oleh leluhur. Kehadiran Ebei menunjukkan bahwa masyarakat Dani memiliki pembagian peran yang jelas antara anggota keluarga sehingga kehidupan masyarakat berjalan dengan tertib. Rumah ini juga menjadi tempat tumbuhnya ikatan kekeluargaan yang erat serta pusat pembelajaran budaya bagi generasi muda. Hingga kini, Ebei tetap menjadi bagian penting dari kehidupan tradisional masyarakat Papua.",
+  location: "Lembah Baliem, Papua Pegunungan",
+  period: "Tradisi masyarakat suku Dani",
+  image: "/img/cultures/ebei.jpg",
+  tags: ["Ebei", "Suku Dani", "Perempuan", "Rumah Adat"],
+},
+
+{
+  id: "papua-wamai",
+  provinceId: "papua",
+  category: "Rumah Adat",
+  title: "Rumah Wamai",
+  coordinates: [-4.084, 138.949],
+  isLandmark: true,
+  description:
+    "Rumah Wamai merupakan bangunan tradisional masyarakat Papua yang digunakan sebagai kandang atau tempat memelihara babi. Dalam kehidupan masyarakat Papua, terutama pada berbagai suku di wilayah pegunungan, babi memiliki kedudukan yang sangat penting, bukan hanya sebagai hewan ternak tetapi juga sebagai simbol kesejahteraan, status sosial, dan bagian dari berbagai upacara adat.\n\nBabi sering digunakan dalam pesta adat, pembayaran mas kawin, penyelesaian sengketa, hingga berbagai bentuk penghormatan dalam kehidupan masyarakat. Oleh karena itu, Wamai dibangun secara khusus untuk menjaga dan merawat hewan tersebut agar tetap sehat.\n\nKeberadaan Rumah Wamai menunjukkan eratnya hubungan antara kehidupan masyarakat Papua dengan tradisi yang diwariskan oleh leluhur. Bangunan ini menjadi bagian penting dari kompleks rumah adat yang mendukung keberlangsungan kehidupan sosial dan budaya masyarakat Papua.",
+  youtubeId: "cyJ9fpoYh_M",
+  narrator:
+    "Rumah Wamai merupakan bangunan tradisional yang digunakan masyarakat Papua sebagai tempat memelihara babi, hewan yang memiliki nilai ekonomi dan budaya yang sangat tinggi. Dalam kehidupan masyarakat adat, babi bukan hanya dipelihara sebagai ternak, tetapi juga digunakan dalam berbagai upacara adat, pesta budaya, hingga simbol kehormatan dan kesejahteraan keluarga. Karena memiliki peran yang sangat penting, masyarakat membangun Wamai sebagai tempat khusus untuk merawat ternak tersebut. Kehadiran rumah ini menunjukkan bagaimana kehidupan masyarakat Papua sangat erat kaitannya dengan adat dan tradisi yang diwariskan turun-temurun. Wamai menjadi bukti bahwa setiap bangunan dalam budaya Papua memiliki fungsi yang penting bagi kehidupan masyarakatnya.",
+  location: "Papua",
+  period: "Tradisi masyarakat Papua",
+  image: "/img/cultures/wamai.jpg",
+  tags: ["Wamai", "Babi", "Rumah Adat", "Papua"],
+},
+
+{
+  id: "papua-kariwari",
+  provinceId: "papua",
+  category: "Rumah Adat",
+  title: "Rumah Kariwari",
+  coordinates: [-2.600, 140.520],
+  isLandmark: true,
+  description:
+    "Rumah Kariwari merupakan rumah adat yang berasal dari masyarakat Tobati dan Enggros di kawasan Danau Sentani, Papua. Berbeda dengan rumah adat Papua lainnya yang umumnya berbentuk bulat, Kariwari memiliki bentuk segi delapan dengan atap yang menjulang tinggi sehingga menjadi ciri khas tersendiri.\n\nPada masa lalu, rumah ini digunakan sebagai tempat pendidikan adat bagi anak laki-laki yang mulai memasuki usia remaja. Di dalam Kariwari, mereka dibimbing untuk mempelajari adat istiadat, keterampilan hidup, kepemimpinan, serta tanggung jawab sebagai anggota masyarakat. Rumah ini menjadi tempat penting dalam membentuk karakter dan mempersiapkan generasi penerus.\n\nHingga kini, Rumah Kariwari dikenal sebagai salah satu simbol pendidikan tradisional masyarakat Papua. Keunikan bentuk arsitekturnya berpadu dengan nilai-nilai budaya yang menekankan pentingnya pendidikan karakter dan pelestarian adat istiadat.",
+  youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/Rumah adat - Kariwari.mp3",
+  narrator:
+    "Rumah Kariwari merupakan rumah adat yang berasal dari masyarakat Tobati dan Enggros di kawasan Danau Sentani, Papua. Berbeda dengan rumah adat Papua lainnya yang umumnya berbentuk bulat, Kariwari memiliki bentuk segi delapan dengan atap yang menjulang tinggi sehingga menjadi ciri khas tersendiri.\n\nPada masa lalu, rumah ini digunakan sebagai tempat pendidikan adat bagi anak laki-laki yang mulai memasuki usia remaja. Di dalam Kariwari, mereka dibimbing untuk mempelajari adat istiadat, keterampilan hidup, kepemimpinan, serta tanggung jawab sebagai anggota masyarakat. Rumah ini menjadi tempat penting dalam membentuk karakter dan mempersiapkan generasi penerus.\n\nHingga kini, Rumah Kariwari dikenal sebagai salah satu simbol pendidikan tradisional masyarakat Papua. Keunikan bentuk arsitekturnya berpadu dengan nilai-nilai budaya yang menekankan pentingnya pendidikan karakter dan pelestarian adat istiadat.",
+  location: "Danau Sentani, Jayapura, Papua",
+  period: "Tradisi masyarakat Tobati dan Enggros",
+  image: "/img/cultures/kariwari.jpg",
+  tags: ["Kariwari", "Danau Sentani", "Tobati", "Enggros"],
+},
+
   // senjata tradisional
   {
     id: "papua-panah",
@@ -2569,6 +2630,7 @@ export const CULTURES = [
     description:
       "Busur dan panah merupakan senjata tradisional yang sangat dikenal di Papua dan telah digunakan oleh berbagai suku sejak zaman dahulu. Senjata ini dibuat dari bahan-bahan alami seperti kayu, bambu, dan serat tumbuhan yang mudah ditemukan di lingkungan sekitar. Anak panah biasanya memiliki ujung yang diruncingkan agar lebih efektif digunakan. Bagi masyarakat Papua, busur dan panah bukan hanya alat berburu, tetapi juga melambangkan keterampilan, ketelitian, dan kemampuan bertahan hidup. Pada masa lalu, senjata ini digunakan untuk berburu hewan di hutan serta melindungi diri dari ancaman. Kini, busur dan panah lebih sering digunakan dalam festival budaya, pertunjukan adat, dan berbagai kegiatan pelestarian tradisi. Keunikan senjata ini terletak pada bahan pembuatannya yang berasal dari alam serta teknik penggunaannya yang membutuhkan konsentrasi dan ketepatan tinggi.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/senjata-busur-dan-panah.mp3",
     narrator:
       "Sejak kecil, anak-anak Papua belajar memegang busur dan mengarahkan panah dengan penuh ketelitian. Di tengah hutan, kemampuan memanah menjadi bekal penting untuk berburu dan bertahan hidup. Hingga kini, busur dan panah tetap diwariskan dari generasi ke generasi sebagai simbol keterampilan, keberanian, dan warisan budaya masyarakat Papua.",
     location: "Seluruh Papua",
@@ -2586,6 +2648,7 @@ export const CULTURES = [
     description:
       "Pisau belati merupakan senjata tradisional Papua yang biasanya dibuat dari tulang hewan, batu, atau bahan alami lainnya yang diolah menjadi bilah tajam. Ukurannya yang relatif kecil membuat senjata ini mudah dibawa dan digunakan dalam berbagai aktivitas. Selain berfungsi sebagai alat pertahanan diri, pisau belati juga digunakan untuk berburu, mengolah hasil buruan, dan membantu berbagai pekerjaan sehari-hari. Keberadaan pisau belati mencerminkan keterampilan masyarakat Papua dalam memanfaatkan sumber daya alam yang tersedia di sekitarnya. Saat ini, senjata ini lebih banyak digunakan sebagai perlengkapan adat dan simbol kekayaan budaya Papua.",
     youtubeId: "cyJ9fpoYh_M",
+    audio: "/music/papua/senjata-pisau-belati.mp3",
     narrator:
       "Bagi masyarakat Papua, pisau belati bukan sekadar senjata. Dengan bilah tajam yang dibuat dari bahan alami, alat ini membantu berbagai aktivitas sehari-hari, mulai dari berburu hingga mengolah hasil hutan. Hingga kini, pisau belati tetap dipertahankan sebagai bagian dari identitas budaya dan warisan leluhur Papua.",
     location: "Seluruh Papua",

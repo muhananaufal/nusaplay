@@ -1,11 +1,11 @@
 'use client';
-import { useState, useRef, useMemo, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useMemo, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { useAppFlow } from '@/contexts/AppFlow';
 import { getCulturesByProvince } from '@/data/cultures';
 import { useIsMobile } from '@/utils/useIsMobile';
-
 import { usePassport } from '@/contexts/Passport';
+import { usePlay } from '@/contexts/Play';
 
 const STAMP_SYMBOLS: Record<string, string> = {
   'jawa-tengah': '✿',
@@ -15,36 +15,51 @@ const STAMP_SYMBOLS: Record<string, string> = {
 };
 
 export const ProvinceDestinations = ({ visible }) => {
-  const { selectedProvince, selectCategory, backToMap } = useAppFlow();
+  const { selectedProvince, selectCategory, backToMap, visitedByProvince, listenedByProvince } = useAppFlow();
   const { visitedProvinces } = usePassport();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isSelecting, setIsSelecting] = useState<string | null>(null);
+  const { tourActive } = usePlay();
+
+  const isMobile = useIsMobile(768);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [magneticPos, setMagneticPos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (tourActive) {
+      setMagneticPos({ x: 0, y: 0 });
+    }
+  }, [tourActive]);
+
+  // Track cursor position to simulate a magnetic pull on the explore button
+  useEffect(() => {
+    if (isMobile) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (tourActive) return;
+      const btn = buttonRef.current;
+      if (btn) {
+        const rect = btn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const distanceX = e.clientX - centerX;
+        const distanceY = e.clientY - centerY;
+        const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+        if (distance < 160) {
+          // Attract towards cursor (28% strength)
+          setMagneticPos({ x: distanceX * 0.28, y: distanceY * 0.28 });
+        } else {
+          setMagneticPos({ x: 0, y: 0 });
+        }
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isMobile, tourActive]);
 
   const isVisited = selectedProvince ? visitedProvinces.has(selectedProvince.id) : false;
-
-  const handleSelectCategory = useCallback((catName: string) => {
-    if (isSelecting) return;
-    setIsSelecting(catName);
-    setTimeout(() => {
-      selectCategory(catName);
-    }, 450); // Match globals.css transition duration
-  }, [isSelecting, selectCategory]);
-  // progressBarRef: direct DOM style writes replace setProgress(0..100) which
-  // was calling React setState 60 times per second via requestAnimationFrame,
-  // causing the entire component tree to re-render at 60fps.
-  const progressBarRef = useRef<any>(null);
-  const sliderRef = useRef<any>(null);
-
-  const slideDuration = 5000; // 5 seconds per category slide
-
-  // matchMedia-based â€” fires only when threshold is crossed, not every pixel
-  const isMobile = useIsMobile(1024);
-
-  // Reset activeIndex and progress bar when the province changes
-  useEffect(() => {
-    setActiveIndex(0);
-    if (progressBarRef.current) progressBarRef.current.style.width = '0%';
-  }, [selectedProvince?.id]);
 
   // Retrieve cultures for the selected province
   const cultures = useMemo(() => {
@@ -52,229 +67,183 @@ export const ProvinceDestinations = ({ visible }) => {
     return getCulturesByProvince(selectedProvince.id);
   }, [selectedProvince]);
 
-  // Generate category data with corresponding first youtubeId as its video source
-  const categoryData = useMemo(() => {
-    if (!selectedProvince || cultures.length === 0) return [];
-    
-    // Use categories declared in province or dynamically fallback to unique categories in culture items
-    const categories = selectedProvince.categories || [...new Set(cultures.map(c => c.category))];
-    
-    const mapped = categories.map(cat => {
-      const match = cultures.find(c => c.category === cat);
-      return {
-        name: cat,
-        youtubeId: match ? match.youtubeId : 'cyJ9fpoYh_M', // Fallback YouTube video ID
-        title: match ? match.title : '',
-      };
-    });
+  const totalCultures = cultures.length;
 
-    const allItem = {
-      name: 'Semua',
-      youtubeId: cultures[0]?.youtubeId || 'cyJ9fpoYh_M',
-      title: 'Semua Warisan Budaya',
-    };
+  const visitedCount = useMemo(() => {
+    if (!selectedProvince) return 0;
+    return (visitedByProvince[selectedProvince.id] || []).length;
+  }, [visitedByProvince, selectedProvince?.id]);
 
-    return [allItem, ...mapped];
-  }, [selectedProvince, cultures]);
+  const listenedCount = useMemo(() => {
+    if (!selectedProvince) return 0;
+    return (listenedByProvince[selectedProvince.id] || []).length;
+  }, [listenedByProvince, selectedProvince?.id]);
 
-  // Smooth auto-slide timer using requestAnimationFrame.
-  // Progress is written directly to the DOM ref (no React state updates),
-  // keeping the 60fps animation loop out of React's reconciler entirely.
-  useEffect(() => {
-    if (!visible || categoryData.length <= 1) return;
+  // Main background video Youtube ID placeholder fallback
+  const videoUrl = useMemo(() => {
+    return cultures[0]?.youtubeId || 'cyJ9fpoYh_M';
+  }, [cultures]);
 
-    let start = null;
-    let animationFrameId = null;
+  if (!visible || !selectedProvince) return null;
 
-    const animate = (timestamp) => {
-      if (!start) start = timestamp;
-      const elapsed = timestamp - start;
-      const pct = Math.min((elapsed / slideDuration) * 100, 100);
-
-      // Direct DOM write â€” no setState, no re-render
-      if (progressBarRef.current) {
-        progressBarRef.current.style.width = `${pct}%`;
-      }
-
-      if (elapsed < slideDuration) {
-        animationFrameId = requestAnimationFrame(animate);
-      } else {
-        // Reset bar before switching category
-        if (progressBarRef.current) progressBarRef.current.style.width = '0%';
-        setActiveIndex((prev) => (prev + 1) % categoryData.length);
-      }
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-    };
-  }, [activeIndex, categoryData.length, visible]);
-
-  // Check if screen is mobile to adapt layout styles dynamically
-  // (handled by useIsMobile hook above)
-
-  if (!visible || !selectedProvince || categoryData.length === 0) return null;
-
-  const currentCategory = categoryData[activeIndex];
-
-  // Helper to handle manual click (resets progress bar directly via DOM)
-  const handleCardClick = (index) => {
-    setActiveIndex(index);
-    if (progressBarRef.current) progressBarRef.current.style.width = '0%';
+  const handleExplore = () => {
+    // Navigates to the clean list view without query filters
+    selectCategory('Semua');
   };
 
   return (
     <div className="pd-container">
-      {/* â”€â”€ BACKGROUND VIDEO LAYER â”€â”€ */}
+      {/* ── BACKGROUND VIDEO PLAYER LAYER ── */}
       <div className="pd-bg-video-container">
-        <AnimatePresence mode="wait">
-          {/* Keyed by category name to force re-mount and replay video from the start */}
-          <motion.div
-            key={currentCategory.name}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 0.65, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
-          >
-            <iframe
-              className="pd-bg-video-iframe"
-              src={`https://www.youtube.com/embed/${currentCategory.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${currentCategory.youtubeId}&controls=0&rel=0&playsinline=1&enablejsapi=1&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0`}
-              title={currentCategory.name}
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              loading="lazy"
-            />
-          </motion.div>
-        </AnimatePresence>
+        <iframe
+          className="pd-bg-video-iframe"
+          src={`https://www.youtube.com/embed/${videoUrl}?autoplay=1&mute=1&loop=1&playlist=${videoUrl}&controls=0&rel=0&playsinline=1&enablejsapi=1&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0`}
+          title={selectedProvince.name}
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          loading="lazy"
+        />
         <div className="pd-bg-overlay" />
       </div>
 
-      {/* Background click area for custom cursor explore transition */}
-      <div 
-        className="pd-bg-click-area"
-        onClick={() => handleSelectCategory(currentCategory.name)}
-      />
-
       {/* ── TOP HEADER (Logo and Back button) ── */}
-      <div className={`pd-header ${isSelecting ? 'transition-fade-out' : ''}`}>
+      <div className="pd-header">
         <div className="pd-logo">{isMobile ? 'PROVINSI' : 'NUSAPLAY — PROVINSI'}</div>
         <button className="pd-back-btn" onClick={backToMap}>
           <span>{isMobile ? '← KEMBALI' : '← KEMBALI KE PETA'}</span>
         </button>
       </div>
 
-      {/* ── MAIN CONTENT (Bottom aligned as per mockup) ── */}
-      <div className="pd-main-content">
-        {/* Province Big Title */}
-        <motion.h1 
-          className={`pd-province-title ${isSelecting ? 'transition-fade-out' : ''}`}
+      {/* ── MAIN CENTER HERO ── */}
+      <div className="pd-hero-content">
+        <motion.h1
+          className="pd-hero-title"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           {selectedProvince.name}
           {isVisited && (
-            <motion.span 
+            <motion.span
               className="pd-stamp-seal"
               title="Stempel paspor provinsi ini telah dikoleksi!"
+              style={{
+                display: 'inline-block',
+                marginLeft: '15px',
+                fontSize: '0.6em',
+                lineHeight: 1,
+              }}
               initial={{ scale: 0, rotate: -45 }}
               animate={{ scale: 1, rotate: 10 }}
-              transition={{ delay: 0.5, type: 'spring', stiffness: 200, damping: 12 }}
+              transition={{ delay: 0.4, type: 'spring', stiffness: 200, damping: 12 }}
             >
               {STAMP_SYMBOLS[selectedProvince.id] || '❈'}
             </motion.span>
           )}
         </motion.h1>
 
-        {/* Fullwidth Divider Line with Meta Information */}
-        <motion.div 
-          className={`pd-divider-line ${isSelecting ? 'transition-fade-out' : ''}`}
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        <motion.p
+          className="pd-hero-tagline"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <button 
-            className="pd-divider-left"
-            onClick={() => handleSelectCategory(currentCategory.name)}
+          {selectedProvince.description}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}
+        >
+          <motion.button
+            ref={buttonRef}
+            className="pd-hero-btn"
+            onClick={handleExplore}
+            animate={{
+              x: magneticPos.x,
+              y: magneticPos.y,
+            }}
+            transition={{
+              type: 'spring',
+              stiffness: 150,
+              damping: 15,
+              mass: 0.1,
+            }}
           >
-            <span className="pd-menu-icon">☰</span>
-            <span>Explore {currentCategory.name}</span>
-          </button>
+            Jelajahi Sekarang →
+          </motion.button>
 
-        </motion.div>
-
-        {/* Bottom Panel containing Description and Slider */}
-        <div className="pd-bottom-row">
-          {/* Description on Left */}
-          <motion.div 
-            className={`pd-desc-block ${isSelecting ? 'transition-fade-out' : ''}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <p>{selectedProvince.description}</p>
-          </motion.div>
-
-          <motion.div 
-            className="pd-slider-block"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className={`pd-slider-header ${isSelecting ? 'transition-fade-out' : ''}`}>
-              <span className="pd-slider-title">Kategori Budaya</span>
-              <span className="pd-slider-instruction">Pilih video untuk menjelajah →</span>
-            </div>
-
-            <div ref={sliderRef} className="pd-thumbnails-row">
-              {categoryData.map((cat, index) => {
-                const isActive = index === activeIndex;
-                const thumbUrl = `https://img.youtube.com/vi/${cat.youtubeId}/mqdefault.jpg`;
-                
-                return (
-                  <div
-                    key={cat.name}
-                    className={`pd-thumbnail-item ${isActive ? 'active' : ''} ${isSelecting === cat.name ? 'transition-zoom-in' : (isSelecting ? 'transition-fade-out' : '')}`}
-                    onMouseEnter={() => handleCardClick(index)}
-                    onClick={() => handleSelectCategory(cat.name)}
-                  >
-                    <span className="pd-thumb-label">{String(index).padStart(2, '0')}.</span>
-                    <div className="pd-thumb-card">
-                      <img 
-                        className="pd-thumb-img" 
-                        src={thumbUrl} 
-                        alt={cat.name} 
-                        loading="lazy" 
+          {/* Progress Rings for the Province */}
+          {totalCultures > 0 && (
+            <motion.div
+              className="pd-progress-container"
+              onClick={handleExplore}
+              whileHover={{ scale: 1.025, y: -2 }}
+              whileTap={{ scale: 0.98, y: 0 }}
+              style={{ cursor: 'pointer' }}
+            >
+              <div className="pd-progress-item">
+                {(() => {
+                  const r = 26;
+                  const circ = 2 * Math.PI * r;
+                  const progress = visitedCount / totalCultures;
+                  const dash = circ * progress;
+                  return (
+                    <svg width="68" height="68" viewBox="0 0 68 68" className="pd-progress-svg">
+                      <circle cx="34" cy="34" r={r} fill="none" stroke="rgba(255, 255, 255, 0.08)" strokeWidth="4" />
+                      <circle
+                        cx="34" cy="34" r={r} fill="none"
+                        stroke="#5591b9"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        strokeDasharray={`${dash} ${circ}`}
+                        strokeDashoffset={0}
+                        transform="rotate(-90 34 34)"
+                        style={{ transition: 'stroke-dasharray 0.6s cubic-bezier(0.16,1,0.3,1)' }}
                       />
-                      <div className="pd-card-overlay">
-                        <span className="pd-card-hover-text">MASUK</span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                      <text x="34" y="31" textAnchor="middle" className="pd-progress-num" style={{ fill: '#5591b9', fontSize: '12px', fontWeight: 300, fontFamily: "'Inter', sans-serif" }}>{visitedCount}</text>
+                      <text x="34" y="44" textAnchor="middle" className="pd-progress-slash" style={{ fill: 'rgba(255, 255, 255, 0.35)', fontSize: '8px', fontWeight: 600, fontFamily: "'Inter', sans-serif" }}>/ {totalCultures}</text>
+                    </svg>
+                  );
+                })()}
+                <span className="pd-progress-label">Dikunjungi</span>
+              </div>
 
-            {/* Custom Progress Bar */}
-            <div className={`pd-progress-track ${isSelecting ? 'transition-fade-out' : ''}`}>
-              <div 
-                ref={progressBarRef}
-                className="pd-progress-fill" 
-                style={{
-                  left: '0%',
-                  width: '0%'
-                }} 
-              />
-            </div>
-          </motion.div>
-        </div>
+              <div className="pd-progress-item">
+                {(() => {
+                  const r = 26;
+                  const circ = 2 * Math.PI * r;
+                  const progress = listenedCount / totalCultures;
+                  const dash = circ * progress;
+                  return (
+                    <svg width="68" height="68" viewBox="0 0 68 68" className="pd-progress-svg">
+                      <circle cx="34" cy="34" r={r} fill="none" stroke="rgba(255, 255, 255, 0.08)" strokeWidth="4" />
+                      <circle
+                        cx="34" cy="34" r={r} fill="none"
+                        stroke="#c8a96e"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        strokeDasharray={`${dash} ${circ}`}
+                        strokeDashoffset={0}
+                        transform="rotate(-90 34 34)"
+                        style={{ transition: 'stroke-dasharray 0.6s cubic-bezier(0.16,1,0.3,1)' }}
+                      />
+                      <text x="34" y="31" textAnchor="middle" className="pd-progress-num" style={{ fill: '#c8a96e', fontSize: '12px', fontWeight: 300, fontFamily: "'Inter', sans-serif" }}>{listenedCount}</text>
+                      <text x="34" y="44" textAnchor="middle" className="pd-progress-slash" style={{ fill: 'rgba(255, 255, 255, 0.35)', fontSize: '8px', fontWeight: 600, fontFamily: "'Inter', sans-serif" }}>/ {totalCultures}</text>
+                    </svg>
+                  );
+                })()}
+                <span className="pd-progress-label">Didengar</span>
+              </div>
+            </motion.div>
+          )}
+        </motion.div>
       </div>
+
+      {/* Spacer for Flex alignment */}
+      <div style={{ height: '40px' }} />
     </div>
   );
 };
-

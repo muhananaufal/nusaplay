@@ -6,20 +6,110 @@ import { WayangLoader } from './WayangLoader';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 
-// ── YouTube Facade ─────────────────────────────────────────────────────────────
-// Mounting a YouTube iframe immediately triggers 10+ network requests and starts
-// video streaming — all competing with airplane.glb XHR on page load.
-// This facade renders a thumbnail + dark overlay until the user first moves their
-// pointer OR 3 seconds of idle time has passed, then swaps in the real iframe.
-const YouTubeFacade = ({ videoId }: { videoId: string }) => {
+// ── Video Background ───────────────────────────────────────────────────────────
+// Renders the local splash-screen.mp4 video with audio enabled and looped.
+// Since modern browsers block autoplay for unmuted videos, we attempt to play
+// automatically, and fall back to playing on the first user interaction.
+const VideoBackground = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isFading, setIsFading] = useState(false);
+  const { play } = usePlay();
+  const { phase } = useAppFlow();
+
+  const playRef = useRef(play);
+  const phaseRef = useRef(phase);
+
+  useEffect(() => {
+    playRef.current = play;
+  }, [play]);
+
+  useEffect(() => {
+    phaseRef.current = phase;
+  }, [phase]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Autoplay logic
+    const startVideo = () => {
+      video.play().catch(err => console.log("Play failed:", err));
+      window.removeEventListener('click', startVideo);
+      window.removeEventListener('touchstart', startVideo);
+    };
+
+    video.play().catch(() => {
+      window.addEventListener('click', startVideo);
+      window.addEventListener('touchstart', startVideo);
+    });
+
+    // Precise time tracking using requestAnimationFrame to prevent low-frequency update jumps
+    let rafId: number;
+    const checkTime = () => {
+      // 1. If we are in the journey phase or others, ensure video is paused and volume is 0
+      if (phaseRef.current !== PHASES.SPLASH) {
+        video.pause();
+        video.volume = 0;
+        return;
+      }
+
+      // 2. If user clicked start (playRef.current is true), smoothly fade out volume
+      if (playRef.current) {
+        if (video.volume > 0.02) {
+          video.volume = Math.max(0, video.volume - 0.02);
+        } else {
+          video.volume = 0;
+          video.pause();
+          return;
+        }
+      }
+
+      const duration = video.duration;
+      const currentTime = video.currentTime;
+
+      if (duration) {
+        // Start fading out 2.5s before the end. With a 1.8s transition,
+        // it will be completely dark (opacity 0) 0.7s before the video loops.
+        if (duration - currentTime < 2.5) {
+          setIsFading(true);
+        } else if (currentTime < 2.5) {
+          // Fade back in at the beginning of the video loop
+          setIsFading(false);
+        }
+      }
+      rafId = requestAnimationFrame(checkTime);
+    };
+
+    const onLoadedMetadata = () => {
+      rafId = requestAnimationFrame(checkTime);
+    };
+
+    video.addEventListener('loadedmetadata', onLoadedMetadata);
+    if (video.readyState >= 1) {
+      rafId = requestAnimationFrame(checkTime);
+    }
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      video.removeEventListener('loadedmetadata', onLoadedMetadata);
+      window.removeEventListener('click', startVideo);
+      window.removeEventListener('touchstart', startVideo);
+    };
+  }, []);
+
   return (
     <div className="splash-video-bg">
-      <img
-        src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
-        alt=""
-        loading="eager"
-        decoding="async"
+      <video
+        ref={videoRef}
+        src="/video/splash-screen.mp4"
+        autoPlay
+        loop
+        playsInline
         className="splash-bg-image"
+        style={{
+          opacity: isFading ? 0 : 0.9,
+          transition: 'opacity 1.8s ease-in-out',
+        }}
       />
       <div className="splash-video-shield" />
     </div>
@@ -119,8 +209,16 @@ const CharReveal = ({ text, className, delay = 0 }: { text: string; className?: 
 const MagneticButton = ({ children, onClick, className }: { children: React.ReactNode; onClick: () => void; className?: string }) => {
   const ref = useRef<HTMLButtonElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
+  const { tourActive } = usePlay();
+
+  useEffect(() => {
+    if (tourActive) {
+      setPos({ x: 0, y: 0 });
+    }
+  }, [tourActive]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (tourActive) return;
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
@@ -154,16 +252,23 @@ const MagneticButton = ({ children, onClick, className }: { children: React.Reac
 };
 
 export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
-  const { play, setPlay, end } = usePlay();
+  const { play, setPlay, end, tourActive } = usePlay();
   const { goTo } = useAppFlow();
   const [logoClickCount, setLogoClickCount] = useState(0);
   const [showHaiku, setShowHaiku] = useState(false);
   const startTimeoutRef = useRef<any>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
+  // Reset GSAP tilt when tour becomes active
+  useEffect(() => {
+    if (tourActive && heroRef.current) {
+      gsap.to(heroRef.current, { rotateX: 0, rotateY: 0, x: 0, y: 0, duration: 0.4, ease: 'power2.out' });
+    }
+  }, [tourActive]);
+
   // ── GSAP 3D Tilt / Parallax Effect ──────────────────────────────────────────
   useEffect(() => {
-    if (play || progress !== 100) return;
+    if (play || progress !== 100 || tourActive) return;
 
     const hero = heroRef.current;
     if (!hero) return;
@@ -200,7 +305,7 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [play, progress]);
+  }, [play, progress, tourActive]);
 
   const handleStart = () => {
     setPlay(true);
@@ -255,7 +360,7 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
           • user has made their first pointer interaction OR 3s have passed idle.
           This keeps page load network budget focused on the 3D model. */}
       {progress === 100 && (
-        <YouTubeFacade videoId="cyJ9fpoYh_M" />
+        <VideoBackground />
       )}
 
 
@@ -313,9 +418,6 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
               <button className="splash-nav-link" onClick={handleKuisNusantara}>Kuis Nusantara</button>
               <button className="splash-nav-link" onClick={handleTentang}>Tentang</button>
             </div>
-            <MagneticButton className="splash-join-btn" onClick={handleStart}>
-              Mulai Perjalanan →
-            </MagneticButton>
           </div>
 
           {/* Middle: Big Hero Text */}
@@ -347,18 +449,18 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
                 </h1>
                 <div className="splash-hero-line" />
                 
-                {/* Mobile-only Start Button */}
-                <button className="splash-mobile-start-btn" onClick={handleStart}>
+                {/* Start Button — below gold line on all screen sizes */}
+                <MagneticButton className="splash-mobile-start-btn" onClick={handleStart}>
                   Mulai Perjalanan
                   <span className="btn-arrow">→</span>
-                </button>
+                </MagneticButton>
               </div>
             </motion.div>
           </div>
 
           <div className="splash-marquee-container">
             <div className="splash-marquee-content">
-              Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · 
+              Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan ·
             </div>
           </div>
 

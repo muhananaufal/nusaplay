@@ -11,9 +11,14 @@ export function QuizActiveClient({ id }: { id: string }) {
   const { startQuiz } = useAppFlow();
 
   useEffect(() => {
-    const province = PROVINCES.find(p => p.id === id);
+    const normalizedId = id.replace(/_/g, '-');
+    const province = PROVINCES.find(p => p.id === normalizedId);
     if (province) {
-      startQuiz(province, true);
+      if (id !== province.id) {
+        router.replace(`/quiz/${province.id}`);
+      } else {
+        startQuiz(province, true);
+      }
     } else {
       router.replace('/quiz');
     }

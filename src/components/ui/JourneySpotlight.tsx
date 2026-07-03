@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { usePlay } from '@/contexts/Play';
-import { getStepFromPhase } from './JourneyProgress';
+import { getStepFromPhase } from '@/utils/journey';
 import { Mascot } from './Mascot';
 import { useIsMobile } from '@/utils/useIsMobile';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,9 +22,9 @@ const SPOTLIGHT_CONFIGS: Record<string, { selector: string; title: string; text:
     placement: 'above',
   },
   [PHASES.PROVINCE]: {
-    selector: '.pd-thumbnails-row',
-    title: 'Pilih Kebudayaan',
-    text: 'Pilih salah satu item kebudayaan khas provinsi ini untuk mempelajari detail kisahnya.',
+    selector: '.pd-hero-btn',
+    title: 'Mulai Jelajah',
+    text: 'Klik tombol ini untuk melihat dan mempelajari seluruh daftar kebudayaan khas dari provinsi ini!',
     placement: 'above',
   },
   [PHASES.LIST]: {
@@ -49,7 +49,7 @@ const SPOTLIGHT_CONFIGS: Record<string, { selector: string; title: string; text:
 
 export function JourneySpotlight() {
   const { phase } = useAppFlow();
-  const { journeyStep, journeyCompleted, setTourActive } = usePlay();
+  const { journeyStep, journeyCompleted, setTourActive, setTourSelector } = usePlay();
   const isMobile = useIsMobile(768);
   const [rects, setRects] = useState<DOMRect[]>([]);
   const [windowSize, setWindowSize] = useState({ width: 1200, height: 800 });
@@ -98,14 +98,15 @@ export function JourneySpotlight() {
         placement: hasFinishedAudio ? 'above' as const : 'below' as const,
       }
     : (phase === PHASES.MAP
-      ? (mapSubStep === (isMobile ? 3 : 2)
-        ? {
-            selector: '.map-passport-widget',
-            title: 'Paspor Perjalanan',
-            text: 'Ini adalah Paspor Perjalananmu! Kumpulkan stempel dari 4 provinsi dengan berkunjung dan menyelesaikan kuis budaya.',
-            placement: 'above' as const,
-          }
-        : (isMobile && mapSubStep === 2
+      ? (
+          ((!isMobile && mapSubStep === 2) || (isMobile && mapSubStep === 3))
+          ? {
+              selector: '.map-achievement-btn',
+              title: 'Pencapaian Nusantara',
+              text: 'Ini adalah tombol Pencapaianmu! Klik tombol piala ini untuk melihat lencana dan progres pencapaian yang telah berhasil kamu selesaikan selama menjelajah.',
+              placement: 'above' as const,
+            }
+          : (isMobile && mapSubStep === 2)
           ? {
               selector: '.map-zoom-controls',
               title: 'Perbesar Peta',
@@ -117,7 +118,9 @@ export function JourneySpotlight() {
               title: 'Eksplorasi Peta',
               text: 'Langkah 2/4: Eksplorasi Peta! Klik salah satu provinsi aktif yang berwarna biru (seperti Jawa Tengah, Yogyakarta, atau Papua) untuk mendarat.',
               placement: 'above' as const,
-            }))
+            }
+        )
+
       : (phase === PHASES.LIST
         ? (listSubStep === 3
           ? {
@@ -140,19 +143,12 @@ export function JourneySpotlight() {
                 placement: 'below' as const,
                }))
          : (phase === PHASES.PROVINCE
-           ? (provinceSubStep === 2
-             ? {
-                 selector: '.pd-bg-click-area',
-                 title: 'Eksplorasi Interaktif',
-                 text: 'Kamu juga bisa mengetuk/mengeklik di mana saja pada area video latar belakang ini untuk langsung menjelajah kebudayaan kategori pilihanmu.',
-                 placement: 'center' as const,
-               }
-             : {
-                 selector: '.pd-thumbnails-row',
-                 title: 'Pilih Kebudayaan',
-                 text: 'Pilih salah satu bidang kebudayaan khas provinsi ini di bawah ini untuk mempelajari kisah lengkapnya.',
-                 placement: 'above' as const,
-               })
+            ? {
+                selector: '.pd-hero-btn',
+                title: 'Mulai Jelajah',
+                text: 'Klik tombol ini untuk melihat dan mempelajari seluruh daftar kebudayaan khas dari provinsi ini!',
+                placement: 'above' as const,
+              }
            : (baseConfig ? { ...baseConfig, selector: activeSelector || baseConfig.selector } : null))));
 
   // Scan DOM persistently to detect when active target elements appear (regardless of dismissal)
@@ -175,8 +171,8 @@ export function JourneySpotlight() {
           setActiveSelector('.cd-audio-play-minimal');
         }
       } else if (phase === PHASES.MAP) {
-        if (mapSubStep === (isMobile ? 3 : 2)) {
-          setActiveSelector('.map-passport-widget');
+        if ((isMobile && mapSubStep === 3) || (!isMobile && mapSubStep === 2)) {
+          setActiveSelector('.map-achievement-btn');
         } else if (isMobile && mapSubStep === 2) {
           setActiveSelector('.map-zoom-controls');
         } else {
@@ -196,11 +192,7 @@ export function JourneySpotlight() {
           setActiveSelector('.cl-list');
         }
       } else if (phase === PHASES.PROVINCE) {
-        if (provinceSubStep === 2) {
-          setActiveSelector('.pd-bg-click-area');
-        } else {
-          setActiveSelector('.pd-thumbnails-row');
-        }
+        setActiveSelector('.pd-hero-btn');
       } else {
         setActiveSelector(SPOTLIGHT_CONFIGS[phase]?.selector || '');
       }
@@ -269,8 +261,16 @@ export function JourneySpotlight() {
 
   useEffect(() => {
     setTourActive(shouldShow);
-    return () => setTourActive(false);
-  }, [shouldShow, setTourActive]);
+    if (shouldShow && config?.selector) {
+      setTourSelector(config.selector);
+    } else {
+      setTourSelector('');
+    }
+    return () => {
+      setTourActive(false);
+      setTourSelector('');
+    };
+  }, [shouldShow, config?.selector, setTourActive, setTourSelector]);
 
   if (!shouldShow) return null;
 
@@ -304,7 +304,7 @@ export function JourneySpotlight() {
       }
     }
     if (phase === PHASES.PROVINCE) {
-      if (provinceSubStep < 2) {
+      if (provinceSubStep < 1) {
         setProvinceSubStep(prev => prev + 1);
         return;
       }

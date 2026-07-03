@@ -19,16 +19,17 @@ const PROVINCE_NAME_MAP = {
   'Papua': 'papua',
 };
 
-// Helper function to calculate province color based on cultureCount (theme-based HSL)
 const getProvinceColor = (count) => {
-  const minCount = 6;
-  const maxCount = 31;
-  const t = Math.max(0, Math.min(1, (count - minCount) / (maxCount - minCount)));
-  // HSL: Hue 204 (Heritage/Juzcar Blue), saturation 30% to 70%, lightness 88% down to 38%
-  const hue = 204;
-  const saturation = Math.round(30 + t * 40);
-  const lightness = Math.round(88 - t * 50);
-  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  if (count < 12) {
+    // Level 1: Biru Muda (Light Blue - very soft pastel ice-blue)
+    return 'hsl(216, 45%, 85%)';
+  } else if (count < 22) {
+    // Level 2: Biru (Medium Blue - made darker and more saturated for maximum separation)
+    return 'hsl(216, 80%, 44%)';
+  } else {
+    // Level 3: Biru Tua (Dark Blue - deep midnight navy)
+    return 'hsl(216, 95%, 20%)';
+  }
 };
 
 // Helper to calculate the true visual center of a GeoJSON feature (mainland centroid)
@@ -111,6 +112,16 @@ const CountUp = ({ end, duration = 1.8, suffix = '' }: { end: number; duration?:
 };
 
 
+const TrophyIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'transform 0.3s ease' }}>
+    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+    <path d="M4 22h16" />
+    <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34" />
+    <path d="M12 2a6 6 0 0 1 6 6v3.5a6 6 0 0 1-12 0V8a6 6 0 0 1 6-6z" />
+  </svg>
+);
+
 export const MapView = ({ visible }) => {
   const mapRef = useRef(null);
   const leafletMapRef = useRef(null);
@@ -121,14 +132,24 @@ export const MapView = ({ visible }) => {
   const [mapReady, setMapReady] = useState(false);
   const [deepZoomActive, setDeepZoomActive] = useState(false);
   const [isTilted, setIsTilted] = useState(false);
-  const [isPassportPinned, setIsPassportPinned] = useState(false);
-  const [isPassportHovered, setIsPassportHovered] = useState(false);
-  const [activeStampTooltip, setActiveStampTooltip] = useState<string | null>(null);
-  const [pinnedStampTooltip, setPinnedStampTooltip] = useState<string | null>(null);
-  const isPassportExpanded = isPassportPinned || isPassportHovered;
   const isMobile = useIsMobile(1024);
   const { selectProvince, selectedProvince, backToMap, selectCulture, goTo } = useAppFlow();
-  const { visitedProvinces, visitCount } = usePassport();
+  const { visitedProvinces } = usePassport();
+  const [achievementBtnPos, setAchievementBtnPos] = useState({ x: 0, y: 0 });
+  const achievementBtnRef = useRef<HTMLButtonElement>(null);
+
+  const handleAchievementMouseMove = (e: React.MouseEvent) => {
+    if (isMobile) return;
+    const rect = achievementBtnRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = e.clientX - (rect.left + rect.width / 2);
+    const y = e.clientY - (rect.top + rect.height / 2);
+    setAchievementBtnPos({ x: x * 0.35, y: y * 0.35 });
+  };
+
+  const handleAchievementMouseLeave = () => {
+    setAchievementBtnPos({ x: 0, y: 0 });
+  };
 
   const selectProvinceRef = useRef(selectProvince);
   const backToMapRef = useRef(backToMap);
@@ -222,18 +243,18 @@ export const MapView = ({ visible }) => {
           const isUnlocked = prov.status === 'unlocked';
           return {
             fillColor: getProvinceColor(prov.cultureCount),
-            fillOpacity: isUnlocked ? 0.75 : 0.25,
-            color: isUnlocked ? '#ffffff' : '#d8d7d4',
-            weight: isUnlocked ? 2 : 1,
+            fillOpacity: isUnlocked ? 0.85 : 0.7,
+            color: isUnlocked ? '#ffffff' : '#B0C2D9',
+            weight: isUnlocked ? 2.5 : 1.5,
             className: isUnlocked 
               ? `leaflet-province-unlocked province-unlocked-${prov.id}` 
               : `leaflet-province-locked province-locked-${prov.id}`,
           };
         }
         return {
-          fillColor: '#0c152b', // Using dark blue overlay to produce cool slate-grey
-          fillOpacity: 0.08,    // Low opacity so it appears as a clean cool slate-grey
-          color: '#b1bec8',     // Liberty Grey border
+          fillColor: '#0D1B2A', // Mascot Dark Navy
+          fillOpacity: 0.12,    // Slightly darker for contrast
+          color: '#CFD8E1',     // Cool slate blue border
           weight: 1.5,
         };
       };
@@ -279,14 +300,14 @@ export const MapView = ({ visible }) => {
 
             if (prov && prov.status === 'unlocked') {
               l.setStyle({
-                fillOpacity: 0.9,
-                color: '#181717',
+                fillOpacity: 0.95,
+                color: '#0D1B2A',
                 weight: 2.5,
               });
             } else {
               l.setStyle({ 
-                fillOpacity: 0.4, // Faint highlight for locked provinces
-                color: '#88aac3',   // Accent slate-blue border
+                fillOpacity: 0.85, // Highlight for locked provinces
+                color: '#1B4F9C',   // Mascot Medium Blue border
                 weight: 1.5,
               });
             }
@@ -496,7 +517,7 @@ export const MapView = ({ visible }) => {
               });
             } else {
               layer.setStyle({
-                fillColor: '#0c152b',
+                fillColor: '#0D1B2A',
                 fillOpacity: 0.02,
                 color: 'transparent',
                 weight: 0,
@@ -655,104 +676,25 @@ export const MapView = ({ visible }) => {
         </div>
       )}
 
-      {/* Floating Travel Passport Widget */}
+      {/* Floating Travel Achievement Trigger Button */}
       {!selectedProvince && mapReady && (
-        <motion.div
-          className={`map-passport-widget ${isPassportExpanded ? 'expanded' : 'collapsed'} ${isPassportPinned ? 'pinned' : ''}`}
-          onMouseEnter={() => !isMobile && setIsPassportHovered(true)}
-          onMouseLeave={() => !isMobile && setIsPassportHovered(false)}
-          onClick={() => setIsPassportPinned(prev => !prev)}
-          layout
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 20, opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
-          style={{ cursor: 'pointer' }}
+        <motion.button
+          ref={achievementBtnRef}
+          className="map-achievement-btn"
+          onClick={() => goTo('achievement')}
+          onMouseMove={handleAchievementMouseMove}
+          onMouseLeave={handleAchievementMouseLeave}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1, x: achievementBtnPos.x, y: achievementBtnPos.y }}
+          exit={{ scale: 0, opacity: 0 }}
+          transition={achievementBtnPos.x === 0 && achievementBtnPos.y === 0 
+            ? { type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }
+            : { type: 'spring', stiffness: 300, damping: 20, mass: 0.1 }
+          }
+          aria-label="Buka Pencapaian"
         >
-          <motion.div className="widget-header" layout>
-            <motion.div className="widget-title-wrapper" layout>
-              <span className="passport-icon">❈</span>
-              <AnimatePresence mode="wait">
-                {isPassportExpanded && (
-                  <motion.span 
-                    className="widget-title"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -10 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    PASPOR PERJALANAN
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </motion.div>
-            <motion.span className="widget-progress" layout>
-              {visitCount}/4
-            </motion.span>
-          </motion.div>
-
-          <AnimatePresence>
-            {isPassportExpanded && (
-              <motion.div 
-                className="widget-stamps"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.2, delay: 0.05 }}
-              >
-                {[
-                  { id: 'jawa-tengah', name: 'Jawa Tengah', stamp: '✿' },
-                  { id: 'diy', name: 'Yogyakarta', stamp: '✦' },
-                  { id: 'kalimantan-barat', name: 'Kalimantan Barat', stamp: '❈' },
-                  { id: 'papua', name: 'Papua', stamp: '✹' },
-                ].map(p => {
-                  const visited = visitedProvinces.has(p.id);
-                  return (
-                    <div 
-                      key={p.id} 
-                      className={`widget-stamp-dot ${visited ? 'visited' : ''}`}
-                      onMouseEnter={() => setActiveStampTooltip(p.id)}
-                      onMouseLeave={() => setActiveStampTooltip(null)}
-                      onClick={(e) => {
-                        e.stopPropagation(); // prevent collapsing/unpinning the passport widget
-                        setPinnedStampTooltip(prev => prev === p.id ? null : p.id);
-                      }}
-                      style={{ position: 'relative' }}
-                    >
-                      {visited ? (
-                        <span className="widget-stamp-inner">
-                          {p.stamp}
-                        </span>
-                      ) : (
-                        <span>?</span>
-                      )}
-
-                      <AnimatePresence>
-                        {(activeStampTooltip === p.id || pinnedStampTooltip === p.id) && (
-                          <motion.div
-                            className="stamp-tooltip"
-                            initial={{ opacity: 0, y: 8, scale: 0.9, x: '-50%' }}
-                            animate={{ opacity: 1, y: 0, scale: 1, x: '-50%' }}
-                            exit={{ opacity: 0, y: 8, scale: 0.9, x: '-50%' }}
-                            transition={{ duration: 0.15 }}
-                          >
-                            <span className="tooltip-province">{p.name}</span>
-                            <span 
-                              className="tooltip-status" 
-                              style={{ color: visited ? '#c8a96e' : '#88aac3' }}
-                            >
-                              {visited ? '✓ Terkumpul' : 'Belum Dikunjungi'}
-                            </span>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  );
-                })}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+          <TrophyIcon />
+        </motion.button>
       )}
 
       {/* Zoom controls for mobile view */}
@@ -765,7 +707,10 @@ export const MapView = ({ visible }) => {
             }}
             aria-label="Zoom In"
           >
-            +
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
           </button>
           <button 
             className="map-zoom-btn zoom-out" 
@@ -774,7 +719,9 @@ export const MapView = ({ visible }) => {
             }}
             aria-label="Zoom Out"
           >
-            −
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter">
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
           </button>
         </div>
       )}

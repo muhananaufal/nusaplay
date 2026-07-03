@@ -12,6 +12,8 @@ export const CultureList = ({ visible }) => {
     selectedProvince,
     selectedCategory,
     selectCulture,
+    visitedByProvince,
+    listenedByProvince,
   } = useAppFlow();
 
   // Isolated list-UI context â€” changes here do NOT re-render NavigationMenu,
@@ -32,6 +34,7 @@ export const CultureList = ({ visible }) => {
 
   const [hoveredId, setHoveredId] = useState(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [showMobileProgress, setShowMobileProgress] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -92,8 +95,18 @@ export const CultureList = ({ visible }) => {
     return selectedProvince ? getCulturesByProvince(selectedProvince.id) : [];
   }, [selectedProvince?.id]);
 
+  const currentVisitedIds = useMemo(() => {
+    const list = visitedByProvince[selectedProvince?.id || ''] || [];
+    return new Set(list);
+  }, [visitedByProvince, selectedProvince?.id]);
+
+  const currentListenedIds = useMemo(() => {
+    const list = listenedByProvince[selectedProvince?.id || ''] || [];
+    return new Set(list);
+  }, [listenedByProvince, selectedProvince?.id]);
+
   const filteredCultures = useMemo(() => {
-    return rawCultures.filter((c) => {
+    const list = rawCultures.filter((c) => {
       const matchesCategory = activeCategories.includes('Semua') || activeCategories.includes(c.category);
       if (!matchesCategory) return false;
       if (!searchQuery) return true;
@@ -103,6 +116,15 @@ export const CultureList = ({ visible }) => {
         (c.description || '').toLowerCase().includes(query) ||
         (c.location || '').toLowerCase().includes(query)
       );
+    });
+
+    // Pindahkan budaya yang memiliki audio ke urutan paling atas
+    return [...list].sort((a, b) => {
+      const hasAudioA = !!a.audio;
+      const hasAudioB = !!b.audio;
+      if (hasAudioA && !hasAudioB) return -1;
+      if (!hasAudioA && hasAudioB) return 1;
+      return 0;
     });
   }, [rawCultures, activeCategories, searchQuery]);
 
@@ -132,6 +154,15 @@ export const CultureList = ({ visible }) => {
 
   const availableCategories = useMemo(() => {
     return ['Semua', ...new Set(rawCultures.map(c => c.category))];
+  }, [rawCultures]);
+
+  // Count per category from raw (unfiltered) data
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { 'Semua': rawCultures.length };
+    rawCultures.forEach(c => {
+      counts[c.category] = (counts[c.category] || 0) + 1;
+    });
+    return counts;
   }, [rawCultures]);
 
   const handleCategoryToggle = (category) => {
@@ -168,86 +199,18 @@ export const CultureList = ({ visible }) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* â”€â”€ LEFT PREVIEW COLUMN â”€â”€ */}
-      <div className="cl-preview-panel">
-        <div className="cl-rail-inner">
-          <div className="cl-rail-overline">BUDAYA NUSANTARA</div>
-
-          <div className="cl-rail-province">
-            {selectedProvince?.name || 'Semua'}
-          </div>
-
-          <div className="cl-rail-counter">
-            <span className="cl-rail-count-current">
-              {String(Math.min(globalOffset + paginatedCultures.length, filteredCultures.length)).padStart(2, '0')}
-            </span>
-            <span className="cl-rail-count-divider">/</span>
-            <span className="cl-rail-count-total">
-              {String(filteredCultures.length).padStart(2, '0')}
-            </span>
-          </div>
-
-        </div>
-
-        {/* Dynamic description of the active culture */}
-        {!isMobile && activeCulture && (
-          <motion.div 
-            key={`desc-${activeCulture.id}`}
-            className="cl-preview-description-wrapper" 
-            style={{ marginTop: '20px', padding: '0 4px' }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 0.9, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <h4 style={{ 
-              fontSize: '0.95rem', 
-              fontWeight: 500, 
-              color: 'var(--c-accent)', 
-              marginBottom: '8px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em' 
-            }}>
-              {activeCulture.title}
-            </h4>
-            <p style={{ 
-              fontSize: '0.8rem', 
-              color: 'var(--c-text-soft)', 
-              lineHeight: 1.5,
-              margin: 0
-            }}>
-              {activeCulture.description}
-            </p>
-          </motion.div>
-        )}
-
-        {/* Video preview container (shown on desktop only) */}
-        {!isMobile && activeCulture && (
-          <div className="cl-video-preview-container">
-            <iframe
-              key={activeCulture.id}
-              src={`https://www.youtube.com/embed/${activeCulture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${activeCulture.youtubeId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              className="cl-video-preview-iframe"
-              title={activeCulture.title}
-            />
-            <div className="cl-video-preview-overlay" />
-            <img
-              src={`https://img.youtube.com/vi/${activeCulture.youtubeId}/sddefault.jpg`}
-              alt={activeCulture.title}
-              className="cl-video-preview-thumbnail"
-              style={{
-                opacity: iframeLoaded ? 0 : 1,
-                pointerEvents: 'none',
-              }}
-            />
-          </div>
-        )}
-      </div>
-
-      {/* â”€â”€ RIGHT LIST PANEL â”€â”€ */}
       <div ref={gridRef} className="cl-list-panel">
         <div className="cl-list-scroll-container" style={{ width: '100%' }}>
+          {/* Province Title with total culture count */}
+          <div className="cl-list-title-bar">
+            <h1 className="cl-list-province-title">
+              {selectedProvince?.name || 'Semua'}
+              <span className="cl-list-province-count">
+                {rawCultures.length} Budaya
+              </span>
+            </h1>
+          </div>
+
           {/* Search input and category filter pills */}
           <div className="cl-list-header">
             <div className={`cl-search-wrapper ${searchQuery ? 'has-query' : ''}`}>
@@ -277,6 +240,7 @@ export const CultureList = ({ visible }) => {
                   }}
                 >
                   {cat}
+                  <span className="cl-cat-pill-count">{categoryCounts[cat] ?? 0}</span>
                 </button>
               ))}
             </div>
@@ -325,6 +289,8 @@ export const CultureList = ({ visible }) => {
                       isHovered={hoveredId === culture.id}
                       setHoveredId={setHoveredId}
                       selectCulture={selectCulture}
+                      isVisited={currentVisitedIds.has(culture.id)}
+                      isListened={currentListenedIds.has(culture.id)}
                     />
                   );
                 })}
@@ -360,16 +326,18 @@ export const CultureList = ({ visible }) => {
   );
 };
 
-// â”€â”€ CultureRow â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── CultureRow ──────────────────────────────────────────────────────────────────────────
 // Wrapped in React.memo with isHovered boolean prop instead of raw hoveredId:
 // only the entering and leaving row re-render on hover (2 renders instead of 10).
-const CultureRow = memo(({ culture, index, listIndex, isHovered, setHoveredId, selectCulture }: any) => {
+const CultureRow = memo(({ culture, index, listIndex, isHovered, setHoveredId, selectCulture, isVisited, isListened }: any) => {
   const [transformOrigin, setTransformOrigin] = useState('center top');
   const Icon = getCategoryIcon(culture.category);
 
-  // Stable callbacks â€” culture comes from static data (stable ref), selectCulture
+  // Stable callbacks — culture comes from static data (stable ref), selectCulture
   // and setHoveredId are stable references from context/useState setters.
-  const handleClick = useCallback(() => selectCulture(culture), [selectCulture, culture]);
+  const handleClick = useCallback(() => {
+    selectCulture(culture);
+  }, [selectCulture, culture]);
 
   const updateOrigin = useCallback((e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -398,10 +366,30 @@ const CultureRow = memo(({ culture, index, listIndex, isHovered, setHoveredId, s
       transition={{ delay: listIndex * 0.03, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       style={{ transformOrigin }}
     >
-      {/* Title (left side) */}
-      <h3 className="cl-row-title">
-        {culture.title}
-      </h3>
+      {/* Title + description (left side, stacked vertically) */}
+      <div className="cl-row-left">
+        <h3 className="cl-row-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          {culture.title}
+          {culture.audio && (
+            <span className="cl-row-audio-badge" title="Narasi Suara Tersedia" style={{ display: 'inline-flex', color: 'var(--c-accent)', opacity: 0.85 }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+              </svg>
+            </span>
+          )}
+          {isVisited && (
+            <span className={`cl-row-star ${isListened ? 'shimmering-gold' : 'bordered-gold'}`}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill={isListened ? "var(--c-accent)" : "none"} stroke="var(--c-accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </span>
+          )}
+        </h3>
+        {culture.description && (
+          <p className="cl-row-desc">{culture.description}</p>
+        )}
+      </div>
 
       {/* Row Right elements */}
       <div className="cl-row-right">
@@ -411,13 +399,25 @@ const CultureRow = memo(({ culture, index, listIndex, isHovered, setHoveredId, s
           {culture.category}
         </span>
 
-        {/* Inline thumbnail for mobile (hidden on desktop) */}
-        <div className="cl-row-thumb-mobile">
+        {/* Video preview thumbnail */}
+        <div className="cl-row-thumb-preview">
           <img
             src={`https://img.youtube.com/vi/${culture.youtubeId}/mqdefault.jpg`}
             alt={culture.title}
             loading="lazy"
+            className="cl-row-thumb-img"
+            style={{ opacity: isHovered ? 0 : 1 }}
           />
+          {isHovered && (
+            <iframe
+              src={`https://www.youtube.com/embed/${culture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${culture.youtubeId}&controls=0&playsinline=1&enablejsapi=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
+              allow="autoplay; encrypted-media"
+              className="cl-row-thumb-iframe"
+              title={culture.title}
+            />
+          )}
+          {/* Transparent shield to capture all clicks and touch events */}
+          <div className="cl-row-thumb-shield" />
         </div>
 
         {/* Index number */}

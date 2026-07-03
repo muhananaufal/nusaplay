@@ -51,7 +51,7 @@ export const PROVINCES = [
     color: '#55ab8f',
     tagline: 'Jantung Borneo yang Berdenyut',
     heroImage: '/img/kalbar-hero.jpg',
-    categories: ['Tarian', 'Musik', 'Senjata', 'Upacara Adat', 'Rumah Adat', 'Kerajinan', 'Pakaian Adat', 'Cerita Rakyat'],
+    categories: ['Tarian', 'Musik', 'Senjata', 'Upacara Adat', 'Rumah Adat', 'Kerajinan', 'Pakaian Adat', 'Cerita Rakyat', 'Bangunan Bersejarah'],
   },
   { id: 'kalimantan-tengah', name: 'Kalimantan Tengah', status: 'locked', cultureCount: 11 },
   { id: 'kalimantan-selatan', name: 'Kalimantan Selatan', status: 'locked', cultureCount: 10 },

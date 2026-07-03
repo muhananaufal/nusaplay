@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { usePlay } from '@/contexts/Play';
-import { getStepFromPhase } from './JourneyProgress';
+import { getStepFromPhase } from '@/utils/journey';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Types of animation poses

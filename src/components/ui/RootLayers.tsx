@@ -98,14 +98,15 @@ export function RootLayers() {
 
   // ── Backsound player for provinces ─────────────────────────────────────────
   const PROVINCE_BACKSOUNDS: Record<string, string> = {
-    diy: '/music/backsound-diy.m4a',
-    'jawa-tengah': '/music/backsound-jateng.m4a',
-    'kalimantan-barat': '/music/backsound-kalbar.m4a',
-    papua: '/music/backsound-papua.m4a',
+    diy: '/music/backsound/backsound-diy.m4a',
+    'jawa-tengah': '/music/backsound/backsound-jateng.m4a',
+    'kalimantan-barat': '/music/backsound/backsound-kalbar.m4a',
+    papua: '/music/backsound/backsound-papua.m4a',
   };
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const currentTrackRef = useRef<string | null>(null);
+  const [autoplayFailed, setAutoplayFailed] = useState(false);
   const [isNarrationPlaying, setIsNarrationPlaying] = useState(false);
 
   // Listen to narration events to control volume ducking
@@ -149,9 +150,14 @@ export function RootLayers() {
         currentTrackRef.current = targetTrack;
       }
 
-      audioRef.current.play().catch((err) => {
-        console.warn('Failed to play backsound audio:', err);
-      });
+      audioRef.current.play()
+        .then(() => {
+          setAutoplayFailed(false);
+        })
+        .catch((err) => {
+          console.warn('Failed to play backsound audio, will retry on interaction:', err);
+          setAutoplayFailed(true);
+        });
     } else {
       // No backsound for this province, stop playback
       if (audioRef.current) {
@@ -159,8 +165,33 @@ export function RootLayers() {
         audioRef.current = null;
         currentTrackRef.current = null;
       }
+      setAutoplayFailed(false);
     }
   }, [selectedProvince?.id]);
+
+  // Retry playing on user interaction if autoplay failed
+  useEffect(() => {
+    if (!autoplayFailed) return;
+
+    const handleInteraction = () => {
+      if (audioRef.current && audioRef.current.paused) {
+        audioRef.current.play()
+          .then(() => {
+            setAutoplayFailed(false);
+          })
+          .catch((err) => {
+            console.warn('Retry backsound play failed:', err);
+          });
+      }
+    };
+
+    window.addEventListener('click', handleInteraction, { once: true });
+    window.addEventListener('touchstart', handleInteraction, { once: true });
+    return () => {
+      window.removeEventListener('click', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+    };
+  }, [autoplayFailed]);
 
   // Clean up on unmount
   useEffect(() => {

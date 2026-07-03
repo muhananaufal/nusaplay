@@ -38,32 +38,32 @@ export const CustomCursor = () => {
           currentStyle = 'explore-badge';
           gsap.to(cursor, { width: 68, height: 68, backgroundColor: 'var(--c-accent)', border: 'none', duration: 0.3, overwrite: 'auto' });
           gsap.to(cursorText, { opacity: 1, scale: 1, duration: 0.3, overwrite: 'auto' });
-          if (cursorText) { cursorText.innerText = 'KLIK'; cursorText.style.color = '#0b0a0a'; cursorText.style.fontSize = '9px'; cursorText.style.letterSpacing = '0.15em'; }
+          if (cursorText) { cursorText.innerText = 'KLIK'; cursorText.style.color = '#0D1B2A'; cursorText.style.fontSize = '9px'; cursorText.style.letterSpacing = '0.15em'; }
         }
       } else if (target.closest('#nusaplay-leaflet-map') || target.closest('.cl-category-pills') || target.closest('.pd-thumbnails-row')) {
         if (currentStyle !== 'drag') {
           currentStyle = 'drag';
-          gsap.to(cursor, { width: 56, height: 56, backgroundColor: 'rgba(85, 145, 185, 0.15)', border: '1px solid rgba(85, 145, 185, 0.4)', duration: 0.3, overwrite: 'auto' });
+          gsap.to(cursor, { width: 56, height: 56, backgroundColor: 'rgba(27, 79, 156, 0.12)', border: '1px solid rgba(27, 79, 156, 0.4)', duration: 0.3, overwrite: 'auto' });
           gsap.to(cursorText, { opacity: 1, scale: 1, duration: 0.3, overwrite: 'auto' });
           if (cursorText) { cursorText.innerText = 'GESER'; cursorText.style.color = 'var(--c-accent)'; cursorText.style.fontSize = '8px'; cursorText.style.letterSpacing = '0.1em'; }
         }
       } else if (target.tagName.toLowerCase() === 'img' || target.closest('.cl-row-thumb') || target.closest('.cd-video-panel') || target.closest('.cursor-view')) {
         if (currentStyle !== 'view') {
           currentStyle = 'view';
-          gsap.to(cursor, { width: 70, height: 70, backgroundColor: 'rgba(85, 145, 185, 0.9)', border: 'none', duration: 0.3, overwrite: 'auto' });
+          gsap.to(cursor, { width: 70, height: 70, backgroundColor: 'rgba(27, 79, 156, 0.95)', border: 'none', duration: 0.3, overwrite: 'auto' });
           gsap.to(cursorText, { opacity: 1, scale: 1, duration: 0.3, overwrite: 'auto' });
           if (cursorText) cursorText.innerText = 'VIEW';
         }
       } else if (target.tagName.toLowerCase() === 'button' || target.tagName.toLowerCase() === 'a' || target.closest('.nav-btn') || target.closest('.province-cat-row') || target.closest('.cd-audio-btn') || target.closest('svg')) {
         if (currentStyle !== 'interactive') {
           currentStyle = 'interactive';
-          gsap.to(cursor, { width: 44, height: 44, backgroundColor: 'transparent', border: '1.5px solid #5591b9', duration: 0.3, overwrite: 'auto' });
+          gsap.to(cursor, { width: 44, height: 44, backgroundColor: 'transparent', border: '1.5px solid #1B4F9C', duration: 0.3, overwrite: 'auto' });
           gsap.to(cursorText, { opacity: 0, scale: 0, duration: 0.3, overwrite: 'auto' });
         }
       } else {
         if (currentStyle !== 'default') {
           currentStyle = 'default';
-          gsap.to(cursor, { width: 10, height: 10, backgroundColor: '#5591b9', border: 'none', duration: 0.3, overwrite: 'auto' });
+          gsap.to(cursor, { width: 10, height: 10, backgroundColor: '#1B4F9C', border: 'none', duration: 0.3, overwrite: 'auto' });
           gsap.to(cursorText, { opacity: 0, scale: 0, duration: 0.3, overwrite: 'auto' });
         }
       }

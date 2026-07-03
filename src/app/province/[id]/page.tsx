@@ -4,7 +4,8 @@ import { ProvincePageClient } from './_client';
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  const province = PROVINCES.find(p => p.id === id);
+  const normalizedId = id.replace(/_/g, '-');
+  const province = PROVINCES.find(p => p.id === normalizedId);
   if (!province) return { title: 'Provinsi' };
   return {
     title: province.name,

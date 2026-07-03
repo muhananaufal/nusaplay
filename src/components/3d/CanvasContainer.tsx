@@ -18,8 +18,8 @@ export const CanvasContainer = ({ active }: { active: boolean }) => {
 
   if (!mounted) {
     return (
-      <div style={{ width: '100%', height: '100%', backgroundColor: '#f4efe7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p style={{ color: '#70685e', fontSize: '14px', fontFamily: 'monospace' }}>
+      <div style={{ width: '100%', height: '100%', backgroundColor: '#F2F2F2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p style={{ color: '#0D1B2A', fontSize: '14px', fontFamily: 'monospace' }}>
           WebGL not supported. Skipping 3D intro...
         </p>
       </div>
@@ -28,8 +28,8 @@ export const CanvasContainer = ({ active }: { active: boolean }) => {
 
   if (!hasWebGL) {
     return (
-      <div style={{ width: '100%', height: '100%', backgroundColor: '#f4efe7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p style={{ color: '#70685e', fontSize: '14px', fontFamily: 'monospace' }}>
+      <div style={{ width: '100%', height: '100%', backgroundColor: '#F2F2F2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p style={{ color: '#0D1B2A', fontSize: '14px', fontFamily: 'monospace' }}>
           WebGL not supported. Skipping 3D intro...
         </p>
       </div>
@@ -52,7 +52,7 @@ export const CanvasContainer = ({ active }: { active: boolean }) => {
       // ── No tone-mapping overhead; the scene uses its own colour management ──────────
       flat
     >
-      <color attach="background" args={['#f4efe7']} />
+      <color attach="background" args={['#F2F2F2']} />
       {active && (
         <ScrollControls pages={0} damping={0.5}>
           <Experience />

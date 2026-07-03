@@ -10,23 +10,34 @@ export default function ProvinceListPage() {
   const { id } = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { selectProvince, selectCategory } = useAppFlow();
+  const { selectedProvince, selectedCategory, selectProvince, selectCategory } = useAppFlow();
 
   useEffect(() => {
     if (!id) return;
-    const pId = typeof id === 'string' ? id : id[0];
+    const currentPathId = typeof id === 'string' ? id : id[0];
+    const pId = currentPathId.replace(/_/g, '-');
     const province = PROVINCES.find(p => p.id === pId);
+    
     if (province) {
-      // Set the province first without triggering URL push
-      selectProvince(province, true);
-      
-      // If there is a category query param, select that category
       const category = searchParams.get('category') || 'Semua';
-      selectCategory(category, true);
+      
+      // If the URL used an underscore, redirect to the clean hyphenated URL
+      if (currentPathId !== province.id) {
+        router.replace(`/province/${province.id}/list${category !== 'Semua' ? `?category=${category}` : ''}`);
+        return;
+      }
+      
+      // Only select if different to prevent infinite reset loops
+      if (selectedProvince?.id !== province.id) {
+        selectProvince(province, true);
+      }
+      if (selectedCategory !== category) {
+        selectCategory(category, true);
+      }
     } else {
       router.replace('/map');
     }
-  }, [id, searchParams, selectProvince, selectCategory, router]);
+  }, [id, searchParams, selectedProvince, selectedCategory, selectProvince, selectCategory, router]);
 
   return (
     <motion.div
