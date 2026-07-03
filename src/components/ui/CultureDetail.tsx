@@ -18,10 +18,19 @@ export const CultureDetail = ({ visible }) => {
   const startTime = useRef(null);
   const estimatedDuration = useRef(15000);
   const infoPanelRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useSmoothScroll(infoPanelRef, visible);
 
   const { stampProvince } = usePassport();
+
+  const stopAll = () => {
+    tts.stop();
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+  };
 
   useEffect(() => {
     if (ttsFinished && selectedProvince?.id) {
@@ -34,13 +43,13 @@ export const CultureDetail = ({ visible }) => {
     setIsPaused(false);
     setProgress(0);
     setTtsFinished(false);
-    tts.stop();
+    stopAll();
     window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
   }, [selectedCulture]);
 
   useEffect(() => {
     return () => {
-      tts.stop();
+      stopAll();
       clearInterval(progressInterval.current);
       window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
     };
@@ -48,51 +57,99 @@ export const CultureDetail = ({ visible }) => {
 
   const startNarration = () => {
     if (!selectedCulture) return;
-    tts.stop();
+    stopAll();
     setProgress(0);
     setTtsFinished(false);
-    startTime.current = Date.now();
-    const wordCount = selectedCulture.narrator.split(' ').length;
-    estimatedDuration.current = (wordCount / 2.5) * 1000;
 
-    tts.speak(selectedCulture.narrator, {
-      lang: 'id-ID',
-      rate: 0.85,
-      onEnd: () => {
+    if (selectedCulture.audio) {
+      const audio = new Audio(selectedCulture.audio);
+      audioRef.current = audio;
+
+      audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+          setProgress((audio.currentTime / audio.duration) * 100);
+        }
+      });
+
+      audio.addEventListener('ended', () => {
         setIsSpeaking(false);
         setProgress(100);
         setTtsFinished(true);
-        clearInterval(progressInterval.current);
         window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
-      },
-    });
-    setIsSpeaking(true);
-    setIsPaused(false);
-    window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
+      });
 
-    clearInterval(progressInterval.current);
-    progressInterval.current = setInterval(() => {
-      if (!startTime.current) return;
-      const elapsed = Date.now() - startTime.current;
-      const pct = Math.min((elapsed / estimatedDuration.current) * 100, 98);
-      setProgress(pct);
-    }, 200);
-  };
+      audio.addEventListener('pause', () => {
+        setIsPaused(true);
+      });
 
-  const togglePause = () => {
-    if (isPaused) {
-      tts.resume();
+      audio.addEventListener('play', () => {
+        setIsSpeaking(true);
+        setIsPaused(false);
+      });
+
+      audio.play().catch(err => {
+        console.error("Audio play failed:", err);
+      });
+
+      setIsSpeaking(true);
       setIsPaused(false);
       window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
     } else {
-      tts.pause();
-      setIsPaused(true);
-      window.dispatchEvent(new CustomEvent('nusaplay:narrationPause'));
+      startTime.current = Date.now();
+      const wordCount = selectedCulture.narrator.split(' ').length;
+      estimatedDuration.current = (wordCount / 2.5) * 1000;
+
+      tts.speak(selectedCulture.narrator, {
+        lang: 'id-ID',
+        rate: 0.85,
+        onEnd: () => {
+          setIsSpeaking(false);
+          setProgress(100);
+          setTtsFinished(true);
+          clearInterval(progressInterval.current);
+          window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
+        },
+      });
+      setIsSpeaking(true);
+      setIsPaused(false);
+      window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
+
+      clearInterval(progressInterval.current);
+      progressInterval.current = setInterval(() => {
+        if (!startTime.current) return;
+        const elapsed = Date.now() - startTime.current;
+        const pct = Math.min((elapsed / estimatedDuration.current) * 100, 98);
+        setProgress(pct);
+      }, 200);
+    }
+  };
+
+  const togglePause = () => {
+    if (selectedCulture?.audio && audioRef.current) {
+      if (isPaused) {
+        audioRef.current.play().catch(err => console.error(err));
+        setIsPaused(false);
+        window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
+      } else {
+        audioRef.current.pause();
+        setIsPaused(true);
+        window.dispatchEvent(new CustomEvent('nusaplay:narrationPause'));
+      }
+    } else {
+      if (isPaused) {
+        tts.resume();
+        setIsPaused(false);
+        window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
+      } else {
+        tts.pause();
+        setIsPaused(true);
+        window.dispatchEvent(new CustomEvent('nusaplay:narrationPause'));
+      }
     }
   };
 
   const stopNarration = () => {
-    tts.stop();
+    stopAll();
     setIsSpeaking(false);
     setIsPaused(false);
     setProgress(0);
@@ -246,7 +303,7 @@ export const CultureDetail = ({ visible }) => {
                 <button 
                   className="cd-quiz-cta-btn"
                   onClick={() => {
-                    tts.stop();
+                    stopAll();
                     startQuiz(selectedProvince);
                   }}
                 >
@@ -266,8 +323,8 @@ export const CultureDetail = ({ visible }) => {
             cultureName={selectedCulture.title}
             provinceName={selectedProvince?.name || ''}
             onReplay={startNarration}
-            onExplore={() => { tts.stop(); goTo('province'); }}
-            onStartQuiz={() => { tts.stop(); startQuiz(selectedProvince); }}
+            onExplore={() => { stopAll(); goTo('province'); }}
+            onStartQuiz={() => { stopAll(); startQuiz(selectedProvince); }}
           />
         )}
       </AnimatePresence>
