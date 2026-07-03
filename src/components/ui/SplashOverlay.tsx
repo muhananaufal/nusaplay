@@ -6,20 +6,79 @@ import { WayangLoader } from './WayangLoader';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 
-// ── YouTube Facade ─────────────────────────────────────────────────────────────
-// Mounting a YouTube iframe immediately triggers 10+ network requests and starts
-// video streaming — all competing with airplane.glb XHR on page load.
-// This facade renders a thumbnail + dark overlay until the user first moves their
-// pointer OR 3 seconds of idle time has passed, then swaps in the real iframe.
-const YouTubeFacade = ({ videoId }: { videoId: string }) => {
+// ── Video Background ───────────────────────────────────────────────────────────
+// Renders the local splash-screen.mp4 video with audio enabled and looped.
+// Since modern browsers block autoplay for unmuted videos, we attempt to play
+// automatically, and fall back to playing on the first user interaction.
+const VideoBackground = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Autoplay logic
+    const startVideo = () => {
+      video.play().catch(err => console.log("Play failed:", err));
+      window.removeEventListener('click', startVideo);
+      window.removeEventListener('touchstart', startVideo);
+    };
+
+    video.play().catch(() => {
+      window.addEventListener('click', startVideo);
+      window.addEventListener('touchstart', startVideo);
+    });
+
+    // Precise time tracking using requestAnimationFrame to prevent low-frequency update jumps
+    let rafId: number;
+    const checkTime = () => {
+      const duration = video.duration;
+      const currentTime = video.currentTime;
+
+      if (duration) {
+        // Start fading out 2.5s before the end. With a 1.8s transition,
+        // it will be completely dark (opacity 0) 0.7s before the video loops.
+        if (duration - currentTime < 2.5) {
+          setIsFading(true);
+        } else if (currentTime < 2.5) {
+          // Fade back in at the beginning of the video loop
+          setIsFading(false);
+        }
+      }
+      rafId = requestAnimationFrame(checkTime);
+    };
+
+    const onLoadedMetadata = () => {
+      rafId = requestAnimationFrame(checkTime);
+    };
+
+    video.addEventListener('loadedmetadata', onLoadedMetadata);
+    if (video.readyState >= 1) {
+      rafId = requestAnimationFrame(checkTime);
+    }
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      video.removeEventListener('loadedmetadata', onLoadedMetadata);
+      window.removeEventListener('click', startVideo);
+      window.removeEventListener('touchstart', startVideo);
+    };
+  }, []);
+
   return (
     <div className="splash-video-bg">
-      <img
-        src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
-        alt=""
-        loading="eager"
-        decoding="async"
+      <video
+        ref={videoRef}
+        src="/video/splash-screen.mp4"
+        autoPlay
+        loop
+        playsInline
         className="splash-bg-image"
+        style={{
+          opacity: isFading ? 0 : 0.9,
+          transition: 'opacity 1.8s ease-in-out',
+        }}
       />
       <div className="splash-video-shield" />
     </div>
@@ -270,7 +329,7 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
           • user has made their first pointer interaction OR 3s have passed idle.
           This keeps page load network budget focused on the 3D model. */}
       {progress === 100 && (
-        <YouTubeFacade videoId="UEWCCkSZIY8" />
+        <VideoBackground />
       )}
 
 
