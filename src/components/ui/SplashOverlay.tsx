@@ -13,6 +13,19 @@ import gsap from 'gsap';
 const VideoBackground = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isFading, setIsFading] = useState(false);
+  const { play } = usePlay();
+  const { phase } = useAppFlow();
+
+  const playRef = useRef(play);
+  const phaseRef = useRef(phase);
+
+  useEffect(() => {
+    playRef.current = play;
+  }, [play]);
+
+  useEffect(() => {
+    phaseRef.current = phase;
+  }, [phase]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -33,6 +46,24 @@ const VideoBackground = () => {
     // Precise time tracking using requestAnimationFrame to prevent low-frequency update jumps
     let rafId: number;
     const checkTime = () => {
+      // 1. If we are in the journey phase or others, ensure video is paused and volume is 0
+      if (phaseRef.current !== PHASES.SPLASH) {
+        video.pause();
+        video.volume = 0;
+        return;
+      }
+
+      // 2. If user clicked start (playRef.current is true), smoothly fade out volume
+      if (playRef.current) {
+        if (video.volume > 0.02) {
+          video.volume = Math.max(0, video.volume - 0.02);
+        } else {
+          video.volume = 0;
+          video.pause();
+          return;
+        }
+      }
+
       const duration = video.duration;
       const currentTime = video.currentTime;
 
