@@ -523,7 +523,7 @@ const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, 
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 400, damping: 15 }}
           >
-            Kembali ke Peta
+            Kembali ke Provinsi
           </motion.button>
         </div>
       </div>
