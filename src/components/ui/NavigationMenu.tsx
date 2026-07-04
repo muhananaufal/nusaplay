@@ -64,7 +64,8 @@ export const NavigationMenu = () => {
     backToMap,
     startQuiz,
     quizProvince,
-    selectProvince
+    selectProvince,
+    selectedProvince
   } = useAppFlow();
   
   const { play, setPlay, setEnd, end } = usePlay();
@@ -152,7 +153,7 @@ export const NavigationMenu = () => {
     if (isMobile) return 'Kembali';
     
     if (phase === PHASES.LIST) {
-      return 'Kembali ke Peta';
+      return 'Kembali ke Provinsi';
     } else if (phase === PHASES.DETAIL) {
       return 'Kembali ke Daftar';
     } else if (phase === PHASES.QUIZ) {
