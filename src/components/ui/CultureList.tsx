@@ -87,8 +87,32 @@ export const CultureList = ({ visible }) => {
 
   useSmoothScroll(gridRef, visible);
 
+  const prevDepsRef = useRef({
+    selectedCategory,
+    provinceId: selectedProvince?.id,
+    searchQuery,
+    activeCategoriesStr: activeCategories.join(','),
+  });
+
   useEffect(() => {
-    setCurrentPage(1);
+    const prev = prevDepsRef.current;
+    const activeCategoriesStr = activeCategories.join(',');
+
+    const changed =
+      prev.selectedCategory !== selectedCategory ||
+      prev.provinceId !== selectedProvince?.id ||
+      prev.searchQuery !== searchQuery ||
+      prev.activeCategoriesStr !== activeCategoriesStr;
+
+    if (changed) {
+      setCurrentPage(1);
+      prevDepsRef.current = {
+        selectedCategory,
+        provinceId: selectedProvince?.id,
+        searchQuery,
+        activeCategoriesStr,
+      };
+    }
   }, [selectedCategory, selectedProvince?.id, searchQuery, activeCategories, setCurrentPage]);
 
   const rawCultures = useMemo(() => {
@@ -106,7 +130,7 @@ export const CultureList = ({ visible }) => {
   }, [listenedByProvince, selectedProvince?.id]);
 
   const filteredCultures = useMemo(() => {
-    return rawCultures.filter((c) => {
+    const list = rawCultures.filter((c) => {
       const matchesCategory = activeCategories.includes('Semua') || activeCategories.includes(c.category);
       if (!matchesCategory) return false;
       if (!searchQuery) return true;
@@ -116,6 +140,15 @@ export const CultureList = ({ visible }) => {
         (c.description || '').toLowerCase().includes(query) ||
         (c.location || '').toLowerCase().includes(query)
       );
+    });
+
+    // Pindahkan budaya yang memiliki audio ke urutan paling atas
+    return [...list].sort((a, b) => {
+      const hasAudioA = !!a.audio;
+      const hasAudioB = !!b.audio;
+      if (hasAudioA && !hasAudioB) return -1;
+      if (!hasAudioA && hasAudioB) return 1;
+      return 0;
     });
   }, [rawCultures, activeCategories, searchQuery]);
 
@@ -361,6 +394,14 @@ const CultureRow = memo(({ culture, index, listIndex, isHovered, setHoveredId, s
       <div className="cl-row-left">
         <h3 className="cl-row-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           {culture.title}
+          {culture.audio && (
+            <span className="cl-row-audio-badge" title="Narasi Suara Tersedia" style={{ display: 'inline-flex', color: isHovered ? '#ffffff' : 'var(--c-accent)', opacity: isHovered ? 1 : 0.85 }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+              </svg>
+            </span>
+          )}
           {isVisited && (
             <span className={`cl-row-star ${isListened ? 'shimmering-gold' : 'bordered-gold'}`}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill={isListened ? "var(--c-accent)" : "none"} stroke="var(--c-accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -383,21 +424,70 @@ const CultureRow = memo(({ culture, index, listIndex, isHovered, setHoveredId, s
         </span>
 
         {/* Video preview thumbnail */}
-        <div className="cl-row-thumb-preview">
-          <img
-            src={`https://img.youtube.com/vi/${culture.youtubeId}/mqdefault.jpg`}
-            alt={culture.title}
-            loading="lazy"
-            className="cl-row-thumb-img"
-            style={{ opacity: isHovered ? 0 : 1 }}
-          />
-          {isHovered && (
-            <iframe
-              src={`https://www.youtube.com/embed/${culture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${culture.youtubeId}&controls=0&playsinline=1&enablejsapi=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
-              allow="autoplay; encrypted-media"
-              className="cl-row-thumb-iframe"
-              title={culture.title}
-            />
+        <div className="cl-row-thumb-preview" style={{ position: 'relative', overflow: 'hidden' }}>
+          {!culture.audio ? (
+            // Locked placeholder (No audio) - matching detail page
+            <div style={{ 
+              position: 'relative', 
+              width: '100%', 
+              height: '100%',
+              background: '#1F2D3D',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <img
+                src={`https://img.youtube.com/vi/${culture.youtubeId}/mqdefault.jpg`}
+                alt=""
+                onError={(e) => {
+                  (e.target as HTMLElement).style.display = 'none';
+                }}
+                style={{ 
+                  position: 'absolute',
+                  top: 0, left: 0, width: '100%', height: '100%', 
+                  objectFit: 'cover', 
+                  filter: 'grayscale(0.4) blur(1.5px)', 
+                  opacity: 0.15 
+                }}
+              />
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'rgba(13, 27, 42, 0.45)',
+                zIndex: 2
+              }}>
+                {/* Padlock SVG */}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))', opacity: 0.85 }}>
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+            </div>
+          ) : (
+            // Playable Video preview
+            <>
+              <img
+                src={`https://img.youtube.com/vi/${culture.youtubeId}/mqdefault.jpg`}
+                alt={culture.title}
+                loading="lazy"
+                className="cl-row-thumb-img"
+                style={{ opacity: isHovered ? 0 : 1 }}
+              />
+              {isHovered && (
+                <iframe
+                  src={`https://www.youtube.com/embed/${culture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${culture.youtubeId}&controls=0&playsinline=1&enablejsapi=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
+                  allow="autoplay; encrypted-media"
+                  className="cl-row-thumb-iframe"
+                  title={culture.title}
+                />
+              )}
+            </>
           )}
           {/* Transparent shield to capture all clicks and touch events */}
           <div className="cl-row-thumb-shield" />

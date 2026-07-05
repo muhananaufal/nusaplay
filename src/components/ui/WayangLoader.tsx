@@ -19,11 +19,11 @@ export const WayangLoader = ({ progress }: { progress: number }) => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+          style={{ gap: '16px' }}
         >
           {/* Animated Mascot */}
-          <div className="wayang-scene" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Mascot pose="excited" size={140} />
-            <div className="wayang-shadow" style={{ width: '100px' }} />
+          <div className="wayang-scene" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '0px' }}>
+            <Mascot pose="excited" size={280} />
           </div>
 
           {/* Progress info */}

@@ -8,17 +8,16 @@ import tts from '@/utils/tts';
 import { Mascot } from './Mascot';
 import { usePassport } from '@/contexts/Passport';
 import { useIsMobile } from '@/utils/useIsMobile';
+import { getCulturesByProvince } from '@/data/cultures';
 
 // ── Splits narrator text into sentence-sized caption chunks ──────────────────
 function splitIntoCaptions(text: string): string[] {
   if (!text) return [];
-  // Split on sentence-ending punctuation, keeping the delimiter
   const raw = text.match(/[^.!?]+[.!?]*/g) || [text];
   const chunks: string[] = [];
   for (const sentence of raw) {
     const trimmed = sentence.trim();
     if (!trimmed) continue;
-    // Long sentences: break further at commas/semicolons (~60 chars max)
     if (trimmed.length > 80) {
       const sub = trimmed.split(/(?<=[,;])\s+/);
       let current = '';
@@ -39,7 +38,7 @@ function splitIntoCaptions(text: string): string[] {
 }
 
 export const CultureDetail = ({ visible }) => {
-  const { selectedCulture, selectedProvince, goTo, startQuiz, markCultureListened } = useAppFlow();
+  const { selectedCulture, selectedProvince, goTo, startQuiz, markCultureListened, selectCulture } = useAppFlow();
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -48,6 +47,7 @@ export const CultureDetail = ({ visible }) => {
   const startTime = useRef(null);
   const estimatedDuration = useRef(15000);
   const infoPanelRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const isMobile = useIsMobile(768);
   const pausedCaptionIndex = useRef(0);
 
@@ -60,18 +60,63 @@ export const CultureDetail = ({ visible }) => {
   // Mobile sticky highlight — mobile only
   const isMobileNarrating = isMobile && isSpeaking;
 
-  // Pre-compute caption chunks from narrator text
-  const captions = useMemo(
-    () => splitIntoCaptions(selectedCulture?.narrator || ''),
-    [selectedCulture]
-  );
+  // Pre-compute caption chunks and their progress thresholds based on character length
+  const captionsData = useMemo(() => {
+    const list = splitIntoCaptions(selectedCulture?.narrator || '');
+    if (!list.length) return { captions: [], thresholds: [] };
+
+    const lengths = list.map(c => c.length);
+    const totalLength = lengths.reduce((sum, len) => sum + len, 0);
+
+    let cumulative = 0;
+    const thresholds = lengths.map(len => {
+      cumulative += (len / totalLength) * 100;
+      return cumulative;
+    });
+
+    return { captions: list, thresholds };
+  }, [selectedCulture]);
+
+  const captions = captionsData.captions;
 
   // Derive which caption to show from progress (0–100)
   const activeCaptionIndex = useMemo(() => {
-    if (!captions.length) return 0;
-    const idx = Math.floor((progress / 100) * captions.length);
-    return Math.min(idx, captions.length - 1);
-  }, [progress, captions]);
+    const { thresholds } = captionsData;
+    if (!thresholds.length) return 0;
+    
+    // Find the first sentence threshold that is greater than or equal to the current progress
+    const idx = thresholds.findIndex(th => progress <= th);
+    if (idx === -1) return thresholds.length - 1;
+    return idx;
+  }, [progress, captionsData]);
+
+  // Find next culture in the province (sorted with audio first)
+  const nextCulture = useMemo(() => {
+    if (!selectedProvince) return null;
+    const list = getCulturesByProvince(selectedProvince.id);
+    const sortedList = [...list].sort((a, b) => {
+      const hasAudioA = !!a.audio;
+      const hasAudioB = !!b.audio;
+      if (hasAudioA && !hasAudioB) return -1;
+      if (!hasAudioA && hasAudioB) return 1;
+      return 0;
+    });
+    const currentIndex = sortedList.findIndex(c => c.id === selectedCulture?.id);
+    if (currentIndex !== -1 && currentIndex < sortedList.length - 1) {
+      return sortedList[currentIndex + 1];
+    }
+    return null;
+  }, [selectedProvince, selectedCulture?.id]);
+
+  const stopAll = () => {
+    tts.stop();
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.src = '';
+      audioRef.current = null;
+    }
+    clearInterval(progressInterval.current);
+  };
 
   useEffect(() => {
     if (ttsFinished && selectedProvince?.id) {
@@ -84,65 +129,63 @@ export const CultureDetail = ({ visible }) => {
     setIsPaused(false);
     setProgress(0);
     setTtsFinished(false);
-    tts.stop();
+    stopAll();
+    window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
   }, [selectedCulture]);
 
   useEffect(() => {
     return () => {
-      tts.stop();
-      clearInterval(progressInterval.current);
+      stopAll();
+      window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
     };
   }, []);
 
   const startNarration = () => {
     if (!selectedCulture) return;
-    tts.stop();
+    stopAll();
     setProgress(0);
     setTtsFinished(false);
     pausedCaptionIndex.current = 0;
-    startTime.current = Date.now();
-    const wordCount = selectedCulture.narrator.split(' ').length;
-    estimatedDuration.current = (wordCount / 2.5) * 1000;
 
-    tts.speak(selectedCulture.narrator, {
-      lang: 'id-ID',
-      rate: 0.85,
-      onEnd: () => {
+    if (selectedCulture.audio) {
+      // ── Audio file mode ──────────────────────────────────────────────────
+      const audio = new Audio(selectedCulture.audio);
+      audioRef.current = audio;
+
+      audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+          setProgress((audio.currentTime / audio.duration) * 100);
+        }
+      });
+
+      audio.addEventListener('ended', () => {
         setIsSpeaking(false);
         setProgress(100);
         setTtsFinished(true);
-        clearInterval(progressInterval.current);
+        audioRef.current = null;
+        window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
         if (selectedCulture?.id && selectedCulture?.provinceId) {
           markCultureListened(selectedCulture.id, selectedCulture.provinceId);
         }
-      },
-    });
-    setIsSpeaking(true);
-    setIsPaused(false);
+      });
 
-    clearInterval(progressInterval.current);
-    progressInterval.current = setInterval(() => {
-      if (!startTime.current) return;
-      const elapsed = Date.now() - startTime.current;
-      const pct = Math.min((elapsed / estimatedDuration.current) * 100, 98);
-      setProgress(pct);
-    }, 200);
-  };
+      audio.addEventListener('pause', () => setIsPaused(true));
+      audio.addEventListener('play', () => {
+        setIsSpeaking(true);
+        setIsPaused(false);
+      });
 
-  const togglePause = () => {
-    if (isPaused) {
+      audio.play().catch(err => console.error('Audio play failed:', err));
+      setIsSpeaking(true);
       setIsPaused(false);
-      // Construct remaining text starting from the paused sentence
-      const remainingCaptions = captions.slice(pausedCaptionIndex.current);
-      const remainingText = remainingCaptions.join(' ');
-      
-      const wordCount = remainingText.split(' ').length;
-      const remainingDuration = (wordCount / 2.5) * 1000;
-      const startProgress = (pausedCaptionIndex.current / captions.length) * 100;
-
+      window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
+    } else {
+      // ── TTS (browser speech) mode ────────────────────────────────────────
       startTime.current = Date.now();
+      const wordCount = selectedCulture.narrator.split(' ').length;
+      estimatedDuration.current = (wordCount / 2.5) * 1000;
 
-      tts.speak(remainingText, {
+      tts.speak(selectedCulture.narrator, {
         lang: 'id-ID',
         rate: 0.85,
         onEnd: () => {
@@ -150,35 +193,88 @@ export const CultureDetail = ({ visible }) => {
           setProgress(100);
           setTtsFinished(true);
           clearInterval(progressInterval.current);
+          window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
           if (selectedCulture?.id && selectedCulture?.provinceId) {
             markCultureListened(selectedCulture.id, selectedCulture.provinceId);
           }
         },
       });
+      setIsSpeaking(true);
+      setIsPaused(false);
+      window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
 
-      clearInterval(progressInterval.current);
       progressInterval.current = setInterval(() => {
         if (!startTime.current) return;
         const elapsed = Date.now() - startTime.current;
-        const delta = (elapsed / remainingDuration) * (100 - startProgress);
-        const pct = Math.min(startProgress + delta, 98);
+        const pct = Math.min((elapsed / estimatedDuration.current) * 100, 98);
         setProgress(pct);
       }, 200);
+    }
+  };
+
+  const togglePause = () => {
+    if (selectedCulture?.audio && audioRef.current) {
+      // ── Audio file pause/resume ──────────────────────────────────────────
+      if (isPaused) {
+        audioRef.current.play().catch(err => console.error(err));
+        setIsPaused(false);
+        window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
+      } else {
+        audioRef.current.pause();
+        setIsPaused(true);
+        window.dispatchEvent(new CustomEvent('nusaplay:narrationPause'));
+      }
     } else {
-      // Pause: Stop speaking and record current caption index
-      tts.stop();
-      setIsPaused(true);
-      clearInterval(progressInterval.current);
-      pausedCaptionIndex.current = activeCaptionIndex;
+      // ── TTS pause/resume ─────────────────────────────────────────────────
+      if (isPaused) {
+        setIsPaused(false);
+        const remainingCaptions = captions.slice(pausedCaptionIndex.current);
+        const remainingText = remainingCaptions.join(' ');
+        const wordCount = remainingText.split(' ').length;
+        const remainingDuration = (wordCount / 2.5) * 1000;
+        const startProgress = (pausedCaptionIndex.current / captions.length) * 100;
+
+        startTime.current = Date.now();
+
+        tts.speak(remainingText, {
+          lang: 'id-ID',
+          rate: 0.85,
+          onEnd: () => {
+            setIsSpeaking(false);
+            setProgress(100);
+            setTtsFinished(true);
+            clearInterval(progressInterval.current);
+            if (selectedCulture?.id && selectedCulture?.provinceId) {
+              markCultureListened(selectedCulture.id, selectedCulture.provinceId);
+            }
+          },
+        });
+
+        progressInterval.current = setInterval(() => {
+          if (!startTime.current) return;
+          const elapsed = Date.now() - startTime.current;
+          const delta = (elapsed / remainingDuration) * (100 - startProgress);
+          const pct = Math.min(startProgress + delta, 98);
+          setProgress(pct);
+        }, 200);
+
+        window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
+      } else {
+        tts.stop();
+        setIsPaused(true);
+        clearInterval(progressInterval.current);
+        pausedCaptionIndex.current = activeCaptionIndex;
+        window.dispatchEvent(new CustomEvent('nusaplay:narrationPause'));
+      }
     }
   };
 
   const stopNarration = () => {
-    tts.stop();
+    stopAll();
     setIsSpeaking(false);
     setIsPaused(false);
     setProgress(0);
-    clearInterval(progressInterval.current);
+    window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
   };
 
   if (!visible || !selectedCulture) return null;
@@ -195,7 +291,7 @@ export const CultureDetail = ({ visible }) => {
     >
       {/* ── MOBILE: dim overlay over info content when narrating ── */}
       <AnimatePresence>
-        {isMobileNarrating && (
+        {isMobileNarrating && !isPaused && (
           <motion.div
             className="cd-info-dim-overlay"
             initial={{ opacity: 0 }}
@@ -216,25 +312,75 @@ export const CultureDetail = ({ visible }) => {
       >
         {/* ── LEFT: VIDEO PANEL ── */}
         <motion.div
-          className={`cd-video-panel${isMobileNarrating ? ' is-sticky' : ''}`}
+          className={`cd-video-panel${(isMobileNarrating && !isPaused) ? ' is-sticky' : ''}`}
           initial={{ clipPath: 'inset(100% 0% 0% 0%)' }}
           animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
           transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
           style={{ position: 'relative' }}
         >
-          <div className="cd-video-wrapper">
-            <iframe
-              src={`https://www.youtube.com/embed/${selectedCulture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${selectedCulture.youtubeId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              className="cd-iframe"
-              loading="lazy"
-              title={selectedCulture.title}
-            />
-            {/* Video overlay — darker in cinematic mode for caption legibility */}
-            <div className={`cd-video-overlay${isCinematic ? ' cinematic' : ''}`} />
+          <div className="cd-video-wrapper" style={{ position: 'relative', width: '100%', height: '100%' }}>
+            {!selectedCulture.audio ? (
+              // Locked details placeholder (No audio)
+              <div style={{ 
+                position: 'relative', 
+                width: '100%', 
+                height: '100%', 
+                background: '#1F2D3D',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img
+                  src={selectedCulture.image || `https://img.youtube.com/vi/${selectedCulture.youtubeId}/maxresdefault.jpg`}
+                  alt=""
+                  onError={(e) => {
+                    (e.target as HTMLElement).style.display = 'none';
+                  }}
+                  style={{ 
+                    position: 'absolute',
+                    top: 0, left: 0, width: '100%', height: '100%', 
+                    objectFit: 'cover', 
+                    filter: 'grayscale(0.3) blur(2px)', 
+                    opacity: 0.15 
+                  }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(13, 27, 42, 0.4)',
+                  zIndex: 2
+                }}>
+                  {/* Big Padlock SVG */}
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.4))', opacity: 0.8 }}>
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+              </div>
+            ) : (
+              // Normal video iframe
+              <>
+                <iframe
+                  src={`https://www.youtube.com/embed/${selectedCulture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${selectedCulture.youtubeId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  className="cd-iframe"
+                  loading="lazy"
+                  title={selectedCulture.title}
+                />
+                {/* Video overlay — darker in cinematic mode for caption legibility */}
+                <div className={`cd-video-overlay${isCinematic ? ' cinematic' : ''}`} />
+              </>
+            )}
+          </div>
 
-            {/* ── FLOATING CONTROLS (visible only in cinematic mode) ── */}
+            {/* ── FLOATING CONTROLS (visible when speaking) ── */}
             <AnimatePresence>
               {isSpeaking && (
                 <motion.div
@@ -244,10 +390,7 @@ export const CultureDetail = ({ visible }) => {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <button
-                    className="cd-float-btn pause"
-                    onClick={togglePause}
-                  >
+                  <button className="cd-float-btn pause" onClick={togglePause}>
                     {isPaused ? (
                       <>
                         <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
@@ -264,10 +407,7 @@ export const CultureDetail = ({ visible }) => {
                       </>
                     )}
                   </button>
-                  <button
-                    className="cd-float-btn stop"
-                    onClick={stopNarration}
-                  >
+                  <button className="cd-float-btn stop" onClick={stopNarration}>
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M6 6h12v12H6z" />
                     </svg>
@@ -277,9 +417,9 @@ export const CultureDetail = ({ visible }) => {
               )}
             </AnimatePresence>
 
-            {/* ── LIVE CAPTIONS (visible only when cinematic and speaking) ── */}
+            {/* ── LIVE CAPTIONS (visible when speaking and not paused) ── */}
             <AnimatePresence mode="wait">
-              {isCinematic && captions.length > 0 && (
+              {isSpeaking && !isPaused && captions.length > 0 && (
                 <motion.div
                   key={activeCaptionIndex}
                   className="cd-captions-container"
@@ -294,7 +434,6 @@ export const CultureDetail = ({ visible }) => {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
         </motion.div>
 
         {/* ── RIGHT: INFO PANEL ── */}
@@ -342,25 +481,32 @@ export const CultureDetail = ({ visible }) => {
                 )}
                 <button
                   className="cd-audio-play-minimal"
+                  disabled={!selectedCulture.audio}
                   onClick={!isSpeaking ? startNarration : togglePause}
                   style={{
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    border: '1px solid var(--c-accent)',
-                    background: isSpeaking && !isPaused ? 'var(--c-accent)' : 'transparent',
-                    color: isSpeaking && !isPaused ? '#fff' : 'var(--c-accent)',
-                    cursor: 'pointer',
+                    border: selectedCulture.audio ? '1px solid var(--c-accent)' : '1px solid var(--c-border-dark, #ccc)',
+                    background: !selectedCulture.audio ? 'var(--c-bg-light, #f5f5f5)' : (isSpeaking && !isPaused ? 'var(--c-accent)' : 'transparent'),
+                    color: !selectedCulture.audio ? '#999' : (isSpeaking && !isPaused ? '#fff' : 'var(--c-accent)'),
+                    cursor: selectedCulture.audio ? 'pointer' : 'not-allowed',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: '0.75rem',
                     transition: 'all 0.25s ease',
                     flexShrink: 0,
+                    opacity: selectedCulture.audio ? 1 : 0.6,
                   }}
-                  title={!isSpeaking ? 'Dengarkan Narasi' : isPaused ? 'Lanjutkan' : 'Jeda'}
+                  title={selectedCulture.audio ? (!isSpeaking ? 'Dengarkan Narasi' : isPaused ? 'Lanjutkan' : 'Jeda') : 'Audio Belum Tersedia'}
                 >
-                  {!isSpeaking || isPaused ? (
+                  {!selectedCulture.audio ? (
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                  ) : (!isSpeaking || isPaused ? (
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style={{ transform: 'translateX(1px)' }}>
                       <path d="M8 5v14l11-7z" />
                     </svg>
@@ -368,7 +514,7 @@ export const CultureDetail = ({ visible }) => {
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
                     </svg>
-                  )}
+                  ))}
                 </button>
               </div>
             </motion.h1>
@@ -409,7 +555,7 @@ export const CultureDetail = ({ visible }) => {
                 <button
                   className="cd-quiz-cta-btn"
                   onClick={() => {
-                    tts.stop();
+                    stopAll();
                     startQuiz(selectedProvince);
                   }}
                 >
@@ -429,8 +575,15 @@ export const CultureDetail = ({ visible }) => {
             cultureName={selectedCulture.title}
             provinceName={selectedProvince?.name || ''}
             onReplay={startNarration}
-            onExplore={() => { tts.stop(); goTo('province'); }}
-            onStartQuiz={() => { tts.stop(); startQuiz(selectedProvince); }}
+            onExplore={() => { stopAll(); goTo('province'); }}
+            onStartQuiz={() => { stopAll(); startQuiz(selectedProvince); }}
+            nextCulture={nextCulture}
+            onNextCulture={() => {
+              if (nextCulture) {
+                stopAll();
+                selectCulture(nextCulture);
+              }
+            }}
           />
         )}
       </AnimatePresence>
@@ -438,12 +591,7 @@ export const CultureDetail = ({ visible }) => {
   );
 };
 
-// Helper — not critical, just a display index
-const rawIndex = (culture) => {
-  return culture?.id ? parseInt(culture.id.replace(/\D/g, '').slice(-2), 10) || 1 : 1;
-};
-
-const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, onStartQuiz }) => (
+const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, onStartQuiz, nextCulture, onNextCulture }) => (
   <motion.div
     className="storytelling-end-backdrop"
     initial={{ opacity: 0 }}
@@ -460,8 +608,17 @@ const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, 
       <span className="end-sheet-badge">Narasi Selesai</span>
       <h3 className="end-sheet-title">"{cultureName}"</h3>
       <div className="end-sheet-divider" />
-      <div style={{ display: 'flex', justifyContent: 'center', margin: '12px 0 16px 0' }}>
-        <Mascot pose="excited" size={100} />
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '90px', 
+        margin: '16px 0', 
+        position: 'relative' 
+      }}>
+        <div style={{ position: 'absolute', zIndex: 10 }}>
+          <Mascot pose="excited" size={200} />
+        </div>
       </div>
       <p className="end-sheet-sub" style={{ fontWeight: 600, color: 'var(--c-accent-dark)', marginBottom: '16px' }}>
         Hebat! Kamu telah menyimak penjelasan budaya ini. Ingin lanjut menguji pengetahuanmu?
@@ -514,7 +671,13 @@ const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, 
           <motion.button
             className="end-btn explore"
             onClick={onExplore}
-            style={{ flex: 1, transition: 'none' }}
+            style={{ 
+              flex: 1, 
+              transition: 'none',
+              background: '#0D1B2A',
+              border: '1px solid #0D1B2A',
+              color: '#ffffff'
+            }}
             whileHover={{
               scale: 1.02,
               background: '#0D1B2A',

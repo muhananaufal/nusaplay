@@ -6,11 +6,54 @@ import { WayangLoader } from './WayangLoader';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 
+// ── Morphing Speaker Icon ─────────────────────────────────────────────────────
+// pathLength 0→1 draw/erase: sound waves dissolve while mute-X draws itself.
+const SpeakerIcon = ({ isMuted }: { isMuted: boolean }) => {
+  const wave = { duration: 0.28, ease: 'easeInOut' as const };
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ display: 'block' }}>
+      <path
+        d="M11 5L6 9H2v6h4l5 4V5z"
+        fill={isMuted ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.82)'}
+        style={{ transition: 'fill 0.28s ease' }}
+      />
+      <motion.path
+        d="M15.54 8.46a5 5 0 0 1 0 7.07"
+        stroke="rgba(255,255,255,0.82)" strokeWidth="1.5" strokeLinecap="round" fill="none"
+        initial={false}
+        animate={{ pathLength: isMuted ? 0 : 1, opacity: isMuted ? 0 : 1 }}
+        transition={wave}
+      />
+      <motion.path
+        d="M19.07 4.93a10 10 0 0 1 0 14.14"
+        stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" fill="none"
+        initial={false}
+        animate={{ pathLength: isMuted ? 0 : 1, opacity: isMuted ? 0 : 1 }}
+        transition={{ ...wave, delay: isMuted ? 0 : 0.06 }}
+      />
+      <motion.path
+        d="M17 9 L23 15"
+        stroke="rgba(255,255,255,0.6)" strokeWidth="1.75" strokeLinecap="round" fill="none"
+        initial={false}
+        animate={{ pathLength: isMuted ? 1 : 0, opacity: isMuted ? 1 : 0 }}
+        transition={{ ...wave, delay: isMuted ? 0.06 : 0 }}
+      />
+      <motion.path
+        d="M23 9 L17 15"
+        stroke="rgba(255,255,255,0.6)" strokeWidth="1.75" strokeLinecap="round" fill="none"
+        initial={false}
+        animate={{ pathLength: isMuted ? 1 : 0, opacity: isMuted ? 1 : 0 }}
+        transition={wave}
+      />
+    </svg>
+  );
+};
+
 // ── Video Background ───────────────────────────────────────────────────────────
-// Renders the local splash-screen.mp4 video with audio enabled and looped.
-// Since modern browsers block autoplay for unmuted videos, we attempt to play
-// automatically, and fall back to playing on the first user interaction.
-const VideoBackground = () => {
+// Renders the local splash-screen.mp4 video.
+// Mobile browsers require a user gesture to play audio — we handle this with
+// a stylish "tap to enter" gate that unlocks audio on first tap.
+const VideoBackground = ({ audioUnlocked, isMuted }: { audioUnlocked: boolean; isMuted: boolean }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isFading, setIsFading] = useState(false);
   const { play } = usePlay();
@@ -31,17 +74,13 @@ const VideoBackground = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Autoplay logic
-    const startVideo = () => {
-      video.play().catch(err => console.log("Play failed:", err));
-      window.removeEventListener('click', startVideo);
-      window.removeEventListener('touchstart', startVideo);
-    };
+    // Start muted — required for autoplay on iOS/Android
+    video.muted = true;
+    video.volume = 0;
 
-    video.play().catch(() => {
-      window.addEventListener('click', startVideo);
-      window.addEventListener('touchstart', startVideo);
-    });
+    // Try to autoplay immediately (works on all platforms when muted)
+    video.play().catch(err => console.log("Play failed:", err));
+
 
     // Precise time tracking using requestAnimationFrame to prevent low-frequency update jumps
     let rafId: number;
@@ -92,10 +131,35 @@ const VideoBackground = () => {
     return () => {
       cancelAnimationFrame(rafId);
       video.removeEventListener('loadedmetadata', onLoadedMetadata);
-      window.removeEventListener('click', startVideo);
-      window.removeEventListener('touchstart', startVideo);
     };
   }, []);
+
+  // Unlock audio when prop changes
+  const audioUnlockedRef = useRef(false);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || audioUnlockedRef.current || !audioUnlocked) return;
+    audioUnlockedRef.current = true;
+    video.muted = false;
+    video.volume = 0;
+    const fadeIn = setInterval(() => {
+      if (!videoRef.current) { clearInterval(fadeIn); return; }
+      if (videoRef.current.volume < 0.97) {
+        videoRef.current.volume = Math.min(1, videoRef.current.volume + 0.04);
+      } else {
+        videoRef.current.volume = 1;
+        clearInterval(fadeIn);
+      }
+    }, 40);
+    return () => clearInterval(fadeIn);
+  }, [audioUnlocked]);
+
+  // Sync mute toggle from parent
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !audioUnlocked) return;
+    video.muted = isMuted;
+  }, [isMuted, audioUnlocked]);
 
   return (
     <div className="splash-video-bg">
@@ -104,6 +168,7 @@ const VideoBackground = () => {
         src="/video/splash-screen.mp4"
         autoPlay
         loop
+        muted
         playsInline
         className="splash-bg-image"
         style={{
@@ -256,8 +321,20 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
   const { goTo } = useAppFlow();
   const [logoClickCount, setLogoClickCount] = useState(0);
   const [showHaiku, setShowHaiku] = useState(false);
+  const [audioUnlocked, setAudioUnlocked] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const startTimeoutRef = useRef<any>(null);
   const heroRef = useRef<HTMLDivElement>(null);
+
+  const handleToggleMute = () => setIsMuted(m => !m);
+
+  // Auto-unlock audio on first user interaction (tap/click anywhere)
+  useEffect(() => {
+    if (audioUnlocked) return;
+    const unlock = () => setAudioUnlocked(true);
+    window.addEventListener('pointerdown', unlock, { once: true, capture: true });
+    return () => window.removeEventListener('pointerdown', unlock, { capture: true });
+  }, [audioUnlocked]);
 
   // Reset GSAP tilt when tour becomes active
   useEffect(() => {
@@ -360,7 +437,7 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
           • user has made their first pointer interaction OR 3s have passed idle.
           This keeps page load network budget focused on the 3D model. */}
       {progress === 100 && (
-        <VideoBackground />
+        <VideoBackground audioUnlocked={audioUnlocked} isMuted={isMuted} />
       )}
 
 
@@ -413,10 +490,12 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
             >
               <CharReveal text="NusaPlay" delay={0.1} />
             </span>
-            <div className="splash-nav-links">
-              <button className="splash-nav-link" onClick={handlePetaNusantara}>Peta Nusantara</button>
-              <button className="splash-nav-link" onClick={handleKuisNusantara}>Kuis Nusantara</button>
-              <button className="splash-nav-link" onClick={handleTentang}>Tentang</button>
+            <div className="splash-header-right">
+              <div className="splash-nav-links">
+                <button className="splash-nav-link" onClick={handlePetaNusantara}>Peta Nusantara</button>
+                <button className="splash-nav-link" onClick={handleKuisNusantara}>Kuis Nusantara</button>
+                <button className="splash-nav-link" onClick={handleTentang}>Tentang</button>
+              </div>
             </div>
           </div>
 
@@ -458,13 +537,9 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
             </motion.div>
           </div>
 
-          <div className="splash-marquee-container">
-            <div className="splash-marquee-content">
-              Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan · Peta Nusantara · Tarian Daerah · Rumah Adat · Musik Tradisional · Kuliner Nusantara · Kuis Budaya · Upacara Adat · Batik &amp; Kerajinan ·
-            </div>
-          </div>
 
-          <div className="splash-bottom-bar" style={{ justifyContent: 'center' }}>
+
+          <div className="splash-bottom-bar">
             <motion.p
               className="splash-desc-center"
               initial={{ opacity: 0, y: 10 }}
@@ -484,6 +559,23 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
       {/* Haiku Easter Egg Modal */}
       <AnimatePresence>
         {showHaiku && <HaikuModal onClose={() => setShowHaiku(false)} />}
+      </AnimatePresence>
+      {/* Mute button — fixed position next to hamburger menu */}
+      <AnimatePresence>
+        {audioUnlocked && progress === 100 && !play && (
+          <motion.button
+            className="splash-mute-btn"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.25 }}
+            onClick={handleToggleMute}
+            aria-label={isMuted ? 'Aktifkan suara' : 'Matikan suara'}
+            title={isMuted ? 'Aktifkan suara' : 'Matikan suara'}
+          >
+            <SpeakerIcon isMuted={isMuted} />
+          </motion.button>
+        )}
       </AnimatePresence>
     </div>
   );
