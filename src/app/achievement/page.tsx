@@ -123,8 +123,8 @@ export default function AchievementPage() {
 					{/* Sleek inline progress bar under subtitle */}
 					<div className="achievement-sleek-progress" style={{ width: '100%', maxWidth: '480px', margin: '8px auto 0 auto' }}>
 						<div style={{ display: 'flex', justifyContent: 'center', gap: '6px', fontSize: '0.8rem', color: 'var(--c-text-soft)', marginBottom: '8px' }}>
-							<span>Progres Petualangan:</span>
-							<span style={{ fontWeight: 600, color: 'var(--c-primary)' }}>{unlockedCount} / {totalCount} Terbuka ({progressPercent}%)</span>
+							{/* <span>Progres Petualangan:</span> */}
+							<span style={{ fontWeight: 600, color: 'var(--c-primary)' }}>{unlockedCount} / {totalCount} Pencapaian Terbuka ({progressPercent}%)</span>
 						</div>
 						<div className="progress-bar-bg-sleek">
 							<motion.div 

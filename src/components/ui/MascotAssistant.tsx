@@ -13,11 +13,16 @@ export function MascotAssistant() {
   const pathname = usePathname();
   const [pose, setPose] = useState<PoseType>('idle');
   const constraintsRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const isSplashOrJourney = phase === PHASES.SPLASH || phase === PHASES.JOURNEY;
   const isQuizResults = journeyCompleted && pathname?.includes('/quiz');
   const isDetail = pathname?.includes('/culture');
-  const shouldHide = tourActive || isQuizResults || isSplashOrJourney || isDetail;
+  const shouldHide = !mounted || tourActive || isQuizResults || isSplashOrJourney || isDetail;
 
   // Listen to Quiz custom events to react visually
   useEffect(() => {
@@ -47,6 +52,8 @@ export function MascotAssistant() {
     };
   }, []);
 
+  if (!mounted) return null;
+
   return (
     <div ref={constraintsRef} className="mascot-root">
       <motion.div
@@ -55,6 +62,7 @@ export function MascotAssistant() {
         dragElastic={0.15}
         dragMomentum={false}
         className="mascot-container"
+        initial={{ scale: 0, opacity: 0, pointerEvents: 'none' }}
         animate={shouldHide ? {
           scale: 0,
           opacity: 0,
