@@ -329,7 +329,14 @@ export const CultureDetail = ({ visible }) => {
           transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
           style={{ position: 'relative' }}
         >
-          <div className="cd-video-wrapper" style={{ position: 'relative', width: '100%', height: '100%' }}>
+          <div 
+            className="cd-video-wrapper" 
+            style={{ 
+              position: 'relative', 
+              width: '100%', 
+              height: (isMobileNarrating && !isPaused) ? 'auto' : '100%' 
+            }}
+          >
             {!selectedCulture.audio ? (
               // Locked details placeholder (No audio)
               <div style={{ 
@@ -386,7 +393,14 @@ export const CultureDetail = ({ visible }) => {
                     muted
                     playsInline
                     className="cd-iframe"
-                    style={{ objectFit: 'cover' }}
+                    style={{ 
+                      objectFit: 'contain',
+                      width: '100%',
+                      height: '100%',
+                      transform: 'none',
+                      top: 0,
+                      left: 0
+                    }}
                   />
                 ) : (
                   <iframe
