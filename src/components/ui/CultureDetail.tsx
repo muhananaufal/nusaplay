@@ -291,7 +291,7 @@ export const CultureDetail = ({ visible }) => {
     >
       {/* ── MOBILE: dim overlay over info content when narrating ── */}
       <AnimatePresence>
-        {isMobileNarrating && (
+        {isMobileNarrating && !isPaused && (
           <motion.div
             className="cd-info-dim-overlay"
             initial={{ opacity: 0 }}
@@ -312,23 +312,73 @@ export const CultureDetail = ({ visible }) => {
       >
         {/* ── LEFT: VIDEO PANEL ── */}
         <motion.div
-          className={`cd-video-panel${isMobileNarrating ? ' is-sticky' : ''}`}
+          className={`cd-video-panel${(isMobileNarrating && !isPaused) ? ' is-sticky' : ''}`}
           initial={{ clipPath: 'inset(100% 0% 0% 0%)' }}
           animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
           transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
           style={{ position: 'relative' }}
         >
-          <div className="cd-video-wrapper">
-            <iframe
-              src={`https://www.youtube.com/embed/${selectedCulture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${selectedCulture.youtubeId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              className="cd-iframe"
-              loading="lazy"
-              title={selectedCulture.title}
-            />
-            {/* Video overlay — darker in cinematic mode for caption legibility */}
-            <div className={`cd-video-overlay${isCinematic ? ' cinematic' : ''}`} />
+          <div className="cd-video-wrapper" style={{ position: 'relative', width: '100%', height: '100%' }}>
+            {!selectedCulture.audio ? (
+              // Locked details placeholder (No audio)
+              <div style={{ 
+                position: 'relative', 
+                width: '100%', 
+                height: '100%', 
+                background: '#1F2D3D',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img
+                  src={selectedCulture.image || `https://img.youtube.com/vi/${selectedCulture.youtubeId}/maxresdefault.jpg`}
+                  alt=""
+                  onError={(e) => {
+                    (e.target as HTMLElement).style.display = 'none';
+                  }}
+                  style={{ 
+                    position: 'absolute',
+                    top: 0, left: 0, width: '100%', height: '100%', 
+                    objectFit: 'cover', 
+                    filter: 'grayscale(0.3) blur(2px)', 
+                    opacity: 0.15 
+                  }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(13, 27, 42, 0.4)',
+                  zIndex: 2
+                }}>
+                  {/* Big Padlock SVG */}
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.4))', opacity: 0.8 }}>
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+              </div>
+            ) : (
+              // Normal video iframe
+              <>
+                <iframe
+                  src={`https://www.youtube.com/embed/${selectedCulture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${selectedCulture.youtubeId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  className="cd-iframe"
+                  loading="lazy"
+                  title={selectedCulture.title}
+                />
+                {/* Video overlay — darker in cinematic mode for caption legibility */}
+                <div className={`cd-video-overlay${isCinematic ? ' cinematic' : ''}`} />
+              </>
+            )}
+          </div>
 
             {/* ── FLOATING CONTROLS (visible when speaking) ── */}
             <AnimatePresence>
@@ -367,9 +417,9 @@ export const CultureDetail = ({ visible }) => {
               )}
             </AnimatePresence>
 
-            {/* ── LIVE CAPTIONS (visible only when cinematic and speaking) ── */}
+            {/* ── LIVE CAPTIONS (visible when speaking and not paused) ── */}
             <AnimatePresence mode="wait">
-              {isCinematic && captions.length > 0 && (
+              {isSpeaking && !isPaused && captions.length > 0 && (
                 <motion.div
                   key={activeCaptionIndex}
                   className="cd-captions-container"
@@ -384,7 +434,6 @@ export const CultureDetail = ({ visible }) => {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
         </motion.div>
 
         {/* ── RIGHT: INFO PANEL ── */}
@@ -559,17 +608,26 @@ const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, 
       <span className="end-sheet-badge">Narasi Selesai</span>
       <h3 className="end-sheet-title">"{cultureName}"</h3>
       <div className="end-sheet-divider" />
-      <div style={{ display: 'flex', justifyContent: 'center', margin: '12px 0 16px 0' }}>
-        <Mascot pose="excited" size={100} />
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '90px', 
+        margin: '16px 0', 
+        position: 'relative' 
+      }}>
+        <div style={{ position: 'absolute', zIndex: 10 }}>
+          <Mascot pose="excited" size={200} />
+        </div>
       </div>
       <p className="end-sheet-sub" style={{ fontWeight: 600, color: 'var(--c-accent-dark)', marginBottom: '16px' }}>
         Hebat! Kamu telah menyimak penjelasan budaya ini. Ingin lanjut menguji pengetahuanmu?
       </p>
       <div className="end-sheet-actions" style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }}>
-        {nextCulture && (
+        {onStartQuiz && (
           <motion.button
-            className="end-btn next-culture"
-            onClick={onNextCulture}
+            className="end-btn start-quiz"
+            onClick={onStartQuiz}
             style={{
               width: '100%',
               padding: '12px',
@@ -587,36 +645,6 @@ const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, 
               scale: 1.02,
               background: '#0D1B2A',
               boxShadow: '0 6px 16px rgba(13, 27, 42, 0.3)',
-            }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-          >
-            Lanjut: {nextCulture.title} →
-          </motion.button>
-        )}
-        {onStartQuiz && (
-          <motion.button
-            className="end-btn start-quiz"
-            onClick={onStartQuiz}
-            style={{
-              width: '100%',
-              padding: '12px',
-              background: nextCulture ? 'transparent' : 'var(--c-primary)',
-              color: nextCulture ? 'var(--c-primary)' : '#fff',
-              border: nextCulture ? '2px solid var(--c-primary)' : 'none',
-              borderRadius: 'var(--radius-sm)',
-              cursor: 'pointer',
-              fontWeight: 600,
-              fontSize: '0.9rem',
-              boxShadow: nextCulture ? 'none' : '0 4px 12px rgba(27, 79, 156, 0.2)',
-              transition: 'none',
-            }}
-            whileHover={{
-              scale: 1.02,
-              background: nextCulture ? 'rgba(27, 79, 156, 0.06)' : '#0D1B2A',
-              borderColor: 'var(--c-primary)',
-              color: nextCulture ? 'var(--c-primary)' : '#fff',
-              boxShadow: nextCulture ? 'none' : '0 6px 16px rgba(13, 27, 42, 0.3)',
             }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 400, damping: 15 }}
@@ -643,7 +671,13 @@ const StorytellingEndSheet = ({ cultureName, provinceName, onReplay, onExplore, 
           <motion.button
             className="end-btn explore"
             onClick={onExplore}
-            style={{ flex: 1, transition: 'none' }}
+            style={{ 
+              flex: 1, 
+              transition: 'none',
+              background: '#0D1B2A',
+              border: '1px solid #0D1B2A',
+              color: '#ffffff'
+            }}
             whileHover={{
               scale: 1.02,
               background: '#0D1B2A',

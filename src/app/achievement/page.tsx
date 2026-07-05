@@ -112,74 +112,77 @@ export default function AchievementPage() {
 			</button>
 
 			<div className="achievement-container">
-				{/* Header Section */}
-				<div className="achievement-header">
+				{/* Header Section Group */}
+				<div className="achievement-header" style={{ gap: '16px' }}>
 					<span className="achievement-overline">Petualangan NusaPlay</span>
 					<h1 className="achievement-title">Pencapaian Nusantara</h1>
-					<p className="achievement-desc" style={{ marginBottom: '16px' }}>
+					<p className="achievement-desc">
 						Lacak penghargaan dan keahlian budaya yang telah kamu kuasai selama bertualang melintasi kepulauan Indonesia.
 					</p>
 
-					<div className={`cl-search-wrapper quiz-search-wrapper ${searchQuery ? 'has-query' : ''}`} style={{ marginTop: '8px', marginBottom: 0 }}>
+					{/* Sleek inline progress bar under subtitle */}
+					<div className="achievement-sleek-progress" style={{ width: '100%', maxWidth: '480px', margin: '8px auto 0 auto' }}>
+						<div style={{ display: 'flex', justifyContent: 'center', gap: '6px', fontSize: '0.8rem', color: 'var(--c-text-soft)', marginBottom: '8px' }}>
+							<span>Progres Petualangan:</span>
+							<span style={{ fontWeight: 600, color: 'var(--c-primary)' }}>{unlockedCount} / {totalCount} Terbuka ({progressPercent}%)</span>
+						</div>
+						<div className="progress-bar-bg-sleek">
+							<motion.div 
+								className="progress-bar-fill-sleek" 
+								initial={{ width: 0 }} 
+								animate={{ width: `${progressPercent}%` }} 
+								transition={{ duration: 0.8, ease: 'easeOut' }} 
+							/>
+						</div>
+					</div>
+
+					{/* Minimal Stats Row */}
+					<div className="achievement-stats-row-sleek" style={{ marginTop: '8px' }}>
+						<div className="stat-chip-sleek">
+							<span className="stat-num-sleek"><StatsCountUp end={totalVisited} /></span>
+							<span className="stat-label-sleek">Budaya Dilihat</span>
+						</div>
+						<div className="stat-divider-sleek">•</div>
+						<div className="stat-chip-sleek">
+							<span className="stat-num-sleek"><StatsCountUp end={totalListened} /></span>
+							<span className="stat-label-sleek">Audio Disimak</span>
+						</div>
+						<div className="stat-divider-sleek">•</div>
+						<div className="stat-chip-sleek">
+							<span className="stat-num-sleek"><StatsCountUp end={completedQuizzes.size} /></span>
+							<span className="stat-label-sleek">Kuis Selesai</span>
+						</div>
+						<div className="stat-divider-sleek">•</div>
+						<div className="stat-chip-sleek">
+							<span className="stat-num-sleek"><StatsCountUp end={perfectQuizzes.size} /></span>
+							<span className="stat-label-sleek">Skor Sempurna</span>
+						</div>
+					</div>
+
+					{/* Search Control */}
+					<motion.div
+						className={`cl-search-wrapper quiz-search-wrapper achievement-search-wrapper ${searchQuery ? 'has-query' : ''}`}
+						initial={{ opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.15, duration: 0.5 }}
+					>
 						<SearchIcon size={16} />
-						<input type="text" placeholder="Cari pencapaian..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+						<input
+							type="text"
+							placeholder="Cari pencapaian..."
+							value={searchQuery}
+							onChange={(e) => setSearchQuery(e.target.value)}
+						/>
 						{searchQuery && (
-							<button className="cl-search-clear" onClick={() => setSearchQuery('')}>
-								&times;
-							</button>
+							<button className="cl-search-clear" onClick={() => setSearchQuery('')}>&times;</button>
 						)}
-					</div>
-				</div>
-
-				{/* Progress & Stats Dashboard */}
-				<div className="achievement-dashboard">
-					<div className="achievement-progress-card">
-						<div className="progress-info">
-							<span className="progress-label">Total Terbuka</span>
-							<span className="progress-value">
-								{unlockedCount} / {totalCount} Pencapaian
-							</span>
-						</div>
-						<div className="progress-bar-container">
-							<div className="progress-bar-bg">
-								<motion.div className="progress-bar-fill" initial={{ width: 0 }} animate={{ width: `${progressPercent}%` }} transition={{ duration: 0.8, ease: 'easeOut' }} />
-							</div>
-							<span className="progress-percentage">{progressPercent}%</span>
-						</div>
-					</div>
-
-					<div className="achievement-stats-card">
-						<div className="stat-box">
-							<span className="stat-num">
-								<StatsCountUp end={totalVisited} />
-							</span>
-							<span className="stat-label">Budaya Dilihat</span>
-						</div>
-						<div className="stat-box">
-							<span className="stat-num">
-								<StatsCountUp end={totalListened} />
-							</span>
-							<span className="stat-label">Audio Disimak</span>
-						</div>
-						<div className="stat-box">
-							<span className="stat-num">
-								<StatsCountUp end={completedQuizzes.size} />
-							</span>
-							<span className="stat-label">Kuis Selesai</span>
-						</div>
-						<div className="stat-box">
-							<span className="stat-num">
-								<StatsCountUp end={perfectQuizzes.size} />
-							</span>
-							<span className="stat-label">Skor Sempurna</span>
-						</div>
-					</div>
+					</motion.div>
 				</div>
 
 				{/* Achievements Grid */}
 				{filteredAchievements.length === 0 ? (
 					<motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--c-text-soft)', width: '100%' }}>
-						<p>Pencapaian dengan kata kunci "{searchQuery}" tidak ditemukan.</p>
+						<p>Pencapaian dengan kriteria pencarian tidak ditemukan.</p>
 					</motion.div>
 				) : (
 					<div>

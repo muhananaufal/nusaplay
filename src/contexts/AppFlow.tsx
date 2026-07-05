@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useContext, useState, useMemo, useCallback, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export const PHASES = {
   SPLASH: 'splash',
@@ -24,6 +24,7 @@ export const useListUI = () => useContext(ListUIContext);
 
 export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
+  const pathname = usePathname();
   const [phase, setPhase] = useState<Phase>(PHASES.SPLASH);
   const [selectedProvince, setSelectedProvince] = useState<any>(null);
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
@@ -37,6 +38,52 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [transitionProgress, setTransitionProgress] = useState(0);
+
+  // Turn off loading transition curtain when the route pathname actually changes
+  useEffect(() => {
+    if (isTransitioning) {
+      setTransitionProgress(100);
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [pathname]);
+
+  // Trickle load simulation
+  useEffect(() => {
+    if (!isTransitioning) {
+      setTransitionProgress(0);
+      return;
+    }
+
+    setTransitionProgress(5); // initial jump
+
+    const interval = setInterval(() => {
+      setTransitionProgress((prev) => {
+        if (prev >= 90) {
+          return Math.min(prev + 0.1, 95);
+        }
+        if (prev >= 70) {
+          return prev + 1.2;
+        }
+        return prev + 4;
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [isTransitioning]);
+
+  // Fallback safety timer to auto-dismiss loading overlay after 4s (e.g. if navigation fails or stays on same page)
+  useEffect(() => {
+    if (isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [isTransitioning]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -60,14 +107,12 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     setTotalPages(1);
   }, []);
 
-  // Delay actual route navigation by 500ms so the transition curtain fully covers screen first
+  // Delay actual route navigation by 550ms so the transition curtain fully covers screen first,
+  // then let the pathname observer dismiss it upon mount.
   const triggerNavigation = useCallback((navAction: () => void) => {
     setIsTransitioning(true);
     setTimeout(() => {
       navAction();
-      setTimeout(() => {
-        setIsTransitioning(false);
-      }, 350);
     }, 550);
   }, []);
 
@@ -258,8 +303,9 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     setSelectedCulture,
     setQuizProvince,
     isTransitioning,
+    transitionProgress,
   }), [
-    phase, selectedProvince, selectedCategory, selectedCulture, quizProvince, visitedByProvince, listenedByProvince, isTransitioning,
+    phase, selectedProvince, selectedCategory, selectedCulture, quizProvince, visitedByProvince, listenedByProvince, isTransitioning, transitionProgress,
     goTo, selectProvince, selectCategory, selectCulture, markCultureListened, startQuiz, backToMap,
   ]);
 

@@ -423,7 +423,7 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
             style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--c-text-soft-dark)', width: '100%' }}
           >
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-              <Mascot pose="sad" size={90} />
+              <Mascot pose="sad" size={140} />
             </div>
             <p style={{ fontSize: '0.95rem', fontWeight: 500, letterSpacing: '0.02em' }}>
               Provinsi "{searchQuery}" tidak ditemukan
@@ -535,7 +535,7 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
                 <div className="end-sheet-divider" />
                 
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '12px 0 16px 0' }}>
-                  <Mascot pose="sad" size={100} />
+                  <Mascot pose="sad" size={150} />
                 </div>
                 
                 <p className="end-sheet-sub" style={{ fontWeight: 600, color: 'var(--c-accent-dark)', marginBottom: '16px' }}>
@@ -794,12 +794,21 @@ const QuizResult = ({ score, total, provinceName, onRetry, onMap }: any) => {
 
       {/* Animated Mascot in the Center of Quiz Result */}
       <motion.div
-        style={{ display: 'flex', justifyContent: 'center', margin: '16px 0' }}
+        style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '110px', 
+          margin: '28px 0', 
+          position: 'relative' 
+        }}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.75, type: 'spring' }}
       >
-        <Mascot pose={score >= 3 ? "excited" : "sad"} size={110} />
+        <div style={{ position: 'absolute', zIndex: 10 }}>
+          <Mascot pose={score >= 3 ? "excited" : "sad"} size={260} />
+        </div>
       </motion.div>
 
       {/* Star rating — 5 stars, same formula as the quiz card list */}

@@ -2131,7 +2131,7 @@ export const CULTURES = [
     coordinates: [-1.0, 136.0],
     isLandmark: true,
     description:
-      "Tari Yospan adalah salah satu tarian adapt merauke,yang sering dipakai dalam kondisi tertentu. yospan juga merupakan tarian persahabatan masyarakat papua.Karena hampir seluruh masyarakat papua mengenal tarian yospan. Selain yospan,merauke juga memiliki beberapa tarian adat,antara lain,tari perang,dan tari gatsi.Tari perang biasanya dilakukan pada upacara- upacara adapt tertentu,dan juga pada festival kota merauke yang diadakan satu tahun sekali, dalam memperingati ulang tahun kota Merauke.Sedangkan tari gatsi dilakukan pada acara acara tertentu dan upacara adat tertentu,tarian ini adalah tarian adat suku asli kota merauke,yaitu suku marind.Alat-alat musik yang digunakan untuk mengiringi tarian ini adalah tifa yang terbuat dari kayu yang dibolongi atau di kosongkan isinya, dan pada satu sisinya diberi penutup.Penutupnya terbuat dari kulit rusa dan juga kulit biawak yang dikeringi,agar bunyinya menjadi lebih indah.",
+      "Tari Yospan adalah salah satu tarian adat Merauke, yang sering dipakai dalam kondisi tertentu. Yospan juga merupakan tarian persahabatan masyarakat Papua. Karena hampir seluruh masyarakat Papua mengenal tarian Yospan. Selain Yospan, Merauke juga memiliki beberapa tarian adat, antara lain, tari perang, dan tari gatsi. Tari perang biasanya dilakukan pada upacara- upacara adat tertentu, dan juga pada festival kota Merauke yang diadakan satu tahun sekali, dalam memperingati ulang tahun kota Merauke. Sedangkan tari gatsi dilakukan pada acara acara tertentu dan upacara adat tertentu, tarian ini adalah tarian adat suku asli kota Merauke, yaitu suku marind. Alat-alat musik yang digunakan untuk mengiringi tarian ini adalah tifa yang terbuat dari kayu yang dibolongi atau di kosongkan isinya, dan pada satu sisinya diberi penutup. Penutupnya terbuat dari kulit rusa dan juga kulit biawak yang dikeringi, agar bunyinya menjadi lebih indah.",
     youtubeId: "cyJ9fpoYh_M",
     audio: "/music/papua/tari-yospan.mp3",
     narrator:
@@ -2223,7 +2223,7 @@ export const CULTURES = [
     isLandmark: true,
     description:
       "Triton merupakan alat musik tradisional Papua yang terbuat dari kulit kerang laut dan dimainkan dengan cara ditiup. Alat musik ini banyak ditemukan di wilayah pesisir seperti Biak, Yapen, Waropen, Nabire, Wondama, hingga Raja Ampat. Pada awalnya, Triton digunakan sebagai sarana komunikasi, penanda peristiwa penting, atau alat pemanggil masyarakat. Seiring perkembangan zaman, Triton juga digunakan sebagai alat musik tradisional dan sarana hiburan.",
-    youtubeId: "cyJ9fpoYh_M",
+    youtubeId: "R9Kx58S34Xk",
     audio: "/music/papua/alat-musik-triton.mp3",
     narrator:
       "Triton adalah alat musik tiup khas Papua yang berasal dari kulit kerang laut. Dahulu, suaranya digunakan untuk memanggil masyarakat, memberi tanda, dan menyampaikan pesan antarkampung. Kini, Triton juga menjadi bagian penting dalam pertunjukan seni and pelestarian budaya Papua.",

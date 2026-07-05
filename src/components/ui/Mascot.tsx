@@ -20,7 +20,6 @@ export function Mascot({ pose = 'idle', className = '', size = 160 }: MascotProp
       style={{
         width: `${size}px`,
         height: `${size}px`,
-        mixBlendMode: 'screen',
         objectFit: 'contain',
       }}
     />

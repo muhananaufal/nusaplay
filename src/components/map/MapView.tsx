@@ -176,6 +176,14 @@ export const MapView = ({ visible }) => {
     backToMapRef.current = backToMap;
   }, [selectProvince, backToMap]);
 
+  // When the map becomes visible again (e.g. browser back button from a province page),
+  // clear selectedProvince so the popup doesn't linger.
+  useEffect(() => {
+    if (visible && selectedProvinceRef.current) {
+      backToMapRef.current(true); // skipPush=true: already on /map
+    }
+  }, [visible]);
+
   useEffect(() => {
     (window as any).selectProvince = selectProvince;
     (window as any).selectCulture = selectCulture;
@@ -371,7 +379,7 @@ export const MapView = ({ visible }) => {
             .setLatLng(centerLatLng)
             .setContent(
               `<div class="province-center-badge locked">
-                <span class="badge-count">?</span>
+                <span class="badge-count">0</span>
                 <div class="badge-hover-info">
                   <div class="hover-info-header">
                     <span class="province-title">${name}</span>
@@ -747,6 +755,17 @@ function matchProvince(properties) {
     'yogyakarta': 'diy',
     'kalimantan barat': 'kalimantan-barat',
     'papua': 'papua',
+    'kepulauan bangka belitung': 'bangka-belitung',
+    'bangka belitung': 'bangka-belitung',
+    'kepulauan riau': 'kepulauan-riau',
+    'dki jakarta': 'dki-jakarta',
+    'daerah khusus ibukota jakarta': 'dki-jakarta',
+    'jakarta': 'dki-jakarta',
+    'papua barat daya': 'papua-barat-daya',
+    'papua barat': 'papua-barat',
+    'papua tengah': 'papua-tengah',
+    'papua pegunungan': 'papua-pegunungan',
+    'papua selatan': 'papua-selatan',
   };
 
   if (LOCAL_PROVINCE_MAP[name]) {

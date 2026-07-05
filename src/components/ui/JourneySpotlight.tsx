@@ -276,10 +276,11 @@ export function JourneySpotlight() {
 
   // Menghitung posisi absolut tooltip guide card agar tidak off-screen (menggunakan target pertama sebagai patokan)
   const rect = rects[0];
+  const mascotSize = isMobile ? 160 : 200;
   const cardWidth = 280;
   const cardHeight = 150;
-  const containerWidth = isMobile ? cardWidth : cardWidth + 80 + 12;
-  const containerHeight = isMobile ? cardHeight + 70 + 12 : cardHeight;
+  const containerWidth = isMobile ? cardWidth : cardWidth + mascotSize + 12;
+  const containerHeight = isMobile ? cardHeight + mascotSize + 12 : Math.max(cardHeight, mascotSize);
 
   let cardLeft = rect.left + rect.width / 2 - containerWidth / 2;
   let cardTop = rect.bottom + 16; // default: below
@@ -394,7 +395,7 @@ export function JourneySpotlight() {
           zIndex: 9999,
         }}
       >
-        <Mascot pose="excited" size={isMobile ? 70 : 80} />
+        <Mascot pose="excited" size={mascotSize} />
 
         <div 
           className="journey-spotlight-card"

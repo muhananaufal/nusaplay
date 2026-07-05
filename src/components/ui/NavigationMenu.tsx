@@ -73,6 +73,32 @@ export const NavigationMenu = () => {
   // matchMedia-based â€” fires only when threshold is crossed, not every pixel
   const isMobile = useIsMobile(1024);
 
+  const [isNarrationPlaying, setIsNarrationPlaying] = useState(false);
+
+  // Listen to narration custom events
+  useEffect(() => {
+    const handleStart = () => setIsNarrationPlaying(true);
+    const handleEnd = () => setIsNarrationPlaying(false);
+    const handlePause = () => setIsNarrationPlaying(false);
+
+    window.addEventListener('nusaplay:narrationStart', handleStart);
+    window.addEventListener('nusaplay:narrationEnd', handleEnd);
+    window.addEventListener('nusaplay:narrationPause', handlePause);
+
+    return () => {
+      window.removeEventListener('nusaplay:narrationStart', handleStart);
+      window.removeEventListener('nusaplay:narrationEnd', handleEnd);
+      window.removeEventListener('nusaplay:narrationPause', handlePause);
+    };
+  }, []);
+
+  // Reset when phase changes to non-detail
+  useEffect(() => {
+    if (phase !== PHASES.DETAIL) {
+      setIsNarrationPlaying(false);
+    }
+  }, [phase]);
+
   // Close menu and modals when phase changes
   useEffect(() => {
     setIsOpen(false);
@@ -166,7 +192,7 @@ export const NavigationMenu = () => {
     <>
       {/* â”€â”€ Contextual Top-Right Back Button â”€â”€ */}
       <AnimatePresence>
-        {isSplitPill && !isOpen && (
+        {isSplitPill && !isOpen && !isNarrationPlaying && (
           <motion.button
             className="floating-back-btn"
             onClick={handleBack}
@@ -183,7 +209,7 @@ export const NavigationMenu = () => {
 
       {/* ── Floating Top-Right Hamburger Menu Button ── */}
       <button
-        className={`floating-menu-btn ${(isOpen || showAbout) ? 'menu-open' : ''} ${(phase === PHASES.JOURNEY || (play && !end)) && !isOpen && !showAbout ? 'menu-hidden' : ''}`}
+        className={`floating-menu-btn ${(isOpen || showAbout) ? 'menu-open' : ''} ${(phase === PHASES.JOURNEY || (play && !end) || (isNarrationPlaying && phase === PHASES.DETAIL)) && !isOpen && !showAbout ? 'menu-hidden' : ''}`}
         onClick={() => {
           if (showAbout) {
             setShowAbout(false);
@@ -205,33 +231,13 @@ export const NavigationMenu = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                setIsOpen(false);
+              }
+            }}
           >
-            {/* Left Panel: Dynamic cinematic image peek (Desktop Only) */}
-            <motion.div
-              className="nav-menu-left"
-              initial={{ x: '-100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
-              transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
-            >
-              <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                <AnimatePresence mode="popLayout">
-                  <motion.img
-                    key={hoveredImage}
-                    src={hoveredImage}
-                    alt="Menu Preview"
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 0.8, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="nav-menu-left-img"
-                  />
-                </AnimatePresence>
-                <div className="nav-menu-left-overlay" />
-              </div>
-            </motion.div>
-
-            {/* Right Panel: Sand-beige solid menu block */}
+            {/* Right Panel: Solid menu block taking 50vw on desktop */}
             <motion.div
               className="nav-menu-right"
               initial={{ x: '100%' }}
@@ -269,43 +275,16 @@ export const NavigationMenu = () => {
                 </div>
               </div>
 
-              {/* Bottom: Contact Us & Connected Socials */}
-              <div className="nav-details-row">
-                <div className="nav-contact-block">
-                  <span className="nav-contact-label">Hubungi Kami</span>
-                  <span className="nav-contact-value">hello@nusaplay.id</span>
-                  {/* <span className="nav-contact-value">+62 821 3178 796</span> */}
-                </div>
-
-                <div className="nav-socials-block">
-                  <span className="nav-contact-label">Tetap Terhubung</span>
-                  <div className="nav-socials-icons">
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="nav-social-icon-link">
-                      <InstagramIcon />
-                    </a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="nav-social-icon-link">
-                      <FacebookIcon />
-                    </a>
-                    <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="nav-social-icon-link">
-                      <WhatsAppIcon />
-                    </a>
-                    <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="nav-social-icon-link">
-                      <TikTokIcon />
-                    </a>
-                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="nav-social-icon-link">
-                      <YouTubeIcon />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
               {/* Policies and Terms Footer */}
-              <div className="nav-policies-row">
+              <div 
+                className="nav-policies-row"
+                style={{
+                  marginTop: 'auto',
+                  paddingTop: '24px',
+                  borderTop: '1px solid rgba(24, 23, 23, 0.08)'
+                }}
+              >
                 <span>NusaPlay &copy; 2026</span>
-                <div className="nav-policies-links">
-                  <a href="#terms" className="nav-policies-link">Syarat & Ketentuan</a>
-                  <a href="#privacy" className="nav-policies-link">Kebijakan Privasi</a>
-                </div>
               </div>
 
               {/* â”€â”€ Inline Slide-in About Sheet (covers the menu columns) â”€â”€ */}
@@ -319,13 +298,13 @@ export const NavigationMenu = () => {
                     transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
                   >
                     <div className="about-sheet-content">
-                      <span className="about-tag">TENTANG PROJEK</span>
+                      <span className="about-tag">TENTANG</span>
                       <h2 className="about-title">NusaPlay</h2>
                       <p className="about-desc">
-                        NusaPlay adalah platform interaktif yang memadukan eksplorasi visual 3D, pemetaan GIS digital, dan penceritaan multimedia untuk merayakan serta melestarikan warisan budaya Indonesia.
+                        NusaPlay adalah platform interaktif yang memadukan eksplorasi visual, pemetaan digital, dan penceritaan multimedia untuk merayakan serta melestarikan warisan budaya Indonesia.
                       </p>
                       <p className="about-desc">
-                        Didesain dengan tema editorial gelap yang premium dan aksen nusantara yang khas, NusaPlay mengajak generasi muda untuk menyelami kekayaan tradisi, musik daerah, kuis edukatif, serta arsitektur adat kepulauan Nusantara.
+                        Didesain dengan tema yang premium dan aksen nusantara yang khas, NusaPlay mengajak generasi muda untuk menyelami kekayaan tradisi daerah dengan video dan audio yang menarik serta kuis edukatif tentang adat kepulauan Nusantara.
                       </p>
                       
                       <div className="about-stats-grid">
@@ -353,7 +332,7 @@ export const NavigationMenu = () => {
                           <span>Framer Motion</span>
                           <span>GSAP</span>
                           <span>Vanilla CSS</span>
-                          <span>Web Speech API</span>
+                          {/* <span>Web Speech API</span> */}
                         </div>
                       </div>
 

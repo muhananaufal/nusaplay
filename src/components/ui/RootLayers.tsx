@@ -1,6 +1,7 @@
 'use client';
 import { useMemo, useEffect, useState, Suspense, useRef } from 'react';
 import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
 import { usePlay } from '@/contexts/Play';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { preloadMapAssets } from '@/utils/mapAssetLoader';
@@ -22,6 +23,14 @@ export function RootLayers() {
   const { play, end, setEnd } = usePlay();
   const { phase, goTo, selectedProvince } = useAppFlow();
   const [modelProgress, setModelProgress] = useState(0);
+  const pathname = usePathname();
+
+  // BGM allowed on all pages except the main splash page (/)
+  const isBgmAllowed = useMemo(() => {
+    if (!pathname) return false;
+    return pathname !== '/';
+  }, [pathname]);
+
   // Track whether the map chunk has been requested yet, so we only mount
   // <MapView> after the user actually navigates to the map phase.
   const [mapEverActivated, setMapEverActivated] = useState(false);
@@ -106,6 +115,8 @@ export function RootLayers() {
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const currentTrackRef = useRef<string | null>(null);
+  // Remember the last visited province so BGM persists after returning to /map
+  const lastProvinceIdRef = useRef<string>('jawa-tengah');
   const [autoplayFailed, setAutoplayFailed] = useState(false);
   const [isNarrationPlaying, setIsNarrationPlaying] = useState(false);
 
@@ -128,13 +139,21 @@ export function RootLayers() {
   // Update volume when narration state changes
   useEffect(() => {
     if (audioRef.current) {
-      // Lower volume during narration, restore otherwise
-      audioRef.current.volume = isNarrationPlaying ? 0.08 : 0.3;
+      const isCulturePage = pathname?.startsWith('/culture/');
+      // Lower volume during narration (0.02 on culture pages, 0.08 on other pages), restore to 0.3 otherwise
+      audioRef.current.volume = isNarrationPlaying
+        ? (isCulturePage ? 0.02 : 0.08)
+        : 0.3;
     }
-  }, [isNarrationPlaying]);
+  }, [isNarrationPlaying, pathname]);
 
   useEffect(() => {
-    const targetTrack = selectedProvince?.id ? PROVINCE_BACKSOUNDS[selectedProvince.id] : null;
+    // Remember the last chosen province; fall back to it when selectedProvince is cleared
+    if (selectedProvince?.id) {
+      lastProvinceIdRef.current = selectedProvince.id;
+    }
+    const activeProvinceId = lastProvinceIdRef.current;
+    const targetTrack = isBgmAllowed ? (PROVINCE_BACKSOUNDS[activeProvinceId] || null) : null;
 
     if (targetTrack) {
       // If a different track is already playing, stop it first
@@ -146,7 +165,10 @@ export function RootLayers() {
       if (!audioRef.current) {
         audioRef.current = new Audio(targetTrack);
         audioRef.current.loop = true;
-        audioRef.current.volume = isNarrationPlaying ? 0.08 : 0.3;
+        const isCulturePage = pathname?.startsWith('/culture/');
+        audioRef.current.volume = isNarrationPlaying
+          ? (isCulturePage ? 0.02 : 0.08)
+          : 0.3;
         currentTrackRef.current = targetTrack;
       }
 
@@ -159,7 +181,7 @@ export function RootLayers() {
           setAutoplayFailed(true);
         });
     } else {
-      // No backsound for this province, stop playback
+      // No backsound for this province or not on an allowed route, stop playback
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
@@ -167,7 +189,7 @@ export function RootLayers() {
       }
       setAutoplayFailed(false);
     }
-  }, [selectedProvince?.id]);
+  }, [selectedProvince?.id, isBgmAllowed, isNarrationPlaying, pathname]);
 
   // Retry playing on user interaction if autoplay failed
   useEffect(() => {
