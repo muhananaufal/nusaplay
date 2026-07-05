@@ -257,10 +257,11 @@ export function JourneySpotlight() {
   }, [phase, activeSelector, hasFinishedAudio, isTourDisabled, isDismissed, mounted]);
 
   const currentPhaseStep = getStepFromPhase(phase);
-  const shouldShow = !!(mounted && !isTourDisabled && !journeyCompleted && !isDismissed && config && rects.length > 0 && currentPhaseStep >= journeyStep);
+  const isTourActive = !!(mounted && !isTourDisabled && !journeyCompleted && !isDismissed && config && currentPhaseStep >= journeyStep);
+  const shouldShow = !!(isTourActive && rects.length > 0);
 
   useEffect(() => {
-    setTourActive(shouldShow);
+    setTourActive(isTourActive);
     if (shouldShow && config?.selector) {
       setTourSelector(config.selector);
     } else {
@@ -270,7 +271,7 @@ export function JourneySpotlight() {
       setTourActive(false);
       setTourSelector('');
     };
-  }, [shouldShow, config?.selector, setTourActive, setTourSelector]);
+  }, [isTourActive, shouldShow, config?.selector, setTourActive, setTourSelector]);
 
   if (!shouldShow) return null;
 
