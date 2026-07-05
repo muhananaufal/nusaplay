@@ -48,6 +48,65 @@ const getProvinceFallbackImage = (provinceId: string) => {
   return map[provinceId] || '/images/grain.png';
 };
 
+interface VTTCue {
+  start: number;
+  end: number;
+  text: string;
+}
+
+function parseVTT(vttText: string): VTTCue[] {
+  const cues: VTTCue[] = [];
+  const lines = vttText.split(/\r?\n/);
+  
+  let i = 0;
+  // Skip to first cue containing -->
+  while (i < lines.length && !lines[i].includes('-->')) {
+    i++;
+  }
+  
+  function parseTimestamp(timeStr: string): number {
+    const parts = timeStr.trim().split(':');
+    let hrs = 0, mins = 0, secs = 0, ms = 0;
+    
+    if (parts.length === 3) {
+      hrs = parseInt(parts[0], 10);
+      mins = parseInt(parts[1], 10);
+      const secParts = parts[2].split('.');
+      secs = parseInt(secParts[0], 10);
+      ms = parseInt(secParts[1] || '0', 10);
+    } else if (parts.length === 2) {
+      mins = parseInt(parts[0], 10);
+      const secParts = parts[1].split('.');
+      secs = parseInt(secParts[0], 10);
+      ms = parseInt(secParts[1] || '0', 10);
+    }
+    
+    return hrs * 3600 + mins * 60 + secs + ms / 1000;
+  }
+  
+  while (i < lines.length) {
+    const line = lines[i].trim();
+    if (line.includes('-->')) {
+      const times = line.split('-->');
+      const start = parseTimestamp(times[0]);
+      const end = parseTimestamp(times[1]);
+      
+      let text = '';
+      i++;
+      while (i < lines.length && lines[i].trim() !== '' && !lines[i].includes('-->')) {
+        text += (text ? ' ' : '') + lines[i].trim();
+        i++;
+      }
+      
+      cues.push({ start, end, text });
+    } else {
+      i++;
+    }
+  }
+  
+  return cues;
+}
+
 export const CultureDetail = ({ visible }) => {
   const { selectedCulture, selectedProvince, goTo, startQuiz, markCultureListened, selectCulture } = useAppFlow();
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -61,6 +120,9 @@ export const CultureDetail = ({ visible }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const isMobile = useIsMobile(768);
   const pausedCaptionIndex = useRef(0);
+
+  const [vttCues, setVttCues] = useState<VTTCue[] | null>(null);
+  const [audioCurrentTime, setAudioCurrentTime] = useState(0);
 
   useSmoothScroll(infoPanelRef, visible);
 
@@ -100,6 +162,33 @@ export const CultureDetail = ({ visible }) => {
     if (idx === -1) return thresholds.length - 1;
     return idx;
   }, [progress, captionsData]);
+
+  // Load and parse VTT subtitles if available
+  useEffect(() => {
+    setVttCues(null);
+    setAudioCurrentTime(0);
+
+    if (selectedCulture?.audio) {
+      const vttUrl = selectedCulture.audio.replace('.mp3', '.vtt');
+      fetch(vttUrl)
+        .then((res) => {
+          if (!res.ok) throw new Error('VTT not found');
+          return res.text();
+        })
+        .then((text) => {
+          setVttCues(parseVTT(text));
+        })
+        .catch(() => {
+          setVttCues(null);
+        });
+    }
+  }, [selectedCulture?.id]);
+
+  const activeCueText = useMemo(() => {
+    if (!vttCues) return '';
+    const cue = vttCues.find(c => audioCurrentTime >= c.start && audioCurrentTime <= c.end);
+    return cue ? cue.text : '';
+  }, [vttCues, audioCurrentTime]);
 
   // Find next culture in the province (sorted with audio first)
   const nextCulture = useMemo(() => {
@@ -167,6 +256,7 @@ export const CultureDetail = ({ visible }) => {
         if (audio.duration) {
           setProgress((audio.currentTime / audio.duration) * 100);
         }
+        setAudioCurrentTime(audio.currentTime);
       });
 
       audio.addEventListener('ended', () => {
@@ -393,13 +483,15 @@ export const CultureDetail = ({ visible }) => {
                     muted
                     playsInline
                     className="cd-iframe"
-                    style={{ 
+                    style={isMobile ? { 
                       objectFit: 'contain',
                       width: '100%',
                       height: '100%',
                       transform: 'none',
                       top: 0,
                       left: 0
+                    } : {
+                      objectFit: 'cover'
                     }}
                   />
                 ) : (
@@ -457,9 +549,9 @@ export const CultureDetail = ({ visible }) => {
 
             {/* ── LIVE CAPTIONS (visible when speaking and not paused) ── */}
             <AnimatePresence mode="wait">
-              {isSpeaking && !isPaused && captions.length > 0 && (
+              {isSpeaking && !isPaused && (vttCues ? activeCueText : (captions.length > 0 && captions[activeCaptionIndex])) && (
                 <motion.div
-                  key={activeCaptionIndex}
+                  key={vttCues ? activeCueText : activeCaptionIndex}
                   className="cd-captions-container"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -467,7 +559,7 @@ export const CultureDetail = ({ visible }) => {
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <span className="cd-caption-text">
-                    {captions[activeCaptionIndex]}
+                    {vttCues ? activeCueText : captions[activeCaptionIndex]}
                   </span>
                 </motion.div>
               )}
