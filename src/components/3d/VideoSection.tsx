@@ -1,7 +1,7 @@
-﻿'use client';
+'use client';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MusikIcon, TarianIcon, GitarIcon } from '@/components/ui/PremiumIcons';
+import { MusikIcon, TarianIcon, GitarIcon, RumahAdatIcon } from '@/components/ui/PremiumIcons';
 
 // 3 stops matching the 3 unlocked provinces: DIY, Papua, Kalimantan Barat
 // Designed for a snappier 9-second flight journey
@@ -10,7 +10,7 @@ const JOURNEY_STOPS = [
     id: 1,
     startAt: 1.0,
     endAt: 3.5,
-    youtubeId: 'UEWCCkSZIY8',
+    imageUrl: '/images/diy.png',
     title: 'Gamelan Jawa',
     region: 'D.I. Yogyakarta',
     color: '#6f35cc',
@@ -20,17 +20,17 @@ const JOURNEY_STOPS = [
     id: 2,
     startAt: 3.8,
     endAt: 6.3,
-    youtubeId: 'TzKo3i7YZBA',
-    title: 'Tari Yospan',
+    imageUrl: '/images/papua.png',
+    title: 'Rumah Honai',
     region: 'Papua',
     color: '#ffad30',
-    iconType: 'dance',
+    iconType: 'home',
   },
   {
     id: 3,
     startAt: 6.6,
     endAt: 8.8,
-    youtubeId: 'JxR3GAzm7h4',
+    imageUrl: '/images/kalimantan-barat.png',
     title: 'Musik Sape',
     region: 'Kalimantan Barat',
     color: '#55ab8f',
@@ -69,13 +69,13 @@ export const VideoSection = ({ journeyStartTime }) => {
             exit={{ opacity: 0, scale: 0.95, x: 50 }}
             transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            {/* Small YouTube Preview Frame inside card */}
+            {/* Small Local Image Preview Frame inside card */}
             <div className="video-section-card-video">
-              <iframe
-                key={activeStop.youtubeId}
-                src={`https://www.youtube.com/embed/${activeStop.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${activeStop.youtubeId}&controls=0&showinfo=0&rel=0&modestbranding=1`}
-                allow="autoplay; encrypted-media"
-                title={activeStop.title}
+              <img
+                key={activeStop.imageUrl}
+                src={activeStop.imageUrl}
+                alt={activeStop.title}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
 
@@ -85,6 +85,7 @@ export const VideoSection = ({ journeyStartTime }) => {
                 {activeStop.iconType === 'music' && <MusikIcon size={22} />}
                 {activeStop.iconType === 'dance' && <TarianIcon size={22} />}
                 {activeStop.iconType === 'guitar' && <GitarIcon size={22} />}
+                {activeStop.iconType === 'home' && <RumahAdatIcon size={22} />}
               </span>
               <div>
                 <p className="video-section-region">{activeStop.region}</p>

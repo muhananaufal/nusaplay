@@ -2692,17 +2692,97 @@ export const CULTURES = [
   },
 ];
 
+const VIDEO_MAPPING: Record<string, string> = {
+  // DIY
+  "diy-tari-bedhaya": "/video/di-yogyakarta/tari-bedhaya-ketawang.mp4",
+  "diy-tari-srimpi": "/video/di-yogyakarta/tari-serimpi.mp4",
+  "diy-gamelan": "/video/di-yogyakarta/gamelan-jawa.mp4",
+  "diy-rebab": "/video/di-yogyakarta/rebab.mp4",
+  "diy-keris": "/video/di-yogyakarta/keris-yogyakarta.mp4",
+  "diy-paes-ageng": "/video/di-yogyakarta/paes-ageng.mp4",
+  "diy-kebaya-yogyakarta": "/video/di-yogyakarta/kebaya-yogyakarta.mp4",
+  "diy-labuhan": "/video/di-yogyakarta/upacara-labuhan.mp4",
+  "diy-mubeng-beteng": "/video/di-yogyakarta/upacara-mubeng-beteng.mp4",
+  "diy-batik-yogyakarta": "/video/di-yogyakarta/batik-yogyakarta.mp4",
+  "diy-gerabah-kasongan": "/video/di-yogyakarta/gerabah-kasongan.mp4",
+  "diy-roro-jonggrang": "/video/di-yogyakarta/legenda-roro-jonggrang.mp4",
+  "diy-ratu-kidul": "/video/di-yogyakarta/legenda-ratu-kidul.mp4",
+  "diy-tombak-kyai-plered": "/video/di-yogyakarta/tombak-kyai-plered.mp4",
+  "diy-bangsal-kencono": "/video/di-yogyakarta/bangsal-kencono.mp4",
+  "diy-rumah-limasan": "/video/di-yogyakarta/rumah-limasan.mp4",
+  "diy-benteng-vredeburg": "/video/di-yogyakarta/benteng-vredeburg.mp4",
+  "diy-tugu-yogyakarta": "/video/di-yogyakarta/tugu-yogyakarta.mp4",
+
+  // Central Java
+  "jateng-tari-gambyong": "/video/central-java/tari-gambyong.mp4",
+  "jateng-tari-bondan": "/video/central-java/tari-bondan.mp4",
+
+  // Kalimantan Barat
+  "kalbar-tari-jonggan": "/video/kalimantan-barat/tari-jonggan.mp4",
+  "kalbar-tari-monong": "/video/kalimantan-barat/tari-monong.mp4",
+  "kalbar-sape": "/video/kalimantan-barat/sape.mp4",
+  "kalbar-gong": "/video/kalimantan-barat/gong.mp4",
+  "kalbar-sumpit": "/video/kalimantan-barat/sumpit-dayak.mp4",
+  "kalbar-mandau": "/video/kalimantan-barat/mandau.mp4",
+  "kalbar-naik-dango": "/video/kalimantan-barat/naik-dango.mp4",
+  "kalbar-robo-robo": "/video/kalimantan-barat/robo-robo.mp4",
+  "kalbar-rumah-radakng": "/video/kalimantan-barat/rumah-radakng.mp4",
+  "kalbar-rumah-baluk": "/video/kalimantan-barat/rumah-baluk.mp4",
+  "kalbar-tenun-dayak": "/video/kalimantan-barat/tenun-ikat-dayak.mp4",
+  "kalbar-bidai": "/video/kalimantan-barat/kalbar-bidai.mp4",
+  "kalbar-king-bibinge": "/video/kalimantan-barat/king-bibinge.mp4",
+  "kalbar-king-baba": "/video/kalimantan-barat/king-baba.mp4",
+  "kalbar-batu-menangis": "/video/kalimantan-barat/batu-menangis.mp4",
+  "kalbar-bujang-beji": "/video/kalimantan-barat/kisah-bujang-beji.mp4",
+  "kalbar-istana-kadriah": "/video/kalimantan-barat/istana-kadriah.mp4",
+  "kalbar-masjid-jami": "/video/kalimantan-barat/masjid-jami-pontianak.mp4",
+
+  // Papua
+  "papua-tari-yospan": "/video/papua/tari-yospan.mp4",
+  "papua-tari-selamat-datang": "/video/papua/tari-selamat-datang.mp4",
+  "papua-tifa": "/video/papua/tifa-papua.mp4",
+  "papua-triton": "/video/papua/triton.mp4",
+  "papua-koteka": "/video/papua/koteka.mp4",
+  "papua-rok-rumbai": "/video/papua/rok-rumbai.mp4",
+  "papua-upacara-bakar-batu": "/video/papua/upacara-bakar-batu.mp4",
+  "papua-wor": "/video/papua/wor.mp4",
+  "papua-noken": "/video/papua/noken-papua.mp4",
+  "papua-ukiran-asmat": "/video/papua/ukiran-asmat.mp4",
+  "papua-cerita-rakyat-cendrawasih": "/video/papua/asal-usul-burung-cendrawasih.mp4",
+  "papua-cerita-rakyat-danau-sentani": "/video/papua/asal-usul-danau-sentani.mp4",
+  "papua-honai": "/video/papua/rumah-honai.mp4",
+  "papua-kariwari": "/video/papua/rumah-kariwari.mp4",
+  "papua-panah": "/video/papua/busur-dan-panah-papua.mp4",
+  "papua-pisau-belati": "/video/papua/pisau-belati-papua.mp4",
+};
+
 export const getCulturesByProvince = (provinceId) =>
-  CULTURES.filter(c => c.provinceId === provinceId);
+  CULTURES.filter(c => c.provinceId === provinceId).map(c => ({
+    ...c,
+    video: VIDEO_MAPPING[c.id] || null
+  }));
 
 export const getCulturesByCategory = (provinceId, category) => {
   if (category === 'Semua') {
     return getCulturesByProvince(provinceId);
   }
-  return CULTURES.filter(c => c.provinceId === provinceId && c.category === category);
+  return CULTURES.filter(c => c.provinceId === provinceId && c.category === category).map(c => ({
+    ...c,
+    video: VIDEO_MAPPING[c.id] || null
+  }));
 };
 
-export const getCultureById = (id) => CULTURES.find(c => c.id === id);
+export const getCultureById = (id) => {
+  const c = CULTURES.find(c => c.id === id);
+  if (!c) return undefined;
+  return {
+    ...c,
+    video: VIDEO_MAPPING[id] || null
+  };
+};
 
 /** Returns all cultures — used by generateStaticParams to pre-render culture pages at build time. */
-export const getCultures = () => CULTURES;
+export const getCultures = () => CULTURES.map(c => ({
+  ...c,
+  video: VIDEO_MAPPING[c.id] || null
+}));

@@ -84,6 +84,17 @@ export const ProvinceDestinations = ({ visible }) => {
     return cultures[0]?.youtubeId || 'cyJ9fpoYh_M';
   }, [cultures]);
 
+  const localVideoUrl = useMemo(() => {
+    if (!selectedProvince) return null;
+    const PROVINCE_VIDEOS: Record<string, string> = {
+      'diy': '/video/di-yogyakarta.mp4',
+      'jawa-tengah': '/video/jawa-tengah.mp4',
+      'kalimantan-barat': '/video/kalimantan-barat.mp4',
+      'papua': '/video/papua.mp4',
+    };
+    return PROVINCE_VIDEOS[selectedProvince.id] || null;
+  }, [selectedProvince]);
+
   if (!visible || !selectedProvince) return null;
 
   const handleExplore = () => {
@@ -95,14 +106,26 @@ export const ProvinceDestinations = ({ visible }) => {
     <div className="pd-container">
       {/* ── BACKGROUND VIDEO PLAYER LAYER ── */}
       <div className="pd-bg-video-container">
-        <iframe
-          className="pd-bg-video-iframe"
-          src={`https://www.youtube.com/embed/${videoUrl}?autoplay=1&mute=1&loop=1&playlist=${videoUrl}&controls=0&rel=0&playsinline=1&enablejsapi=1&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0`}
-          title={selectedProvince.name}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          loading="lazy"
-        />
+        {localVideoUrl ? (
+          <video
+            className="pd-bg-video-iframe"
+            src={localVideoUrl}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <iframe
+            className="pd-bg-video-iframe"
+            src={`https://www.youtube.com/embed/${videoUrl}?autoplay=1&mute=1&loop=1&playlist=${videoUrl}&controls=0&rel=0&playsinline=1&enablejsapi=1&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0`}
+            title={selectedProvince.name}
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            loading="lazy"
+          />
+        )}
         <div className="pd-bg-overlay" />
       </div>
 

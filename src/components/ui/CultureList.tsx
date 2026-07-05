@@ -350,6 +350,17 @@ export const CultureList = ({ visible }) => {
   );
 };
 
+// Helper to get a safe fallback map image for the province
+const getProvinceFallbackImage = (provinceId: string) => {
+  const map: Record<string, string> = {
+    'diy': '/images/diy.png',
+    'kalimantan-barat': '/images/kalimantan-barat.png',
+    'papua': '/images/papua.png',
+    'jawa-tengah': '/images/diy.png',
+  };
+  return map[provinceId] || '/images/grain.png';
+};
+
 // ── CultureRow ──────────────────────────────────────────────────────────────────────────
 // Wrapped in React.memo with isHovered boolean prop instead of raw hoveredId:
 // only the entering and leaving row re-render on hover (2 renders instead of 10).
@@ -440,7 +451,8 @@ const CultureRow = memo(({ culture, index, listIndex, isHovered, setHoveredId, s
                 src={`https://img.youtube.com/vi/${culture.youtubeId}/mqdefault.jpg`}
                 alt=""
                 onError={(e) => {
-                  (e.target as HTMLElement).style.display = 'none';
+                  const fallback = getProvinceFallbackImage(culture.provinceId);
+                  (e.target as HTMLImageElement).src = fallback;
                 }}
                 style={{ 
                   position: 'absolute',
@@ -472,20 +484,48 @@ const CultureRow = memo(({ culture, index, listIndex, isHovered, setHoveredId, s
           ) : (
             // Playable Video preview
             <>
-              <img
-                src={`https://img.youtube.com/vi/${culture.youtubeId}/mqdefault.jpg`}
-                alt={culture.title}
-                loading="lazy"
-                className="cl-row-thumb-img"
-                style={{ opacity: isHovered ? 0 : 1 }}
-              />
-              {isHovered && (
-                <iframe
-                  src={`https://www.youtube.com/embed/${culture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${culture.youtubeId}&controls=0&playsinline=1&enablejsapi=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
-                  allow="autoplay; encrypted-media"
+              {culture.video ? (
+                <video
+                  src={culture.video}
+                  preload="metadata"
+                  loop
+                  muted
+                  playsInline
                   className="cl-row-thumb-iframe"
-                  title={culture.title}
+                  style={{ objectFit: 'cover' }}
+                  ref={(el) => {
+                    if (el) {
+                      if (isHovered) {
+                        el.play().catch(() => {});
+                      } else {
+                        el.pause();
+                        el.currentTime = 0;
+                      }
+                    }
+                  }}
                 />
+              ) : (
+                <>
+                  <img
+                    src={culture.image || `https://img.youtube.com/vi/${culture.youtubeId}/mqdefault.jpg`}
+                    alt={culture.title}
+                    loading="lazy"
+                    className="cl-row-thumb-img"
+                    style={{ opacity: isHovered ? 0 : 1 }}
+                    onError={(e) => {
+                      const fallback = getProvinceFallbackImage(culture.provinceId);
+                      (e.target as HTMLImageElement).src = fallback;
+                    }}
+                  />
+                  {isHovered && (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${culture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${culture.youtubeId}&controls=0&playsinline=1&enablejsapi=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
+                      allow="autoplay; encrypted-media"
+                      className="cl-row-thumb-iframe"
+                      title={culture.title}
+                    />
+                  )}
+                </>
               )}
             </>
           )}

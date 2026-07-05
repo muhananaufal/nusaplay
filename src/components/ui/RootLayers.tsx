@@ -147,6 +147,8 @@ export function RootLayers() {
     }
   }, [isNarrationPlaying, pathname]);
 
+  const playPromiseRef = useRef<Promise<void> | null>(null);
+
   useEffect(() => {
     // Remember the last chosen province; fall back to it when selectedProvince is cleared
     if (selectedProvince?.id) {
@@ -158,7 +160,16 @@ export function RootLayers() {
     if (targetTrack) {
       // If a different track is already playing, stop it first
       if (audioRef.current && currentTrackRef.current !== targetTrack) {
-        audioRef.current.pause();
+        const audioToPause = audioRef.current;
+        if (playPromiseRef.current) {
+          playPromiseRef.current
+            .then(() => {
+              audioToPause.pause();
+            })
+            .catch(() => {});
+        } else {
+          audioToPause.pause();
+        }
         audioRef.current = null;
       }
 
@@ -172,18 +183,35 @@ export function RootLayers() {
         currentTrackRef.current = targetTrack;
       }
 
-      audioRef.current.play()
+      const playPromise = audioRef.current.play();
+      playPromiseRef.current = playPromise;
+
+      playPromise
         .then(() => {
-          setAutoplayFailed(false);
+          if (playPromiseRef.current === playPromise) {
+            setAutoplayFailed(false);
+          }
         })
         .catch((err) => {
-          console.warn('Failed to play backsound audio, will retry on interaction:', err);
+          // Ignore AbortError as it is a natural lifecycle event when swapping tracks quickly
+          if (err.name !== 'AbortError') {
+            console.warn('Failed to play backsound audio, will retry on interaction:', err);
+          }
           setAutoplayFailed(true);
         });
     } else {
       // No backsound for this province or not on an allowed route, stop playback
       if (audioRef.current) {
-        audioRef.current.pause();
+        const audioToPause = audioRef.current;
+        if (playPromiseRef.current) {
+          playPromiseRef.current
+            .then(() => {
+              audioToPause.pause();
+            })
+            .catch(() => {});
+        } else {
+          audioToPause.pause();
+        }
         audioRef.current = null;
         currentTrackRef.current = null;
       }

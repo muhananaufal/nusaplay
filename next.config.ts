@@ -40,6 +40,21 @@ const nextConfig: NextConfig = {
 				source: '/img/:path*',
 				headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
 			},
+			// Videos
+			{
+				source: '/video/:path*',
+				headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+			},
+			// Music & BGM
+			{
+				source: '/music/:path*',
+				headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+			},
+			// Mascot video assets
+			{
+				source: '/mascot/:path*',
+				headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+			},
 			// Bundled JS (self-hosted Leaflet, helper.js, …)
 			{
 				source: '/js/:path*',

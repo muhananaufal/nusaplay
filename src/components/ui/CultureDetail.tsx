@@ -37,6 +37,17 @@ function splitIntoCaptions(text: string): string[] {
   return chunks.filter(Boolean);
 }
 
+// Helper to get a safe fallback map image for the province
+const getProvinceFallbackImage = (provinceId: string) => {
+  const map: Record<string, string> = {
+    'diy': '/images/diy.png',
+    'kalimantan-barat': '/images/kalimantan-barat.png',
+    'papua': '/images/papua.png',
+    'jawa-tengah': '/images/diy.png',
+  };
+  return map[provinceId] || '/images/grain.png';
+};
+
 export const CultureDetail = ({ visible }) => {
   const { selectedCulture, selectedProvince, goTo, startQuiz, markCultureListened, selectCulture } = useAppFlow();
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -334,7 +345,8 @@ export const CultureDetail = ({ visible }) => {
                   src={selectedCulture.image || `https://img.youtube.com/vi/${selectedCulture.youtubeId}/maxresdefault.jpg`}
                   alt=""
                   onError={(e) => {
-                    (e.target as HTMLElement).style.display = 'none';
+                    const fallback = getProvinceFallbackImage(selectedCulture.provinceId);
+                    (e.target as HTMLImageElement).src = fallback;
                   }}
                   style={{ 
                     position: 'absolute',
@@ -364,16 +376,28 @@ export const CultureDetail = ({ visible }) => {
                 </div>
               </div>
             ) : (
-              // Normal video iframe
+              // Normal video player (local video if available, otherwise YouTube iframe)
               <>
-                <iframe
-                  src={`https://www.youtube.com/embed/${selectedCulture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${selectedCulture.youtubeId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                  className="cd-iframe"
-                  loading="lazy"
-                  title={selectedCulture.title}
-                />
+                {selectedCulture.video ? (
+                  <video
+                    src={selectedCulture.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="cd-iframe"
+                    style={{ objectFit: 'cover' }}
+                  />
+                ) : (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${selectedCulture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${selectedCulture.youtubeId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    className="cd-iframe"
+                    loading="lazy"
+                    title={selectedCulture.title}
+                  />
+                )}
                 {/* Video overlay — darker in cinematic mode for caption legibility */}
                 <div className={`cd-video-overlay${isCinematic ? ' cinematic' : ''}`} />
               </>

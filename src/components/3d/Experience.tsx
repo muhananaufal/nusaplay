@@ -13,7 +13,7 @@ import { Airplane } from "./Airplane";
 import { Background } from "./Background";
 import { Cloud, cloudMaterial } from "./Cloud";
 import { Speed } from "./Speed";
-import { MusikIcon, TarianIcon, GitarIcon } from "@/components/ui/PremiumIcons";
+import { MusikIcon, TarianIcon, GitarIcon, RumahAdatIcon } from "@/components/ui/PremiumIcons";
 
 // Reduced from 1000 → 500: the path line is never viewed up-close and the
 // camera curve is smooth enough that 500 extrusion steps are visually identical.
@@ -100,10 +100,10 @@ const JourneyStopCard = ({ stop, cameraGroup }: { stop: any; cameraGroup: any })
         <div className="video-card-3d-video">
           {shouldRenderIframe ? (
             <>
-              <iframe
-                src={`https://www.youtube.com/embed/${stop.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${stop.youtubeId}&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0`}
-                allow="autoplay; encrypted-media"
-                title={stop.title}
+              <img
+                src={stop.imageUrl}
+                alt={stop.title}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
               <div style={{ position: 'absolute', inset: 0, zIndex: 2 }} />
               {/* Gradient overlay at bottom for text legibility */}
@@ -121,6 +121,7 @@ const JourneyStopCard = ({ stop, cameraGroup }: { stop: any; cameraGroup: any })
             {stop.iconType === 'music' && <MusikIcon size={22} />}
             {stop.iconType === 'dance' && <TarianIcon size={22} />}
             {stop.iconType === 'guitar' && <GitarIcon size={22} />}
+            {stop.iconType === 'home' && <RumahAdatIcon size={22} />}
           </span>
           <div style={{ flex: 1 }}>
             <p className="video-card-3d-region">{stop.region}</p>
@@ -166,9 +167,9 @@ export const Experience = () => {
 
   const journeyStops = useMemo(
     () => [
-      { id: 1, position: new THREE.Vector3(-12, 1.5, -110), youtubeId: 'UEWCCkSZIY8', title: 'Gamelan Jawa', region: 'D.I. Yogyakarta', color: '#6f35cc', iconType: 'music' },
-      { id: 2, position: new THREE.Vector3(92, 1.5, -260), youtubeId: 'TzKo3i7YZBA', title: 'Tari Yospan', region: 'Papua', color: '#ffad30', iconType: 'dance' },
-      { id: 3, position: new THREE.Vector3(-72, 1.5, -410), youtubeId: 'JxR3GAzm7h4', title: 'Musik Sape', region: 'Kalimantan Barat', color: '#55ab8f', iconType: 'guitar' },
+      { id: 1, position: new THREE.Vector3(-12, 1.5, -110), imageUrl: '/images/diy.png', title: 'Gamelan Jawa', region: 'D.I. Yogyakarta', color: '#6f35cc', iconType: 'music' },
+      { id: 2, position: new THREE.Vector3(92, 1.5, -260), imageUrl: '/images/papua.png', title: 'Rumah Honai', region: 'Papua', color: '#ffad30', iconType: 'home' },
+      { id: 3, position: new THREE.Vector3(-72, 1.5, -410), imageUrl: '/images/kalimantan-barat.png', title: 'Musik Sape', region: 'Kalimantan Barat', color: '#55ab8f', iconType: 'guitar' },
     ],
     []
   );
