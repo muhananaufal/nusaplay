@@ -167,9 +167,9 @@ export const Experience = () => {
 
   const journeyStops = useMemo(
     () => [
-      { id: 1, position: new THREE.Vector3(-12, 1.5, -110), imageUrl: '/images/diy.png', title: 'Gamelan Jawa', region: 'D.I. Yogyakarta', color: '#6f35cc', iconType: 'music' },
-      { id: 2, position: new THREE.Vector3(92, 1.5, -260), imageUrl: '/images/papua.png', title: 'Rumah Honai', region: 'Papua', color: '#ffad30', iconType: 'home' },
-      { id: 3, position: new THREE.Vector3(-72, 1.5, -410), imageUrl: '/images/kalimantan-barat.png', title: 'Musik Sape', region: 'Kalimantan Barat', color: '#55ab8f', iconType: 'guitar' },
+      { id: 1, position: new THREE.Vector3(-12, 1.5, -110), imageUrl: '/images/diy.webp', title: 'Gamelan Jawa', region: 'D.I. Yogyakarta', color: '#6f35cc', iconType: 'music' },
+      { id: 2, position: new THREE.Vector3(92, 1.5, -260), imageUrl: '/images/papua.webp', title: 'Rumah Honai', region: 'Papua', color: '#ffad30', iconType: 'home' },
+      { id: 3, position: new THREE.Vector3(-72, 1.5, -410), imageUrl: '/images/kalimantan-barat.webp', title: 'Musik Sape', region: 'Kalimantan Barat', color: '#55ab8f', iconType: 'guitar' },
     ],
     []
   );

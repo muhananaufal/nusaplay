@@ -46,17 +46,21 @@ export async function fetchCulturesByProvince(provinceId: string): Promise<Cultu
   }
 }
 
+const prefixMap: Record<string, string> = {
+  'diy': 'diy',
+  'jateng': 'jawa-tengah',
+  'kalbar': 'kalimantan-barat',
+  'papua': 'papua',
+};
+
 /** Fetch a single culture by its ID, looking up the province first. */
 export async function fetchCultureById(id: string): Promise<Culture | undefined> {
-  // Extract provinceId from the culture ID (e.g. "diy-tari-bedhaya" → "diy")
-  // Handles multi-word province IDs like "jawa-tengah", "kalimantan-barat"
-  const knownProvinces = ['jawa-tengah', 'kalimantan-barat', 'diy', 'papua'];
+  const prefix = id.split('-')[0];
+  const provinceId = prefixMap[prefix];
 
-  for (const pid of knownProvinces) {
-    if (id.startsWith(pid + '-')) {
-      const cultures = await fetchCulturesByProvince(pid);
-      return cultures.find(c => c.id === id);
-    }
+  if (provinceId) {
+    const cultures = await fetchCulturesByProvince(provinceId);
+    return cultures.find(c => c.id === id);
   }
 
   return undefined;
