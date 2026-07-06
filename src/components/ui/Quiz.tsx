@@ -305,7 +305,7 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
         correctIndex: newCorrectIndex
       };
     });
-  }, [quizProvince?.id]);
+  }, [quizProvince?.id, pool]);
   const currentQ = questions[currentIndex];
 
   const handleSelect = (idx: number) => {
@@ -591,6 +591,19 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
           )}
         </AnimatePresence>
       </motion.div>
+    );
+  }
+
+  if (quizProvince && questions.length === 0) {
+    return (
+      <div className="quiz-page" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+        <div style={{ textAlign: 'center', color: 'var(--c-text-soft-dark)' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+            <Mascot pose="thinking" size={140} />
+          </div>
+          <p style={{ fontSize: '1rem', fontWeight: 500, color: 'var(--c-text)' }}>Memuat soal-soal kuis...</p>
+        </div>
+      </div>
     );
   }
 
