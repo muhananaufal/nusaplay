@@ -10,17 +10,19 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionProgress, setTransitionProgress] = useState(0);
+  const [startPathname, setStartPathname] = useState<string | null>(null);
 
   // Turn off loading transition curtain when the route pathname actually changes
   useEffect(() => {
-    if (isTransitioning) {
+    if (isTransitioning && startPathname !== null && pathname !== startPathname) {
       setTransitionProgress(100);
       const timer = setTimeout(() => {
         setIsTransitioning(false);
+        setStartPathname(null);
       }, 300);
       return () => clearTimeout(timer);
     }
-  }, [pathname, isTransitioning]);
+  }, [pathname, isTransitioning, startPathname]);
 
   // Trickle load simulation
   useEffect(() => {
@@ -51,6 +53,7 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
     if (isTransitioning) {
       const timer = setTimeout(() => {
         setIsTransitioning(false);
+        setStartPathname(null);
       }, 4000);
       return () => clearTimeout(timer);
     }
@@ -59,26 +62,24 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
   // Popstate history listener to trigger transition curtain
   useEffect(() => {
     const handlePopState = () => {
+      setStartPathname(pathname);
       setIsTransitioning(true);
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-      }, 550);
-      return () => clearTimeout(timer);
     };
 
     window.addEventListener('popstate', handlePopState);
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
-  }, []);
+  }, [pathname]);
 
   // Delay actual route navigation by 550ms so the transition curtain fully covers screen first
   const triggerNavigation = useCallback((navAction: () => void) => {
+    setStartPathname(pathname);
     setIsTransitioning(true);
     setTimeout(() => {
       navAction();
     }, 550);
-  }, []);
+  }, [pathname]);
 
   const value = useMemo(() => ({
     isTransitioning,
