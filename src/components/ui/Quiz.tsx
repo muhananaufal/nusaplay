@@ -8,6 +8,7 @@ import { UNLOCKED_PROVINCES } from '@/data/provinces';
 import { Mascot } from './Mascot';
 import { usePassport } from '@/contexts/Passport';
 import { SearchIcon } from './PremiumIcons';
+import '@/app/quiz/quiz.css';
 
 // Synthesized sound effects using native Web Audio API
 const playCorrectSound = () => {

@@ -6,6 +6,7 @@ import { useProgress } from '@/contexts/Progress';
 import { motion } from 'framer-motion';
 import { AchievementIcon } from '@/components/ui/AchievementIcon';
 import { SearchIcon } from '@/components/ui/PremiumIcons';
+import './achievement.css';
 
 const StatsCountUp = ({ end }: { end: number }) => {
 	const [displayValue, setDisplayValue] = useState(0);

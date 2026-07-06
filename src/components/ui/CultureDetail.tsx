@@ -5,6 +5,7 @@ import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { useProgress } from '@/contexts/Progress';
 import { getCategoryIcon } from './PremiumIcons';
 import { useSmoothScroll } from './SmoothScroll';
+import './CultureDetail.css';
 import { Mascot } from './Mascot';
 import { usePassport } from '@/contexts/Passport';
 import { useIsMobile } from '@/utils/useIsMobile';

@@ -5,6 +5,7 @@ import { useAppFlow } from '@/contexts/AppFlow';
 import { PROVINCES } from '@/data/provinces';
 import { CultureList } from '@/components/ui/CultureList';
 import { motion } from 'framer-motion';
+import './list.css';
 
 export default function ProvinceListPage() {
   const { id } = useParams();
