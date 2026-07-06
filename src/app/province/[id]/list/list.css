@@ -556,3 +556,151 @@
   color: var(--c-accent);
   opacity: 0.3;
 }
+
+@media screen and (max-width: 768px) {
+  /* Culture List Responsive Layout */
+  .cl-page {
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .cl-preview-panel {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(85, 145, 185, 0.08);
+    padding: 16px 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  
+  .cl-rail-inner {
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+  }
+  
+  .cl-rail-overline {
+    display: none;
+  }
+  
+  .cl-rail-province {
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .cl-rail-counter {
+    display: none; /* Hide counter on mobile to prevent overlapping with floating back button */
+  }
+  
+  .cl-rail-label-vert {
+    display: none;
+  }
+  
+  .cl-visited-ring-wrapper {
+    display: none !important;
+  }
+  
+  .cl-rings-container {
+    display: none !important;
+  }
+  
+  .cl-visited-ring-wrapper.mobile-ring {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 0;
+  }
+  
+  .cl-rail-search-indicator {
+    padding: 4px 10px;
+    margin-top: 0;
+  }
+
+  .cl-video-preview-container {
+    display: none;
+  }
+  
+  .cl-list-panel {
+    padding: 16px 16px 100px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .cl-category-pills {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+  }
+
+  .cl-row {
+    padding: 14px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-top: 1px solid rgba(136, 170, 195, 0.12);
+  }
+
+  .cl-row::before {
+    display: none;
+  }
+  
+  .cl-row-title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.35;
+    flex: 1;
+    margin: 0;
+    color: var(--c-text);
+  }
+
+  .cl-row-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .cl-row-num {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--c-text-soft);
+    min-width: 20px;
+    text-align: right;
+  }
+
+  .cl-row-category {
+    font-size: 0.6rem;
+    padding: 2px 7px;
+    opacity: 0.7;
+  }
+
+  .cl-row-thumb-preview {
+    width: 60px;
+    height: 38px;
+    border-radius: 2px;
+  }
+
+  .cl-row.hovered .cl-row-title {
+    color: var(--c-dark) !important;
+  }
+
+  .cl-row.hovered .cl-row-num {
+    color: var(--c-dark) !important;
+  }
+}

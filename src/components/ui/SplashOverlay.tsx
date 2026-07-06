@@ -142,6 +142,7 @@ const VideoBackground = ({ audioUnlocked, isMuted }: { audioUnlocked: boolean; i
     audioUnlockedRef.current = true;
     video.muted = false;
     video.volume = 0;
+    video.play().catch(err => console.log("Interaction play failed:", err));
     const fadeIn = setInterval(() => {
       if (!videoRef.current) { clearInterval(fadeIn); return; }
       if (videoRef.current.volume < 0.97) {

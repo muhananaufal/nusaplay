@@ -820,3 +820,105 @@
   z-index: 15;
   pointer-events: none;
 }
+
+@media screen and (max-width: 768px) {
+  /* Culture Detail Responsive Layout */
+  .cd-page {
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .cd-layout {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100%;
+    gap: 0;
+  }
+  
+  .cd-video-panel {
+    height: auto;
+    max-height: none;
+    aspect-ratio: 16/9;
+    flex-shrink: 0;
+    width: 100%;
+  }
+  
+  .cd-info-panel {
+    border-left: none;
+    overflow: visible !important;
+    height: auto !important;
+    position: relative; /* needed for dim overlay stacking */
+  }
+  
+  .cd-info-scroll {
+    padding: 24px 20px 100px;
+  }
+
+  .cd-info-title {
+    font-size: 1.8rem;
+  }
+
+  .cd-floating-controls {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    width: max-content !important;
+    bottom: 12px !important;
+    top: auto !important;
+    z-index: 190 !important;
+  }
+
+  /* Fullscreen mobile video panel when narrating */
+  .cd-video-panel.is-sticky {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: none !important;
+    z-index: 180 !important;
+    background-color: #000000 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .cd-video-panel.is-sticky .cd-video-wrapper {
+    flex: none !important;
+    width: 100% !important;
+    aspect-ratio: 16/9 !important;
+    position: relative !important;
+  }
+
+  /* In fullscreen mode controls/captions use fixed to escape overflow:hidden */
+  .cd-video-panel.is-sticky .cd-floating-controls {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 12px !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    width: max-content !important;
+    z-index: 195 !important;
+  }
+
+  .cd-video-panel.is-sticky .cd-captions-container {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 72px !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 0 20px !important;
+    z-index: 195 !important;
+  }
+
+  .cd-captions-container {
+    bottom: 84px !important;
+    padding: 0 20px !important;
+    z-index: 190 !important;
+  }
+}

@@ -327,3 +327,15 @@
   border-color: var(--c-primary);
   color: var(--c-primary);
 }
+
+@media screen and (max-width: 768px) {
+  /* Quiz Page Options Mobile */
+  .quiz-option {
+    padding: 14px 18px;
+    gap: 12px;
+  }
+  
+  .quiz-result {
+    padding: 24px 20px;
+  }
+}
