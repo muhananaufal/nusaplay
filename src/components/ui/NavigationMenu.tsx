@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { usePlay } from '@/contexts/Play';
@@ -103,6 +103,17 @@ export const NavigationMenu = () => {
     setIsOpen(false);
     setShowAbout(false);
   }, [phase]);
+
+  const isItemActive = useCallback((title: string) => {
+    if (title === 'Beranda') return phase === PHASES.SPLASH;
+    if (title === 'Peta Nusantara') {
+      return [PHASES.MAP, PHASES.PROVINCE, PHASES.LIST, PHASES.DETAIL].includes(phase);
+    }
+    if (title === 'Kuis Nusantara') return phase === PHASES.QUIZ;
+    if (title === 'Pencapaian Nusantara') return phase === 'achievement';
+    if (title === 'Tentang NusaPlay') return showAbout;
+    return false;
+  }, [phase, showAbout]);
 
   // Memoized so the 4 action closures aren't recreated on every render.
   // All deps (goTo, backToMap, startQuiz, setPlay, setEnd) are stable
@@ -251,11 +262,12 @@ export const NavigationMenu = () => {
                   {mainMenuItems.map((item, index) => {
                     const isHovered = hoveredTitle === item.title;
                     const isDimmed = hoveredTitle !== null && hoveredTitle !== item.title;
+                    const isActive = isItemActive(item.title);
                     
                     return (
                       <div
                         key={item.title}
-                        className={`nav-lux-link ${isHovered ? 'hovered' : ''} ${isDimmed ? 'dimmed' : ''}`}
+                        className={`nav-lux-link ${isHovered ? 'hovered' : ''} ${isDimmed ? 'dimmed' : ''} ${isActive ? 'active' : ''}`}
                         onMouseEnter={() => {
                           setHoveredTitle(item.title);
                           setHoveredImage(item.image);

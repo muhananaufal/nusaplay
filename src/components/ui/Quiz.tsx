@@ -8,6 +8,7 @@ import { UNLOCKED_PROVINCES } from '@/data/provinces';
 import { Mascot } from './Mascot';
 import { usePassport } from '@/contexts/Passport';
 import { SearchIcon } from './PremiumIcons';
+import { useProgress } from '@/contexts/Progress';
 import '@/app/quiz/quiz.css';
 
 // Synthesized sound effects using native Web Audio API
@@ -208,8 +209,10 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
   const { quizProvince, startQuiz, backToMap } = useAppFlow();
   const { setJourneyCompleted } = usePlay();
   const { completeQuiz, completedQuizzes, visitedProvinces, bestScores, bestScoreTotals } = usePassport();
+  const { listenedByProvince } = useProgress();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lockedProvData, setLockedProvData] = useState<any | null>(null);
+  const [lockReason, setLockReason] = useState<'visit' | 'listen' | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
   const [score, setScore] = useState(0);
@@ -440,13 +443,21 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
             {filteredProvinces.map((prov, i) => {
               const isQuizDone = completedQuizzes.has(prov.id);
               const isVisited = visitedProvinces.has(prov.id);
+              const listenedCount = listenedByProvince[prov.id]?.length || 0;
+              const isUnlocked = isVisited && listenedCount > 0;
               return (
                 <motion.div
                   key={prov.id}
-                  className={`quiz-province-card ${!isVisited ? 'locked' : ''}`}
+                  className={`quiz-province-card ${!isUnlocked ? 'locked' : ''}`}
                   onClick={() => {
                     if (!isVisited) {
                       setLockedProvData(prov);
+                      setLockReason('visit');
+                      return;
+                    }
+                    if (listenedCount === 0) {
+                      setLockedProvData(prov);
+                      setLockReason('listen');
                       return;
                     }
                     startQuiz(prov);
@@ -454,7 +465,7 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.08, duration: 0.4 }}
-                  whileHover={isVisited ? { y: -6, transition: { duration: 0.2 } } : {}}
+                  whileHover={isUnlocked ? { y: -6, transition: { duration: 0.2 } } : {}}
                   style={{ position: 'relative' }}
                 >
                   {isQuizDone && (
@@ -462,7 +473,7 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
                       TUNTAS
                     </div>
                   )}
-                  {isVisited && !isQuizDone && (
+                  {isUnlocked && !isQuizDone && (
                     <div className="quiz-card-badge-uncompleted" title="Kuis Belum Selesai! Selesaikan kuis ini untuk mendapatkan lencana emas!">
                       BELUM TUNTAS
                     </div>
@@ -470,6 +481,11 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
                   {!isVisited && (
                     <div className="quiz-card-badge-locked" title="Kuis Terkunci! Kunjungi provinsi ini di peta terlebih dahulu.">
                       TERKUNCI
+                    </div>
+                  )}
+                  {isVisited && listenedCount === 0 && (
+                    <div className="quiz-card-badge-locked" title="Kuis Terkunci! Dengarkan penjelasan audio budaya provinsi ini terlebih dahulu.">
+                      AUDIO TERKUNCI
                     </div>
                   )}
                   <div className="quiz-card-header">
@@ -545,7 +561,11 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
                 </div>
                 
                 <p className="end-sheet-sub" style={{ fontWeight: 600, color: 'var(--c-accent-dark)', marginBottom: '16px' }}>
-                  Silakan kunjungi <strong>{lockedProvData.name}</strong> di peta dan eksplorasi salah satu kategorinya terlebih dahulu untuk membuka kuis ini!
+                  {lockReason === 'listen' ? (
+                    <>Kamu harus mendengarkan penjelasan audio salah satu budaya di <strong>{lockedProvData.name}</strong> hingga selesai terlebih dahulu untuk membuka kuis ini!</>
+                  ) : (
+                    <>Silakan kunjungi <strong>{lockedProvData.name}</strong> di peta dan eksplorasi salah satu kategorinya terlebih dahulu untuk membuka kuis ini!</>
+                  )}
                 </p>
                 
                 <div className="end-sheet-actions" style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', marginTop: '16px' }}>

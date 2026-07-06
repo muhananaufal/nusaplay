@@ -6,14 +6,22 @@ import { PROVINCES } from '@/data/provinces';
 import { Quiz } from '@/components/ui/Quiz';
 import { motion } from 'framer-motion';
 
+import { useProgress } from '@/contexts/Progress';
+
 export function QuizActiveClient({ id }: { id: string }) {
   const router = useRouter();
   const { startQuiz } = useAppFlow();
+  const { listenedByProvince } = useProgress();
 
   useEffect(() => {
     const normalizedId = id.replace(/_/g, '-');
     const province = PROVINCES.find(p => p.id === normalizedId);
     if (province) {
+      const listenedCount = listenedByProvince[province.id]?.length || 0;
+      if (listenedCount === 0) {
+        router.replace('/quiz');
+        return;
+      }
       if (id !== province.id) {
         router.replace(`/quiz/${province.id}`);
       } else {
@@ -22,7 +30,7 @@ export function QuizActiveClient({ id }: { id: string }) {
     } else {
       router.replace('/quiz');
     }
-  }, [id, startQuiz, router]);
+  }, [id, startQuiz, router, listenedByProvince]);
 
   return (
     <motion.div
