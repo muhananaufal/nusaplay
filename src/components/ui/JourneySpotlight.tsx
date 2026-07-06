@@ -12,13 +12,13 @@ const SPOTLIGHT_CONFIGS: Record<string, { selector: string; title: string; text:
   [PHASES.SPLASH]: {
     selector: '.splash-join-btn, .splash-mobile-start-btn',
     title: 'Mulai Petualangan',
-    text: 'Langkah 1/4: Pembukaan! Klik tombol ini untuk memulai perjalanan udaramu melintasi kepulauan Nusantara.',
+    text: 'Klik tombol ini untuk memulai perjalanan udaramu melintasi kepulauan Nusantara.',
     placement: 'below',
   },
   [PHASES.MAP]: {
     selector: '.province-center-badge.unlocked, .map-zoom-controls',
     title: 'Eksplorasi Peta',
-    text: 'Langkah 2/4: Eksplorasi Peta! Klik salah satu provinsi aktif yang berwarna biru (seperti Jawa Tengah, Yogyakarta, atau Papua) untuk mendarat.',
+    text: 'Klik salah satu provinsi aktif yang berwarna biru (seperti Jawa Tengah, Yogyakarta, atau Papua) untuk mendarat.',
     placement: 'above',
   },
   [PHASES.PROVINCE]: {
@@ -42,7 +42,7 @@ const SPOTLIGHT_CONFIGS: Record<string, { selector: string; title: string; text:
   [PHASES.QUIZ]: {
     selector: '.quiz-option',
     title: 'Pilih Jawaban',
-    text: 'Langkah 4/4: Pilih Jawaban! Pilih salah satu opsi jawaban yang menurutmu benar sebelum waktu pada lingkaran habis.',
+    text: 'Pilih salah satu opsi jawaban yang menurutmu benar sebelum waktu pada lingkaran habis.',
     placement: 'below',
   },
 };
@@ -94,7 +94,7 @@ export function JourneySpotlight() {
         title: hasFinishedAudio ? 'Mulai Kuis' : 'Dengarkan Narasi',
         text: hasFinishedAudio 
           ? 'Narasi selesai! Sekarang, klik tombol ini untuk menguji wawasanmu tentang kebudayaan ini lewat kuis!' 
-          : 'Langkah 3/4: Dengarkan Narasi! Klik tombol putar suara ini untuk mendengarkan cerita legenda kebudayaan ini dari Nusa hingga selesai.',
+          : 'Klik tombol putar suara ini untuk mendengarkan cerita legenda kebudayaan ini dari Nusa hingga selesai.',
         placement: hasFinishedAudio ? 'above' as const : 'below' as const,
       }
     : (phase === PHASES.MAP
@@ -116,7 +116,7 @@ export function JourneySpotlight() {
           : {
               selector: '.province-center-badge.unlocked',
               title: 'Eksplorasi Peta',
-              text: 'Langkah 2/4: Eksplorasi Peta! Klik salah satu provinsi aktif yang berwarna biru (seperti Jawa Tengah, Yogyakarta, atau Papua) untuk mendarat.',
+              text: 'Klik salah satu provinsi aktif yang berwarna biru (seperti Jawa Tengah, Yogyakarta, atau Papua) untuk mendarat.',
               placement: 'above' as const,
             }
         )
