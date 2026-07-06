@@ -2,13 +2,13 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
+import { useProgress } from '@/contexts/Progress';
 import { getCategoryIcon } from './PremiumIcons';
 import { useSmoothScroll } from './SmoothScroll';
-import tts from '@/utils/tts';
 import { Mascot } from './Mascot';
 import { usePassport } from '@/contexts/Passport';
 import { useIsMobile } from '@/utils/useIsMobile';
-import { getCulturesByProvince } from '@/data/cultures';
+import { fetchCulturesByProvince } from '@/utils/fetchCultures';
 
 // ── Splits narrator text into sentence-sized caption chunks ──────────────────
 function splitIntoCaptions(text: string): string[] {
@@ -40,12 +40,12 @@ function splitIntoCaptions(text: string): string[] {
 // Helper to get a safe fallback map image for the province
 const getProvinceFallbackImage = (provinceId: string) => {
   const map: Record<string, string> = {
-    'diy': '/images/diy.png',
-    'kalimantan-barat': '/images/kalimantan-barat.png',
-    'papua': '/images/papua.png',
-    'jawa-tengah': '/images/diy.png',
+    'diy': '/images/diy.webp',
+    'kalimantan-barat': '/images/kalimantan-barat.webp',
+    'papua': '/images/papua.webp',
+    'jawa-tengah': '/images/diy.webp',
   };
-  return map[provinceId] || '/images/grain.png';
+  return map[provinceId] || '/images/grain.webp';
 };
 
 interface VTTCue {
@@ -108,11 +108,12 @@ function parseVTT(vttText: string): VTTCue[] {
 }
 
 export const CultureDetail = ({ visible }) => {
-  const { selectedCulture, selectedProvince, goTo, startQuiz, markCultureListened, selectCulture } = useAppFlow();
+  const { selectedCulture, selectedProvince, goTo, startQuiz, selectCulture } = useAppFlow();
+  const { markCultureListened } = useProgress();
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [ttsFinished, setTtsFinished] = useState(false);
+  const [narrationFinished, setNarrationFinished] = useState(false);
   const progressInterval = useRef(null);
   const startTime = useRef(null);
   const estimatedDuration = useRef(15000);
@@ -191,10 +192,15 @@ export const CultureDetail = ({ visible }) => {
   }, [vttCues, audioCurrentTime]);
 
   // Find next culture in the province (sorted with audio first)
+  const [provincecultures, setProvinceCultures] = useState<any[]>([]);
+  useEffect(() => {
+    if (!selectedProvince?.id) { setProvinceCultures([]); return; }
+    fetchCulturesByProvince(selectedProvince.id).then(setProvinceCultures);
+  }, [selectedProvince?.id]);
+
   const nextCulture = useMemo(() => {
-    if (!selectedProvince) return null;
-    const list = getCulturesByProvince(selectedProvince.id);
-    const sortedList = [...list].sort((a, b) => {
+    if (!selectedProvince || !provincecultures.length) return null;
+    const sortedList = [...provincecultures].sort((a, b) => {
       const hasAudioA = !!a.audio;
       const hasAudioB = !!b.audio;
       if (hasAudioA && !hasAudioB) return -1;
@@ -206,10 +212,9 @@ export const CultureDetail = ({ visible }) => {
       return sortedList[currentIndex + 1];
     }
     return null;
-  }, [selectedProvince, selectedCulture?.id]);
+  }, [selectedProvince, provincecultures, selectedCulture?.id]);
 
   const stopAll = () => {
-    tts.stop();
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.src = '';
@@ -219,16 +224,16 @@ export const CultureDetail = ({ visible }) => {
   };
 
   useEffect(() => {
-    if (ttsFinished && selectedProvince?.id) {
+    if (narrationFinished && selectedProvince?.id) {
       stampProvince(selectedProvince.id);
     }
-  }, [ttsFinished, selectedProvince?.id, stampProvince]);
+  }, [narrationFinished, selectedProvince?.id, stampProvince]);
 
   useEffect(() => {
     setIsSpeaking(false);
     setIsPaused(false);
     setProgress(0);
-    setTtsFinished(false);
+    setNarrationFinished(false);
     stopAll();
     window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
   }, [selectedCulture]);
@@ -241,81 +246,48 @@ export const CultureDetail = ({ visible }) => {
   }, []);
 
   const startNarration = () => {
-    if (!selectedCulture) return;
+    if (!selectedCulture || !selectedCulture.audio) return;
     stopAll();
     setProgress(0);
-    setTtsFinished(false);
+    setNarrationFinished(false);
     pausedCaptionIndex.current = 0;
 
-    if (selectedCulture.audio) {
-      // ── Audio file mode ──────────────────────────────────────────────────
-      const audio = new Audio(selectedCulture.audio);
-      audioRef.current = audio;
+    // ── Audio file mode ──────────────────────────────────────────────────
+    const audio = new Audio(selectedCulture.audio);
+    audioRef.current = audio;
 
-      audio.addEventListener('timeupdate', () => {
-        if (audio.duration) {
-          setProgress((audio.currentTime / audio.duration) * 100);
-        }
-        setAudioCurrentTime(audio.currentTime);
-      });
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        setProgress((audio.currentTime / audio.duration) * 100);
+      }
+      setAudioCurrentTime(audio.currentTime);
+    });
 
-      audio.addEventListener('ended', () => {
-        setIsSpeaking(false);
-        setProgress(100);
-        setTtsFinished(true);
-        audioRef.current = null;
-        window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
-        if (selectedCulture?.id && selectedCulture?.provinceId) {
-          markCultureListened(selectedCulture.id, selectedCulture.provinceId);
-        }
-      });
+    audio.addEventListener('ended', () => {
+      setIsSpeaking(false);
+      setProgress(100);
+      setNarrationFinished(true);
+      audioRef.current = null;
+      window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
+      if (selectedCulture?.id && selectedCulture?.provinceId) {
+        markCultureListened(selectedCulture.id, selectedCulture.provinceId);
+      }
+    });
 
-      audio.addEventListener('pause', () => setIsPaused(true));
-      audio.addEventListener('play', () => {
-        setIsSpeaking(true);
-        setIsPaused(false);
-      });
-
-      audio.play().catch(err => console.error('Audio play failed:', err));
+    audio.addEventListener('pause', () => setIsPaused(true));
+    audio.addEventListener('play', () => {
       setIsSpeaking(true);
       setIsPaused(false);
-      window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
-    } else {
-      // ── TTS (browser speech) mode ────────────────────────────────────────
-      startTime.current = Date.now();
-      const wordCount = selectedCulture.narrator.split(' ').length;
-      estimatedDuration.current = (wordCount / 2.5) * 1000;
+    });
 
-      tts.speak(selectedCulture.narrator, {
-        lang: 'id-ID',
-        rate: 0.85,
-        onEnd: () => {
-          setIsSpeaking(false);
-          setProgress(100);
-          setTtsFinished(true);
-          clearInterval(progressInterval.current);
-          window.dispatchEvent(new CustomEvent('nusaplay:narrationEnd'));
-          if (selectedCulture?.id && selectedCulture?.provinceId) {
-            markCultureListened(selectedCulture.id, selectedCulture.provinceId);
-          }
-        },
-      });
-      setIsSpeaking(true);
-      setIsPaused(false);
-      window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
-
-      progressInterval.current = setInterval(() => {
-        if (!startTime.current) return;
-        const elapsed = Date.now() - startTime.current;
-        const pct = Math.min((elapsed / estimatedDuration.current) * 100, 98);
-        setProgress(pct);
-      }, 200);
-    }
+    audio.play().catch(err => console.error('Audio play failed:', err));
+    setIsSpeaking(true);
+    setIsPaused(false);
+    window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
   };
 
   const togglePause = () => {
     if (selectedCulture?.audio && audioRef.current) {
-      // ── Audio file pause/resume ──────────────────────────────────────────
       if (isPaused) {
         audioRef.current.play().catch(err => console.error(err));
         setIsPaused(false);
@@ -323,48 +295,6 @@ export const CultureDetail = ({ visible }) => {
       } else {
         audioRef.current.pause();
         setIsPaused(true);
-        window.dispatchEvent(new CustomEvent('nusaplay:narrationPause'));
-      }
-    } else {
-      // ── TTS pause/resume ─────────────────────────────────────────────────
-      if (isPaused) {
-        setIsPaused(false);
-        const remainingCaptions = captions.slice(pausedCaptionIndex.current);
-        const remainingText = remainingCaptions.join(' ');
-        const wordCount = remainingText.split(' ').length;
-        const remainingDuration = (wordCount / 2.5) * 1000;
-        const startProgress = (pausedCaptionIndex.current / captions.length) * 100;
-
-        startTime.current = Date.now();
-
-        tts.speak(remainingText, {
-          lang: 'id-ID',
-          rate: 0.85,
-          onEnd: () => {
-            setIsSpeaking(false);
-            setProgress(100);
-            setTtsFinished(true);
-            clearInterval(progressInterval.current);
-            if (selectedCulture?.id && selectedCulture?.provinceId) {
-              markCultureListened(selectedCulture.id, selectedCulture.provinceId);
-            }
-          },
-        });
-
-        progressInterval.current = setInterval(() => {
-          if (!startTime.current) return;
-          const elapsed = Date.now() - startTime.current;
-          const delta = (elapsed / remainingDuration) * (100 - startProgress);
-          const pct = Math.min(startProgress + delta, 98);
-          setProgress(pct);
-        }, 200);
-
-        window.dispatchEvent(new CustomEvent('nusaplay:narrationStart'));
-      } else {
-        tts.stop();
-        setIsPaused(true);
-        clearInterval(progressInterval.current);
-        pausedCaptionIndex.current = activeCaptionIndex;
         window.dispatchEvent(new CustomEvent('nusaplay:narrationPause'));
       }
     }
@@ -439,7 +369,7 @@ export const CultureDetail = ({ visible }) => {
                 justifyContent: 'center'
               }}>
                 <img
-                  src={selectedCulture.image || `https://img.youtube.com/vi/${selectedCulture.youtubeId}/maxresdefault.jpg`}
+                  src={selectedCulture.image || getProvinceFallbackImage(selectedCulture.provinceId)}
                   alt=""
                   onError={(e) => {
                     const fallback = getProvinceFallbackImage(selectedCulture.provinceId);
@@ -473,7 +403,7 @@ export const CultureDetail = ({ visible }) => {
                 </div>
               </div>
             ) : (
-              // Normal video player (local video if available, otherwise YouTube iframe)
+              // Normal video player (local video if available, otherwise clean dark image overlay)
               <>
                 {selectedCulture.video ? (
                   <video
@@ -495,14 +425,43 @@ export const CultureDetail = ({ visible }) => {
                     }}
                   />
                 ) : (
-                  <iframe
-                    src={`https://www.youtube.com/embed/${selectedCulture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${selectedCulture.youtubeId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                    className="cd-iframe"
-                    loading="lazy"
-                    title={selectedCulture.title}
-                  />
+                  <div style={{ 
+                    position: 'relative', 
+                    width: '100%', 
+                    height: '100%', 
+                    background: '#0D1B2A',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    overflow: 'hidden'
+                  }}>
+                    <img
+                      src={selectedCulture.image || getProvinceFallbackImage(selectedCulture.provinceId)}
+                      alt={selectedCulture.title}
+                      style={{ 
+                        position: 'absolute',
+                        top: 0, left: 0, width: '100%', height: '100%', 
+                        objectFit: 'cover', 
+                        opacity: 0.35,
+                        filter: 'grayscale(0.15)',
+                      }}
+                    />
+                    <div style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to top, rgba(13, 27, 42, 0.9), rgba(13, 27, 42, 0.4))',
+                      zIndex: 1
+                    }} />
+                    <span style={{ 
+                      zIndex: 2, 
+                      color: 'rgba(255, 255, 255, 0.25)', 
+                      fontSize: '11px', 
+                      letterSpacing: '0.25em',
+                      fontWeight: 600
+                    }}>
+                      NUSAPLAY EXPLORATION
+                    </span>
+                  </div>
                 )}
                 {/* Video overlay — darker in cinematic mode for caption legibility */}
                 <div className={`cd-video-overlay${isCinematic ? ' cinematic' : ''}`} />
@@ -676,7 +635,7 @@ export const CultureDetail = ({ visible }) => {
             )}
 
             {/* Quiz CTA Card */}
-            {selectedProvince && ttsFinished && (
+            {selectedProvince && narrationFinished && (
               <div className="cd-quiz-cta">
                 <div className="cd-quiz-cta-content">
                   <h4>Siap Menguji Pengetahuanmu?</h4>
@@ -700,7 +659,7 @@ export const CultureDetail = ({ visible }) => {
 
       {/* Storytelling End overlay */}
       <AnimatePresence>
-        {ttsFinished && (
+        {narrationFinished && (
           <StorytellingEndSheet
             cultureName={selectedCulture.title}
             provinceName={selectedProvince?.name || ''}

@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppFlow } from '@/contexts/AppFlow';
-import { getCultureById } from '@/data/cultures';
+import { fetchCultureById } from '@/utils/fetchCultures';
 import { PROVINCES } from '@/data/provinces';
 import { CultureDetail } from '@/components/ui/CultureDetail';
 import { motion } from 'framer-motion';
@@ -12,14 +12,15 @@ export function CultureDetailClient({ id }: { id: string }) {
   const { selectCulture, setSelectedProvince } = useAppFlow();
 
   useEffect(() => {
-    const culture = getCultureById(id);
-    if (culture) {
-      const province = PROVINCES.find(p => p.id === culture.provinceId);
-      if (province) setSelectedProvince(province);
-      selectCulture(culture, true);
-    } else {
-      router.replace('/map');
-    }
+    fetchCultureById(id).then((culture) => {
+      if (culture) {
+        const province = PROVINCES.find(p => p.id === culture.provinceId);
+        if (province) setSelectedProvince(province);
+        selectCulture(culture, true);
+      } else {
+        router.replace('/map');
+      }
+    });
   }, [id, selectCulture, setSelectedProvince, router]);
 
   return (

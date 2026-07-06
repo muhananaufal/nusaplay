@@ -1,0 +1,1021 @@
+[
+  {
+    "id": "diy-tari-bedhaya",
+    "provinceId": "diy",
+    "category": "Tarian",
+    "title": "Tari Bedhaya Ketawang",
+    "coordinates": [
+      -7.805,
+      110.364
+    ],
+    "isLandmark": true,
+    "description": "Tari Bedhaya merupakan tarian sakral dari tradisi Keraton Yogyakarta yang dipentaskan pada acara-acara tertentu. Tarian ini melambangkan keharmonisan, kesetiaan, dan keseimbangan dalam kehidupan melalui gerakan para penari yang serempak dan penuh makna.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/tari-bedhaya-ketawang.mp3",
+    "narrator": "Tari Bedhaya Ketawang adalah tarian sakral Keraton Jawa yang dipentaskan dalam upacara penobatan raja atau peringatan naik takhta. Gerakan sembilan penari yang lambat, anggun, dan serempak diiringi musik gamelan menciptakan atmosfer khidmat dan penuh misteri spiritual.",
+    "location": "Keraton Kasunanan Surakarta, D.I. Yogyakarta",
+    "period": "Era Mataram Islam, abad ke-17",
+    "image": "/img/cultures/bedhaya-ketawang.jpg",
+    "tags": [
+      "Sakral",
+      "Keraton",
+      "Ritual"
+    ],
+    "video": "/video/di-yogyakarta/tari-bedhaya-ketawang.mp4"
+  },
+  {
+    "id": "diy-tari-srimpi",
+    "provinceId": "diy",
+    "category": "Tarian",
+    "title": "Tari Serimpi",
+    "description": "Tari Serimpi merupakan salah satu tarian klasik yang berasal dari lingkungan Keraton Yogyakarta. Gerakannya yang lembut dan teratur mencerminkan kehalusan, kesabaran, ketenangan, serta pengendalian diri yang dijunjung tinggi dalam budaya Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/tari-serimpi.mp3",
+    "narrator": "Tari Srimpi lahir dari istana Keraton Yogyakarta sebagai simbol keanggunan dan kekuasaan. Empat penari mementaskan gerakan anggun yang melambangkan kehalusan budi pekerti, kesabaran, dan moralitas luhur wanita Jawa.",
+    "location": "Keraton Yogyakarta, D.I. Yogyakarta",
+    "period": "Masa Kesultanan Yogyakarta, abad ke-18",
+    "image": "/img/cultures/tari-srimpi.jpg",
+    "tags": [
+      "Klasik",
+      "Istana",
+      "Filosofis"
+    ],
+    "video": "/video/di-yogyakarta/tari-serimpi.mp4"
+  },
+  {
+    "id": "diy-tari-golek",
+    "provinceId": "diy",
+    "category": "Tarian",
+    "title": "Tari Golek Ayun-Ayun",
+    "description": "Tari Golek Ayun-Ayun merupakan tarian tradisional Yogyakarta yang biasanya dibawakan oleh penari perempuan. Tarian ini menggambarkan perjalanan seorang gadis yang belajar mengenal diri, menjaga sikap, dan mempersiapkan diri menuju kedewasaan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Tari Golek Ayun-Ayun menceritakan perjalanan seorang gadis Jawa yang sedang tumbuh dewasa. Gerakannya yang lembut dan ekspresif mengajarkan kesopanan, kepercayaan diri, serta tata krama dalam kehidupan sehari-hari.",
+    "location": "Yogyakarta",
+    "period": "Diciptakan oleh K.R.T. Sasmintadipura pada abad ke-20",
+    "image": "/img/cultures/tari-golek.jpg",
+    "tags": [
+      "Tarian",
+      "Klasik",
+      "Golek"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-tari-beksan-wireng",
+    "provinceId": "diy",
+    "category": "Tarian",
+    "title": "Tari Beksan Wireng",
+    "description": "Tari Beksan Wireng merupakan tarian tradisional Yogyakarta yang menggambarkan semangat keprajuritan dan keberanian. Biasanya dibawakan oleh penari laki-laki dengan gerakan tegas, dinamis, dan penuh energi sebagai simbol kedisiplinan serta tanggung jawab.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Tari Beksan Wireng menampilkan semangat ksatria melalui gerak yang tegas dan dinamis. Di balik nuansa latihan perang, tarian ini menekankan keberanian, disiplin, dan kebijaksanaan dalam mengendalikan kekuatan.",
+    "location": "Keraton Yogyakarta, D.I. Yogyakarta",
+    "period": "Tradisi keraton Yogyakarta",
+    "image": "/img/cultures/beksan-wireng.jpg",
+    "tags": [
+      "Tarian",
+      "Ksatria",
+      "Keraton"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-gamelan",
+    "provinceId": "diy",
+    "category": "Musik",
+    "title": "Gamelan Jawa",
+    "coordinates": [
+      -7.809,
+      110.359
+    ],
+    "isLandmark": true,
+    "description": "Gamelan Jawa merupakan ansambel musik tradisional yang menjadi bagian penting dari budaya masyarakat Yogyakarta. Gamelan terdiri dari berbagai instrumen seperti saron, gong, kenong, bonang, kendang, dan lainnya yang dimainkan bersama untuk menghasilkan harmoni yang khas.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/alat-musik-gamelan.mp3",
+    "narrator": "Gamelan Jawa telah menggema selama berabad-abad di tanah Yogyakarta. Setiap instrumennya memiliki jiwa, yang jika dimainkan bersama akan menghasilkan harmoni suara tenang yang melambangkan kebersamaan dan kedamaian hidup.",
+    "location": "Seluruh D.I. Yogyakarta",
+    "period": "Sejak abad ke-8 Masehi",
+    "image": "/img/cultures/gamelan-jawa.jpg",
+    "tags": [
+      "UNESCO",
+      "Orkestra",
+      "Meditasi"
+    ],
+    "video": "/video/di-yogyakarta/gamelan-jawa.mp4"
+  },
+  {
+    "id": "diy-kendang",
+    "provinceId": "diy",
+    "category": "Musik",
+    "title": "Kendang",
+    "coordinates": [
+      -7.807,
+      110.362
+    ],
+    "isLandmark": false,
+    "description": "Kendang merupakan alat musik pukul yang memiliki peran penting dalam pertunjukan gamelan Jawa. Alat musik ini terbuat dari kayu dengan kedua sisinya dilapisi kulit dan dimainkan dengan tangan untuk menghasilkan variasi bunyi.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Kendang menjadi pengatur tempo dalam gamelan Jawa. Dengan pukulan tangan yang tepat, alat musik ini memimpin irama pertunjukan dan menjaga seluruh ansambel tetap selaras.",
+    "location": "D.I. Yogyakarta",
+    "period": "Tradisi gamelan Jawa",
+    "image": "/img/cultures/gamelan-jawa.jpg",
+    "tags": [
+      "Pukul",
+      "Ritme",
+      "Gamelan"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-rebab",
+    "provinceId": "diy",
+    "category": "Musik",
+    "title": "Rebab",
+    "coordinates": [
+      -7.806,
+      110.36
+    ],
+    "isLandmark": false,
+    "description": "Rebab merupakan alat musik gesek tradisional yang telah lama menjadi bagian dari musik gamelan Jawa. Alat musik ini memiliki dua senar dan dimainkan dengan alat gesek khusus untuk menghasilkan suara yang lembut dan ekspresif.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/alat-musik-rebab.mp3",
+    "narrator": "Rebab menghadirkan melodi yang lembut dan emosional dalam gamelan Jawa. Suaranya yang halus sering membawa nuansa tenang, haru, dan kerinduan di tengah pertunjukan tradisional.",
+    "location": "D.I. Yogyakarta",
+    "period": "Tradisi gamelan Jawa",
+    "image": "/img/cultures/gamelan-jawa.jpg",
+    "tags": [
+      "Gesek",
+      "Melodi",
+      "Gamelan"
+    ],
+    "video": "/video/di-yogyakarta/rebab.mp4"
+  },
+  {
+    "id": "diy-bonang",
+    "provinceId": "diy",
+    "category": "Musik",
+    "title": "Bonang",
+    "coordinates": [
+      -7.808,
+      110.361
+    ],
+    "isLandmark": false,
+    "description": "Bonang merupakan instrumen penting dalam gamelan Jawa yang terdiri dari deretan gong-gong kecil yang disusun di atas tali dalam rangka kayu. Alat musik ini dipukul menggunakan pemukul khusus sehingga menghasilkan bunyi yang nyaring dan khas.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Bonang memberi warna pada gamelan Jawa dengan bunyi yang nyaring dan hidup. Kehadirannya memperkaya melodi dan membuat alunan musik terasa lebih dinamis dalam setiap pertunjukan.",
+    "location": "D.I. Yogyakarta",
+    "period": "Tradisi gamelan Jawa",
+    "image": "/img/cultures/gamelan-jawa.jpg",
+    "tags": [
+      "Pukul",
+      "Melodi",
+      "Gamelan"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-wayang-kulit",
+    "provinceId": "diy",
+    "category": "Wayang",
+    "title": "Wayang Kulit",
+    "description": "Seni pertunjukan boneka bayangan dari kulit kerbau yang dimainkan oleh seorang Dalang. Cerita yang dibawakan umumnya bersumber dari epos Mahabharata dan Ramayana, disesuaikan dengan nilai-nilai kearifan lokal Jawa. Pertunjukan wayang kulit bisa berlangsung semalam suntuk, mulai senja hingga fajar.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Di balik layar putih yang disinari lampu blencong, sang Dalang menghidupkan ratusan tokoh sekaligus. Wayang kulit bukan sekadar hiburan — ia adalah media dakwah, pendidikan moral, dan ritual spiritual yang menyatu dalam satu malam penuh magis.",
+    "location": "D.I. Yogyakarta",
+    "period": "Sejak abad ke-10 Masehi",
+    "image": "/img/cultures/wayang-kulit.jpg",
+    "tags": [
+      "UNESCO",
+      "Dalang",
+      "Epos"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-batik-kraton",
+    "provinceId": "diy",
+    "category": "Batik",
+    "title": "Batik Keraton Yogyakarta",
+    "description": "Batik tulis Yogyakarta memiliki ciri khas warna putih-hitam-coklat (sogan) dengan motif-motif simbolis seperti Parang Rusak, Sido Mukti, dan Kawung. Setiap motif memiliki makna filosofis dan hierarki penggunaannya — beberapa motif hanya boleh dipakai oleh keluarga kerajaan. Proses membatik adalah meditasi tersendiri.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Sehelai batik tulis Yogyakarta menyimpan ribuan titik canting yang dikerjakan selama berbulan-bulan. Motif Parang Rusak yang bergelombang terus-menerus melambangkan semangat yang pantang menyerah, sementara Kawung menggambarkan empat arah mata angin alam semesta.",
+    "location": "D.I. Yogyakarta",
+    "period": "Masa Mataram Islam, abad ke-17-18",
+    "image": "/img/cultures/batik-kraton.jpg",
+    "tags": [
+      "UNESCO",
+      "Kain",
+      "Motif"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-gudeg",
+    "provinceId": "diy",
+    "category": "Kuliner",
+    "title": "Gudeg Yogyakarta",
+    "coordinates": [
+      -7.804,
+      110.367
+    ],
+    "isLandmark": true,
+    "description": "Gudeg adalah masakan khas Yogyakarta yang terbuat dari nangka muda yang dimasak berjam-jam dengan santan dan rempah-rempah. Rasanya manis dan gurih, menjadi ciri khas kuliner Jawa. Gudeg Kraton yang legendaris konon telah ada sejak zaman kerajaan Mataram dan menjadi hidangan wajib dalam berbagai upacara adat.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Aroma gudeg yang harum menguar dari kuali tanah liat yang dimasak semalaman. Nangka muda menyerap bumbu rempah yang kaya hingga ke serat-seratnya. Inilah kuliner yang menjadi jiwa Yogyakarta — setiap suapan membawa serta sejarah panjang peradaban Jawa.",
+    "location": "Seluruh D.I. Yogyakarta",
+    "period": "Sejak era Kerajaan Mataram",
+    "image": "/img/cultures/gudeg.jpg",
+    "tags": [
+      "Makanan",
+      "Nangka",
+      "Tradisional"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-kraton",
+    "provinceId": "diy",
+    "category": "Upacara Adat",
+    "title": "Upacara Grebeg",
+    "description": "Grebeg merupakan salah satu upacara adat yang paling terkenal di Yogyakarta dan telah menjadi tradisi Keraton Yogyakarta selama berabad-abad. Upacara ini dilaksanakan pada hari-hari besar tertentu, seperti Idulfitri, Iduladha, dan peringatan kelahiran Nabi Muhammad SAW. Tradisi Grebeg menjadi simbol rasa syukur atas berbagai nikmat yang telah diberikan kepada masyarakat. Melalui upacara ini, Keraton menunjukkan kedekatannya dengan rakyat sekaligus mengingatkan pentingnya berbagi dan menjaga kebersamaan. Nilai gotong royong, rasa syukur, dan kepedulian sosial menjadi pesan utama yang diwariskan melalui tradisi ini. Ciri khas Grebeg adalah adanya gunungan yang terbuat dari berbagai hasil bumi dan makanan yang kemudian dibagikan kepada masyarakat. Banyak warga percaya bahwa bagian dari gunungan tersebut membawa berkah dan kebaikan. Keunikan inilah yang menjadikan Grebeg selalu menarik perhatian masyarakat maupun wisatawan setiap tahunnya.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Grebeg merupakan salah satu upacara adat paling terkenal di Yogyakarta yang telah menjadi tradisi Keraton selama berabad-abad. Dilaksanakan pada hari besar seperti Idulfitri, Iduladha, dan Maulid Nabi, upacara ini menjadi simbol rasa syukur atas karunia Tuhan. Melalui Grebeg, Keraton menunjukkan kedekatan dengan rakyat, mengingatkan pentingnya gotong royong dan berbagi kebersamaan. Ciri khasnya adalah gunungan hasil bumi yang dibagikan dan diperebutkan masyarakat karena dipercaya membawa berkah.",
+    "location": "Keraton Yogyakarta, D.I. Yogyakarta",
+    "period": "Hari besar tertentu (Idulfitri, Iduladha, Maulid Nabi)",
+    "image": "/img/cultures/grebeg.jpg",
+    "tags": [
+      "Keraton",
+      "Gunungan",
+      "Syukur"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-keris",
+    "provinceId": "diy",
+    "category": "Senjata",
+    "title": "Keris Yogyakarta",
+    "description": "Keris Yogyakarta memiliki ragam bentuk (dhapur), pamor, dan tangguh yang khas. Dalam tradisi Jawa, keris bukan sekadar senjata tajam, melainkan lambang pusaka keluarga yang diyakini membawa perlindungan, wibawa, dan keseimbangan spiritual bagi pemiliknya.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/senjata-keris.mp3",
+    "narrator": "Keris merupakan senjata tradisional yang sangat melekat dengan budaya Jawa, termasuk Daerah Istimewa Yogyakarta. Senjata ini memiliki bilah yang ramping dengan bentuk lurus atau berlekuk, serta dibuat melalui proses tempa yang membutuhkan ketelitian dan keahlian tinggi. Di Yogyakarta, keris tidak hanya dikenal sebagai senjata, tetapi juga sebagai pusaka yang diwariskan dari generasi ke generasi. Bagi masyarakat Yogyakarta, keris melambangkan kehormatan, kebijaksanaan, keberanian, dan tanggung jawab. Setiap keris memiliki bentuk, motif, dan pamor yang berbeda, yang dipercaya mencerminkan harapan serta karakter pemiliknya. Nilai tersebut menunjukkan bahwa kekuatan sejati tidak hanya berasal dari senjata, tetapi juga dari kebijaksanaan dalam menggunakannya. Keris digunakan dalam berbagai upacara adat, prosesi pernikahan, hingga acara resmi Keraton Yogyakarta sebagai bagian dari busana adat. Keunikannya terletak pada motif pamor yang terbentuk secara alami saat proses penempaan, sehingga setiap keris memiliki corak yang berbeda dan tidak ada yang benar-benar sama.",
+    "location": "Keraton Yogyakarta, D.I. Yogyakarta",
+    "period": "Sejak era Mataram Islam, abad ke-16",
+    "image": "/img/cultures/keris.jpg",
+    "tags": [
+      "Senjata",
+      "Pusaka",
+      "Filosofis"
+    ],
+    "video": "/video/di-yogyakarta/keris-yogyakarta.mp4"
+  },
+  {
+    "id": "diy-joglo",
+    "provinceId": "diy",
+    "category": "Rumah Adat",
+    "title": "Rumah Joglo Yogyakarta",
+    "description": "Rumah tradisional Joglo Yogyakarta dicirikan oleh atap tajug yang menjulang tinggi menyerupai gunung, tempat tinggal bagi kaum bangsawan. Struktur kayunya menggunakan sistem tumpang sari tanpa paku, melambangkan keharmonisan dengan alam dan kekuatan kebersamaan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Rumah Joglo adalah mahakarya arsitektur kayu tradisional Jawa, dengan struktur tumpang sari penopang atap yang kokoh dan penuh lambang spiritual.",
+    "location": "Sleman dan Bantul, D.I. Yogyakarta",
+    "period": "Sejak abad ke-17",
+    "image": "/img/cultures/joglo.jpg",
+    "tags": [
+      "Arsitektur",
+      "Kayu",
+      "Tradisional"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-surjan",
+    "provinceId": "diy",
+    "category": "Pakaian Adat",
+    "title": "Surjan",
+    "description": "Surjan merupakan pakaian tradisional laki-laki yang sangat identik dengan Yogyakarta. Pakaian ini berbentuk kemeja berlengan panjang dengan motif garis-garis atau polos dan biasanya dipadukan dengan kain batik serta blangkon.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Surjan mencerminkan kesederhanaan, kedisiplinan, dan tata krama masyarakat Jawa. Busana ini menjadi simbol sopan santun dan keharmonisan yang tetap lestari dalam berbagai acara adat Yogyakarta.",
+    "location": "D.I. Yogyakarta",
+    "period": "Masa Kesultanan Demak hingga Yogyakarta, abad ke-16",
+    "image": "/img/cultures/surjan.jpg",
+    "tags": [
+      "Pakaian",
+      "Keraton",
+      "Sunan Kalijaga"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-paes-ageng",
+    "provinceId": "diy",
+    "category": "Pakaian Adat",
+    "title": "Paes Ageng",
+    "description": "Paes Ageng merupakan busana adat yang berasal dari lingkungan Keraton Yogyakarta dan biasanya dikenakan dalam upacara pernikahan adat Jawa. Busana ini dikenal karena tampilannya yang megah, anggun, serta dipadukan dengan riasan paes berwarna hitam yang menghiasi dahi pengantin.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/pakaian-adat-paes-ageng.mp3",
+    "narrator": "Paes Ageng adalah busana pernikahan adat Keraton Yogyakarta yang megah dan anggun. Setiap bagian busana serta riasannya mengandung harapan agar pasangan pengantin menjalani rumah tangga dengan bijaksana, harmonis, dan penuh tanggung jawab.",
+    "location": "Keraton Yogyakarta, D.I. Yogyakarta",
+    "period": "Tradisi pernikahan adat Jawa",
+    "image": "/img/cultures/paes-ageng.jpg",
+    "tags": [
+      "Pernikahan",
+      "Keraton",
+      "Adat"
+    ],
+    "video": "/video/di-yogyakarta/paes-ageng.mp4"
+  },
+  {
+    "id": "diy-kebaya-yogyakarta",
+    "provinceId": "diy",
+    "category": "Pakaian Adat",
+    "title": "Kebaya Yogyakarta",
+    "description": "Kebaya Yogyakarta merupakan pakaian tradisional perempuan yang dikenal karena tampilannya yang anggun dan elegan. Kebaya ini biasanya dipadukan dengan kain batik serta sanggul atau hiasan rambut yang memperkuat kesan khas budaya Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/pakaian-adat-kebaya-yogya.mp3",
+    "narrator": "Kebaya Yogyakarta menampilkan kelembutan, kesopanan, dan keanggunan yang dihargai dalam budaya Jawa. Busana ini menjadi simbol keseimbangan antara keindahan luar dan kepribadian yang santun.",
+    "location": "D.I. Yogyakarta",
+    "period": "Tradisi masyarakat Jawa",
+    "image": "/img/cultures/kebaya-yogyakarta.jpg",
+    "tags": [
+      "Perempuan",
+      "Anggun",
+      "Tradisional"
+    ],
+    "video": "/video/di-yogyakarta/kebaya-yogyakarta.mp4"
+  },
+  {
+    "id": "diy-beskap",
+    "provinceId": "diy",
+    "category": "Pakaian Adat",
+    "title": "Beskap",
+    "description": "Beskap merupakan pakaian resmi tradisional laki-laki Jawa yang sering digunakan dalam berbagai acara adat dan upacara penting di Yogyakarta. Pakaian ini memiliki bentuk yang rapi dengan potongan khas serta biasanya dipadukan dengan kain batik, keris, dan blangkon.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Beskap melambangkan kewibawaan, tanggung jawab, dan penghormatan terhadap adat istiadat Jawa. Dengan potongan yang elegan dan kesan berwibawa, busana ini menjadi salah satu simbol budaya Yogyakarta yang paling dikenal.",
+    "location": "D.I. Yogyakarta",
+    "period": "Tradisi busana resmi Jawa",
+    "image": "/img/cultures/beskap.jpg",
+    "tags": [
+      "Resmi",
+      "Laki-laki",
+      "Keraton"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-bakpia",
+    "provinceId": "diy",
+    "category": "Kuliner",
+    "title": "Bakpia Pathok",
+    "description": "Bakpia Pathok adalah kuliner ikonik Yogyakarta berupa kue panggang bulat tipis berisi kacang hijau manis yang dipengaruhi budaya Tionghoa. Nama Pathok merujuk pada sebuah kampung di Yogyakarta tempat asal mula industri bakpia berkembang pesat.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Bakpia Pathok adalah bukti nyata asimilasi budaya Tionghoa dan Jawa di Yogyakarta, menghasilkan kudapan manis legendaris yang disukai wisatawan.",
+    "location": "Kampung Pathok, Yogyakarta",
+    "period": "Awal abad ke-20",
+    "image": "/img/cultures/bakpia.jpg",
+    "tags": [
+      "Kuliner",
+      "Kudapan",
+      "Asimilasi"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-perak",
+    "provinceId": "diy",
+    "category": "Kerajinan",
+    "title": "Kerajinan Perak Kotagede",
+    "coordinates": [
+      -7.828,
+      110.399
+    ],
+    "isLandmark": true,
+    "description": "Kotagede terkenal sebagai pusat kerajinan perak berkualitas tinggi sejak zaman Mataram Islam. Para pengrajin perak Kotagede memproduksi perhiasan, miniatur, dan peralatan rumah tangga dengan teknik ukir tempa tangan yang rumit dan sangat detail.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Perak Kotagede adalah mahakarya seni tempa logam Yogyakarta, diwariskan turun-temurun sejak ratusan tahun silam di ibukota lama Mataram.",
+    "location": "Kotagede, D.I. Yogyakarta",
+    "period": "Sejak abad ke-16",
+    "image": "/img/cultures/perak.jpg",
+    "tags": [
+      "Kerajinan",
+      "Perak",
+      "Kotagede"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-labuhan",
+    "provinceId": "diy",
+    "category": "Upacara Adat",
+    "title": "Upacara Labuhan",
+    "coordinates": [
+      -7.54,
+      110.44
+    ],
+    "isLandmark": true,
+    "description": "Labuhan merupakan upacara adat Keraton Yogyakarta yang dilakukan dengan menghanyutkan atau melarungkan berbagai sesaji ke tempat-tempat yang dianggap memiliki nilai penting, seperti Pantai Parangtritis dan kawasan Gunung Merapi. Tradisi ini mencerminkan rasa syukur serta penghormatan terhadap alam yang telah menjadi bagian dari kehidupan masyarakat Yogyakarta. Melalui Labuhan, masyarakat diajak untuk menjaga hubungan yang harmonis antara manusia, alam, dan Sang Pencipta. Nilai tersebut menjadi bagian penting dari pandangan hidup masyarakat Jawa yang menekankan keseimbangan dalam kehidupan. Labuhan biasanya dipimpin oleh pihak Keraton dan dilaksanakan pada waktu-waktu tertentu yang berkaitan dengan tradisi kerajaan. Keunikannya terletak pada perpaduan antara unsur budaya, spiritualitas, dan penghormatan terhadap alam yang masih dijaga hingga sekarang.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/upacara-adat-labuhan.mp3",
+    "narrator": "Labuhan merupakan upacara adat Keraton Yogyakarta dengan melarungkan sesaji ke tempat-tempat sakral, seperti Pantai Parangtritis dan Gunung Merapi. Tradisi ini mencerminkan rasa syukur serta penghormatan terhadap alam yang menjadi bagian penting kehidupan masyarakat. Labuhan mengajak kita menjaga hubungan harmonis dan seimbang antara manusia, alam semesta, dan Sang Pencipta.",
+    "location": "Pantai Parangtritis dan Gunung Merapi, D.I. Yogyakarta",
+    "period": "Waktu tertentu berkaitan dengan tradisi kerajaan",
+    "image": "/img/cultures/labuhan.jpg",
+    "tags": [
+      "Keraton",
+      "Sesaji",
+      "Alam"
+    ],
+    "video": "/video/di-yogyakarta/upacara-labuhan.mp4"
+  },
+  {
+    "id": "diy-bahasa-krama",
+    "provinceId": "diy",
+    "category": "Bahasa Daerah",
+    "title": "Bahasa Jawa Krama",
+    "description": "Bahasa Jawa Krama adalah tingkatan halus dalam bahasa Jawa yang digunakan untuk menghormati orang lain. Di Yogyakarta, penggunaan Krama Alus diajarkan sejak dini dan dipraktikkan secara aktif dalam kehidupan keluarga maupun lingkungan Keraton.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Bahasa Jawa Krama adalah wujud keluhuran budi pekerti masyarakat Yogyakarta dalam menghormati sesama melalui tutur kata yang santun.",
+    "location": "D.I. Yogyakarta",
+    "period": "Berkembang sejak masa kerajaan Hindu-Buddha",
+    "image": "/img/cultures/bahasa-jawa.jpg",
+    "tags": [
+      "Bahasa",
+      "Krama",
+      "Santun"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-kipo",
+    "provinceId": "diy",
+    "category": "Kuliner",
+    "title": "Kipo Kotagede",
+    "description": "Kipo adalah kue tradisional legendaris khas Kotagede berbahan dasar ketan dengan isian kelapa parut dan gula jawa (enten-enten), berwarna hijau alami dari daun suji. Nama kipo konon berasal dari pertanyaan warga 'iki opo' (ini apa).",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Kipo Kotagede adalah kudapan manis legendaris berwarna hijau pandan yang memiliki tekstur kenyal dan rasa gurih manis yang khas.",
+    "location": "Kotagede, D.I. Yogyakarta",
+    "period": "Telah ada sejak abad ke-16, masa Mataram Islam",
+    "image": "/img/cultures/kipo.jpg",
+    "tags": [
+      "Kuliner",
+      "Kue Basah",
+      "Kotagede"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-batik-kayu",
+    "provinceId": "diy",
+    "category": "Batik",
+    "title": "Batik Kayu Krebet",
+    "description": "Batik Kayu Krebet adalah kerajinan unik di Desa Wisata Krebet, Bantul, di mana motif batik klasik digambar di atas media kayu seperti topeng, patung, dan gantungan kunci. Kreasi ini memadukan keahlian memahat kayu dengan ketelitian membatik.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Batik Kayu Krebet adalah asimilasi seni rupa pahat kayu dan canting batik tulis, menjadi ikon ekonomi kreatif Bantul.",
+    "location": "Desa Wisata Krebet, Bantul, D.I. Yogyakarta",
+    "period": "Berkembang pesat sejak tahun 1970-an",
+    "image": "/img/cultures/batik-kayu.jpg",
+    "tags": [
+      "Kerajinan",
+      "Kayu",
+      "Batik"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-grebeg",
+    "provinceId": "diy",
+    "category": "Upacara Adat",
+    "title": "Upacara Grebeg",
+    "coordinates": [
+      -7.805,
+      110.364
+    ],
+    "isLandmark": false,
+    "description": "Grebeg merupakan salah satu upacara adat yang paling terkenal di Yogyakarta dan telah menjadi tradisi Keraton Yogyakarta selama berabad-abad. Upacara ini dilaksanakan pada hari-hari besar tertentu, seperti Idulfitri, Iduladha, dan peringatan kelahiran Nabi Muhammad SAW. Tradisi Grebeg menjadi simbol rasa syukur atas berbagai nikmat yang telah diberikan kepada masyarakat. Melalui upacara ini, Keraton menunjukkan kedekatannya dengan rakyat sekaligus mengingatkan pentingnya berbagi dan menjaga kebersamaan. Nilai gotong royong, rasa syukur, dan kepedulian sosial menjadi pesan utama yang diwariskan melalui tradisi ini. Ciri khas Grebeg adalah adanya gunungan yang terbuat dari berbagai hasil bumi, makanan, dan hasil pertanian yang disusun menyerupai gunung. Setelah didoakan, gunungan tersebut akan diperebutkan oleh masyarakat karena dipercaya membawa berkah, keselamatan, dan kemakmuran. Keunikan inilah yang menjadikan Grebeg selalu menarik perhatian masyarakat maupun wisatawan setiap tahunnya.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Grebeg merupakan tradisi Keraton Yogyakarta yang diselenggarakan pada hari-hari besar keagamaan sebagai wujud rasa syukur kepada Tuhan. Tradisi ini ditandai dengan arak-arakan gunungan berisi hasil bumi yang kemudian dibagikan kepada masyarakat. Banyak warga percaya bahwa bagian dari gunungan tersebut membawa berkah, sehingga Grebeg selalu dinantikan setiap tahunnya.",
+    "location": "Keraton Yogyakarta, D.I. Yogyakarta",
+    "period": "Tahunan, pada Idulfitri, Iduladha, dan Maulid Nabi",
+    "image": "/img/cultures/grebeg.jpg",
+    "tags": [
+      "Gunungan",
+      "Keraton",
+      "Syukur"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-sekaten",
+    "provinceId": "diy",
+    "category": "Upacara Adat",
+    "title": "Upacara Sekaten",
+    "coordinates": [
+      -7.803,
+      110.364
+    ],
+    "isLandmark": false,
+    "description": "Sekaten merupakan tradisi budaya yang diselenggarakan untuk memperingati kelahiran Nabi Muhammad SAW. Tradisi ini telah berlangsung sejak masa Kerajaan Mataram dan hingga kini masih menjadi salah satu perayaan budaya terbesar di Yogyakarta. Pada masa lalu, Sekaten digunakan sebagai sarana penyebaran agama Islam melalui pendekatan budaya. Masyarakat diajak berkumpul untuk mendengarkan gamelan sekaten dan mengikuti berbagai kegiatan yang berlangsung di sekitar Keraton dan Masjid Gedhe Kauman. Tradisi ini menunjukkan bagaimana budaya dan nilai keagamaan dapat berjalan berdampingan dalam kehidupan masyarakat. Sekaten biasanya berlangsung selama beberapa hari dan diakhiri dengan pelaksanaan Grebeg Maulud. Keunikannya terletak pada penggunaan gamelan pusaka Keraton yang hanya dimainkan pada waktu tertentu serta kemampuannya menyatukan unsur budaya, sejarah, dan keagamaan dalam satu perayaan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Sekaten adalah tradisi budaya Yogyakarta yang diselenggarakan untuk memperingati kelahiran Nabi Muhammad SAW. Tradisi ini telah berlangsung sejak masa Kerajaan Mataram dan dahulu digunakan sebagai sarana penyebaran agama Islam melalui pendekatan budaya. Alunan gamelan pusaka Keraton menjadi ciri khas yang membuat Sekaten selalu menarik perhatian masyarakat dan wisatawan.",
+    "location": "Keraton Yogyakarta dan Masjid Gedhe Kauman, D.I. Yogyakarta",
+    "period": "Tahunan, menjelang Maulid Nabi Muhammad SAW",
+    "image": "/img/cultures/sekaten.jpg",
+    "tags": [
+      "Maulid",
+      "Gamelan",
+      "Keraton"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-mubeng-beteng",
+    "provinceId": "diy",
+    "category": "Upacara Adat",
+    "title": "Upacara Mubeng Beteng",
+    "coordinates": [
+      -7.809,
+      110.364
+    ],
+    "isLandmark": false,
+    "description": "Mubeng Beteng merupakan tradisi berjalan kaki mengelilingi benteng Keraton Yogyakarta pada malam hari, khususnya menjelang Tahun Baru Jawa atau malam 1 Suro. Tradisi ini telah dilakukan secara turun-temurun dan masih diikuti oleh banyak masyarakat hingga saat ini. Bagi masyarakat Jawa, Mubeng Beteng bukan sekadar berjalan kaki, melainkan sarana untuk melakukan introspeksi diri dan merenungkan perjalanan hidup. Selama prosesi berlangsung, peserta biasanya berjalan dengan tenang tanpa banyak berbicara sebagai simbol pengendalian diri dan ketenangan batin. Tradisi ini mengajarkan pentingnya kesabaran, kedisiplinan, dan kemampuan memahami diri sendiri. Keunikannya terletak pada suasana yang hening dan khidmat, di mana ribuan orang berjalan bersama dalam ketenangan untuk menyambut lembaran kehidupan yang baru.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/upacara-adat-mubeng-beteng.mp3",
+    "narrator": "Mubeng Beteng adalah tradisi berjalan kaki mengelilingi benteng Keraton Yogyakarta pada malam 1 Suro. Dalam prosesi ini, peserta berjalan dengan hening tanpa banyak berbicara sebagai bentuk introspeksi diri dan pengendalian batin. Tradisi turun-temurun ini mengajarkan kesabaran, ketenangan, dan refleksi dalam menyambut tahun baru Jawa.",
+    "location": "Benteng Keraton Yogyakarta, D.I. Yogyakarta",
+    "period": "Tahunan, malam 1 Suro (Tahun Baru Jawa)",
+    "image": "/img/cultures/mubeng-beteng.jpg",
+    "tags": [
+      "1 Suro",
+      "Introspeksi",
+      "Keraton"
+    ],
+    "video": "/video/di-yogyakarta/upacara-mubeng-beteng.mp4"
+  },
+  {
+    "id": "diy-batik-yogyakarta",
+    "provinceId": "diy",
+    "category": "Kerajinan",
+    "title": "Batik Yogyakarta",
+    "coordinates": [
+      -7.801,
+      110.364
+    ],
+    "isLandmark": false,
+    "description": "Batik Yogyakarta merupakan salah satu warisan budaya yang telah berkembang sejak masa Keraton Yogyakarta dan menjadi identitas penting masyarakat setempat. Kain batik dibuat melalui proses menggambar motif menggunakan malam atau lilin panas pada kain, kemudian diberi warna melalui beberapa tahapan yang membutuhkan ketelitian dan kesabaran. Bagi masyarakat Yogyakarta, batik bukan sekadar kain atau pakaian. Setiap motif memiliki makna dan pesan tersendiri yang mencerminkan nilai kehidupan, harapan, serta pandangan masyarakat Jawa. Beberapa motif bahkan dahulu hanya boleh digunakan oleh keluarga kerajaan sebagai simbol kedudukan dan kehormatan. Batik digunakan dalam berbagai acara adat, kegiatan resmi, hingga kehidupan sehari-hari. Keunikan Batik Yogyakarta terletak pada motifnya yang khas dengan dominasi warna-warna klasik seperti hitam, putih, dan cokelat sogan. Selain itu, setiap goresan pada kain mencerminkan kesabaran, ketelitian, dan kecintaan terhadap budaya yang diwariskan dari generasi ke generasi.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/kerajinan-batik-yogya.mp3",
+    "narrator": "Batik Yogyakarta merupakan warisan budaya yang telah berkembang sejak masa Keraton Yogyakarta. Bagi masyarakat Jawa, batik bukan sekadar kain, melainkan simbol nilai kehidupan, harapan, dan identitas budaya. Keunikan batik ini terletak pada motif khas dengan dominasi warna klasik seperti hitam, putih, dan cokelat sogan yang diwariskan secara turun-temurun.",
+    "location": "D.I. Yogyakarta",
+    "period": "Berkembang sejak masa Keraton Yogyakarta hingga sekarang",
+    "image": "/img/cultures/batik-yogyakarta.jpg",
+    "tags": [
+      "Batik",
+      "Keraton",
+      "Warisan Budaya"
+    ],
+    "video": "/video/di-yogyakarta/batik-yogyakarta.mp4"
+  },
+  {
+    "id": "diy-perak-kotagede",
+    "provinceId": "diy",
+    "category": "Kerajinan",
+    "title": "Kerajinan Perak Kotagede",
+    "coordinates": [
+      -7.828,
+      110.401
+    ],
+    "isLandmark": true,
+    "description": "Kerajinan Perak Kotagede merupakan salah satu kerajinan terkenal yang berasal dari kawasan Kotagede, Yogyakarta. Tradisi membuat perhiasan dan berbagai benda dari perak telah berkembang sejak masa Kerajaan Mataram dan terus bertahan hingga saat ini. Kerajinan ini menunjukkan keterampilan tinggi para pengrajin dalam mengolah logam menjadi karya seni yang bernilai. Melalui detail-detail yang rumit dan pengerjaan yang teliti, masyarakat Yogyakarta mewariskan nilai ketekunan, kreativitas, dan dedikasi dalam berkarya. Produk yang dihasilkan sangat beragam, mulai dari cincin, gelang, kalung, miniatur, hingga dekorasi rumah. Keunikan Kerajinan Perak Kotagede terletak pada detail ukiran yang halus dan teknik pengerjaan tradisional yang masih dipertahankan oleh banyak pengrajin hingga sekarang.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Kerajinan Perak Kotagede merupakan warisan seni yang telah berkembang sejak masa Kerajaan Mataram. Para pengrajin mengolah logam perak menjadi berbagai karya seni dengan detail ukiran yang halus dan rumit. Hingga kini, teknik pengerjaan tradisional masih dipertahankan sebagai bentuk pelestarian budaya dan keterampilan masyarakat Yogyakarta.",
+    "location": "Kotagede, D.I. Yogyakarta",
+    "period": "Berkembang sejak masa Kerajaan Mataram",
+    "image": "/img/cultures/perak-kotagede.jpg",
+    "tags": [
+      "Perak",
+      "Kotagede",
+      "Kerajinan Tradisional"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-gerabah-kasongan",
+    "provinceId": "diy",
+    "category": "Kerajinan",
+    "title": "Gerabah Kasongan",
+    "coordinates": [
+      -7.846,
+      110.329
+    ],
+    "isLandmark": true,
+    "description": "Gerabah Kasongan merupakan kerajinan tradisional yang berasal dari Desa Kasongan, Kabupaten Bantul, Yogyakarta. Kerajinan ini dibuat dari tanah liat yang dibentuk, dikeringkan, lalu dibakar hingga menjadi berbagai produk yang memiliki nilai guna dan nilai seni. Keberadaan Gerabah Kasongan menunjukkan bagaimana masyarakat mampu memanfaatkan sumber daya alam di sekitarnya menjadi karya yang bernilai ekonomi dan budaya. Tradisi ini juga mencerminkan kreativitas serta kemampuan masyarakat dalam beradaptasi dengan lingkungan tempat mereka tinggal. Produk gerabah yang dihasilkan sangat beragam, mulai dari vas bunga, guci, patung, hingga perlengkapan rumah tangga. Keunikan Gerabah Kasongan terletak pada bentuknya yang artistik, proses pembuatannya yang masih banyak dilakukan secara tradisional, serta kemampuannya berkembang menjadi salah satu ikon kerajinan Yogyakarta yang dikenal hingga mancanegara.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/kerajinan-gerabah-kasongan.mp3",
+    "narrator": "Gerabah Kasongan merupakan kerajinan tradisional khas Yogyakarta yang dibuat dari tanah liat. Melalui kreativitas dan keterampilan yang diwariskan secara turun-temurun, masyarakat Kasongan menghasilkan berbagai karya seni seperti guci, vas, dan patung. Keunikan gerabah ini terletak pada bentuknya yang artistik dan proses pembuatannya yang masih mempertahankan teknik tradisional.",
+    "location": "Desa Kasongan, Bantul, D.I. Yogyakarta",
+    "period": "Dilestarikan secara turun-temurun hingga sekarang",
+    "image": "/img/cultures/gerabah-kasongan.jpg",
+    "tags": [
+      "Gerabah",
+      "Kasongan",
+      "Tanah Liat"
+    ],
+    "video": "/video/di-yogyakarta/gerabah-kasongan.mp4"
+  },
+  {
+    "id": "diy-roro-jonggrang",
+    "provinceId": "diy",
+    "category": "Cerita Rakyat",
+    "title": "Legenda Roro Jonggrang",
+    "coordinates": [
+      -7.752,
+      110.491
+    ],
+    "isLandmark": true,
+    "description": "Legenda Roro Jonggrang merupakan cerita rakyat populer dari Yogyakarta yang mengisahkan asal-usul Candi Sewu dan patung dewi di Candi Prambanan. Kisah ini menceritakan Bandung Bondowoso yang ingin menikahi putri Roro Jonggrang setelah menaklukkan Kerajaan Prambanan. Untuk menolaknya secara halus, Roro Jonggrang meminta syarat pembangunan seribu candi dan dua sumur dalam waktu semalam. Bandung Bondowoso hampir berhasil dibantu pasukan jin, namun digagalkan oleh taktik cerdik Roro Jonggrang yang membuat suasana seolah hari telah pagi. Murka karena dikelabui, Bandung Bondowoso akhirnya mengutuk Roro Jonggrang menjadi patung batu penggenap candi keseribu.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/cerita-rakyat-legenda-roro-jonggrang.mp3",
+    "narrator": "Pada zaman dahulu terdapat dua buah kerajaan sama besar yang saling bertetangga, kerajaan Prambanan dan kerajaan Pengging. Kerajaan Prambanan dipimpin oleh Raja Boko yang memiliki putri sangat cantik bernama Roro Jonggrang. Sedangkan kerajaan Pengging dipimpin oleh raja Pengging yang terkenal sangat haus kekuasaan. Suatu ketika, Raja Pengging memerintahkan ksatria perkasa bernama Bandung Bondowoso untuk menyerang kerajaan Prambanan. Bandung Bondowoso berhasil menaklukan kerajaan tersebut dan membunuh Raja Boko. Setelah itu, Bandung Bondowoso yang tertarik pada kecantikan Roro Jonggrang memintanya untuk menjadi istrinya. Roro Jonggrang yang membenci pembunuh ayahnya mengajukan syarat yang hampir mustahil: membangun seribu candi serta dua buah sumur hanya dalam waktu satu malam. Bandung Bondowoso menyanggupinya dan mengerahkan ribuan pasukan jin. Saat malam hampir berakhir dan pembangunan tersisa satu patung lagi, Roro Jonggrang cemas lalu menyuruh dayang-dayangnya membakar jerami serta memukul lesung agar para jin mengira hari telah pagi. Pasukan jin pun lari berhamburan. Mengetahui dirinya dikelabui, Bandung Bondowoso yang terlanjur marah mengutuk Roro Jonggrang menjadi patung batu untuk melengkapi candi keseribu.",
+    "location": "Sleman, D.I. Yogyakarta",
+    "period": "Cerita rakyat turun-temurun",
+    "image": "/img/cultures/roro-jonggrang.jpg",
+    "tags": [
+      "Candi Prambanan",
+      "Bandung Bondowoso",
+      "Legenda"
+    ],
+    "video": "/video/di-yogyakarta/legenda-roro-jonggrang.mp4"
+  },
+  {
+    "id": "diy-kyai-ageng-mangir",
+    "provinceId": "diy",
+    "category": "Cerita Rakyat",
+    "title": "Kisah Kyai Ageng Mangir",
+    "coordinates": [
+      -7.892,
+      110.279
+    ],
+    "isLandmark": true,
+    "description": "Kisah Kyai Ageng Mangir menceritakan tentang perlawanan Mangir Wanabaya III (Kyai Ageng Mangir) terhadap kekuasaan Kerajaan Mataram Islam di Kotagede. Memiliki senjata sakti Tombak Baru Klinting, ia menjadi ancaman bagi Panembahan Senopati. Melalui siasat cerdik menggunakan Raden Ajeng Pembayun (putri Senopati) sebagai penyamar, Mangir terpikat dan menikahinya. Namun saat Mangir datang menghadap untuk sungkem di Keraton Mataram tanpa senjatanya, Panembahan Senopati langsung membunuhnya. Kisah ini berakhir tragis dengan dimakamkannya jasad Kyai Ageng Mangir setengah di dalam dan setengah di luar pagar makam raja-raja.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Pada masa kepemimpinan Panembahan Senapati, wilayah Mangir yang dipimpin oleh Mangir Wanabaya III merupakan wilayah bebas pajak yang memiliki kuasa penuh atas wilayahnya sendiri. Kyai Ageng Mangir dikenal sangat sakti dengan senjata Tombak Baru Klinting, membuat Panembahan Senopati tidak berani melawannya secara langsung. Melalui siasat Ki Juru Martani, diutuslah Raden Ajeng Pembayun, putri Panembahan Senapati, untuk menyamar dan mengamen di wilayah Mangir. Siasat ini berhasil memikat hati Ki Ageng Mangir hingga mereka menikah. Setelah menjadi istrinya, Pembayun akhirnya mengaku sebagai putri raja Mataram yang kabur. Untuk berdamai, mereka berdua sepakat menghadap Panembahan Senapati. Namun, setibanya di gerbang keraton, senjata sakti Kyai Ageng Mangir diminta untuk dititipkan. Saat Ki Ageng Mangir masuk menghadap tanpa senjata dan melakukan sungkem, Panembahan Senapati langsung memegang kepalanya dan membenturkannya ke batu gilang singgasana hingga wafat. Jasadnya dimakamkan di Kotagede secara unik, setengah di dalam pagar makam dan setengah di luar, sebagai simbol menantu sekaligus musuh Mataram.",
+    "location": "Bantul, D.I. Yogyakarta",
+    "period": "Era Mataram Islam, abad ke-16",
+    "image": "/img/cultures/kyai-ageng-mangir.jpg",
+    "tags": [
+      "Mataram Islam",
+      "Bantul",
+      "Sejarah"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-ratu-kidul",
+    "provinceId": "diy",
+    "category": "Cerita Rakyat",
+    "title": "Legenda Ratu Kidul",
+    "coordinates": [
+      -8.026,
+      110.33
+    ],
+    "isLandmark": true,
+    "description": "Legenda Ratu Kidul mengisahkan penguasa spiritual Laut Selatan Jawa yang memiliki hubungan erat dengan Keraton Yogyakarta. Cerita ini memiliki dua versi populer: kisah Ratna Suwida dari Pajajaran yang mengasingkan diri untuk bertapa di pantai selatan, serta kisah Dewi Kadita (Dewi Srengenge) yang dikutuk berpenyakit kulit oleh ibu tirinya lalu menceburkan diri ke Laut Selatan dan sembuh menjadi penguasa samudera. Mitos Ratu Kidul sangat dihormati oleh Keraton Yogyakarta melalui upacara adat Labuhan dan tarian Bedhaya Semang.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/cerita-rakyat-legenda-ratu-kidul.mp3",
+    "narrator": "Legenda Kanjeng Ratu Kidul atau Ratu Pantai Selatan memiliki beberapa versi cerita rakyat yang sangat populer. Versi pertama menceritakan tentang Ratna Suwida, seorang bibi dari pangeran Joko Suruh dari Pajajaran, yang mengasingkan diri untuk bertapa di bukit pantai selatan Jawa dan menjadi penguasa spiritual di sana. Ia berjanji akan membantu dan menikahi para keturunan pangeran yang berkuasa di dekat Gunung Merapi. Versi kedua mengisahkan tentang Dewi Kadita atau Dewi Srengenge, putri cantik Raja Munding Wangi dari Pajajaran. Karena sirik, ibu tirinya Dewi Mutiara menyuruh dukun mengutuk Kadita sehingga tubuhnya dipenuhi bisul busuk. Diusir dari istana, Kadita berjalan hingga ke Samudera Selatan. Saat menceburkan diri ke dalam air laut yang jernih, penyakitnya lenyap secara ajaib dan ia dinobatkan menjadi penguasa spiritual Laut Selatan. Dalam sejarah Keraton Yogyakarta, hubungan spiritual dengan Ratu Kidul diaktualisasikan melalui upacara Labuhan di Pantai Parangtritis serta pementasan tarian sakral Bedhaya untuk menghormati sang Ratu.",
+    "location": "Pantai Parangtritis, D.I. Yogyakarta",
+    "period": "Cerita rakyat turun-temurun",
+    "image": "/img/cultures/ratu-kidul.jpg",
+    "tags": [
+      "Laut Selatan",
+      "Parangtritis",
+      "Keraton"
+    ],
+    "video": "/video/di-yogyakarta/legenda-ratu-kidul.mp4"
+  },
+  {
+    "id": "diy-gunung-merapi",
+    "provinceId": "diy",
+    "category": "Cerita Rakyat",
+    "title": "Legenda Asal Usul Gunung Merapi",
+    "coordinates": [
+      -7.54,
+      110.44
+    ],
+    "isLandmark": true,
+    "description": "Legenda Asal Usul Gunung Merapi mengisahkan kepindahan Gunung Jamurdipa dari Laut Selatan ke tengah Pulau Jawa untuk menyeimbangkan letak pulau yang miring. Di lokasi pemindahan tersebut, tinggallah dua empu sakti pembuat keris, Empu Rama dan Empu Pamadi. Meski telah diperingatkan oleh utusan para dewa untuk pindah, kedua empu tetap menolak karena harus menyelesaikan keris pusaka mereka. Dewa Bayu akhirnya meniup Gunung Jamurdipa hingga terbang dan jatuh menindih perapian kedua empu tersebut. Perapian yang tertindih gunung berubah menjadi kawah aktif, yang kini dikenal sebagai Gunung Merapi.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Legenda Gunung Merapi bermula saat para dewa di Kahyangan berencana menyeimbangkan Pulau Jawa yang miring dengan memindahkan Gunung Jamurdipa dari Laut Selatan ke tengah pulau. Di lokasi pemindahan tersebut, terdapat dua empu sakti pembuat keris, yaitu Empu Rama dan Empu Pamadi. Utusan dewa, Batara Narada dan Dewa Penyarikan, datang membujuk mereka untuk pindah. Namun, kedua empu menolak karena membuat keris sakti tidak boleh berpindah tempat dan pekerjaan mereka belum selesai. Terjadilah perkelahian sengit yang dimenangkan oleh kedua empu tersebut. Melaporkan kegagalan ini, Batara Guru menjadi murka dan memerintahkan Dewa Bayu meniup Gunung Jamurdipa. Tiupan angin kencang menerbangkan gunung tersebut dan menjatuhkannya tepat di atas perapian kedua empu yang akhirnya tewas tertindih. Perapian tempat menempa keris berubah menjadi kawah aktif yang terus mengeluarkan api, dan gunung itu dinamai Gunung Merapi.",
+    "location": "Gunung Merapi, Sleman, D.I. Yogyakarta",
+    "period": "Legenda rakyat turun-temurun",
+    "image": "/img/cultures/gunung-merapi.jpg",
+    "tags": [
+      "Gunung Merapi",
+      "Empu Rama",
+      "Sleman"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-trah-keraton",
+    "provinceId": "diy",
+    "category": "Cerita Rakyat",
+    "title": "Asal-usul Trah Keraton Yogyakarta",
+    "coordinates": [
+      -7.805,
+      110.364
+    ],
+    "isLandmark": true,
+    "description": "Kisah asal-usul keluarga Keraton Yogyakarta sebagai penerus dinasti Mataram Islam pasca Perjanjian Giyanti 1755, melambangkan amanah kepemimpinan, keluhuran budi, serta penjaga budaya Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Masyarakat Yogyakarta mengenal keluarga Keraton Yogyakarta sebagai keturunan atau trah yang berasal dari Kerajaan Mataram Islam. Sejarahnya bermula ketika Kerajaan Mataram yang berpusat di Kartasura mengalami berbagai konflik politik dan perebutan kekuasaan pada abad ke-18. Perselisihan tersebut akhirnya diselesaikan melalui Perjanjian Giyanti pada tahun 1755 yang membagi Kerajaan Mataram menjadi dua kekuasaan, yaitu Kesultanan Yogyakarta dan Kasunanan Surakarta. Pangeran Mangkubumi, adik Susuhunan Pakubuwono II, kemudian dinobatkan sebagai Sultan Hamengkubuwono I dan mendirikan Kesultanan Yogyakarta. Sejak saat itulah lahir garis keturunan raja-raja Yogyakarta yang terus berlanjut hingga sekarang. Masyarakat Jawa mengenal keturunan keluarga keraton ini sebagai trah Mataram atau trah ningrat yang sering pula disebut sebagai 'darah biru'. Dalam tradisi masyarakat Jawa, keluarga Keraton Yogyakarta dipercaya tidak hanya mewarisi garis keturunan biologis para raja Mataram, tetapi juga mewarisi nilai-nilai kepemimpinan, kebijaksanaan, serta tanggung jawab untuk menjaga budaya Jawa. Oleh karena itu, setiap Sultan yang naik takhta diyakini menerima amanah untuk melestarikan adat istiadat, kesenian, dan tradisi keraton. Di tengah masyarakat Yogyakarta berkembang pula kepercayaan bahwa para Sultan memiliki hubungan spiritual dengan leluhur Mataram dan memperoleh wahyu keprabon, yaitu wahyu atau mandat ilahi yang menjadi tanda seseorang berhak memimpin kerajaan. Kepercayaan inilah yang membuat keberadaan Keraton Yogyakarta hingga kini masih sangat dihormati oleh masyarakat. Tradisi pewarisan takhta di Keraton Yogyakarta terus berlangsung secara turun-temurun dari Sultan Hamengkubuwono I hingga Sultan Hamengkubuwono X yang saat ini memimpin Kesultanan Yogyakarta. Keberlanjutan garis keturunan tersebut menjadikan Keraton Yogyakarta sebagai salah satu kerajaan tertua di Indonesia yang masih bertahan dan tetap menjalankan berbagai tradisi leluhur hingga sekarang.",
+    "location": "Keraton Yogyakarta, D.I. Yogyakarta",
+    "period": "Masa Perjanjian Giyanti (1755) hingga sekarang",
+    "image": "/img/cultures/keraton-yogyakarta.jpg",
+    "tags": [
+      "Asal-usul",
+      "Trah",
+      "Keraton Yogyakarta",
+      "Mataram Islam",
+      "Sejarah"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-tombak-kyai-plered",
+    "provinceId": "diy",
+    "category": "Senjata",
+    "title": "Tombak Kyai Plered",
+    "coordinates": [
+      -7.8,
+      110.37
+    ],
+    "isLandmark": true,
+    "description": "Tombak Kyai Plered merupakan salah satu senjata pusaka paling penting dan sakral milik Keraton Yogyakarta. Lebih dari sekadar senjata perang, tombak ini menjadi lambang kewibawaan, kepemimpinan, dan tanggung jawab pemimpin dalam melindungi rakyat. Dalam tradisi Kesultanan, pusaka ini melambangkan keberanian dan kebijaksanaan dalam memegang amanah.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/senjata-tombak-kyai-plered.mp3",
+    "narrator": "Tombak Kyai Plered merupakan salah satu pusaka penting yang dimiliki oleh Keraton Yogyakarta. Tombak ini tidak hanya dipandang sebagai senjata, tetapi juga sebagai simbol kewibawaan, kepemimpinan, dan tanggung jawab seorang pemimpin dalam melindungi rakyatnya. Dalam tradisi Keraton, pusaka seperti Tombak Kyai Plered memiliki makna yang mendalam karena menjadi bagian dari warisan sejarah Kesultanan Yogyakarta. Keberadaannya mengingatkan masyarakat akan pentingnya menjaga nilai keberanian, kebijaksanaan, dan rasa tanggung jawab dalam menjalankan amanah. Saat ini, Tombak Kyai Plered lebih sering ditampilkan dalam prosesi adat dan kirab budaya Keraton daripada digunakan sebagai senjata. Keunikannya terletak pada statusnya sebagai pusaka kerajaan yang memiliki nilai sejarah tinggi dan tetap dijaga sebagai bagian dari identitas budaya Yogyakarta.",
+    "location": "Keraton Yogyakarta, D.I. Yogyakarta",
+    "period": "Era Kesultanan Mataram, abad ke-16",
+    "image": "/img/cultures/kyai-plered.jpg",
+    "tags": [
+      "Pusaka",
+      "Tombak",
+      "Keraton"
+    ],
+    "video": "/video/di-yogyakarta/tombak-kyai-plered.mp4"
+  },
+  {
+    "id": "diy-wedhung",
+    "provinceId": "diy",
+    "category": "Senjata",
+    "title": "Wedhung",
+    "coordinates": [
+      -7.815,
+      110.362
+    ],
+    "isLandmark": true,
+    "description": "Wedhung adalah senjata tradisional khas Jawa berwujud pisau belati berbilah lebar dengan ujung meruncing. Senjata ini dahulu diselipkan di pinggang kaum laki-laki sebagai perlengkapan sehari-hari maupun pelengkap busana adat. Wedhung melambangkan kesiapsiagaan, kedewasaan, serta tanggung jawab dalam menghadapi rintangan hidup secara bijak tanpa kekerasan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Wedhung merupakan senjata tradisional khas Jawa yang berbentuk seperti pisau dengan bilah lurus dan ujung yang meruncing. Di Yogyakarta, wedhung dahulu digunakan sebagai perlengkapan sehari-hari oleh kaum laki-laki, baik untuk membantu pekerjaan maupun sebagai pelengkap busana adat. Selain memiliki fungsi praktis, wedhung juga mencerminkan sikap kesiapsiagaan dan tanggung jawab. Masyarakat Jawa memandang bahwa seseorang harus selalu siap menghadapi berbagai tantangan kehidupan dengan kebijaksanaan, bukan dengan kekerasan. Oleh karena itu, wedhung lebih dikenal sebagai simbol kedewasaan dan tanggung jawab daripada alat untuk berperang. Hingga kini, wedhung masih dapat dijumpai dalam berbagai acara adat dan koleksi budaya. Keunikannya terletak pada bentuknya yang sederhana namun elegan, serta perpaduan antara fungsi praktis dan nilai budaya yang tetap dipertahankan.",
+    "location": "D.I. Yogyakarta",
+    "period": "Masa Kerajaan Jawa Tradisional",
+    "image": "/img/cultures/wedhung.jpg",
+    "tags": [
+      "Belati",
+      "Kesiapsiagaan",
+      "Filosofis"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-patrem",
+    "provinceId": "diy",
+    "category": "Senjata",
+    "title": "Patrem",
+    "coordinates": [
+      -7.808,
+      110.365
+    ],
+    "isLandmark": true,
+    "description": "Patrem merupakan senjata tradisional sejenis keris berukuran kecil yang digunakan oleh perempuan Jawa sebagai pertahanan diri. Diselipkan dalam lipatan kain kemben atau busana adat, Patrem melambangkan kelembutan, kehormatan, serta kesabaran dan keteguhan hati perempuan dalam menjaga kehormatan diri.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Patrem merupakan senjata tradisional berukuran kecil yang bentuknya menyerupai keris. Senjata ini biasanya digunakan oleh perempuan sebagai pelengkap busana adat Jawa, khususnya dalam lingkungan Keraton Yogyakarta. Patrem melambangkan kelembutan, kehormatan, dan kemampuan menjaga diri. Kehadirannya menunjukkan bahwa keberanian tidak selalu diwujudkan melalui kekuatan fisik, tetapi juga melalui kebijaksanaan, kesabaran, dan keteguhan hati. Nilai tersebut menjadi bagian penting dari filosofi masyarakat Jawa yang mengutamakan keseimbangan dalam kehidupan. Saat ini, Patrem lebih sering digunakan sebagai pelengkap pakaian adat dalam upacara tradisional dan pertunjukan budaya. Keunikannya terletak pada ukurannya yang kecil, ukiran yang halus, serta perannya sebagai simbol keanggunan perempuan Jawa.",
+    "location": "D.I. Yogyakarta",
+    "period": "Masa Kesultanan Yogyakarta",
+    "image": "/img/cultures/patrem.jpg",
+    "tags": [
+      "Keris Kecil",
+      "Perempuan",
+      "Pertahanan Diri"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-rumah-joglo",
+    "provinceId": "diy",
+    "category": "Rumah Adat",
+    "title": "Rumah Joglo",
+    "coordinates": [
+      -7.82,
+      110.36
+    ],
+    "isLandmark": true,
+    "description": "Rumah Joglo merupakan rumah adat Yogyakarta beratap tajug menjulang tinggi yang dahulu dimiliki bangsawan. Ditopang empat tiang utama (saka guru) sebagai simbol nilai kejujuran, tanggung jawab, kebijaksanaan, dan kebersamaan. Struktur kayunya menggunakan sistem bongkar pasang tanpa banyak paku besi, melambangkan harmoni sosial dan alam.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Rumah Joglo merupakan rumah adat yang paling dikenal dari Daerah Istimewa Yogyakarta. Rumah ini memiliki atap yang menjulang tinggi di bagian tengah dan ditopang oleh empat tiang utama yang disebut saka guru. Dalam budaya Jawa, Rumah Joglo dahulu banyak dimiliki oleh kalangan bangsawan, keluarga keraton, atau tokoh masyarakat. Bagi masyarakat Yogyakarta, Rumah Joglo bukan sekadar tempat tinggal. Bentuk bangunannya mencerminkan keseimbangan antara manusia, sesama, alam, dan Tuhan. Empat saka guru menjadi simbol kokohnya kehidupan yang dibangun atas nilai kejujuran, tanggung jawab, kebijaksanaan, dan kebersamaan. Tata ruang rumah juga dirancang untuk mengajarkan pentingnya menghormati tamu, menjaga keharmonisan keluarga, serta menjalankan kehidupan dengan tertib. Selain sebagai tempat tinggal, Rumah Joglo sering digunakan untuk menerima tamu, mengadakan musyawarah, pertunjukan seni, hingga pelaksanaan upacara adat. Keunikannya terletak pada struktur atap yang megah tanpa menggunakan banyak paku, ukiran kayu yang indah, serta filosofi mendalam yang terdapat pada setiap bagian bangunannya.",
+    "location": "Yogyakarta, D.I. Yogyakarta",
+    "period": "Diwariskan secara turun-temurun",
+    "image": "/img/cultures/rumah-joglo.jpg",
+    "tags": [
+      "Arsitektur",
+      "Joglo",
+      "Saka Guru"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-bangsal-kencono",
+    "provinceId": "diy",
+    "category": "Rumah Adat",
+    "title": "Bangsal Kencono",
+    "coordinates": [
+      -7.806,
+      110.364
+    ],
+    "isLandmark": true,
+    "description": "Bangsal Kencono merupakan bangunan utama megah di Keraton Yogyakarta yang berfungsi untuk menyelenggarakan upacara adat dan menerima tamu kehormatan Kesultanan. Arsitekturnya yang berornamen emas melambangkan kewibawaan, kepemimpinan bijaksana, serta keagungan budaya Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/rumah-adat-bangsal-kencono.mp3",
+    "narrator": "Bangsal Kencono merupakan bangunan utama yang berada di lingkungan Keraton Yogyakarta. Berbeda dengan rumah tinggal biasa, bangunan ini berfungsi sebagai tempat penyelenggaraan upacara adat, penerimaan tamu kehormatan, dan berbagai kegiatan resmi Kesultanan Yogyakarta. Bangunan ini mencerminkan kewibawaan, kehormatan, dan kebesaran budaya Keraton. Setiap bagian arsitekturnya dirancang dengan penuh ketelitian sebagai simbol kepemimpinan yang bijaksana serta penghormatan terhadap adat istiadat yang telah diwariskan selama berabad-abad. Bangsal Kencono dikenal dengan arsitekturnya yang megah, dihiasi ukiran kayu berlapis warna emas dan ornamen khas Jawa yang bernilai seni tinggi. Keunikannya tidak hanya terletak pada keindahan bangunannya, tetapi juga pada fungsinya sebagai pusat berbagai kegiatan budaya dan simbol kejayaan Kesultanan Yogyakarta.",
+    "location": "Keraton Yogyakarta, D.I. Yogyakarta",
+    "period": "Era Kesultanan Yogyakarta, abad ke-18",
+    "image": "/img/cultures/bangsal-kencono.jpg",
+    "tags": [
+      "Keraton",
+      "Bangsal",
+      "Kemegahan"
+    ],
+    "video": "/video/di-yogyakarta/bangsal-kencono.mp4"
+  },
+  {
+    "id": "diy-rumah-limasan",
+    "provinceId": "diy",
+    "category": "Rumah Adat",
+    "title": "Rumah Limasan",
+    "coordinates": [
+      -7.85,
+      110.38
+    ],
+    "isLandmark": true,
+    "description": "Rumah Limasan adalah rumah tradisional Jawa beratap limas yang kokoh dan sangat adaptif terhadap iklim tropis. Desain atapnya yang bercabang empat melambangkan kesederhanaan, keseimbangan, serta kebersamaan erat antar anggota keluarga dalam menjalani kehidupan yang harmonis.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/rumah-adat-limasan.mp3",
+    "narrator": "Rumah Limasan merupakan salah satu rumah tradisional yang banyak dijumpai di Yogyakarta dan berbagai wilayah Jawa. Rumah ini memiliki bentuk atap yang sederhana namun kokoh, sehingga sesuai dengan kondisi iklim tropis di Indonesia. Rumah Limasan mencerminkan kehidupan masyarakat Jawa yang mengutamakan kesederhanaan, keseimbangan, dan kebersamaan. Tata ruangnya dibuat agar setiap anggota keluarga dapat berinteraksi dengan nyaman, sekaligus menunjukkan pentingnya menjaga hubungan yang harmonis dalam kehidupan sehari-hari. Selain digunakan sebagai tempat tinggal, Rumah Limasan juga sering menjadi tempat berkumpul keluarga dan melaksanakan kegiatan masyarakat. Keunikannya terletak pada konstruksi atap yang kuat, sirkulasi udara yang baik, serta desain yang mampu memberikan kenyamanan bagi penghuninya.",
+    "location": "Yogyakarta, D.I. Yogyakarta",
+    "period": "Tradisional Jawa",
+    "image": "/img/cultures/rumah-limasan.jpg",
+    "tags": [
+      "Limasan",
+      "Kesederhanaan",
+      "Tropis"
+    ],
+    "video": "/video/di-yogyakarta/rumah-limasan.mp4"
+  },
+  {
+    "id": "diy-rumah-kampung",
+    "provinceId": "diy",
+    "category": "Rumah Adat",
+    "title": "Rumah Kampung",
+    "coordinates": [
+      -7.83,
+      110.34
+    ],
+    "isLandmark": true,
+    "description": "Rumah Kampung merupakan hunian tradisional paling populer bagi masyarakat umum di Yogyakarta pada masa lampau. Rumah ini menggunakan atap pelana sederhana dengan bahan kayu dan bambu alami, melambangkan kehidupan yang harmonis, rukun, dan saling menghormati dalam kesederhanaan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Rumah Kampung merupakan rumah tradisional yang paling banyak digunakan oleh masyarakat Yogyakarta pada masa lalu. Dibandingkan dengan Joglo atau Limasan, bentuk Rumah Kampung lebih sederhana, namun tetap mencerminkan nilai-nilai budaya masyarakat Jawa. Rumah ini menunjukkan bahwa kesederhanaan bukanlah penghalang untuk menciptakan kehidupan yang harmonis. Masyarakat Jawa percaya bahwa kebahagiaan keluarga dibangun melalui kebersamaan, saling menghormati, dan kerja sama, bukan melalui kemewahan bangunan. Rumah Kampung berfungsi sebagai tempat tinggal keluarga sekaligus tempat melakukan berbagai aktivitas sehari-hari. Keunikannya terletak pada desain yang sederhana, penggunaan bahan-bahan alami seperti kayu dan bambu, serta kemampuannya beradaptasi dengan lingkungan dan iklim Yogyakarta.",
+    "location": "Yogyakarta, D.I. Yogyakarta",
+    "period": "Tradisional Rakyat Jawa",
+    "image": "/img/cultures/rumah-kampung.jpg",
+    "tags": [
+      "Rakyat",
+      "Pelana",
+      "Bambu"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-ketoprak",
+    "provinceId": "diy",
+    "category": "Wayang",
+    "title": "Ketoprak Yogyakarta",
+    "description": "Ketoprak adalah seni pentas drama tradisional Jawa yang menceritakan kisah legenda, sejarah, maupun dongeng rakyat dengan dialog bahasa Jawa. Dipentaskan dengan iringan gamelan Jawa lengkap dan diselingi banyolan komedi yang menghibur.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Ketoprak Yogyakarta adalah teater rakyat Jawa yang sarat dengan ajaran budi pekerti, sejarah Mataram, dan humor yang segar.",
+    "location": "D.I. Yogyakarta",
+    "period": "Mulai berkembang pesat sejak awal abad ke-20",
+    "image": "/img/cultures/ketoprak.jpg",
+    "tags": [
+      "Seni Pertunjukan",
+      "Drama",
+      "Ketoprak"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-benteng-vredeburg",
+    "provinceId": "diy",
+    "category": "Bangunan Bersejarah",
+    "title": "Benteng Vredeburg",
+    "coordinates": [
+      -7.8,
+      110.366
+    ],
+    "isLandmark": true,
+    "description": "Benteng Vredeburg merupakan benteng kolonial Belanda bergaya Eropa abad ke-18 yang terletak tepat di depan Keraton Yogyakarta. Dahulu difungsikan sebagai markas militer Belanda untuk mengawasi aktivitas Kesultanan, benteng bersejarah ini kini dilestarikan sebagai museum perjuangan nasional.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/bangunan-bersejarah-benteng-vredeburg.mp3",
+    "narrator": "Benteng Vredeburg merupakan salah satu bangunan bersejarah yang berada di pusat Kota Yogyakarta, tepat di depan kawasan Keraton Yogyakarta. Benteng ini dibangun pada masa pemerintahan kolonial Belanda pada abad ke-18 dan awalnya berfungsi sebagai benteng pertahanan sekaligus pusat pengawasan terhadap aktivitas Keraton Yogyakarta. Seiring perjalanan waktu, Benteng Vredeburg menjadi saksi berbagai peristiwa penting dalam sejarah Indonesia, mulai dari masa kolonial, perjuangan kemerdekaan, hingga perkembangan Yogyakarta sebagai salah satu pusat budaya dan pendidikan. Keberadaan benteng ini mengingatkan masyarakat akan pentingnya menghargai perjuangan para pahlawan serta menjaga persatuan dalam menghadapi berbagai tantangan. Saat ini, Benteng Vredeburg berfungsi sebagai museum yang menyimpan diorama, koleksi sejarah, dan berbagai informasi mengenai perjalanan bangsa Indonesia. Keunikannya terletak pada arsitektur bergaya Eropa yang masih terawat dengan baik, serta kemampuannya menggabungkan nilai sejarah, pendidikan, dan pariwisata dalam satu kawasan.",
+    "location": "Kota Yogyakarta, D.I. Yogyakarta",
+    "period": "Abad ke-18",
+    "image": "/img/cultures/benteng-vredeburg.jpg",
+    "tags": [
+      "Benteng",
+      "Museum",
+      "Kolonial Belanda",
+      "Perjuangan"
+    ],
+    "video": "/video/di-yogyakarta/benteng-vredeburg.mp4"
+  },
+  {
+    "id": "diy-keraton-yogyakarta",
+    "provinceId": "diy",
+    "category": "Bangunan Bersejarah",
+    "title": "Keraton Yogyakarta",
+    "coordinates": [
+      -7.805,
+      110.364
+    ],
+    "isLandmark": true,
+    "description": "Keraton Yogyakarta (Istana Ngayogyakarta Hadiningrat) merupakan istana resmi Kesultanan Yogyakarta yang didirikan pada tahun 1755 oleh Sri Sultan Hamengku Buwono I. Sebagai jantung budaya Jawa, keraton ini tetap menjadi tempat tinggal sultan dan pusat pelestarian berbagai tradisi adat Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Keraton Yogyakarta merupakan istana resmi Kesultanan Yogyakarta yang didirikan pada tahun 1755 oleh Sri Sultan Hamengku Buwono I. Hingga saat ini, Keraton masih menjadi tempat tinggal Sultan Yogyakarta sekaligus pusat pelestarian budaya Jawa. Bagi masyarakat Yogyakarta, Keraton bukan hanya tempat tinggal keluarga kerajaan, tetapi juga pusat berkembangnya berbagai tradisi, seni, sastra, tari, musik gamelan, hingga upacara adat yang masih dilestarikan. Keberadaan Keraton mencerminkan pentingnya menjaga warisan budaya, menghormati leluhur, serta mempertahankan identitas daerah di tengah perkembangan zaman. Selain menjadi pusat kebudayaan, Keraton juga terbuka bagi masyarakat dan wisatawan yang ingin mengenal sejarah Kesultanan Yogyakarta. Keunikannya terletak pada arsitektur khas Jawa, koleksi benda-benda pusaka, serta berbagai tradisi yang masih dijalankan secara turun-temurun hingga sekarang.",
+    "location": "Kota Yogyakarta, D.I. Yogyakarta",
+    "period": "Tahun 1755",
+    "image": "/img/cultures/keraton-yogyakarta.jpg",
+    "tags": [
+      "Keraton",
+      "Kesultanan",
+      "Istana",
+      "Pusaka"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-taman-sari",
+    "provinceId": "diy",
+    "category": "Bangunan Bersejarah",
+    "title": "Taman Sari",
+    "coordinates": [
+      -7.81,
+      110.359
+    ],
+    "isLandmark": true,
+    "description": "Taman Sari merupakan kompleks bekas taman pemandian istana kerajaan yang dibangun abad ke-18 oleh Sri Sultan Hamengku Buwono I. Berfungsi sebagai tempat peristirahatan, meditasi, dan pertahanan, situs bersejarah ini memadukan estetika arsitektur Jawa dan Eropa dengan jaringan lorong bawah tanah.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Taman Sari merupakan kompleks bersejarah yang dibangun pada masa pemerintahan Sri Sultan Hamengku Buwono I sebagai taman kerajaan sekaligus tempat peristirahatan keluarga Keraton Yogyakarta. Dahulu, kawasan ini juga digunakan sebagai tempat meditasi, pertahanan, serta memiliki jaringan lorong bawah tanah yang menghubungkan beberapa bagian kompleks. Taman Sari mencerminkan kecerdasan arsitektur masyarakat pada masa lalu yang mampu memadukan fungsi, keindahan, dan nilai budaya dalam satu bangunan. Keberadaannya menunjukkan bahwa lingkungan kerajaan tidak hanya dibangun untuk kebutuhan pemerintahan, tetapi juga memperhatikan keseimbangan antara manusia, alam, dan seni. Saat ini, Taman Sari menjadi salah satu destinasi wisata budaya yang paling terkenal di Yogyakarta. Keunikannya terletak pada kolam pemandian kerajaan, lorong bawah tanah, perpaduan arsitektur Jawa dan Eropa, serta suasana bersejarah yang masih dapat dirasakan hingga sekarang.",
+    "location": "Kota Yogyakarta, D.I. Yogyakarta",
+    "period": "Pertengahan abad ke-18",
+    "image": "/img/cultures/taman-sari.jpg",
+    "tags": [
+      "Pemandian Istana",
+      "Taman Air",
+      "Lorong Bawah Tanah"
+    ],
+    "video": null
+  },
+  {
+    "id": "diy-tugu-yogyakarta",
+    "provinceId": "diy",
+    "category": "Bangunan Bersejarah",
+    "title": "Tugu Yogyakarta",
+    "coordinates": [
+      -7.783,
+      110.367
+    ],
+    "isLandmark": true,
+    "description": "Tugu Yogyakarta (Tugu Golong Gilig) merupakan monumen ikonik kota yang dibangun oleh Sri Sultan Hamengku Buwono I. Menjadi poros filosofis penting antara Gunung Merapi, Keraton, dan Laut Selatan, tugu ini melambangkan semangat persatuan raja, rakyat, dan Sang Pencipta.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/diy/bangunan-bersejarah-tugu-yogya.mp3",
+    "narrator": "Tugu Yogyakarta merupakan salah satu ikon paling terkenal di Daerah Istimewa Yogyakarta. Tugu ini pertama kali dibangun pada masa Sri Sultan Hamengku Buwono I sebagai simbol persatuan antara raja, rakyat, dan Sang Pencipta. Bagi masyarakat Yogyakarta, Tugu Yogyakarta memiliki makna yang lebih dari sekadar monumen. Tugu ini melambangkan semangat persatuan, keseimbangan hidup, dan hubungan yang harmonis antara manusia dengan Tuhan serta alam sekitarnya. Filosofi tersebut menjadi bagian penting dari budaya masyarakat Jawa yang menjunjung tinggi keharmonisan dalam kehidupan. Hingga kini, Tugu Yogyakarta menjadi simbol kota sekaligus salah satu tujuan wisata yang paling banyak dikunjungi. Keunikannya terletak pada nilai filosofis yang melekat pada keberadaannya, posisinya yang berada di garis imajiner antara Gunung Merapi, Keraton Yogyakarta, dan Laut Selatan, serta perannya sebagai ikon budaya yang dikenal hingga mancanegara.",
+    "location": "Kota Yogyakarta, D.I. Yogyakarta",
+    "period": "Tahun 1755",
+    "image": "/img/cultures/tugu.jpg",
+    "tags": [
+      "Tugu",
+      "Monumen",
+      "Garis Imajiner",
+      "Ikon"
+    ],
+    "video": "/video/di-yogyakarta/tugu-yogyakarta.mp4"
+  }
+]

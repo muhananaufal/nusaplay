@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { usePlay } from '@/contexts/Play';
 import { UNLOCKED_PROVINCES } from '@/data/provinces';
-import tts from '@/utils/tts';
 import { useIsMobile } from '@/utils/useIsMobile';
 
 // Pure CSS animated Hamburger and Close (X) icon — works in all browsers with 0 FPS overhead
@@ -164,7 +163,6 @@ export const NavigationMenu = () => {
     if (phase === PHASES.LIST) {
       goTo(PHASES.PROVINCE);
     } else if (phase === PHASES.DETAIL) {
-      tts.stop();
       goTo(PHASES.LIST);
     } else if (phase === PHASES.QUIZ) {
       if (quizProvince) {

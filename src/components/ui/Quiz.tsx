@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getQuizByProvince } from '@/data/quizzes';
+import { fetchQuizByProvince } from '@/utils/fetchCultures';
 import { useAppFlow } from '@/contexts/AppFlow';
 import { usePlay } from '@/contexts/Play';
 import { UNLOCKED_PROVINCES } from '@/data/provinces';
@@ -220,6 +220,15 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
   const [shakeWrong, setShakeWrong] = useState(false);
   const [timerActive, setTimerActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [pool, setPool] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!quizProvince?.id) {
+      setPool([]);
+      return;
+    }
+    fetchQuizByProvince(quizProvince.id).then(setPool);
+  }, [quizProvince?.id]);
 
   // Reset search query when visible state changes or province is chosen
   useEffect(() => {
@@ -265,11 +274,7 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
   }, [visible, quizProvince]);
 
   const questions = useMemo(() => {
-    if (!quizProvince) return [];
-    
-    // 1. Get all questions for the province
-    const pool = getQuizByProvince(quizProvince.id);
-    if (pool.length === 0) return [];
+    if (!quizProvince || pool.length === 0) return [];
     
     // 2. Clone and shuffle the pool
     const shuffledPool = [...pool];

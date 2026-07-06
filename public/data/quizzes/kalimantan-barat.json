@@ -1,0 +1,122 @@
+[
+  {
+    "id": "kalbar-q1",
+    "question": "Alat musik petik tradisional suku Dayak yang kini telah mendunia adalah?",
+    "options": [
+      "Kecapi",
+      "Sasando",
+      "Sape",
+      "Sampek"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sape adalah alat musik petik khas Dayak yang terbuat dari kayu pilihan. Suaranya yang meditatif menggambarkan ketenangan hutan Kalimantan."
+  },
+  {
+    "id": "kalbar-q2",
+    "question": "Apa fungsi utama senjata Mandau bagi suku Dayak selain sebagai alat tempur?",
+    "options": [
+      "Alat masak",
+      "Simbol keberanian dan status sosial",
+      "Alat bertani",
+      "Mainan anak"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mandau adalah simbol keberanian, status sosial, dan hubungan spiritual dengan leluhur. Setiap Mandau dipercaya memiliki roh pelindung."
+  },
+  {
+    "id": "kalbar-q3",
+    "question": "Pesta Gawai suku Dayak dirayakan untuk memperingati apa?",
+    "options": [
+      "Kelahiran bayi",
+      "Pernikahan",
+      "Panen raya",
+      "Kemenangan perang"
+    ],
+    "correctIndex": 2,
+    "explanation": "Gawai adalah festival panen tahunan sebagai ungkapan syukur atas hasil bumi, dilengkapi tari-tarian, musik Sape, dan pesta kuliner khas Dayak."
+  },
+  {
+    "id": "kalbar-q4",
+    "question": "Rumah Panjang (Betang) suku Dayak dibangun di atas tiang setinggi berapa meter untuk menghindari banjir?",
+    "options": [
+      "1-2 meter",
+      "3-5 meter",
+      "8-10 meter",
+      "6-7 meter"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rumah Panjang dibangun di atas tiang setinggi 3-5 meter untuk perlindungan dari banjir dan ancaman musuh, serta dapat menampung puluhan keluarga."
+  },
+  {
+    "id": "kalbar-q5",
+    "question": "Kain tenun Dayak Iban yang bermotif kaya dan diyakini memiliki kekuatan magis disebut?",
+    "options": [
+      "Tenun Ulos",
+      "Tenun Songket",
+      "Kain Lurik",
+      "Pua Kumbu"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pua Kumbu adalah kain tenun Dayak Iban dengan motif geometris yang kaya makna. Setiap motif diyakini memiliki kekuatan magis pelindung."
+  },
+  {
+    "id": "kalbar-q6",
+    "question": "Upacara adat suku Dayak Kalbar untuk memanggil roh leluhur agar memberikan petunjuk atau menyembuhkan penyakit disebut?",
+    "options": [
+      "Belian",
+      "Nyobeng",
+      "Gawai Nyapit",
+      "Naik Dango"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ritual Belian atau Balian dilakukan oleh seorang dukun (Balian) yang merasuki roh leluhur untuk menyembuhkan penyakit atau mengusir nasib buruk."
+  },
+  {
+    "id": "kalbar-q7",
+    "question": "Kota di Kalimantan Barat yang dilalui garis khatulistiwa dan merayakan festival Titik Kulminasi Matahari dua kali setahun adalah?",
+    "options": [
+      "Singkawang",
+      "Pontianak",
+      "Ketapang",
+      "Sintang"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pontianak dikenal sebagai Kota Khatulistiwa karena dilalui garis lintang nol derajat. Tugu Khatulistiwa didirikan di sana untuk memperingati hal tersebut."
+  },
+  {
+    "id": "kalbar-q8",
+    "question": "Kota di Kalimantan Barat yang terkenal dengan perayaan Cap Go Meh meriah dan atraksi Tatung yang kebal senjata tajam adalah?",
+    "options": [
+      "Pontianak",
+      "Singkawang",
+      "Sambas",
+      "Mempawah"
+    ],
+    "correctIndex": 1,
+    "explanation": "Singkawang terkenal di Asia Tenggara karena perayaan Cap Go Meh-nya yang meriah, menampilkan ratusan Tatung (dukun yang dirasuki roh dewa sehingga kebal)."
+  },
+  {
+    "id": "kalbar-q9",
+    "question": "Tari perang tradisional khas Kalimantan Barat yang menggambarkan kepahlawanan pemuda Dayak menghadapi musuh adalah?",
+    "options": [
+      "Tari Monong",
+      "Tari Kancet Papatai",
+      "Tari Ajat Temuai Datai",
+      "Tari Pinggan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tari Kancet Papatai menggambarkan kemahiran pemuda Dayak dalam berperang menggunakan Mandau dan perisai (Talawang)."
+  },
+  {
+    "id": "kalbar-q10",
+    "question": "Bubur tradisional khas Kalimantan Barat yang menggunakan campuran kangkung, daun kesum, dan kacang goreng disebut?",
+    "options": [
+      "Bubur Pedas",
+      "Bubur Tinutuan",
+      "Bubur Menggala",
+      "Bubur Asem"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bubur Pedas (Bubur Paddas) adalah kuliner khas Sambas yang kaya akan sayuran seperti kangkung, daun pakis, daun kesum, dan taburan kacang goreng."
+  }
+]

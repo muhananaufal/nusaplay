@@ -1,0 +1,122 @@
+[
+  {
+    "id": "diy-q1",
+    "question": "Tari apa yang dianggap paling sakral di Keraton Yogyakarta dan hanya boleh dipentaskan dalam upacara resmi?",
+    "options": [
+      "Tari Srimpi",
+      "Tari Bedhaya Ketawang",
+      "Tari Gambyong",
+      "Tari Golek"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tari Bedhaya Ketawang adalah tarian paling sakral yang diyakini diciptakan oleh Sultan Agung bersama Kanjeng Ratu Kidul, dibawakan hanya oleh 9 penari wanita dalam upacara penobatan raja."
+  },
+  {
+    "id": "diy-q2",
+    "question": "Berapa jumlah penari dalam Tari Srimpi yang melambangkan empat elemen alam?",
+    "options": [
+      "Tiga penari",
+      "Lima penari",
+      "Empat penari",
+      "Dua penari"
+    ],
+    "correctIndex": 2,
+    "explanation": "Tari Srimpi dibawakan oleh tepat empat penari yang identik, melambangkan empat elemen alam: air, api, angin, dan tanah."
+  },
+  {
+    "id": "diy-q3",
+    "question": "Upacara Grebeg di Keraton Yogyakarta digelar berapa kali dalam setahun?",
+    "options": [
+      "Satu kali",
+      "Dua kali",
+      "Empat kali",
+      "Tiga kali"
+    ],
+    "correctIndex": 3,
+    "explanation": "Grebeg digelar tiga kali setahun: Grebeg Maulud (Maulid Nabi), Grebeg Syawal (Idul Fitri), dan Grebeg Besar (Idul Adha)."
+  },
+  {
+    "id": "diy-q4",
+    "question": "Motif batik mana yang HANYA boleh dipakai oleh keluarga Keraton Yogyakarta?",
+    "options": [
+      "Motif Kawung",
+      "Motif Parang Rusak Barong",
+      "Motif Truntum",
+      "Motif Sido Mukti"
+    ],
+    "correctIndex": 1,
+    "explanation": "Parang Rusak Barong adalah motif batik dengan ukuran terbesar yang khusus diperuntukkan bagi Sultan dan keluarga inti keraton."
+  },
+  {
+    "id": "diy-q5",
+    "question": "Apa bahan dasar pembuatan Gudeg, makanan khas Yogyakarta?",
+    "options": [
+      "Singkong muda",
+      "Pisang muda",
+      "Nangka muda",
+      "Pepaya muda"
+    ],
+    "correctIndex": 2,
+    "explanation": "Gudeg dibuat dari nangka muda yang dimasak berjam-jam dengan santan dan rempah-rempah hingga berwarna kecoklatan dan bercita rasa manis gurih."
+  },
+  {
+    "id": "diy-q6",
+    "question": "Bangunan bersejarah apa di Yogyakarta yang didirikan sebagai benteng pertahanan VOC dan kini menjadi museum?",
+    "options": [
+      "Benteng Vredeburg",
+      "Istana Negara Gedung Agung",
+      "Taman Sari",
+      "Panggung Krapyak"
+    ],
+    "correctIndex": 0,
+    "explanation": "Benteng Vredeburg dibangun oleh Belanda pada tahun 1765 untuk memata-matai kegiatan di Keraton Yogyakarta, kini difungsikan sebagai museum sejarah perjuangan."
+  },
+  {
+    "id": "diy-q7",
+    "question": "Kereta kencana milik Keraton Yogyakarta yang sangat bersejarah dan dimandikan (dijamasi) setiap bulan Suro adalah?",
+    "options": [
+      "Nyai Jimat",
+      "Kanjeng Kyai Garuda Yaksa",
+      "Kyai Jongwiyat",
+      "Kyai Premili"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kyai Nyai Jimat adalah kereta kencana tertua buatan Belanda yang digunakan oleh Sri Sultan Hamengkubuwono I. Setiap bulan Suro, kereta ini dijamasi."
+  },
+  {
+    "id": "diy-q8",
+    "question": "Taman air bersejarah di Yogyakarta yang dahulu berfungsi sebagai tempat pemandian putri-putri raja dan tempat peristirahatan Sultan adalah?",
+    "options": [
+      "Kotagede",
+      "Taman Sari",
+      "Kaliurang",
+      "Pura Pakualaman"
+    ],
+    "correctIndex": 1,
+    "explanation": "Taman Sari (Water Castle) adalah kompleks taman air bersejarah yang didirikan pada masa Sultan Hamengkubuwono I sebagai area rekreasi dan pertahanan."
+  },
+  {
+    "id": "diy-q9",
+    "question": "Upacara adat Labuhan yang dilarung ke Laut Selatan ditujukan untuk menghormati penguasa laut selatan, yaitu?",
+    "options": [
+      "Nyi Roro Kidul",
+      "Nyi Blorong",
+      "Dewi Lanjar",
+      "Ratu Pantai Utara"
+    ],
+    "correctIndex": 0,
+    "explanation": "Labuhan adalah ritual mempersembahkan sesaji di Pantai Parangkusumo untuk menghormati Kanjeng Ratu Kidul and memohon keselamatan bagi keraton serta rakyat Jogja."
+  },
+  {
+    "id": "diy-q10",
+    "question": "Wayang khas Yogyakarta yang menggunakan boneka kulit kerbau dan menceritakan epos Ramayana serta Mahabharata disebut?",
+    "options": [
+      "Wayang Golek",
+      "Wayang Beber",
+      "Wayang Kulit Purwa",
+      "Wayang Orang"
+    ],
+    "correctIndex": 2,
+    "explanation": "Wayang Kulit Purwa gaya Yogyakarta terkenal dengan detail tatahan dan sunggingan yang khas, dibawakan oleh dalang dengan iringan gamelan Jawa."
+  }
+]

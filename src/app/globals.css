@@ -5986,7 +5986,7 @@ html, body, #root {
   pointer-events: none;
   z-index: 3;
   mix-blend-mode: overlay;
-  background-image: url('/images/grain.png');
+  background-image: url('/images/grain.webp');
   background-repeat: repeat;
   background-size: 256px 256px;
 }

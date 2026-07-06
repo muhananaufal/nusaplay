@@ -1,0 +1,122 @@
+[
+  {
+    "id": "papua-q1",
+    "question": "Tari Yospan Papua merupakan gabungan dari dua tarian tradisional. Apa saja keduanya?",
+    "options": [
+      "Yosim dan Pancar",
+      "Wor dan Tumbu",
+      "Sajojo dan Kalwari",
+      "Suanggi dan Bakar"
+    ],
+    "correctIndex": 0,
+    "explanation": "Yospan adalah singkatan dari Yosim dan Pancar — dua tarian tradisional Papua yang digabungkan menjadi tarian pergaulan yang dinamis and energik."
+  },
+  {
+    "id": "papua-q2",
+    "question": "Alat musik drum tradisional Papua yang juga berfungsi sebagai media komunikasi antar kampung adalah?",
+    "options": [
+      "Kolintang",
+      "Tifa",
+      "Kendang",
+      "Gong"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tifa adalah drum tradisional Papua terbuat dari kayu berongga dengan kulit biawak. Selain instrumen musik, ia digunakan sebagai media komunikasi antar kampung."
+  },
+  {
+    "id": "papua-q3",
+    "question": "Noken Papua diakui oleh UNESCO sebagai warisan budaya yang membutuhkan perlindungan mendesak. Cara memakai Noken yang unik adalah?",
+    "options": [
+      "Di pinggang",
+      "Di tangan",
+      "Di kepala",
+      "Di punggung dengan sabuk"
+    ],
+    "correctIndex": 2,
+    "explanation": "Cara memakai Noken yang unik adalah digantungkan di kepala (kepala sebagai penopang), bukan di bahu seperti tas biasa."
+  },
+  {
+    "id": "papua-q4",
+    "question": "Upacara Bakar Batu dilakukan suku-suku Papua untuk tujuan apa?",
+    "options": [
+      "Ritual kematian",
+      "Memasak bersama dan memperkuat ikatan sosial",
+      "Memohon hujan",
+      "Menyambut tahun baru"
+    ],
+    "correctIndex": 1,
+    "explanation": "Bakar Batu adalah tradisi memasak dan makan bersama yang memperkuat ikatan sosial komunitas. Batu panas digunakan untuk memasak daging babi dan sayuran dalam lubang tanah."
+  },
+  {
+    "id": "papua-q5",
+    "question": "Menurut legenda Papua, Burung Cendrawasih dipercaya sebagai jelmaan dari?",
+    "options": [
+      "Putri raja yang dikutuk",
+      "Para bidadari dari surga",
+      "Pahlawan yang gugur",
+      "Dewa angin"
+    ],
+    "correctIndex": 1,
+    "explanation": "Legenda Papua menceritakan bahwa Burung Cendrawasih adalah jelmaan bidadari dari surga yang memilih tinggal di Papua karena terpesona keindahannya."
+  },
+  {
+    "id": "papua-q6",
+    "question": "Rumah adat khas suku Dani di pegunungan Papua yang berbentuk melingkar dengan atap jerami tebal menyerupai jamur disebut?",
+    "options": [
+      "Kariwari",
+      "Honai",
+      "Ruma Karapao",
+      "Lopo"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rumah Honai memiliki atap berbentuk kerucut dari jerami untuk menahan hawa dingin pegunungan Papua. Pintu sengaja dibuat kecil tanpa jendela agar suhu hangat bertahan."
+  },
+  {
+    "id": "papua-q7",
+    "question": "Tarian adat Papua yang ditarikan beramai-ramai dengan membentuk lingkaran sambil bernyanyi lagu riang untuk menyambut tamu kehormatan adalah?",
+    "options": [
+      "Tari Sajojo",
+      "Tari Yospan",
+      "Tari Musyoh",
+      "Tari Suanggi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tari Sajojo adalah tarian pergaulan Papua yang sangat populer untuk menyambut tamu, diiringi lagu Sajojo yang bercerita tentang gadis desa yang dicintai."
+  },
+  {
+    "id": "papua-q8",
+    "question": "Makanan pokok khas Papua yang terbuat dari olahan tepung sagu basah yang disiram air mendidih hingga lengket menyerupai lem disebut?",
+    "options": [
+      "Papeda",
+      "Sagu Lempeng",
+      "Nasi Jaha",
+      "Kapurung"
+    ],
+    "correctIndex": 0,
+    "explanation": "Papeda adalah makanan pokok tradisional Papua terbuat dari sagu. Rasanya hambar namun sangat lezat saat disantap hangat bersama kuah kuning ikan tongkol."
+  },
+  {
+    "id": "papua-q9",
+    "question": "Senjata tradisional Papua berbentuk busur dan panah biasanya menggunakan mata panah yang terbuat dari bahan alami apa?",
+    "options": [
+      "Batu kali yang ditatah",
+      "Tulang burung kasuari atau bambu ruyung",
+      "Gigi ikan hiu",
+      "Tembaga murni"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mata panah tradisional Papua sering menggunakan tulang kaki burung kasuari atau bambu ruyung yang diruncingkan, sangat tajam dan kuat untuk berburu."
+  },
+  {
+    "id": "papua-q10",
+    "question": "Lukisan kulit kayu yang sangat artistik dan terkenal berasal dari kawasan danau di Papua, yaitu danau?",
+    "options": [
+      "Danau Sentani",
+      "Danau Paniai",
+      "Danau Rombebai",
+      "Danau Tigi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Masyarakat di Danau Sentani terkenal dengan kerajinan melukis kulit kayu khombouw menggunakan zat pewarna alami dengan motif ikan, burung, dan geometris."
+  }
+]

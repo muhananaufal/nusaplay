@@ -1,24 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { Providers } from './providers';
 import { RootLayers } from "@/components/ui/RootLayers";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { NavigationMenu } from "@/components/ui/NavigationMenu";
 import { PageTransitionOverlay } from "@/components/ui/PageTransitionOverlay";
 import { MascotAssistant } from "@/components/ui/MascotAssistant";
 import { JourneySpotlight } from "@/components/ui/JourneySpotlight";
 // Client-component wrapper that lazy-loads NewStampCelebration with ssr:false
 import { NewStampCelebrationLoader } from "@/components/ui/NewStampCelebrationLoader";
+import { CustomCursorLoader } from "@/components/ui/CustomCursorLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -64,19 +58,13 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} h-full antialiased`}
     >
       <head>
         {/* ── Preconnect to third-party origins used at runtime ───────────── */}
-        {/* YouTube embeds (SplashOverlay, CultureList, CultureDetail, Experience) */}
-        <link rel="preconnect" href="https://www.youtube.com" />
-        <link rel="preconnect" href="https://img.youtube.com" />
-        <link rel="preconnect" href="https://i.ytimg.com" />
         {/* Leaflet map tiles (MapView) */}
         <link rel="preconnect" href="https://basemaps.cartocdn.com" />
         {/* DNS-prefetch as fallback for older browsers */}
-        <link rel="dns-prefetch" href="https://www.youtube.com" />
-        <link rel="dns-prefetch" href="https://img.youtube.com" />
         <link rel="dns-prefetch" href="https://basemaps.cartocdn.com" />
         {/* Prefetch self-hosted Leaflet ONLY after user starts journey (handled in RootLayers) */}
         {/* Prefetch hints removed — they caused double-downloads with the on-demand loaders */}
@@ -84,7 +72,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Providers>
           <RootLayers />
-          <CustomCursor />
+          <CustomCursorLoader />
           <JourneySpotlight />
           <NewStampCelebrationLoader />
           {children}

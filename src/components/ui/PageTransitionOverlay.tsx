@@ -1,11 +1,11 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAppFlow } from '@/contexts/AppFlow';
+import { useTransition } from '@/contexts/Transition';
 
 import { Mascot } from './Mascot';
 
 export const PageTransitionOverlay = () => {
-  const { isTransitioning, transitionProgress } = useAppFlow();
+  const { isTransitioning, transitionProgress } = useTransition();
 
   return (
     <AnimatePresence>

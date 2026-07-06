@@ -1,0 +1,745 @@
+[
+  {
+    "id": "papua-tari-yospan",
+    "provinceId": "papua",
+    "category": "Tarian",
+    "title": "Tari Yospan",
+    "coordinates": [
+      -1,
+      136
+    ],
+    "isLandmark": true,
+    "description": "Tari Yospan adalah salah satu tarian adat Merauke, yang sering dipakai dalam kondisi tertentu. Yospan juga merupakan tarian persahabatan masyarakat Papua. Karena hampir seluruh masyarakat Papua mengenal tarian Yospan. Selain Yospan, Merauke juga memiliki beberapa tarian adat, antara lain, tari perang, dan tari gatsi. Tari perang biasanya dilakukan pada upacara- upacara adat tertentu, dan juga pada festival kota Merauke yang diadakan satu tahun sekali, dalam memperingati ulang tahun kota Merauke. Sedangkan tari gatsi dilakukan pada acara acara tertentu dan upacara adat tertentu, tarian ini adalah tarian adat suku asli kota Merauke, yaitu suku marind. Alat-alat musik yang digunakan untuk mengiringi tarian ini adalah tifa yang terbuat dari kayu yang dibolongi atau di kosongkan isinya, dan pada satu sisinya diberi penutup. Penutupnya terbuat dari kulit rusa dan juga kulit biawak yang dikeringi, agar bunyinya menjadi lebih indah.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/tari-yospan.mp3",
+    "narrator": "Ketika drum tifa mulai berdentum dan kaki-kaki mulai bergerak, semangat Papua mengalir bebas dalam Tari Yospan. Ini adalah tarian yang lahir dari jiwa muda Papua yang dinamis — memadukan tradisi leluhur dengan semangat zaman baru. Setiap langkah adalah ekspresi kebanggaan menjadi orang Papua.",
+    "location": "Seluruh Papua",
+    "period": "Abad ke-20, perpaduan tradisi dan modern",
+    "image": "/img/cultures/tari-yospan.jpg",
+    "tags": [
+      "Pergaulan",
+      "Modern",
+      "Energik"
+    ],
+    "video": "/video/papua/tari-yospan.mp4"
+  },
+  {
+    "id": "papua-tari-selamat-datang",
+    "provinceId": "papua",
+    "category": "Tarian",
+    "title": "Tari Selamat Datang",
+    "coordinates": [
+      -2.533,
+      140.717
+    ],
+    "isLandmark": true,
+    "description": "Tari Selamat Datang merupakan tarian tradisional khas masyarakat Papua yang digunakan sebagai bentuk penghormatan dan ungkapan kegembiraan dalam menyambut tamu. Tarian ini dikenal dengan gerakannya yang energik dan dinamis, serta penggunaan berbagai aksesoris khas seperti kalung, hiasan kepala dari kerang, gigi, dan tulang hewan. Tari Selamat Datang biasanya dibawakan oleh sekelompok penari pria yang mengenakan pakaian adat Papua lengkap dengan tameng dan tombak. Tarian ini diiringi oleh musik tradisional seperti tifa, gitar, ukulele, dan stem bass yang menambah semarak suasana penyambutan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/tari-selamat-datang.mp3",
+    "narrator": "Tari Selamat Datang merupakan tarian tradisional khas masyarakat Papua yang digunakan sebagai bentuk penghormatan dan ungkapan kegembiraan dalam menyambut tamu. Tarian ini dikenal dengan gerakannya yang energik dan dinamis, serta penggunaan berbagai aksesoris khas seperti kalung, hiasan kepala dari kerang, gigi, dan tulang hewan. Tari Selamat Datang biasanya dibawakan oleh sekelompok penari pria yang mengenakan pakaian adat Papua lengkap dengan tameng dan tombak. Tarian ini diiringi oleh musik tradisional seperti tifa, gitar, ukulele, dan stem bass yang menambah semarak suasana penyambutan.",
+    "location": "Papua Timur dan berbagai wilayah di Papua",
+    "period": "Tradisional, diwariskan secara turun-temurun",
+    "image": "/img/cultures/tari-selamat-datang.jpg",
+    "tags": [
+      "Penyambutan",
+      "Tradisional",
+      "Energik"
+    ],
+    "video": "/video/papua/tari-selamat-datang.mp4"
+  },
+  {
+    "id": "papua-tari-perang",
+    "provinceId": "papua",
+    "category": "Tarian",
+    "title": "Tari Perang",
+    "coordinates": [
+      -1.336,
+      133.174
+    ],
+    "isLandmark": true,
+    "description": "Tari Perang merupakan tarian tradisional khas Papua yang melambangkan keberanian, kepahlawanan, dan semangat juang masyarakat Papua. Dahulu, tarian ini dibawakan sebelum peperangan antar suku untuk membangkitkan semangat para prajurit. Seiring perkembangan zaman, Tari Perang kini lebih sering dipentaskan sebagai pertunjukan budaya dan tarian penyambutan tamu, sekaligus sebagai bentuk penghormatan kepada leluhur serta upaya pelestarian warisan budaya Papua.",
+    "youtubeId": "",
+    "narrator": "Dengan hentakan kaki, teriakan semangat, dan iringan tifa yang menggema, Tari Perang menggambarkan keberanian serta semangat juang masyarakat Papua. Kini, tarian ini tidak lagi digunakan untuk peperangan, melainkan sebagai simbol penghormatan kepada leluhur dan identitas budaya Papua.",
+    "location": "Papua dan Papua Barat",
+    "period": "Pra-sejarah hingga masa kini",
+    "image": "/img/cultures/tari-perang.jpg",
+    "tags": [
+      "Kepahlawanan",
+      "Tradisional",
+      "Ritual"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-sprado",
+    "provinceId": "papua",
+    "category": "Tarian",
+    "title": "Tari Sprado",
+    "coordinates": [
+      -2.548,
+      140.717
+    ],
+    "isLandmark": true,
+    "description": "Tarian Sprado merupakan tarian tradisional Papua yang menceritakan proses penobatan atau pengangkatan kepala suku. Tarian ini menggambarkan kehidupan masyarakat Papua yang menjunjung tinggi musyawarah dan ritual adat dalam memilih pemimpin baru. Melalui gerakan dan simbol-simbol adat, Sprado menjadi wujud penghormatan terhadap nilai kepemimpinan, persatuan, dan warisan leluhur masyarakat Papua.",
+    "youtubeId": "",
+    "narrator": "Sprado mengisahkan proses pengangkatan kepala suku dalam kehidupan masyarakat Papua. Melalui tarian ini, masyarakat mengekspresikan rasa hormat kepada pemimpin serta menjaga tradisi dan nilai-nilai adat yang diwariskan oleh leluhur.",
+    "location": "Papua",
+    "period": "Tradisional, diwariskan secara turun-temurun",
+    "image": "/img/cultures/sprado.jpg",
+    "tags": [
+      "Kepemimpinan",
+      "Upacara Adat",
+      "Tradisional"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-tifa",
+    "provinceId": "papua",
+    "category": "Musik",
+    "title": "Tifa Papua",
+    "coordinates": [
+      -2.5,
+      140.7
+    ],
+    "isLandmark": true,
+    "description": "Tifa adalah alat musik drum tradisional Papua dan Maluku yang terbuat dari kayu berongga dengan kulit biawak atau rusa sebagai membran. Ukurannya bervariasi dari kecil hingga sangat besar. Dalam budaya Papua, Tifa bukan hanya instrumen musik — ia adalah media komunikasi antar kampung dan sarana ritual adat yang sakral.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/alat-musik-tifa.mp3",
+    "narrator": "Dentuman Tifa terdengar jauh menembus hutan Papua, membawa pesan dari kampung ke kampung. Setiap ritme yang dipukul menceritakan sesuatu — perayaan kemenangan, peringatan bahaya, atau undangan pesta. Tifa adalah suara Papua yang paling murni dan paling kuat.",
+    "location": "Seluruh Papua",
+    "period": "Instrumen purba, pra-sejarah Papua",
+    "image": "/img/cultures/tifa.jpg",
+    "tags": [
+      "Drum",
+      "Ritual",
+      "Komunikasi"
+    ],
+    "video": "/video/papua/tifa-papua.mp4"
+  },
+  {
+    "id": "papua-triton",
+    "provinceId": "papua",
+    "category": "Musik",
+    "title": "Triton",
+    "coordinates": [
+      -2.5,
+      140.7
+    ],
+    "isLandmark": true,
+    "description": "Triton merupakan alat musik tradisional Papua yang terbuat dari kulit kerang laut dan dimainkan dengan cara ditiup. Alat musik ini banyak ditemukan di wilayah pesisir seperti Biak, Yapen, Waropen, Nabire, Wondama, hingga Raja Ampat. Pada awalnya, Triton digunakan sebagai sarana komunikasi, penanda peristiwa penting, atau alat pemanggil masyarakat. Seiring perkembangan zaman, Triton juga digunakan sebagai alat musik tradisional dan sarana hiburan.",
+    "youtubeId": "R9Kx58S34Xk",
+    "audio": "/music/papua/alat-musik-triton.mp3",
+    "narrator": "Triton adalah alat musik tiup khas Papua yang berasal dari kulit kerang laut. Dahulu, suaranya digunakan untuk memanggil masyarakat, memberi tanda, dan menyampaikan pesan antarkampung. Kini, Triton juga menjadi bagian penting dalam pertunjukan seni and pelestarian budaya Papua.",
+    "location": "Wilayah pesisir Papua, terutama Biak, Yapen, Waropen, Nabire, Wondama, dan Raja Ampat",
+    "period": "Tradisional, digunakan sejak masa lampau oleh masyarakat pesisir Papua",
+    "image": "/img/cultures/triton.jpg",
+    "tags": [
+      "Alat Musik Tiup",
+      "Kulit Kerang",
+      "Komunikasi"
+    ],
+    "video": "/video/papua/triton.mp4"
+  },
+  {
+    "id": "papua-butshake",
+    "provinceId": "papua",
+    "category": "Musik",
+    "title": "Butshake",
+    "coordinates": [
+      -8.493,
+      140.401
+    ],
+    "isLandmark": true,
+    "description": "Butshake merupakan alat musik tradisional khas suku Muyu di Kabupaten Merauke, Papua. Alat musik ini terbuat dari bambu yang diisi dengan buah kenari dan dimainkan dengan cara diayunkan atau dikocok menggunakan tangan. Saat dimainkan, butir-butir kenari di dalam bambu saling berbenturan sehingga menghasilkan bunyi gemericik yang khas. Butshake umumnya digunakan sebagai pengiring dalam pesta dan tarian adat masyarakat Papua.",
+    "youtubeId": "",
+    "narrator": "Butshake adalah alat musik tradisional masyarakat Muyu di Papua yang menghasilkan suara gemericik khas dari benturan buah kenari di dalam bambu. Instrumen sederhana ini sering dimainkan untuk mengiringi tarian dan berbagai perayaan adat, mencerminkan kedekatan masyarakat Papua dengan alam sekitarnya.",
+    "location": "Kabupaten Merauke, Papua Selatan",
+    "period": "Tradisional, diwariskan secara turun-temurun oleh masyarakat suku Muyu",
+    "image": "/img/cultures/butshake.jpg",
+    "tags": [
+      "Alat Musik",
+      "Bambu",
+      "Buah Kenari"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-kecapi-mulut",
+    "provinceId": "papua",
+    "category": "Musik",
+    "title": "Kecapi Mulut",
+    "coordinates": [
+      -4.083,
+      138.95
+    ],
+    "isLandmark": true,
+    "description": "Kecapi Mulut merupakan alat musik tradisional khas suku Dani yang berasal dari Lembah Baliem, Kabupaten Jayawijaya, Papua. Alat musik ini terbuat dari bambu wuluh dan dimainkan dengan cara dijepit di antara bibir, kemudian ditiup sambil menarik talinya. Getaran yang dihasilkan menciptakan bunyi khas yang sering digunakan sebagai hiburan maupun pengiring dalam kehidupan sehari-hari masyarakat Dani.",
+    "youtubeId": "",
+    "narrator": "Kecapi Mulut adalah alat musik tradisional suku Dani yang terbuat dari bambu wuluh. Instrumen ini dimainkan dengan cara dijepit di antara bibir sambil menarik talinya, menghasilkan suara unik yang mencerminkan kreativitas dan kearifan masyarakat di Lembah Baliem.",
+    "location": "Lembah Baliem, Kabupaten Jayawijaya, Papua Pegunungan",
+    "period": "Tradisional, diwariskan secara turun-temurun oleh masyarakat suku Dani",
+    "image": "/img/cultures/kecapi-mulut.jpg",
+    "tags": [
+      "Alat Musik Petik",
+      "Bambu Wuluh",
+      "Suku Dani"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-koteka",
+    "provinceId": "papua",
+    "category": "Pakaian Adat",
+    "title": "Koteka",
+    "coordinates": [
+      -4.1,
+      138.9
+    ],
+    "isLandmark": true,
+    "description": "Koteka merupakan pakaian adat tradisional Papua yang umumnya dikenakan oleh laki-laki, terutama masyarakat di wilayah pegunungan. Pakaian ini terbuat dari labu air yang dikeringkan dan dibentuk sesuai tradisi masing-masing suku. Bagi masyarakat Papua, koteka bukan sekadar pakaian, melainkan simbol identitas budaya yang diwariskan dari generasi ke generasi. Hingga kini, koteka masih digunakan dalam upacara adat, festival budaya, dan berbagai pertunjukan seni tradisional.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/pakaian-adat-koteka.mp3",
+    "narrator": "Koteka adalah simbol identitas budaya masyarakat Papua. Terbuat dari labu air yang dikeringkan, pakaian tradisional ini mencerminkan kedekatan masyarakat Papua dengan alam serta menjadi warisan budaya yang terus dijaga hingga saat ini.",
+    "location": "Wilayah Pegunungan Papua",
+    "period": "Tradisional, diwariskan secara turun-temurun",
+    "image": "/img/cultures/koteka.jpg",
+    "tags": [
+      "Pakaian Adat Suku Dani",
+      "Tradisional",
+      "Identitas Budaya"
+    ],
+    "video": "/video/papua/koteka.mp4"
+  },
+  {
+    "id": "papua-baju-kurung",
+    "provinceId": "papua",
+    "category": "Pakaian Adat",
+    "title": "Baju Kurung Papua",
+    "coordinates": [
+      -2.548,
+      140.717
+    ],
+    "isLandmark": true,
+    "description": "Baju Kurung Papua merupakan pakaian adat yang biasa dikenakan oleh perempuan dalam berbagai kegiatan adat maupun acara resmi. Pakaian ini memiliki bentuk yang longgar dan nyaman digunakan serta dihiasi dengan warna-warna cerah yang mencerminkan kekayaan budaya Papua. Dalam berbagai acara adat, baju kurung sering dipadukan dengan kalung manik-manik, gelang tradisional, dan hiasan kepala khas Papua.",
+    "youtubeId": "",
+    "narrator": "Baju Kurung Papua melambangkan kesopanan, penghormatan, dan kebersamaan dalam kehidupan masyarakat Papua. Keindahan warna serta perpaduan aksesorinya menjadikan pakaian ini sebagai salah satu simbol budaya yang masih lestari hingga sekarang.",
+    "location": "Berbagai wilayah di Papua",
+    "period": "Tradisional, digunakan hingga masa kini",
+    "image": "/img/cultures/baju-kurung-papua.jpg",
+    "tags": [
+      "Perempuan",
+      "Tradisional",
+      "Adat"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-sali",
+    "provinceId": "papua",
+    "category": "Pakaian Adat",
+    "title": "Pakaian Sali",
+    "coordinates": [
+      -4.1,
+      138.9
+    ],
+    "isLandmark": true,
+    "description": "Pakaian Sali merupakan pakaian adat tradisional perempuan Papua yang berasal dari wilayah Pegunungan Tengah. Pakaian ini dibuat dari kulit kayu yang diolah secara tradisional hingga menjadi lembaran yang dapat dikenakan. Dalam beberapa kelompok masyarakat Papua, sali digunakan oleh perempuan yang belum menikah sebagai bagian dari aturan adat yang diwariskan secara turun-temurun.",
+    "youtubeId": "",
+    "narrator": "Pakaian Sali mencerminkan penghormatan masyarakat Papua terhadap adat dan tradisi leluhur. Terbuat dari kulit kayu, pakaian ini menjadi simbol penting dalam kehidupan perempuan di wilayah Pegunungan Tengah Papua.",
+    "location": "Pegunungan Tengah Papua",
+    "period": "Tradisional, diwariskan secara turun-temurun",
+    "image": "/img/cultures/sali.jpg",
+    "tags": [
+      "Perempuan",
+      "Kulit Kayu",
+      "Tradisional"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-rok-rumbai",
+    "provinceId": "papua",
+    "category": "Pakaian Adat",
+    "title": "Rok Rumbai",
+    "coordinates": [
+      -2.548,
+      140.717
+    ],
+    "isLandmark": true,
+    "description": "Rok Rumbai merupakan pakaian adat khas Papua yang terbuat dari serat tumbuhan alami seperti daun sagu atau daun pandan yang dikeringkan dan dianyam menjadi rumbai-rumbai. Pakaian ini digunakan oleh laki-laki maupun perempuan dalam berbagai kegiatan adat, tarian tradisional, dan festival budaya. Keunikan bahan pembuatannya mencerminkan kedekatan masyarakat Papua dengan alam.",
+    "youtubeId": "",
+    "audio": "/music/papua/pakaian-adat-rok-rumbai.mp3",
+    "narrator": "Dibuat dari serat tumbuhan alami, Rok Rumbai menjadi simbol kearifan masyarakat Papua dalam memanfaatkan alam. Hingga kini, pakaian tradisional ini masih digunakan dalam berbagai upacara adat dan pertunjukan budaya.",
+    "location": "Berbagai wilayah di Papua",
+    "period": "Tradisional, digunakan hingga masa kini",
+    "image": "/img/cultures/rok-rumbai.jpg",
+    "tags": [
+      "Serat Alam",
+      "Tradisional",
+      "Budaya"
+    ],
+    "video": "/video/papua/rok-rumbai.mp4"
+  },
+  {
+    "id": "papua-upacara-bakar-batu",
+    "provinceId": "papua",
+    "category": "Upacara Adat",
+    "title": "Upacara Bakar Batu",
+    "coordinates": [
+      -4.1,
+      138.9
+    ],
+    "isLandmark": true,
+    "description": "Upacara Bakar Batu merupakan tradisi adat masyarakat Papua, terutama suku Dani, Lani, dan Yali, yang dilaksanakan untuk merayakan berbagai peristiwa penting seperti kelahiran, pernikahan, penyambutan tamu, hingga perdamaian. Dalam upacara ini, batu-batu dipanaskan hingga membara untuk memasak ubi, sayuran, dan daging secara bersama-sama. Tradisi ini mencerminkan nilai kebersamaan, rasa syukur, dan persaudaraan yang kuat dalam kehidupan masyarakat Papua.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/upacara-adat-bakar-batu.mp3",
+    "narrator": "Asap mengepul dari batu-batu yang membara, sementara seluruh masyarakat berkumpul dalam suasana penuh kebersamaan. Bagi masyarakat Papua, Upacara Bakar Batu bukan sekadar tradisi memasak, melainkan simbol persaudaraan, rasa syukur, dan keharmonisan antar sesama.",
+    "location": "Wilayah Pegunungan Papua",
+    "period": "Tradisional, diwariskan secara turun-temurun",
+    "image": "/img/cultures/bakar-batu.jpg",
+    "tags": [
+      "Komunal",
+      "Persaudaraan",
+      "Tradisional"
+    ],
+    "video": "/video/papua/upacara-bakar-batu.mp4"
+  },
+  {
+    "id": "papua-tanam-sasi",
+    "provinceId": "papua",
+    "category": "Upacara Adat",
+    "title": "Tanam Sasi",
+    "coordinates": [
+      -2.533,
+      140.717
+    ],
+    "isLandmark": true,
+    "description": "Tanam Sasi merupakan tradisi adat masyarakat Papua yang bertujuan untuk melindungi dan mengelola sumber daya alam secara berkelanjutan. Melalui tradisi ini, masyarakat menetapkan larangan sementara untuk mengambil hasil alam tertentu, seperti ikan, hasil laut, atau hasil hutan. Tradisi ini mencerminkan kearifan lokal masyarakat Papua dalam menjaga keseimbangan alam demi keberlangsungan generasi mendatang.",
+    "youtubeId": "",
+    "narrator": "Tanam Sasi mengajarkan bahwa alam harus dijaga dan dimanfaatkan dengan bijaksana. Melalui aturan adat yang dihormati bersama, masyarakat Papua menunjukkan bahwa pelestarian lingkungan telah menjadi bagian penting dari kehidupan mereka sejak dahulu.",
+    "location": "Berbagai wilayah di Papua",
+    "period": "Tradisional, diwariskan secara turun-temurun",
+    "image": "/img/cultures/tanam-sasi.jpg",
+    "tags": [
+      "Lingkungan",
+      "Kearifan Lokal",
+      "Konservasi"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-wor",
+    "provinceId": "papua",
+    "category": "Upacara Adat",
+    "title": "Wor",
+    "coordinates": [
+      -1.038,
+      136.082
+    ],
+    "isLandmark": true,
+    "description": "Wor merupakan tradisi adat masyarakat Biak yang memadukan nyanyian, doa, tarian, dan ungkapan budaya dalam satu rangkaian kegiatan. Tradisi ini dilaksanakan dalam berbagai peristiwa penting seperti kelahiran, pernikahan, penyambutan tamu, serta permohonan keselamatan. Syair-syair dalam Wor mengandung pesan moral dan nilai kehidupan yang diwariskan dari generasi ke generasi.",
+    "youtubeId": "",
+    "audio": "/music/papua/upacara-adat-wor.mp3",
+    "narrator": "Melalui lantunan syair, tarian, dan doa, masyarakat Biak menyampaikan rasa syukur, harapan, serta penghormatan kepada leluhur. Tradisi Wor menjadi salah satu warisan budaya yang menjaga identitas masyarakat Biak hingga saat ini.",
+    "location": "Pulau Biak, Papua",
+    "period": "Tradisional masyarakat Biak",
+    "image": "/img/cultures/wor.jpg",
+    "tags": [
+      "Biak",
+      "Doa",
+      "Tradisi Lisan"
+    ],
+    "video": "/video/papua/wor.mp4"
+  },
+  {
+    "id": "papua-kiuturu-nandauw",
+    "provinceId": "papua",
+    "category": "Upacara Adat",
+    "title": "Kiuturu Nandauw",
+    "coordinates": [
+      -2.533,
+      140.717
+    ],
+    "isLandmark": true,
+    "description": "Kiuturu Nandauw merupakan salah satu upacara adat Papua yang dilaksanakan sebagai bentuk penghormatan terhadap tradisi dan warisan leluhur. Upacara ini melibatkan partisipasi masyarakat secara bersama-sama dan menjadi momen penting untuk mempererat hubungan sosial antaranggota komunitas. Pelaksanaannya biasanya disertai dengan tarian tradisional, nyanyian daerah, serta prosesi adat yang dipimpin oleh tokoh adat setempat.",
+    "youtubeId": "",
+    "narrator": "Kiuturu Nandauw menjadi pengingat akan pentingnya menjaga warisan leluhur. Melalui upacara ini, masyarakat Papua mempererat kebersamaan sekaligus meneruskan nilai-nilai budaya kepada generasi berikutnya.",
+    "location": "Papua",
+    "period": "Tradisional, diwariskan secara turun-temurun",
+    "image": "/img/cultures/kiuturu-nandauw.jpg",
+    "tags": [
+      "Leluhur",
+      "Kebersamaan",
+      "Tradisional"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-noken",
+    "provinceId": "papua",
+    "category": "Kerajinan",
+    "title": "Noken Papua",
+    "coordinates": [
+      -3.3,
+      135.5
+    ],
+    "isLandmark": true,
+    "description": "Noken merupakan tas tradisional khas Papua yang dibuat secara manual menggunakan serat tumbuhan, kulit kayu, atau benang yang dianyam dengan teknik khusus. Noken digunakan untuk membawa berbagai kebutuhan sehari-hari, seperti hasil panen, kayu bakar, hingga menggendong bayi. Bagi masyarakat Papua, noken bukan sekadar tas, tetapi juga simbol kerja keras, tanggung jawab, dan kedekatan dengan alam. Karena nilai budayanya yang tinggi, UNESCO telah menetapkan Noken sebagai Warisan Budaya Tak Benda yang perlu dilestarikan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/kerajinan-noken.mp3",
+    "narrator": "Setiap simpul pada Noken menyimpan kisah tentang kehidupan masyarakat Papua. Dibuat dengan penuh kesabaran, Noken bukan hanya alat untuk membawa barang, tetapi juga simbol kasih sayang, tanggung jawab, dan warisan budaya yang terus diwariskan dari generasi ke generasi.",
+    "location": "Seluruh Papua",
+    "period": "Tradisi masyarakat Papua, diwariskan secara turun-temurun",
+    "image": "/img/cultures/noken.jpg",
+    "tags": [
+      "UNESCO",
+      "Anyaman",
+      "Tradisional"
+    ],
+    "video": "/video/papua/noken-papua.mp4"
+  },
+  {
+    "id": "papua-ukiran-asmat",
+    "provinceId": "papua",
+    "category": "Kerajinan",
+    "title": "Ukiran Asmat",
+    "coordinates": [
+      -5.55,
+      138.1
+    ],
+    "isLandmark": true,
+    "description": "Ukiran Asmat merupakan kerajinan tradisional khas masyarakat Asmat di Papua Selatan yang dibuat dari kayu pilihan dan dipahat secara manual. Setiap ukiran memiliki motif yang berbeda, menggambarkan kehidupan masyarakat, alam, hewan, maupun kisah para leluhur. Bagi masyarakat Asmat, ukiran tidak hanya dipandang sebagai karya seni, tetapi juga sebagai sarana untuk menjaga hubungan dengan sejarah dan tradisi leluhur.",
+    "youtubeId": "",
+    "audio": "/music/papua/kerajinan-ukiran-asmat.mp3",
+    "narrator": "Di tangan para pengrajin Asmat, sepotong kayu berubah menjadi karya seni yang penuh makna. Setiap pahatan menceritakan kisah tentang leluhur, kehidupan, dan hubungan erat masyarakat Asmat dengan alam sekitarnya.",
+    "location": "Kabupaten Asmat, Papua Selatan",
+    "period": "Tradisi masyarakat Asmat, diwariskan secara turun-temurun",
+    "image": "/img/cultures/ukiran-asmat.jpg",
+    "tags": [
+      "Kayu",
+      "Leluhur",
+      "Seni Ukir"
+    ],
+    "video": "/video/papua/ukiran-asmat.mp4"
+  },
+  {
+    "id": "papua-patung-asmat",
+    "provinceId": "papua",
+    "category": "Kerajinan",
+    "title": "Patung Asmat",
+    "coordinates": [
+      -5.55,
+      138.1
+    ],
+    "isLandmark": true,
+    "description": "Patung Asmat merupakan hasil kerajinan tradisional masyarakat Asmat yang dibuat dari kayu dan dipahat secara manual. Patung ini umumnya menggambarkan manusia, leluhur, atau simbol-simbol yang memiliki arti penting dalam kehidupan masyarakat. Selain sebagai karya seni, patung Asmat juga menjadi simbol penghormatan kepada leluhur dan bagian penting dari berbagai ritual adat.",
+    "youtubeId": "",
+    "narrator": "Patung Asmat bukan sekadar karya seni, tetapi juga wujud penghormatan kepada leluhur. Melalui setiap pahatan, masyarakat Asmat menjaga nilai-nilai budaya dan mewariskan kisah kehidupan kepada generasi berikutnya.",
+    "location": "Kabupaten Asmat, Papua Selatan",
+    "period": "Tradisi masyarakat Asmat, diwariskan secara turun-temurun",
+    "image": "/img/cultures/patung-asmat.jpg",
+    "tags": [
+      "Patung",
+      "Leluhur",
+      "Tradisional"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-lukisan-kulit-kayu",
+    "provinceId": "papua",
+    "category": "Kerajinan",
+    "title": "Lukisan Kulit Kayu Papua",
+    "coordinates": [
+      -2.533,
+      140.717
+    ],
+    "isLandmark": true,
+    "description": "Lukisan Kulit Kayu Papua merupakan kerajinan tradisional yang menggunakan kulit kayu sebagai media berkarya. Setelah melalui proses pengolahan, permukaan kulit kayu dihiasi dengan berbagai motif khas yang terinspirasi dari alam, kehidupan masyarakat, hewan, tumbuhan, serta simbol budaya. Kerajinan ini menjadi sarana untuk menyampaikan cerita, pengetahuan, dan nilai-nilai budaya yang diwariskan secara turun-temurun.",
+    "youtubeId": "",
+    "narrator": "Melalui goresan motif pada lembaran kulit kayu, masyarakat Papua menceritakan kisah tentang alam, kehidupan, dan warisan leluhur. Setiap lukisan menjadi bukti eratnya hubungan masyarakat Papua dengan lingkungan sekitarnya.",
+    "location": "Berbagai wilayah di Papua",
+    "period": "Tradisi masyarakat Papua, diwariskan secara turun-temurun",
+    "image": "/img/cultures/lukisan-kulit-kayu.jpg",
+    "tags": [
+      "Kulit Kayu",
+      "Seni Tradisional",
+      "Motif Khas"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-cerita-rakyat-cendrawasih",
+    "provinceId": "papua",
+    "category": "Cerita Rakyat",
+    "title": "Asal Usul Burung Cendrawasih",
+    "coordinates": [
+      -2.9,
+      132.3
+    ],
+    "isLandmark": true,
+    "description": "Di daerah Fakfak, tepatnya di Pegunungan Bumberi, hiduplah seorang perempuan tua bersama seekor anjing betina. Keduanya hidup bahagia dengan mengandalkan hasil hutan untuk bertahan hidup. Suatu hari, setelah memakan buah pandan, anjing tersebut melahirkan seekor anak anjing, sementara perempuan tua itu melahirkan seorang anak laki-laki bernama Kweiya. Kweiya tumbuh menjadi pemuda yang rajin membuka hutan untuk berkebun. Suatu ketika, seorang pria tua datang dan membantu Kweiya dengan memberikan kapak besi. Pria tersebut kemudian diterima sebagai bagian dari keluarga dan memiliki beberapa anak bersama ibu Kweiya. Namun, seiring waktu, saudara-saudara tiri Kweiya merasa iri dan menyakitinya. Merasa sedih dan kecewa, Kweiya mengasingkan diri hingga akhirnya berubah menjadi seekor burung yang indah bersama ibunya. Burung tersebut kemudian dikenal sebagai Burung Cenderawasih. Sementara saudara-saudaranya yang menyesal juga berubah menjadi berbagai jenis burung lain yang memenuhi hutan Papua. Legenda ini menjelaskan asal mula munculnya Burung Cenderawasih serta berbagai jenis burung yang hidup di hutan Papua.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/cerita-rakyat-burung-cendrawasih.mp3",
+    "narrator": "Dahulu di Pegunungan Bumberi, hiduplah seorang pemuda bernama Kweiya bersama ibunya. Kweiya dikenal sebagai anak yang rajin dan baik hati. Namun, rasa iri dari saudara-saudara tirinya membuat hidupnya berubah. Setelah disakiti oleh mereka, Kweiya memilih mengasingkan diri. Dalam kesedihan yang mendalam, ia dan ibunya berubah menjadi burung yang sangat indah. Masyarakat Papua percaya bahwa sejak saat itulah Burung Cenderawasih hadir sebagai lambang keindahan, kasih sayang, dan warisan leluhur Papua.",
+    "location": "Pegunungan Bumberi, Fakfak, Papua Barat",
+    "period": "Legenda masyarakat adat Papua",
+    "image": "/img/cultures/cendrawasih.jpg",
+    "tags": [
+      "Legenda",
+      "Burung",
+      "Mitologi",
+      "Fakfak",
+      "Cenderawasih"
+    ],
+    "video": "/video/papua/asal-usul-burung-cendrawasih.mp4"
+  },
+  {
+    "id": "papua-cerita-rakyat-danau-sentani",
+    "provinceId": "papua",
+    "category": "Cerita Rakyat",
+    "title": "Asal Usul Danau Sentani",
+    "coordinates": [
+      -2.6,
+      140.5
+    ],
+    "isLandmark": true,
+    "description": "Menurut cerita rakyat masyarakat Sentani, dahulu penduduk Kampung Yomoko hidup tanpa air dan api. Haboi bersama Ondofolo Wally kemudian melakukan perjalanan menuju Gunung Dobonsolo untuk meminta air kepada Dobonai, penguasa air. Setelah melalui perjalanan panjang dan memenuhi syarat yang diberikan, mereka berhasil memperoleh air suci. Namun, dalam perjalanan pulang mereka tergoda untuk berburu sehingga wadah yang berisi air tersebut pecah. Air suci itu kemudian mengalir deras dan menggenangi dataran rendah hingga membentuk sebuah danau yang sangat luas. Danau tersebut kemudian dikenal sebagai Danau Sentani. Legenda ini menjadi bagian penting dari identitas budaya masyarakat Sentani serta menggambarkan hubungan erat manusia dengan alam.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/cerita-rakyat-danau-sentani.mp3",
+    "narrator": "Konon, Haboi dan Ondofolo Wally melakukan perjalanan panjang ke Gunung Dobonsolo untuk mendapatkan air bagi masyarakatnya. Setelah berhasil membawa pulang air suci, mereka tergoda berburu di tengah perjalanan. Tanpa disadari, wadah berisi air itu pecah dan airnya mengalir deras hingga membentuk sebuah danau yang sangat luas. Masyarakat Papua percaya bahwa peristiwa inilah yang melahirkan Danau Sentani, sumber kehidupan yang masih lestari hingga sekarang.",
+    "location": "Danau Sentani, Kabupaten Jayapura, Papua",
+    "period": "Legenda masyarakat Sentani",
+    "image": "/img/cultures/danau-sentani.jpg",
+    "tags": [
+      "Legenda",
+      "Danau",
+      "Sentani",
+      "Mitologi",
+      "Alam"
+    ],
+    "video": "/video/papua/asal-usul-danau-sentani.mp4"
+  },
+  {
+    "id": "papua-cerita-rakyat-kasuari-dan-dara-mahkota",
+    "provinceId": "papua",
+    "category": "Cerita Rakyat",
+    "title": "Kasuari dan Dara Mahkota",
+    "coordinates": [
+      -4,
+      138
+    ],
+    "isLandmark": true,
+    "description": "Dahulu kala, Kasuari adalah burung yang memiliki sayap besar dan mampu terbang dengan sangat baik. Namun, karena kesombongannya, Kasuari sering berlaku curang dan tidak mau berbagi makanan dengan burung-burung lain. Merasa kesal, para burung sepakat mengadakan perlombaan terbang untuk memberi pelajaran kepada Kasuari. Burung Dara Mahkota yang bertubuh kecil kemudian mengajukan diri sebagai lawannya. Dengan kecerdikan yang dimilikinya, Dara Mahkota berhasil memperdaya Kasuari sehingga sayap Kasuari patah dan tidak lagi dapat digunakan untuk terbang. Sejak saat itu, menurut legenda, Kasuari kehilangan kemampuan terbang dan hanya dapat berjalan di tanah. Cerita ini mengajarkan pentingnya sikap rendah hati serta tidak bersikap sombong terhadap sesama.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Dahulu, Kasuari adalah burung yang dapat terbang tinggi. Karena merasa paling kuat, ia sering bersikap sombong dan tidak mau berbagi makanan dengan burung lain. Suatu hari, Dara Mahkota menantangnya dalam perlombaan terbang. Dengan kecerdikannya, Dara Mahkota berhasil mengalahkan Kasuari. Sejak saat itu, Kasuari kehilangan kemampuan terbang dan belajar bahwa kesombongan hanya akan membawa penyesalan.",
+    "location": "Papua",
+    "period": "Cerita rakyat masyarakat Papua",
+    "image": "/img/cultures/kasuari-dan-dara-mahkota.jpg",
+    "tags": [
+      "Fabel",
+      "Burung",
+      "Pesan Moral",
+      "Kasuari",
+      "Dara Mahkota"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-honai",
+    "provinceId": "papua",
+    "category": "Rumah Adat",
+    "title": "Rumah Honai",
+    "coordinates": [
+      -4.083,
+      138.95
+    ],
+    "isLandmark": true,
+    "description": "Rumah Honai merupakan rumah adat khas masyarakat suku Dani yang mendiami wilayah Lembah Baliem di Papua Pegunungan. Rumah ini memiliki bentuk bulat dengan atap kerucut yang terbuat dari jerami atau ilalang, serta dinding yang disusun dari kayu. Berbeda dengan rumah pada umumnya, Honai tidak memiliki jendela dan hanya memiliki satu pintu kecil. Desain tersebut dibuat untuk menjaga suhu di dalam rumah tetap hangat karena wilayah pegunungan Papua memiliki udara yang sangat dingin, terutama pada malam hari.\n\nSelain sebagai tempat tinggal, Honai menjadi pusat kehidupan keluarga masyarakat Dani. Di dalam rumah inilah anggota keluarga berkumpul, beristirahat, berdiskusi, serta mewariskan berbagai pengetahuan, adat istiadat, dan nilai-nilai kehidupan kepada generasi muda. Bangunan ini juga menjadi bukti bagaimana masyarakat Papua mampu memanfaatkan bahan-bahan alami yang tersedia di lingkungan sekitar untuk menciptakan hunian yang nyaman.\n\nHingga sekarang, Rumah Honai tetap menjadi salah satu ikon budaya Papua. Keunikannya terletak pada bentuk arsitekturnya yang sederhana namun mampu menjaga kehangatan secara alami, sekaligus mencerminkan nilai kebersamaan, kekeluargaan, dan keharmonisan masyarakat dengan alam.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/Rumah adat - Honai.mp3",
+    "narrator": "Rumah Honai merupakan rumah adat khas masyarakat suku Dani yang mendiami wilayah Lembah Baliem di Papua Pegunungan. Rumah ini memiliki bentuk bulat dengan atap kerucut yang terbuat dari jerami atau ilalang, serta dinding yang disusun dari kayu. Berbeda dengan rumah pada umumnya, Honai tidak memiliki jendela dan hanya memiliki satu pintu kecil. Desain tersebut dibuat untuk menjaga suhu di dalam rumah tetap hangat karena wilayah pegunungan Papua memiliki udara yang sangat dingin, terutama pada malam hari.\n\nSelain sebagai tempat tinggal, Honai menjadi pusat kehidupan keluarga masyarakat Dani. Di dalam rumah inilah anggota keluarga berkumpul, beristirahat, berdiskusi, serta mewariskan berbagai pengetahuan, adat istiadat, dan nilai-nilai kehidupan kepada generasi muda. Bangunan ini juga menjadi bukti bagaimana masyarakat Papua mampu memanfaatkan bahan-bahan alami yang tersedia di lingkungan sekitar untuk menciptakan hunian yang nyaman.\n\nHingga sekarang, Rumah Honai tetap menjadi salah satu ikon budaya Papua. Keunikannya terletak pada bentuk arsitekturnya yang sederhana namun mampu menjaga kehangatan secara alami, sekaligus mencerminkan nilai kebersamaan, kekeluargaan, dan keharmonisan masyarakat dengan alam.",
+    "location": "Lembah Baliem, Papua Pegunungan",
+    "period": "Tradisi masyarakat suku Dani",
+    "image": "/img/cultures/honai.jpg",
+    "tags": [
+      "Honai",
+      "Suku Dani",
+      "Lembah Baliem",
+      "Rumah Adat"
+    ],
+    "video": "/video/papua/rumah-honai.mp4"
+  },
+  {
+    "id": "papua-ebei",
+    "provinceId": "papua",
+    "category": "Rumah Adat",
+    "title": "Rumah Ebei",
+    "coordinates": [
+      -4.082,
+      138.951
+    ],
+    "isLandmark": true,
+    "description": "Rumah Ebei merupakan rumah adat yang digunakan oleh perempuan dan anak-anak dalam kehidupan masyarakat suku Dani di Papua. Bentuk bangunannya hampir menyerupai Rumah Honai dengan atap jerami berbentuk kerucut dan dinding kayu, namun memiliki fungsi yang berbeda sesuai pembagian peran dalam kehidupan adat.\n\nRumah ini menjadi tempat para perempuan menjalankan berbagai aktivitas sehari-hari, mulai dari beristirahat, mengurus kebutuhan keluarga, hingga mengajarkan keterampilan hidup kepada anak-anak. Berbagai nilai budaya, adat istiadat, serta kebiasaan masyarakat diwariskan dari generasi ke generasi melalui kehidupan sehari-hari di dalam Ebei.\n\nKeberadaan Rumah Ebei menunjukkan bahwa masyarakat Dani memiliki sistem kehidupan keluarga yang teratur dan saling melengkapi. Rumah ini menjadi simbol pentingnya peran perempuan dalam menjaga keharmonisan keluarga sekaligus melestarikan tradisi budaya Papua.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Rumah Ebei merupakan rumah adat yang diperuntukkan bagi perempuan dan anak-anak dalam masyarakat suku Dani. Bentuknya hampir sama dengan Rumah Honai, tetapi memiliki fungsi yang berbeda dalam kehidupan sehari-hari. Di rumah inilah para ibu mengurus keluarga, mendidik anak-anak, serta mengajarkan berbagai keterampilan dan nilai budaya yang diwariskan oleh leluhur. Kehadiran Ebei menunjukkan bahwa masyarakat Dani memiliki pembagian peran yang jelas antara anggota keluarga sehingga kehidupan masyarakat berjalan dengan tertib. Rumah ini juga menjadi tempat tumbuhnya ikatan kekeluargaan yang erat serta pusat pembelajaran budaya bagi generasi muda. Hingga kini, Ebei tetap menjadi bagian penting dari kehidupan tradisional masyarakat Papua.",
+    "location": "Lembah Baliem, Papua Pegunungan",
+    "period": "Tradisi masyarakat suku Dani",
+    "image": "/img/cultures/ebei.jpg",
+    "tags": [
+      "Ebei",
+      "Suku Dani",
+      "Perempuan",
+      "Rumah Adat"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-wamai",
+    "provinceId": "papua",
+    "category": "Rumah Adat",
+    "title": "Rumah Wamai",
+    "coordinates": [
+      -4.084,
+      138.949
+    ],
+    "isLandmark": true,
+    "description": "Rumah Wamai merupakan bangunan tradisional masyarakat Papua yang digunakan sebagai kandang atau tempat memelihara babi. Dalam kehidupan masyarakat Papua, terutama pada berbagai suku di wilayah pegunungan, babi memiliki kedudukan yang sangat penting, bukan hanya sebagai hewan ternak tetapi juga sebagai simbol kesejahteraan, status sosial, dan bagian dari berbagai upacara adat.\n\nBabi sering digunakan dalam pesta adat, pembayaran mas kawin, penyelesaian sengketa, hingga berbagai bentuk penghormatan dalam kehidupan masyarakat. Oleh karena itu, Wamai dibangun secara khusus untuk menjaga dan merawat hewan tersebut agar tetap sehat.\n\nKeberadaan Rumah Wamai menunjukkan eratnya hubungan antara kehidupan masyarakat Papua dengan tradisi yang diwariskan oleh leluhur. Bangunan ini menjadi bagian penting dari kompleks rumah adat yang mendukung keberlangsungan kehidupan sosial dan budaya masyarakat Papua.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Rumah Wamai merupakan bangunan tradisional yang digunakan masyarakat Papua sebagai tempat memelihara babi, hewan yang memiliki nilai ekonomi dan budaya yang sangat tinggi. Dalam kehidupan masyarakat adat, babi bukan hanya dipelihara sebagai ternak, tetapi juga digunakan dalam berbagai upacara adat, pesta budaya, hingga simbol kehormatan dan kesejahteraan keluarga. Karena memiliki peran yang sangat penting, masyarakat membangun Wamai sebagai tempat khusus untuk merawat ternak tersebut. Kehadiran rumah ini menunjukkan bagaimana kehidupan masyarakat Papua sangat erat kaitannya dengan adat dan tradisi yang diwariskan turun-temurun. Wamai menjadi bukti bahwa setiap bangunan dalam budaya Papua memiliki fungsi yang penting bagi kehidupan masyarakatnya.",
+    "location": "Papua",
+    "period": "Tradisi masyarakat Papua",
+    "image": "/img/cultures/wamai.jpg",
+    "tags": [
+      "Wamai",
+      "Babi",
+      "Rumah Adat",
+      "Papua"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-kariwari",
+    "provinceId": "papua",
+    "category": "Rumah Adat",
+    "title": "Rumah Kariwari",
+    "coordinates": [
+      -2.6,
+      140.52
+    ],
+    "isLandmark": true,
+    "description": "Rumah Kariwari merupakan rumah adat yang berasal dari masyarakat Tobati dan Enggros di kawasan Danau Sentani, Papua. Berbeda dengan rumah adat Papua lainnya yang umumnya berbentuk bulat, Kariwari memiliki bentuk segi delapan dengan atap yang menjulang tinggi sehingga menjadi ciri khas tersendiri.\n\nPada masa lalu, rumah ini digunakan sebagai tempat pendidikan adat bagi anak laki-laki yang mulai memasuki usia remaja. Di dalam Kariwari, mereka dibimbing untuk mempelajari adat istiadat, keterampilan hidup, kepemimpinan, serta tanggung jawab sebagai anggota masyarakat. Rumah ini menjadi tempat penting dalam membentuk karakter dan mempersiapkan generasi penerus.\n\nHingga kini, Rumah Kariwari dikenal sebagai salah satu simbol pendidikan tradisional masyarakat Papua. Keunikan bentuk arsitekturnya berpadu dengan nilai-nilai budaya yang menekankan pentingnya pendidikan karakter dan pelestarian adat istiadat.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/Rumah adat - Kariwari.mp3",
+    "narrator": "Rumah Kariwari merupakan rumah adat yang berasal dari masyarakat Tobati dan Enggros di kawasan Danau Sentani, Papua. Berbeda dengan rumah adat Papua lainnya yang umumnya berbentuk bulat, Kariwari memiliki bentuk segi delapan dengan atap yang menjulang tinggi sehingga menjadi ciri khas tersendiri.\n\nPada masa lalu, rumah ini digunakan sebagai tempat pendidikan adat bagi anak laki-laki yang mulai memasuki usia remaja. Di dalam Kariwari, mereka dibimbing untuk mempelajari adat istiadat, keterampilan hidup, kepemimpinan, serta tanggung jawab sebagai anggota masyarakat. Rumah ini menjadi tempat penting dalam membentuk karakter dan mempersiapkan generasi penerus.\n\nHingga kini, Rumah Kariwari dikenal sebagai salah satu simbol pendidikan tradisional masyarakat Papua. Keunikan bentuk arsitekturnya berpadu dengan nilai-nilai budaya yang menekankan pentingnya pendidikan karakter dan pelestarian adat istiadat.",
+    "location": "Danau Sentani, Jayapura, Papua",
+    "period": "Tradisi masyarakat Tobati dan Enggros",
+    "image": "/img/cultures/kariwari.jpg",
+    "tags": [
+      "Kariwari",
+      "Danau Sentani",
+      "Tobati",
+      "Enggros"
+    ],
+    "video": "/video/papua/rumah-kariwari.mp4"
+  },
+  {
+    "id": "papua-panah",
+    "provinceId": "papua",
+    "category": "Senjata",
+    "title": "Busur dan Panah Papua",
+    "coordinates": [
+      -3.3,
+      138.5
+    ],
+    "isLandmark": true,
+    "description": "Busur dan panah merupakan senjata tradisional yang sangat dikenal di Papua dan telah digunakan oleh berbagai suku sejak zaman dahulu. Senjata ini dibuat dari bahan-bahan alami seperti kayu, bambu, dan serat tumbuhan yang mudah ditemukan di lingkungan sekitar. Anak panah biasanya memiliki ujung yang diruncingkan agar lebih efektif digunakan. Bagi masyarakat Papua, busur dan panah bukan hanya alat berburu, tetapi juga melambangkan keterampilan, ketelitian, dan kemampuan bertahan hidup. Pada masa lalu, senjata ini digunakan untuk berburu hewan di hutan serta melindungi diri dari ancaman. Kini, busur dan panah lebih sering digunakan dalam festival budaya, pertunjukan adat, dan berbagai kegiatan pelestarian tradisi. Keunikan senjata ini terletak pada bahan pembuatannya yang berasal dari alam serta teknik penggunaannya yang membutuhkan konsentrasi dan ketepatan tinggi.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/senjata-busur-dan-panah.mp3",
+    "narrator": "Sejak kecil, anak-anak Papua belajar memegang busur dan mengarahkan panah dengan penuh ketelitian. Di tengah hutan, kemampuan memanah menjadi bekal penting untuk berburu dan bertahan hidup. Hingga kini, busur dan panah tetap diwariskan dari generasi ke generasi sebagai simbol keterampilan, keberanian, dan warisan budaya masyarakat Papua.",
+    "location": "Seluruh Papua",
+    "period": "Senjata tradisional masyarakat Papua",
+    "image": "/img/cultures/panah-papua.jpg",
+    "tags": [
+      "Berburu",
+      "Keahlian",
+      "Warisan",
+      "Tradisional"
+    ],
+    "video": "/video/papua/busur-dan-panah-papua.mp4"
+  },
+  {
+    "id": "papua-pisau-belati",
+    "provinceId": "papua",
+    "category": "Senjata",
+    "title": "Pisau Belati Papua",
+    "coordinates": [
+      -4,
+      138
+    ],
+    "isLandmark": true,
+    "description": "Pisau belati merupakan senjata tradisional Papua yang biasanya dibuat dari tulang hewan, batu, atau bahan alami lainnya yang diolah menjadi bilah tajam. Ukurannya yang relatif kecil membuat senjata ini mudah dibawa dan digunakan dalam berbagai aktivitas. Selain berfungsi sebagai alat pertahanan diri, pisau belati juga digunakan untuk berburu, mengolah hasil buruan, dan membantu berbagai pekerjaan sehari-hari. Keberadaan pisau belati mencerminkan keterampilan masyarakat Papua dalam memanfaatkan sumber daya alam yang tersedia di sekitarnya. Saat ini, senjata ini lebih banyak digunakan sebagai perlengkapan adat dan simbol kekayaan budaya Papua.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/papua/senjata-pisau-belati.mp3",
+    "narrator": "Bagi masyarakat Papua, pisau belati bukan sekadar senjata. Dengan bilah tajam yang dibuat dari bahan alami, alat ini membantu berbagai aktivitas sehari-hari, mulai dari berburu hingga mengolah hasil hutan. Hingga kini, pisau belati tetap dipertahankan sebagai bagian dari identitas budaya dan warisan leluhur Papua.",
+    "location": "Seluruh Papua",
+    "period": "Senjata tradisional masyarakat Papua",
+    "image": "/img/cultures/pisau-belati-papua.jpg",
+    "tags": [
+      "Belati",
+      "Tradisional",
+      "Warisan",
+      "Pertahanan"
+    ],
+    "video": "/video/papua/pisau-belati-papua.mp4"
+  },
+  {
+    "id": "papua-kapak-batu",
+    "provinceId": "papua",
+    "category": "Senjata",
+    "title": "Kapak Batu Papua",
+    "coordinates": [
+      -4.1,
+      138.9
+    ],
+    "isLandmark": true,
+    "description": "Kapak batu merupakan salah satu alat sekaligus senjata tradisional yang telah digunakan oleh masyarakat Papua sejak masa lampau. Kapak ini dibuat dengan mengikat batu yang telah diasah pada gagang kayu menggunakan serat tumbuhan atau bahan alami lainnya. Pada masa lalu, kapak batu digunakan untuk menebang pohon, membuat peralatan, berburu, dan berbagai kebutuhan sehari-hari. Kehadirannya menunjukkan kemampuan masyarakat Papua dalam mengolah bahan-bahan alami menjadi alat yang kuat dan tahan lama. Saat ini, kapak batu lebih banyak dijadikan simbol budaya dan benda koleksi yang menggambarkan kehidupan masyarakat Papua pada masa lampau.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Jauh sebelum mengenal logam, masyarakat Papua telah menciptakan kapak batu untuk membantu kehidupan sehari-hari. Dengan alat sederhana ini, mereka membuka hutan, membuat peralatan, dan memenuhi kebutuhan hidup. Hingga sekarang, kapak batu tetap dikenang sebagai bukti kecerdasan dan keterampilan leluhur Papua dalam memanfaatkan alam.",
+    "location": "Wilayah Pegunungan Papua",
+    "period": "Masa prasejarah hingga tradisi masyarakat Papua",
+    "image": "/img/cultures/kapak-batu-papua.jpg",
+    "tags": [
+      "Prasejarah",
+      "Alat Tradisional",
+      "Warisan",
+      "Batu"
+    ],
+    "video": null
+  },
+  {
+    "id": "papua-tombak",
+    "provinceId": "papua",
+    "category": "Senjata",
+    "title": "Tombak Papua",
+    "coordinates": [
+      -3.8,
+      137.2
+    ],
+    "isLandmark": true,
+    "description": "Tombak merupakan salah satu senjata tradisional yang banyak digunakan oleh masyarakat Papua. Senjata ini terdiri dari gagang panjang yang terbuat dari kayu dengan ujung yang diruncingkan atau dilengkapi mata tombak dari bahan tertentu. Tombak telah menjadi bagian penting dalam kehidupan masyarakat Papua selama bertahun-tahun, baik sebagai alat berburu maupun sebagai simbol keberanian. Pada masa lalu, tombak digunakan untuk berburu hewan berukuran besar serta melindungi diri dari ancaman. Saat ini, tombak lebih sering dijumpai dalam pertunjukan budaya, festival adat, dan berbagai kegiatan pelestarian budaya. Keunikan tombak Papua terletak pada bentuknya yang sederhana namun efektif serta teknik pembuatannya yang masih mempertahankan tradisi leluhur.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Di tangan masyarakat Papua, tombak menjadi simbol keberanian dan ketangguhan. Senjata ini telah digunakan sejak dahulu untuk berburu dan melindungi kelompok. Meski zaman telah berubah, tombak masih sering ditampilkan dalam upacara adat dan festival budaya sebagai pengingat akan semangat serta warisan leluhur Papua.",
+    "location": "Seluruh Papua",
+    "period": "Senjata tradisional masyarakat Papua",
+    "image": "/img/cultures/tombak-papua.jpg",
+    "tags": [
+      "Keberanian",
+      "Berburu",
+      "Tradisional",
+      "Warisan"
+    ],
+    "video": null
+  }
+]

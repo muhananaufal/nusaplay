@@ -1,8 +1,8 @@
 'use client';
 import { createContext, useContext, useState, useCallback, useMemo, useEffect } from 'react';
-import { useAppFlow } from '@/contexts/AppFlow';
+import { useProgress } from '@/contexts/Progress';
 import { UNLOCKED_PROVINCES } from '@/data/provinces';
-import { getCulturesByProvince } from '@/data/cultures';
+import { fetchCultureCount } from '@/utils/fetchCultures';
 
 export interface AchievementItem {
   key: string;
@@ -154,7 +154,7 @@ export const usePassport = () => useContext(PassportContext);
 export const useAchievement = () => useContext(PassportContext);
 
 export const PassportProvider = ({ children }: { children: React.ReactNode }) => {
-  const { visitedByProvince, listenedByProvince } = useAppFlow();
+  const { visitedByProvince, listenedByProvince } = useProgress();
 
   const [visitedProvinces, setVisitedProvinces] = useState<Set<string>>(new Set());
   const [completedQuizzes, setCompletedQuizzes] = useState<Set<string>>(new Set());
@@ -164,6 +164,20 @@ export const PassportProvider = ({ children }: { children: React.ReactNode }) =>
   // Best scores per province (in-memory)
   const [bestScores, setBestScores] = useState<Record<string, number>>({});
   const [bestScoreTotals, setBestScoreTotals] = useState<Record<string, number>>({});
+
+  // Culture totals per province loaded async from API
+  const [cultureTotals, setCultureTotals] = useState<Record<string, number>>({});
+
+  // Load culture counts once on mount
+  useEffect(() => {
+    const loadTotals = async () => {
+      const entries = await Promise.all(
+        UNLOCKED_PROVINCES.map(async (p) => [p.id, await fetchCultureCount(p.id)] as const)
+      );
+      setCultureTotals(Object.fromEntries(entries));
+    };
+    loadTotals();
+  }, []);
 
   // Achievement states
   const [unlockedAchievements, setUnlockedAchievements] = useState<Set<string>>(new Set());
@@ -256,10 +270,10 @@ export const PassportProvider = ({ children }: { children: React.ReactNode }) =>
       unlock('first_audio');
     }
 
-    // Pre-calculate total active cultures per province
+    // Pre-calculate total active cultures per province using fetched totals
     const provinceCultureTotals = UNLOCKED_PROVINCES.map(p => ({
       id: p.id,
-      total: getCulturesByProvince(p.id).length
+      total: cultureTotals[p.id] ?? 0
     }));
 
     // 2. Penjelajah Daerah (explore_province) per province
@@ -296,18 +310,18 @@ export const PassportProvider = ({ children }: { children: React.ReactNode }) =>
     if (totalActiveCultures > 0 && totalListened === totalActiveCultures) {
       unlock('listen_indonesia');
     }
-  }, [visitedByProvince, listenedByProvince, unlock]);
+  }, [visitedByProvince, listenedByProvince, unlock, cultureTotals]);
 
   // Legacy stamp sync when a province's audios are fully completed
   useEffect(() => {
     UNLOCKED_PROVINCES.forEach(p => {
-      const total = getCulturesByProvince(p.id).length;
+      const total = cultureTotals[p.id] ?? 0;
       const listenedCount = listenedByProvince[p.id]?.length || 0;
       if (total > 0 && listenedCount === total) {
         stampProvince(p.id);
       }
     });
-  }, [listenedByProvince, stampProvince]);
+  }, [listenedByProvince, stampProvince, cultureTotals]);
 
   const value = useMemo(() => ({
     visitedProvinces,

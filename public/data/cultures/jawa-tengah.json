@@ -1,0 +1,872 @@
+[
+  {
+    "id": "jateng-batik-solo",
+    "provinceId": "jawa-tengah",
+    "category": "Kerajinan",
+    "title": "Batik Solo",
+    "coordinates": [
+      -7.563,
+      110.812
+    ],
+    "isLandmark": true,
+    "description": "Batik Solo merupakan salah satu warisan budaya paling penting dari Kota Surakarta yang telah berkembang sejak masa Kerajaan Mataram Islam, khususnya setelah berdirinya Keraton Surakarta Hadiningrat pada tahun 1745. Dikenal dengan warna sogan klasik perpaduan cokelat, hitam, dan krem, Batik Solo melambangkan kesederhanaan, ketenangan, serta kebijaksanaan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Batik Solo merupakan salah satu warisan budaya paling penting dari Kota Surakarta dan telah berkembang sejak masa Kerajaan Mataram Islam. Tradisi membatik di Solo mulai berkembang pesat setelah berdirinya Keraton Surakarta Hadiningrat pada tahun 1745. Pada masa itu, kegiatan membatik awalnya hanya dilakukan oleh keluarga kerajaan dan para abdi dalem keraton. Motif-motif tertentu seperti Parang, Sidomukti, Truntum, dan Sawat bahkan hanya boleh dikenakan oleh kalangan bangsawan karena dianggap memiliki nilai filosofis dan simbol status sosial. Seiring berjalannya waktu, keterampilan membatik mulai menyebar ke masyarakat umum, terutama di Kampung Laweyan dan Kampung Kauman. Ciri khas Batik Solo terletak pada penggunaan warna sogan, yaitu perpaduan warna cokelat, hitam, putih, dan krem yang mencerminkan sifat sederhana, tenang, serta penuh kebijaksanaan sesuai filosofi masyarakat Jawa.",
+    "location": "Kampung Laweyan, Surakarta, Jawa Tengah",
+    "period": "Sejak era Keraton Surakarta (1745)",
+    "image": "/img/cultures/batik-solo.jpg",
+    "tags": [
+      "Batik",
+      "Sogan",
+      "Laweyan",
+      "Kauman"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-blangkon-solo",
+    "provinceId": "jawa-tengah",
+    "category": "Kerajinan",
+    "title": "Blangkon Solo",
+    "coordinates": [
+      -7.565,
+      110.825
+    ],
+    "isLandmark": true,
+    "description": "Blangkon Solo merupakan penutup kepala tradisional pria Jawa khas gaya Surakarta yang datar dan rapi di bagian belakang. Blangkon ini menyimbolkan kehormatan, kesopanan, pengendalian diri, serta kebijaksanaan laki-laki Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Blangkon Solo merupakan penutup kepala tradisional pria Jawa yang telah menjadi bagian penting dari busana adat Surakarta selama ratusan tahun. Sejarah blangkon tidak dapat dipisahkan dari perkembangan budaya Keraton Surakarta. Pada masa lalu, laki-laki Jawa umumnya memiliki rambut panjang yang diikat di bagian belakang kepala. Untuk menjaga kerapian rambut, digunakan kain penutup kepala yang kemudian berkembang menjadi blangkon. Blangkon gaya Surakarta memiliki bentuk khas yang berbeda dengan daerah lain, terutama pada bagian belakang yang cenderung datar dan rapi, tanpa tonjolan besar seperti gaya Yogyakarta. Bagi masyarakat Solo, blangkon bukan sekadar pelengkap pakaian, melainkan simbol kehormatan, kesopanan, pengendalian diri, dan kebijaksanaan seorang laki-laki Jawa.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Tradisi Keraton Surakarta",
+    "image": "/img/cultures/blangkon-solo.jpg",
+    "tags": [
+      "Blangkon",
+      "Busana Adat",
+      "Aksesoris"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-keris-surakarta",
+    "provinceId": "jawa-tengah",
+    "category": "Kerajinan",
+    "title": "Keris Surakarta (Kerajinan)",
+    "coordinates": [
+      -7.569,
+      110.819
+    ],
+    "isLandmark": true,
+    "description": "Keris Surakarta merupakan mahakarya seni tempa logam oleh seorang empu yang memadukan berbagai logam membentuk pamor unik. Keris ini melambangkan kepemimpinan, identitas budaya, serta status sosial.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Keris Surakarta merupakan salah satu mahakarya budaya Jawa yang memiliki nilai sejarah, seni, dan spiritual yang sangat tinggi. Tradisi pembuatan keris di wilayah Surakarta diperkirakan telah berkembang sejak masa Kerajaan Mataram Islam dan terus dilestarikan oleh Keraton Surakarta hingga sekarang. Pembuatan keris dilakukan oleh seorang empu, yaitu ahli pembuat keris yang tidak hanya menguasai teknik penempaan logam, tetapi juga memahami filosofi dan tradisi spiritual Jawa. Sebuah keris dibuat melalui proses panjang dengan memadukan berbagai jenis logam sehingga menghasilkan motif khas yang disebut pamor. Dalam budaya Jawa, keris bukan hanya berfungsi sebagai senjata, tetapi juga sebagai pusaka, simbol status sosial, lambang kepemimpinan, dan identitas budaya.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Masa Mataram Islam hingga sekarang",
+    "image": "/img/cultures/keris-surakarta.jpg",
+    "tags": [
+      "Keris",
+      "Empu",
+      "Logam",
+      "Karya Seni"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-gamelan-surakarta",
+    "provinceId": "jawa-tengah",
+    "category": "Kerajinan",
+    "title": "Gamelan Surakarta",
+    "coordinates": [
+      -7.566,
+      110.832
+    ],
+    "isLandmark": true,
+    "description": "Gamelan Surakarta merupakan ansambel musik karawitan khas Surakarta yang berkarakter lembut, tenang, dan penuh penghayatan, melambangkan keharmonisan dan keseimbangan hidup masyarakat Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Gamelan Surakarta merupakan salah satu bentuk seni musik tradisional Jawa yang berkembang pesat di lingkungan Keraton Surakarta Hadiningrat. Tradisi gamelan di Solo telah berlangsung sejak masa Kerajaan Mataram Islam dan terus berkembang seiring berdirinya Kasunanan Surakarta. Keraton Surakarta menjadi pusat pengembangan seni karawitan Jawa yang kemudian melahirkan gaya khas yang dikenal sebagai Gaya Surakarta. Gaya ini memiliki karakter musik yang lembut, halus, tenang, dan penuh penghayatan, sesuai dengan filosofi masyarakat Jawa yang menjunjung keseimbangan hidup. Satu perangkat gamelan terdiri atas berbagai instrumen seperti gong, bonang, saron, kenong, gender, gambang, dan kendang.",
+    "location": "Keraton Surakarta Hadiningrat, Jawa Tengah",
+    "period": "Sejak masa Mataram Islam",
+    "image": "/img/cultures/gamelan-surakarta.jpg",
+    "tags": [
+      "Gamelan",
+      "Musik",
+      "Karawitan",
+      "Keraton"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-asal-usul-solo",
+    "provinceId": "jawa-tengah",
+    "category": "Cerita Rakyat",
+    "title": "Asal-usul Kota Surakarta",
+    "coordinates": [
+      -7.571,
+      110.828
+    ],
+    "isLandmark": true,
+    "description": "Asal-usul Kota Surakarta bermula dari perpindahan pusat Kerajaan Mataram Islam dari Kartasura ke Desa Sala pada 1745 oleh Susuhunan Pakubuwono II akibat kerusakan keraton pasca peristiwa Geger Pecinan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Kota Surakarta atau yang lebih dikenal dengan nama Solo memiliki sejarah panjang yang berawal dari perpindahan pusat Kerajaan Mataram Islam dari Kartasura ke Desa Sala pada tahun 1745. Perpindahan tersebut dilakukan oleh Susuhunan Pakubuwono II setelah Keraton Kartasura mengalami kerusakan parah akibat peristiwa Geger Pecinan, yaitu pemberontakan besar yang terjadi pada tahun 1742. Setelah melakukan berbagai pertimbangan politik, keamanan, dan spiritual, Pakubuwono II memilih Desa Sala sebagai lokasi pembangunan keraton baru. Pada tanggal 17 Februari 1745, pusat kerajaan resmi dipindahkan dan diberi nama Surakarta Hadiningrat. Meskipun nama resmi kerajaan adalah Surakarta, masyarakat tetap menggunakan nama Sala atau Solo untuk menyebut wilayah tersebut hingga sekarang.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Tahun 1745",
+    "image": "/img/cultures/asal-usul-solo.jpg",
+    "tags": [
+      "Sejarah",
+      "Mataram Islam",
+      "Pakubuwono II"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-kyai-slamet",
+    "provinceId": "jawa-tengah",
+    "category": "Cerita Rakyat",
+    "title": "Legenda Kyai Slamet",
+    "coordinates": [
+      -7.573,
+      110.829
+    ],
+    "isLandmark": true,
+    "description": "Legenda Kyai Slamet berkisah tentang kerbau albino keramat keturunan pusaka Keraton Surakarta yang diarak setiap Malam 1 Suro dalam Kirab Pusaka sebagai simbol keselamatan dan keberkahan bagi masyarakat.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Legenda Kyai Slamet merupakan salah satu tradisi paling terkenal di Surakarta. Kyai Slamet adalah sebutan bagi kerbau albino keturunan kerbau pusaka Keraton Surakarta yang dipercaya memiliki kekuatan spiritual dan mampu membawa keselamatan bagi masyarakat. Menurut kepercayaan masyarakat, kerbau tersebut merupakan hewan kesayangan Susuhunan Pakubuwono yang kemudian dianggap sebagai hewan keramat. Setiap malam 1 Suro, yaitu pergantian Tahun Baru Jawa, keturunan Kyai Slamet selalu diikutsertakan dalam Kirab Pusaka Keraton Surakarta. Tradisi ini selalu menarik ribuan masyarakat yang datang untuk mengikuti kirab. Banyak warga percaya bahwa berjalan di belakang iring-iringan Kyai Slamet dapat membawa keberuntungan dan keselamatan.",
+    "location": "Keraton Surakarta Hadiningrat, Jawa Tengah",
+    "period": "Tradisi tahunan Malam 1 Suro",
+    "image": "/img/cultures/kyai-slamet.jpg",
+    "tags": [
+      "Legenda",
+      "Kerbau Bule",
+      "Malam 1 Suro",
+      "Keraton"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-joko-tingkir",
+    "provinceId": "jawa-tengah",
+    "category": "Cerita Rakyat",
+    "title": "Legenda Joko Tingkir",
+    "coordinates": [
+      -7.558,
+      110.86
+    ],
+    "isLandmark": true,
+    "description": "Legenda Joko Tingkir berkisah tentang Mas Karebet (Joko Tingkir), pendiri Kesultanan Pajang, yang berhasil menaklukkan buaya-buaya ganas di Sungai Bengawan Solo dalam perjalanannya mengabdi ke Demak.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Joko Tingkir atau Mas Karebet merupakan tokoh legendaris yang sangat dikenal oleh masyarakat Solo dan sekitarnya. Ia merupakan pendiri Kesultanan Pajang yang menjadi cikal bakal lahirnya kerajaan-kerajaan besar di Jawa. Salah satu kisah paling terkenal adalah ketika Joko Tingkir berhasil menaklukakkan buaya-buaya ganas di Sungai Bengawan Solo. Dalam cerita rakyat, Joko Tingkir harus menyeberangi sungai untuk memenuhi tugas dari Kesultanan Demak. Berkat kesaktian dan keberaniannya, ia berhasil melewati berbagai rintangan, menaklukkan kawanan buaya, dan akhirnya memperoleh kepercayaan Sultan Demak. Kisah ini terus diwariskan secara turun-temurun oleh masyarakat sebagai simbol keberanian, kepemimpinan, dan perjuangan dalam menghadapi tantangan hidup.",
+    "location": "Sungai Bengawan Solo, Surakarta, Jawa Tengah",
+    "period": "Masa awal Kesultanan Pajang",
+    "image": "/img/cultures/joko-tingkir.jpg",
+    "tags": [
+      "Legenda",
+      "Joko Tingkir",
+      "Bengawan Solo",
+      "Kesultanan Pajang"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-trah-keraton",
+    "provinceId": "jawa-tengah",
+    "category": "Cerita Rakyat",
+    "title": "Asal-usul Trah Keraton Surakarta",
+    "coordinates": [
+      -7.572,
+      110.829
+    ],
+    "isLandmark": true,
+    "description": "Kisah berdirinya Keraton Surakarta Hadiningrat pada tahun 1745 sebagai penerus langsung Mataram Islam pasca hancurnya Kartasura, melambangkan kewajiban moral menjaga kelestarian budaya Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Keraton Surakarta Hadiningrat merupakan penerus langsung dari Kerajaan Mataram Islam yang pernah berjaya di Pulau Jawa. Sejarah berdirinya Keraton Surakarta bermula ketika Keraton Kartasura mengalami kerusakan akibat pemberontakan besar yang dikenal dengan peristiwa Geger Pecinan pada tahun 1742. Setelah kondisi kerajaan tidak lagi memungkinkan, Susuhunan Pakubuwono II memutuskan memindahkan pusat pemerintahan ke Desa Sala pada tahun 1745. Di tempat baru tersebut kemudian didirikan Keraton Surakarta Hadiningrat. Sejak saat itu, garis keturunan raja-raja Surakarta terus diwariskan secara turun-temurun dan dikenal sebagai Trah Kasunanan Surakarta. Masyarakat Jawa memandang keluarga keraton sebagai keturunan langsung para raja Mataram Islam yang mewarisi tanggung jawab untuk menjaga kelestarian budaya Jawa. Sepuluh tahun setelah berdirinya Keraton Surakarta, terjadi Perjanjian Giyanti pada tahun 1755 yang membagi Kerajaan Mataram menjadi dua kerajaan, yaitu Kasunanan Surakarta dan Kesultanan Yogyakarta. Meskipun terpisah, kedua kerajaan tersebut tetap berasal dari satu garis keturunan besar, yakni Trah Mataram. Dalam tradisi masyarakat Solo, keluarga Keraton Surakarta sering disebut sebagai keturunan ningrat atau darah biru. Sebutan tersebut tidak hanya merujuk pada garis keturunan raja, tetapi juga pada kewajiban moral untuk menjaga adat, tata krama, kesenian, serta berbagai pusaka budaya warisan leluhur. Masyarakat Solo juga meyakini bahwa seorang Susuhunan atau raja memperoleh wahyu keprabon sebagai tanda legitimasi kepemimpinan. Oleh karena itu, proses pergantian raja di Keraton Surakarta selalu dilakukan melalui serangkaian upacara adat yang sakral and penuh makna. Hingga saat ini, keturunan Keraton Surakarta masih terus melestarikan berbagai tradisi budaya seperti Sekaten, Grebeg, Kirab Pusaka Malam Satu Suro, serta berbagai kesenian klasik Jawa yang diwariskan sejak masa Kerajaan Mataram. Tradisi tersebut menjadikan Keraton Surakarta tetap menjadi pusat pelestarian budaya Jawa hingga sekarang.",
+    "location": "Keraton Surakarta Hadiningrat, Surakarta, Jawa Tengah",
+    "period": "Tahun 1745 hingga sekarang",
+    "image": "/img/cultures/keraton-surakarta.jpg",
+    "tags": [
+      "Asal-usul",
+      "Trah",
+      "Keraton Surakarta",
+      "Mataram Islam",
+      "Sejarah"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-keris-senjata",
+    "provinceId": "jawa-tengah",
+    "category": "Senjata",
+    "title": "Keris Surakarta",
+    "coordinates": [
+      -7.57,
+      110.82
+    ],
+    "isLandmark": true,
+    "description": "Keris Surakarta adalah senjata tradisional sekaligus pusaka bergaya halus, ramping, dan elegan khas Kasunanan Surakarta, menyimbolkan kewibawaan, status sosial, dan doa keselamatan pemiliknya.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Keris Surakarta merupakan senjata tradisional sekaligus pusaka budaya yang sangat melekat dengan identitas masyarakat Solo. Tradisi pembuatan keris di wilayah Surakarta telah berkembang sejak masa Kerajaan Mataram Islam dan mencapai puncak perkembangannya pada era Kasunanan Surakarta Hadiningrat. Di lingkungan keraton, keris tidak hanya dipandang sebagai alat pertahanan diri, tetapi juga sebagai simbol kehormatan, kebijaksanaan, kekuasaan, dan identitas sosial seseorang. Pembuatan keris dilakukan oleh seorang empu dengan memadukan logam menghasilkan pamor yang bernilai filosofis tinggi. Keris gaya Surakarta dikenal memiliki bentuk yang lebih halus, ramping, dan elegan dibandingkan dengan keris dari daerah lain.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Masa Mataram Islam hingga sekarang",
+    "image": "/img/cultures/keris-senjata-solo.jpg",
+    "tags": [
+      "Senjata",
+      "Pusaka",
+      "Keris",
+      "Surakarta"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-tombak-pusaka",
+    "provinceId": "jawa-tengah",
+    "category": "Senjata",
+    "title": "Tombak Pusaka Keraton",
+    "coordinates": [
+      -7.572,
+      110.827
+    ],
+    "isLandmark": true,
+    "description": "Tombak Pusaka Keraton merupakan senjata tradisional sakral seperti Kyai Plered dan Kyai Baru Klinting yang melambangkan kekuasaan, kewibawaan, dan legitimasi kepemimpinan raja Surakarta.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Tombak Pusaka Keraton merupakan salah satu senjata tradisional yang memiliki kedudukan penting dalam budaya Keraton Surakarta. Sejak masa Kerajaan Mataram Islam, tombak tidak hanya digunakan sebagai perlengkapan perang, tetapi juga menjadi lambang kekuasaan, kewibawaan, dan legitimasi seorang raja. Berbagai tombak pusaka hingga kini masih tersimpan dengan baik di Keraton Surakarta dan dianggap sebagai benda sakral yang memiliki nilai sejarah tinggi. Setiap tombak pusaka biasanya memiliki nama khusus, seperti Kyai Plered atau Kyai Baru Klinting. Pada masa lalu, tombak digunakan oleh prajurit kerajaan ketika menjaga keamanan keraton maupun saat menghadapi peperangan, namun kini lebih banyak ditampilkan dalam prosesi kirab pusaka keraton.",
+    "location": "Keraton Surakarta Hadiningrat, Jawa Tengah",
+    "period": "Masa Mataram Islam",
+    "image": "/img/cultures/tombak-pusaka-solo.jpg",
+    "tags": [
+      "Tombak",
+      "Pusaka",
+      "Keraton",
+      "Surakarta"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-wedhung",
+    "provinceId": "jawa-tengah",
+    "category": "Senjata",
+    "title": "Wedhung Surakarta",
+    "coordinates": [
+      -7.574,
+      110.825
+    ],
+    "isLandmark": true,
+    "description": "Wedhung merupakan senjata belati tradisional sejenis pisau panjang berbilah lurus yang diselipkan di pinggang abdi dalem dan pejabat keraton sebagai simbol kesiapan pertahanan dan kehormatan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Wedhung merupakan senjata tikam tradisional masyarakat Jawa yang banyak digunakan oleh kalangan bangsawan, priyayi, maupun abdi dalem keraton. Senjata ini memiliki bentuk menyerupai pisau panjang dengan bilah lurus dan ujung yang runcing. Di lingkungan Keraton Surakarta, wedhung menjadi salah satu pelengkap busana adat resmi yang menunjukkan status sosial dan kedudukan seseorang. Berbeda dengan keris yang lebih menonjolkan nilai simbolis dan spiritual, wedhung pada masa lalu lebih sering digunakan sebagai senjata praktis untuk keperluan sehari-hari maupun pertahanan diri. Meskipun demikian, wedhung tetap memiliki nilai filosofis dalam budaya Jawa, melambangkan keberanian, tanggung jawab, dan kesiapan seorang laki-laki.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Tradisi Jawa kuno",
+    "image": "/img/cultures/wedhung-solo.jpg",
+    "tags": [
+      "Wedhung",
+      "Belati",
+      "Abdi Dalem",
+      "Keraton"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-pedang-keraton",
+    "provinceId": "jawa-tengah",
+    "category": "Senjata",
+    "title": "Pedang Keraton Jawa",
+    "coordinates": [
+      -7.575,
+      110.83
+    ],
+    "isLandmark": true,
+    "description": "Pedang Keraton Jawa merupakan perlengkapan perang prajurit Kasunanan Surakarta pada masa lalu yang kini digunakan sebagai atribut upacara seremonial dan kirab adat prajurit keraton.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Pedang Keraton Jawa merupakan salah satu perlengkapan militer yang pernah digunakan oleh prajurit Kasunanan Surakarta pada masa lalu. Pedang ini umumnya digunakan oleh pasukan kerajaan sebagai senjata tempur ketika menjaga keamanan wilayah maupun saat menghadapi konflik bersenjata. Pedang menjadi salah satu perlengkapan utama yang digunakan oleh pasukan pengawal keraton maupun pasukan khusus kerajaan. Seiring berakhirnya masa peperangan tradisional, fungsi pedang mulai berubah menjadi bagian dari atribut seremonial. Hingga kini, pedang masih sering digunakan oleh prajurit Keraton Surakarta dalam berbagai prosesi adat, kirab budaya, serta upacara resmi kerajaan.",
+    "location": "Keraton Surakarta Hadiningrat, Jawa Tengah",
+    "period": "Era Kasunanan Surakarta",
+    "image": "/img/cultures/pedang-keraton.jpg",
+    "tags": [
+      "Pedang",
+      "Prajurit",
+      "Seremonial",
+      "Keraton"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-rumah-joglo",
+    "provinceId": "jawa-tengah",
+    "category": "Rumah Adat",
+    "title": "Rumah Joglo Surakarta",
+    "coordinates": [
+      -7.58,
+      110.82
+    ],
+    "isLandmark": true,
+    "description": "Rumah Joglo merupakan arsitektur hunian utama bangsawan Jawa beratap tinggi yang ditopang soko guru (empat tiang utama) sebagai simbol keseimbangan hidup manusia, sesama, alam, dan Pencipta.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Rumah Joglo merupakan rumah adat utama masyarakat Jawa yang berkembang pesat di wilayah Surakarta dan sekitarnya. Arsitektur Joglo telah dikenal sejak masa Kerajaan Mataram dan kemudian mengalami perkembangan yang signifikan di lingkungan Keraton Surakarta. Pada masa lalu, rumah Joglo umumnya hanya dimiliki oleh kalangan bangsawan, pejabat kerajaan, dan keluarga priyayi karena proses pembangunannya memerlukan biaya yang besar serta keterampilan khusus. Ciri utama rumah Joglo terletak pada bentuk atapnya yang menjulang tinggi dan ditopang oleh empat tiang utama yang disebut soko guru. Keempat tiang tersebut memiliki makna filosofis yang mendalam, yaitu melambangkan hubungan harmonis antara manusia dengan Tuhan, sesama manusia, alam, dan dirinya sendiri.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Tradisional Jawa",
+    "image": "/img/cultures/joglo-solo.jpg",
+    "tags": [
+      "Arsitektur",
+      "Joglo",
+      "Soko Guru",
+      "Rumah Adat"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-joglo-sinom",
+    "provinceId": "jawa-tengah",
+    "category": "Rumah Adat",
+    "title": "Joglo Sinom",
+    "coordinates": [
+      -7.585,
+      110.815
+    ],
+    "isLandmark": true,
+    "description": "Joglo Sinom adalah variasi rumah Joglo dengan tambahan tiang penyangga keliling untuk ruang lebih lapang, melambangkan pertumbuhan, gotong royong, dan kebersamaan keluarga besar.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Joglo Sinom merupakan salah satu varian rumah Joglo yang berkembang di wilayah Surakarta. Nama Sinom berasal dari bahasa Jawa yang berarti daun muda asam, yang melambangkan pertumbuhan, harapan, dan kehidupan baru. Rumah Joglo Sinom banyak digunakan oleh kalangan bangsawan, priyayi, dan masyarakat terpandang di Solo karena memiliki bentuk yang lebih luas dibandingkan Joglo biasa. Ciri khas Joglo Sinom terletak pada tambahan tiang penyangga di sekeliling bangunan utama sehingga menciptakan ruang yang lebih lapang. Struktur tersebut memungkinkan rumah digunakan untuk berbagai kegiatan sosial, seperti musyawarah, pertemuan keluarga besar, hingga penyelenggaraan upacara adat.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Tradisional Jawa",
+    "image": "/img/cultures/joglo-sinom.jpg",
+    "tags": [
+      "Sinom",
+      "Joglo",
+      "Arsitektur",
+      "Jawa"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-joglo-pangrawit",
+    "provinceId": "jawa-tengah",
+    "category": "Rumah Adat",
+    "title": "Joglo Pangrawit",
+    "coordinates": [
+      -7.578,
+      110.81
+    ],
+    "isLandmark": true,
+    "description": "Joglo Pangrawit merupakan varian Joglo rumit berciri khas ukiran dekoratif kaya yang menyimbolkan status kebangsawanan tinggi dan kehalusan citarasa seni arsitektur tradisional Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Joglo Pangrawit merupakan salah satu bentuk rumah Joglo yang memiliki tingkat kerumitan arsitektur lebih tinggi dibandingkan jenis Joglo lainnya. Dalam tradisi arsitektur Jawa, Joglo Pangrawit umumnya dimiliki oleh keluarga bangsawan atau kerabat keraton karena membutuhkan biaya pembangunan yang besar dan pengerjaan yang sangat teliti. Keistimewaan Joglo Pangrawit terletak pada struktur atapnya yang lebih rumit, penggunaan ornamen ukiran yang lebih kaya, serta detail hiasan yang memperlihatkan tingkat seni tinggi. Di lingkungan Keraton Surakarta, rumah dengan tipe Joglo Pangrawit sering digunakan sebagai tempat tinggal keluarga kerajaan maupun pejabat tinggi keraton.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Tradisional Jawa",
+    "image": "/img/cultures/joglo-pangrawit.jpg",
+    "tags": [
+      "Pangrawit",
+      "Joglo",
+      "Ukiran",
+      "Keraton"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-pendopo-ageng",
+    "provinceId": "jawa-tengah",
+    "category": "Rumah Adat",
+    "title": "Pendopo Ageng Keraton Surakarta",
+    "coordinates": [
+      -7.566,
+      110.83
+    ],
+    "isLandmark": true,
+    "description": "Pendopo Ageng merupakan bangunan utama tanpa dinding di Keraton Surakarta yang melambangkan keterbukaan raja dengan rakyatnya, menjadi pusat upacara adat dan pelestarian gamelan serta tarian.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Pendopo Ageng merupakan bangunan utama yang berada di kompleks Keraton Surakarta Hadiningrat dan menjadi salah satu ikon arsitektur tradisional Kota Solo. Bangunan ini berfungsi sebagai pusat penyelenggaraan berbagai kegiatan kerajaan, mulai dari upacara adat, penerimaan tamu kehormatan, pertunjukan seni, hingga kegiatan kenegaraan pada masa Kasunanan Surakarta. Pendopo Ageng dibangun dengan konsep arsitektur Joglo yang megah dan terbuka tanpa dinding di bagian samping. Desain terbuka tersebut mencerminkan filosofi masyarakat Jawa yang menjunjung tinggi keterbukaan, kebersamaan, dan hubungan harmonis antara pemimpin dengan rakyatnya. Bangunan ini juga menjadi pusat perkembangan seni tradisional Jawa, seperti gamelan, tari klasik, dan wayang kulit.",
+    "location": "Keraton Surakarta Hadiningrat, Jawa Tengah",
+    "period": "Tahun 1745",
+    "image": "/img/cultures/pendopo-ageng.jpg",
+    "tags": [
+      "Pendopo",
+      "Keraton",
+      "Surakarta",
+      "Ageng"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-tari-gambyong",
+    "provinceId": "jawa-tengah",
+    "category": "Tarian",
+    "title": "Tari Gambyong",
+    "coordinates": [
+      -7.562,
+      110.822
+    ],
+    "isLandmark": true,
+    "description": "Tari Gambyong merupakan tarian klasik Surakarta yang berkembang dari tarian panen rakyat sebagai ungkapan syukur. Gerakannya yang lembut dan luwes menyimbolkan kesopanan, budi pekerti, dan keramahan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/jateng/Tarian - Tari Gambyong.mp3",
+    "narrator": "Tari Gambyong merupakan tarian tradisional yang berasal dari Kota Surakarta atau Solo. Awalnya, tarian ini berkembang dari tari rakyat yang dipentaskan sebagai ungkapan rasa syukur atas hasil panen. Seiring waktu, Tari Gambyong mengalami penyempurnaan di lingkungan Pura Mangkunegaran sehingga menjadi tarian klasik yang dikenal hingga saat ini. Kini, Tari Gambyong sering digunakan sebagai tari penyambutan tamu kehormatan maupun pertunjukan budaya. Gerakan Tari Gambyong yang lembut dan anggun mencerminkan keramahan, kesopanan, serta kelembutan budi yang menjadi ciri khas budaya masyarakat Jawa. Setiap gerakan tangan, kepala, dan langkah kaki dilakukan secara selaras dengan iringan gamelan, menggambarkan kehidupan yang harmonis dan penuh penghormatan kepada orang lain.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Masa Pura Mangkunegaran",
+    "image": "/img/cultures/tari-gambyong.jpg",
+    "tags": [
+      "Tari Klasik",
+      "Gambyong",
+      "Mangkunegaran",
+      "Penyambutan"
+    ],
+    "video": "/video/central-java/tari-gambyong.mp4"
+  },
+  {
+    "id": "jateng-tari-bedhaya",
+    "provinceId": "jawa-tengah",
+    "category": "Tarian",
+    "title": "Tari Bedhaya Ketawang",
+    "coordinates": [
+      -7.572,
+      110.828
+    ],
+    "isLandmark": true,
+    "description": "Tari Bedhaya Ketawang merupakan tarian sakral diiringi sembilan penari perempuan yang dipentaskan khusus saat penobatan dan peringatan kenaikan takhta Susuhunan Surakarta Hadiningrat.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Tari Bedhaya Ketawang merupakan tarian sakral yang berasal dari Keraton Kasunanan Surakarta. Tarian ini hanya dipentaskan pada momen-momen tertentu, terutama saat peringatan kenaikan takhta Susuhunan Surakarta. Karena memiliki nilai sakral yang tinggi, pementasannya dilakukan dengan tata cara dan aturan adat yang masih menjaga nuansa khidmat hingga sekarang. Bagi masyarakat Solo, Tari Bedhaya Ketawang melambangkan kesucian, keselarasan, kesetiaan, dan penghormatan terhadap tradisi leluhur. Gerakan sembilan penari yang dilakukan secara serempak menggambarkan keseimbangan antara manusia, alam, dan Sang Pencipta. Nilai-nilai tersebut menjadi bagian penting dalam filosofi budaya Jawa.",
+    "location": "Keraton Surakarta Hadiningrat, Jawa Tengah",
+    "period": "Sejak masa Mataram Islam",
+    "image": "/img/cultures/bedhaya-ketawang-solo.jpg",
+    "tags": [
+      "Bedhaya",
+      "Sakral",
+      "Keraton",
+      "Kenaikan Takhta"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-tari-srimpi",
+    "provinceId": "jawa-tengah",
+    "category": "Tarian",
+    "title": "Tari Srimpi Surakarta",
+    "coordinates": [
+      -7.573,
+      110.826
+    ],
+    "isLandmark": true,
+    "description": "Tari Srimpi Surakarta merupakan tarian klasik keraton oleh empat penari perempuan berarak anggun lambat yang menyimbolkan kehalusan, kesabaran, dan pengendalian diri budaya Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Tari Srimpi Surakarta merupakan tari klasik yang berkembang di lingkungan Keraton Surakarta. Tarian ini dibawakan oleh empat penari perempuan dengan gerakan yang lembut, perlahan, dan penuh penghayatan. Sejak dahulu, Tari Srimpi menjadi simbol kehalusan budaya Jawa dan hanya dipentaskan di lingkungan keraton sebelum akhirnya dikenal oleh masyarakat luas. Gerakan Tari Srimpi mencerminkan kesabaran, pengendalian diri, serta sikap anggun yang dijunjung tinggi dalam budaya Jawa. Melalui setiap gerakan yang tenang dan teratur, tarian ini mengajarkan bahwa keindahan tidak selalu ditunjukkan melalui gerakan yang cepat, melainkan melalui ketenangan, ketelitian, dan keharmonisan.",
+    "location": "Keraton Surakarta Hadiningrat, Jawa Tengah",
+    "period": "Tradisi keraton Jawa",
+    "image": "/img/cultures/tari-srimpi-solo.jpg",
+    "tags": [
+      "Srimpi",
+      "Tarian",
+      "Kehalusan",
+      "Keraton"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-tari-bondan",
+    "provinceId": "jawa-tengah",
+    "category": "Tarian",
+    "title": "Tari Bondan",
+    "coordinates": [
+      -7.564,
+      110.835
+    ],
+    "isLandmark": true,
+    "description": "Tari Bondan merupakan tarian tradisional asal Surakarta yang mengisahkan kasih sayang, ketulusan, dan kesabaran seorang ibu dalam mengasuh bayinya menggunakan properti kendi, boneka, dan payung.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "audio": "/music/jateng/Tarian - Tari Bondan.mp3",
+    "narrator": "Tari Bondan merupakan tarian tradisional yang berasal dari Surakarta dan menggambarkan kehidupan seorang ibu dalam merawat anaknya dengan penuh kasih sayang. Tarian ini biasanya dibawakan oleh seorang penari perempuan yang menampilkan berbagai gerakan lembut sambil membawa boneka sebagai simbol seorang bayi. Melalui Tari Bondan, masyarakat Jawa mengajarkan pentingnya kasih sayang, tanggung jawab, kesabaran, dan ketulusan dalam membesarkan anak. Tarian ini juga menunjukkan bahwa peran seorang ibu sangat dihargai sebagai sosok yang memberikan cinta, perhatian, dan pendidikan pertama bagi anak-anaknya. Keunikannya terletak pada penggunaan properti seperti boneka, payung, atau kendi.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Masyarakat Tradisional Jawa",
+    "image": "/img/cultures/tari-bondan.jpg",
+    "tags": [
+      "Bondan",
+      "Kasih Sayang",
+      "Ibu",
+      "Kendi"
+    ],
+    "video": "/video/central-java/tari-bondan.mp4"
+  },
+  {
+    "id": "jateng-musik-bonang",
+    "provinceId": "jawa-tengah",
+    "category": "Musik",
+    "title": "Bonang Gaya Surakarta",
+    "coordinates": [
+      -7.567,
+      110.829
+    ],
+    "isLandmark": true,
+    "description": "Bonang adalah alat musik gamelan berupa deretan gong kecil dalam rak kayu yang berfungsi menuntun arah melodi dan tempo karawitan, menyimbolkan kepemimpinan dan keselarasan kerja sama.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Bonang merupakan salah satu alat musik tradisional yang menjadi bagian penting dalam ansambel gamelan Surakarta. Alat musik ini terdiri atas deretan pencon atau gong-gong kecil yang disusun di atas tali dalam sebuah rangka kayu, kemudian dimainkan dengan cara dipukul menggunakan sepasang pemukul khusus. Dalam budaya Solo, bonang memiliki peran sebagai pembawa pola melodi yang menghubungkan setiap bagian lagu sehingga alunan gamelan terdengar lebih hidup dan teratur. Kehadirannya mengajarkan bahwa setiap bagian, sekecil apa pun perannya, memiliki arti penting dalam menciptakan keharmonisan bersama. Nilai tersebut mencerminkan filosofi masyarakat Jawa yang menjunjung tinggi kerja sama dan keseimbangan.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Tradisi Gamelan Jawa",
+    "image": "/img/cultures/bonang-solo.jpg",
+    "tags": [
+      "Bonang",
+      "Gamelan",
+      "Pukul",
+      "Musik"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-musik-gender",
+    "provinceId": "jawa-tengah",
+    "category": "Musik",
+    "title": "Gender",
+    "coordinates": [
+      -7.568,
+      110.831
+    ],
+    "isLandmark": true,
+    "description": "Gender merupakan alat musik bilah logam gantung di atas pipa bambu yang dipukul dengan dua tabuh untuk menghasilkan nada harmonis melodi pendukung karawitan pewayangan dan tarian.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Gender merupakan alat musik pukul tradisional yang terdiri atas bilah-bilah logam yang digantung di atas tabung resonator dari bambu. Alat musik ini dimainkan menggunakan dua pemukul kecil dan menghasilkan suara yang halus serta bergema. Dalam ansambel gamelan Surakarta, gender berfungsi mengembangkan melodi sehingga alunan musik terdengar lebih indah dan penuh variasi. Melalui permainan gender, masyarakat Jawa mengajarkan pentingnya ketelitian, kesabaran, dan keseimbangan, karena setiap nada harus dimainkan dengan tepat agar tetap selaras dengan instrumen lainnya. Gender sering dimainkan dalam pertunjukan wayang kulit, tari klasik, hingga upacara adat Keraton Surakarta.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Tradisi Gamelan Jawa",
+    "image": "/img/cultures/gender-solo.jpg",
+    "tags": [
+      "Gender",
+      "Gamelan",
+      "Logam",
+      "Resonator"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-musik-siter",
+    "provinceId": "jawa-tengah",
+    "category": "Musik",
+    "title": "Siter",
+    "coordinates": [
+      -7.569,
+      110.833
+    ],
+    "isLandmark": true,
+    "description": "Siter merupakan alat musik petik kawat di atas resonator kayu yang dipetik menggunakan kuku ibu jari untuk menghadirkan alunan melodi lembut penenang jiwa dalam ensambel gamelan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Siter merupakan alat musik petik tradisional yang memiliki bentuk menyerupai kotak kayu dengan sejumlah senar yang direntangkan di bagian atasnya. Alat musik ini dimainkan dengan cara dipetik menggunakan jari sehingga menghasilkan suara yang jernih dan menenangkan. Bagi masyarakat Solo, siter memberikan sentuhan halus yang memperkaya warna musik gamelan. Suaranya yang lembut mencerminkan ketenangan, kesederhanaan, dan kelembutan hati yang menjadi bagian dari filosofi hidup masyarakat Jawa. Kehadirannya menunjukkan bahwa keindahan dapat tercipta melalui perpaduan nada-nada yang sederhana namun selaras. Siter digunakan dalam pertunjukan gamelan, tembang Jawa, dan berbagai acara budaya.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Tradisi Gamelan Jawa",
+    "image": "/img/cultures/siter-solo.jpg",
+    "tags": [
+      "Siter",
+      "Gamelan",
+      "Petik",
+      "Dawai"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-musik-gong-ageng",
+    "provinceId": "jawa-tengah",
+    "category": "Musik",
+    "title": "Gong Ageng",
+    "coordinates": [
+      -7.57,
+      110.834
+    ],
+    "isLandmark": true,
+    "description": "Gong Ageng adalah instrumen gamelan terbesar berlubang tengah yang dipukul lembut untuk menutup siklus melodi gending, menyimbolkan awal dan akhir kehidupan serta keseimbangan paripurna.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Gong Ageng merupakan instrumen terbesar dalam seperangkat gamelan Surakarta. Alat musik ini terbuat dari logam berbentuk bundar dengan tonjolan di bagian tengah dan dimainkan dengan cara dipukul menggunakan pemukul khusus yang dilapisi bahan lunak. Dalam budaya Jawa, Gong Ageng memiliki peran yang sangat penting karena menjadi penanda awal, akhir, atau pergantian bagian dalam sebuah komposisi gamelan. Kehadirannya melambangkan kebesaran, keseimbangan, dan kesempurnaan. Masyarakat Jawa memaknai bunyi gong sebagai pengingat bahwa setiap perjalanan hidup memiliki awal dan akhir yang harus menjalani lembaran baru dengan penuh kebijaksanaan.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Tradisi Gamelan Jawa",
+    "image": "/img/cultures/gong-ageng-solo.jpg",
+    "tags": [
+      "Gong",
+      "Gamelan",
+      "Besar",
+      "Sakral"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-beskap-solo",
+    "provinceId": "jawa-tengah",
+    "category": "Pakaian Adat",
+    "title": "Beskap Solo",
+    "coordinates": [
+      -7.563,
+      110.824
+    ],
+    "isLandmark": true,
+    "description": "Beskap Solo merupakan jas pria resmi adat Jawa berkerah tegak tanpa lipatan kerah yang dipadukan dengan jarik, blangkon, dan keris, melambangkan kesopanan, wibawa, dan tata krama.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Beskap Solo merupakan pakaian adat resmi yang dikenakan oleh laki-laki dalam berbagai acara adat di Kota Surakarta. Pakaian ini memiliki potongan yang rapi dengan kerah tegak dan kancing yang tersusun secara khas di bagian depan. Beskap biasanya dipadukan dengan jarik batik, blangkon, serta keris sebagai pelengkap busana. Bagi masyarakat Solo, Beskap bukan sekadar pakaian adat, tetapi juga melambangkan kewibawaan, kesopanan, dan tanggung jawab. Cara mengenakannya mencerminkan etika masyarakat Jawa yang menjunjung tinggi tata krama dan penghormatan kepada orang lain. Nilai tersebut masih dijaga hingga kini dalam berbagai acara resmi maupun upacara adat.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Busana adat Keraton Surakarta",
+    "image": "/img/cultures/beskap-solo.jpg",
+    "tags": [
+      "Beskap",
+      "Pakaian Resmi",
+      "Laki-laki",
+      "Keraton"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-kebaya-solo",
+    "provinceId": "jawa-tengah",
+    "category": "Pakaian Adat",
+    "title": "Kebaya Solo",
+    "coordinates": [
+      -7.564,
+      110.826
+    ],
+    "isLandmark": true,
+    "description": "Kebaya Solo adalah kebaya anggun berpotongan longgar elegan yang melambangkan kelembutan, kesopanan budi pekerti, serta keanggunan sejati perempuan Jawa dalam bersikap sehari-hari.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Kebaya Solo merupakan pakaian tradisional perempuan yang dikenal karena tampilannya yang anggun, sederhana, dan elegan. Kebaya ini umumnya dipadukan dengan kain batik Solo, sanggul, serta berbagai aksesori tradisional yang mempercantik penampilan. Dalam budaya Solo, Kebaya melambangkan kelembutan, kesopanan, dan keanggunan perempuan Jawa. Selain memperlihatkan keindahan busana, kebaya juga mengajarkan bahwa kecantikan seseorang tercermin dari sikap, tutur kata, dan perilakunya. Nilai inilah yang menjadikan kebaya tetap dihormati sebagai salah satu simbol budaya Jawa.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Busana tradisional Jawa",
+    "image": "/img/cultures/kebaya-solo.jpg",
+    "tags": [
+      "Kebaya",
+      "Perempuan",
+      "Anggun",
+      "Tradisional"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-jarik-batik",
+    "provinceId": "jawa-tengah",
+    "category": "Pakaian Adat",
+    "title": "Jarik Batik Solo",
+    "coordinates": [
+      -7.562,
+      110.814
+    ],
+    "isLandmark": true,
+    "description": "Jarik Batik Solo merupakan kain batik panjang bermotif klasik seperti Sidomukti, Sidoasih, dan Truntum yang dililitkan sebagai bawahan adat, sarat makna doa kesejahteraan dan kesetiaan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Jarik Batik Solo merupakan kain batik tradisional yang dikenakan sebagai bawahan dalam pakaian adat masyarakat Surakarta. Kain ini dibuat menggunakan teknik membatik yang telah diwariskan selama berabad-abad dan dikenal dengan motif-motif klasik seperti Sidomukti, Sidoasih, Parang, dan Truntum. Bagi masyarakat Solo, setiap motif batik memiliki makna dan harapan tersendiri. Misalnya, motif Sidomukti melambangkan harapan akan kehidupan yang sejahtera, sedangkan Truntum melambangkan kasih sayang yang tumbuh tanpa henti. Hal ini menunjukkan bahwa batik bukan hanya pelengkap pakaian, tetapi juga media untuk menyampaikan doa dan nilai kehidupan.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Busana tradisional Jawa",
+    "image": "/img/cultures/jarik-solo.jpg",
+    "tags": [
+      "Jarik",
+      "Batik",
+      "Klasik",
+      "Sidomukti",
+      "Truntum"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-blangkon-pakaian",
+    "provinceId": "jawa-tengah",
+    "category": "Pakaian Adat",
+    "title": "Blangkon Surakarta",
+    "coordinates": [
+      -7.566,
+      110.827
+    ],
+    "isLandmark": true,
+    "description": "Blangkon Surakarta merupakan penutup kepala batik dengan mondholan tipis datar di bagian belakangnya yang melambangkan kejernihan pikiran, pengendalian hawa nafsu, dan kebijaksanaan.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Blangkon Surakarta merupakan penutup kepala tradisional yang menjadi pelengkap pakaian adat laki-laki di Kota Solo. Blangkon dibuat dari kain batik yang dibentuk mengikuti pola tertentu sehingga nyaman dikenakan dan memiliki ciri khas tersendiri. Dalam budaya Jawa, Blangkon melambangkan kebijaksanaan, pengendalian diri, dan kemampuan menjaga pikiran agar tetap jernih. Penutup kepala ini mengingatkan bahwa seseorang harus mampu berpikir dengan tenang sebelum mengambil keputusan. Blangkon Surakarta memiliki keunikan pada bagian belakangnya yang datar atau mondhol tipis, berbeda dengan Blangkon Yogyakarta yang memiliki tonjolan lebih besar.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Busana adat Jawa",
+    "image": "/img/cultures/blangkon-adat-solo.jpg",
+    "tags": [
+      "Blangkon",
+      "Surakarta",
+      "Mondholan Datar",
+      "Laki-laki"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-sekaten",
+    "provinceId": "jawa-tengah",
+    "category": "Upacara Adat",
+    "title": "Sekaten Surakarta",
+    "coordinates": [
+      -7.571,
+      110.826
+    ],
+    "isLandmark": true,
+    "description": "Sekaten merupakan perayaan tahunan memperingati Maulid Nabi Muhammad SAW dengan membunyikan gamelan pusaka Kyai Guntur Madu dan Kyai Guntur Sari di halaman Masjid Agung Surakarta.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Sekaten merupakan tradisi budaya yang telah berlangsung sejak masa Kesultanan Demak dan kemudian dilestarikan oleh Keraton Kasunanan Surakarta. Upacara ini diselenggarakan untuk memperingati kelahiran Nabi Muhammad SAW dan menjadi salah satu perayaan budaya terbesar di Kota Solo. Melalui Sekaten, masyarakat diajak untuk mengenang nilai-nilai keagamaan sekaligus mempererat hubungan antarsesama. Tradisi ini menunjukkan bahwa budaya dan agama dapat berjalan berdampingan dalam kehidupan masyarakat Jawa. Sekaten biasanya diawali dengan membunyikan gamelan pusaka Keraton di halaman Masjid Agung dan diakhiri dengan prosesi Grebeg Mulud.",
+    "location": "Keraton Surakarta Hadiningrat, Jawa Tengah",
+    "period": "Tahunan, Peringatan Maulid Nabi",
+    "image": "/img/cultures/sekaten-solo.jpg",
+    "tags": [
+      "Sekaten",
+      "Maulid",
+      "Masjid Agung",
+      "Gamelan Pusaka"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-grebeg-sudiro",
+    "provinceId": "jawa-tengah",
+    "category": "Upacara Adat",
+    "title": "Grebeg Sudiro",
+    "coordinates": [
+      -7.56,
+      110.832
+    ],
+    "isLandmark": true,
+    "description": "Grebeg Sudiro merupakan festival budaya akulturasi Jawa-Tionghoa di Surakarta dengan mengarak gunungan berisi ribuan kue keranjang untuk memupuk persaudaraan dan kerukunan suku.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Grebeg Sudiro merupakan tradisi budaya yang berkembang di kawasan Sudiroprajan, Kota Solo. Upacara ini menjadi simbol keberagaman masyarakat Solo karena memadukan budaya Jawa dan budaya Tionghoa dalam satu perayaan yang meriah, terutama menjelang Tahun Baru Imlek. Tradisi ini mengajarkan pentingnya hidup rukun di tengah keberagaman suku, budaya, dan agama. Masyarakat bersama-sama mengikuti kirab budaya dan membagikan hasil bumi sebagai simbol rasa syukur, kebersamaan, dan harapan akan kehidupan yang sejahtera. Keunikan Grebeg Sudiro terletak pada hadirnya gunungan yang dihiasi ribuan kue keranjang, salah satu makanan khas masyarakat Tionghoa.",
+    "location": "Sudiroprajan, Surakarta, Jawa Tengah",
+    "period": "Tahunan menjelang Imlek",
+    "image": "/img/cultures/grebeg-sudiro.jpg",
+    "tags": [
+      "Grebeg",
+      "Sudiro",
+      "Akulturasi",
+      "Tionghoa",
+      "Jawa"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-tingalan-jumenengan",
+    "provinceId": "jawa-tengah",
+    "category": "Upacara Adat",
+    "title": "Tingalan Jumenengan Dalem",
+    "coordinates": [
+      -7.572,
+      110.829
+    ],
+    "isLandmark": true,
+    "description": "Tingalan Jumenengan Dalem merupakan upacara adat memperingati penobatan Susuhunan Surakarta Hadiningrat yang diisi dengan pembacaan doa keselamatan, kirab, dan tari sakral Bedhaya.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Tingalan Jumenengan Dalem merupakan upacara adat Keraton Kasunanan Surakarta yang diselenggarakan setiap tahun untuk memperingati hari penobatan atau kenaikan takhta raja. Tradisi ini menjadi salah satu bentuk penghormatan terhadap sejarah Kesultanan Surakarta yang masih dilestarikan hingga sekarang. Upacara ini mencerminkan rasa hormat kepada para pemimpin serta pentingnya menjaga kesinambungan nilai-nilai budaya dan adat istiadat. Prosesi Tingalan Jumenengan Dalem diisi dengan berbagai kegiatan adat seperti kirab pusaka, pertunjukan seni tradisional tari Bedhaya Ketawang, dan doa bersama.",
+    "location": "Keraton Surakarta Hadiningrat, Jawa Tengah",
+    "period": "Tahunan, hari naik takhta raja",
+    "image": "/img/cultures/tingalan-jumenengan.jpg",
+    "tags": [
+      "Jumenengan",
+      "Penobatan Raja",
+      "Keraton",
+      "Upacara Adat"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-kirab-1-suro",
+    "provinceId": "jawa-tengah",
+    "category": "Upacara Adat",
+    "title": "Kirab Pusaka Malam 1 Suro",
+    "coordinates": [
+      -7.573,
+      110.832
+    ],
+    "isLandmark": true,
+    "description": "Kirab Pusaka Malam 1 Suro merupakan prosesi hening di tengah malam mengarak benda pusaka keraton dipimpin oleh kerbau albino Kyai Slamet untuk melakukan introspeksi batin.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Kirab Pusaka Malam 1 Suro merupakan salah satu tradisi paling terkenal di Kota Solo yang diselenggarakan setiap malam pergantian Tahun Baru Jawa atau 1 Suro. Dalam tradisi ini, berbagai pusaka Keraton Kasunanan Surakarta diarak mengelilingi kawasan keraton bersama para abdi dalem secara hening (laku bisu). Bagi masyarakat Solo, kirab ini bukan sekadar prosesi budaya, tetapi juga menjadi sarana untuk melakukan introspeksi diri dan memohon keselamatan. Salah satu bagian yang paling menarik adalah keikutsertaan kerbau bule keturunan Kyai Slamet, yang dipercaya sebagai hewan keramat penunjuk jalan oleh sebagian masyarakat.",
+    "location": "Keraton Surakarta Hadiningrat, Jawa Tengah",
+    "period": "Tahunan, Malam 1 Suro",
+    "image": "/img/cultures/kirab-1-suro.jpg",
+    "tags": [
+      "Kirab",
+      "Malam 1 Suro",
+      "Kyai Slamet",
+      "Pusaka"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-keraton-surakarta",
+    "provinceId": "jawa-tengah",
+    "category": "Bangunan Bersejarah",
+    "title": "Keraton Surakarta Hadiningrat",
+    "coordinates": [
+      -7.578,
+      110.828
+    ],
+    "isLandmark": true,
+    "description": "Keraton Surakarta Hadiningrat merupakan istana resmi Kasunanan Surakarta yang didirikan pada tahun 1745 oleh Susuhunan Pakubuwono II. Bangunan bersejarah ini menjadi saksi bisu transisi pemerintahan Mataram Islam dan pusat pelestarian kebudayaan Jawa hingga hari ini.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Keraton Surakarta Hadiningrat didirikan oleh Susuhunan Pakubuwono II pada tahun 1745 sebagai pengganti Keraton Kartasura yang hancur akibat peristiwa Geger Pecinan. Pemindahan istana ini diiringi prosesi arak-arakan besar-besaran yang membawa seluruh pusaka kerajaan ke Desa Sala. Arsitektur keraton memadukan gaya tradisional Jawa dengan sentuhan kolonial Eropa pada ornamen-ornamennya, yang dirancang oleh para arsitek keraton berkolaborasi dengan Belanda. Kompleks keraton terdiri dari berbagai pelataran seperti Alun-alun Lor, Sasana Sewaka, dan panggung Songgobuwono yang legendaris, sebuah menara tinggi yang dahulu digunakan untuk mengintai musuh sekaligus tempat bermeditasi bagi raja. Hingga kini, Keraton Surakarta tetap berfungsi sebagai kediaman keluarga kerajaan sekaligus pusat budaya utama di Kota Solo.",
+    "location": "Kota Surakarta, Jawa Tengah",
+    "period": "Tahun 1745",
+    "image": "/img/cultures/keraton-surakarta.jpg",
+    "tags": [
+      "Keraton",
+      "Surakarta",
+      "Istana",
+      "Mataram Islam",
+      "Pusaka"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-pura-mangkunegaran",
+    "provinceId": "jawa-tengah",
+    "category": "Bangunan Bersejarah",
+    "title": "Pura Mangkunegaran",
+    "coordinates": [
+      -7.566,
+      110.822
+    ],
+    "isLandmark": true,
+    "description": "Pura Mangkunegaran adalah istana resmi Kadipaten Mangkunegaran yang didirikan pada tahun 1757 oleh Raden Mas Said (Pangeran Sambernyawa). Istana ini memiliki pendopo ageng tanpa tiang penyangga tengah terbesar di Indonesia.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Pura Mangkunegaran didirikan setelah ditandatanganinya Perjanjian Salatiga pada tahun 1757, yang menetapkan Raden Mas Said atau Pangeran Sambernyawa sebagai KGPAA Mangkunegara I. Kompleks istana ini menghadap ke arah selatan dan memiliki daya tarik utama berupa Pendopo Ageng, sebuah balairung raksasa berbentuk joglo tanpa tiang tengah yang dibangun menggunakan kayu jati utuh dari hutan Kedu. Pura Mangkunegaran memadukan konsep arsitektur Jawa Klasik dengan gaya Art Nouveau Eropa, terlihat dari lampu gantung kristal dan pilar besi impor dari Eropa. Di dalam istana terdapat museum yang menyimpan koleksi perhiasan emas raja, senjata tradisional, gamelan pusaka Kyai Kanyut Mesem, serta koleksi naskah kuno berharga di perpustakaan reksa pustaka.",
+    "location": "Kota Surakarta, Jawa Tengah",
+    "period": "Tahun 1757",
+    "image": "/img/cultures/pura-mangkunegaran.jpg",
+    "tags": [
+      "Istana",
+      "Mangkunegaran",
+      "Pendopo",
+      "Pura",
+      "Sejarah"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-benteng-vastenburg",
+    "provinceId": "jawa-tengah",
+    "category": "Bangunan Bersejarah",
+    "title": "Benteng Vastenburg",
+    "coordinates": [
+      -7.568,
+      110.835
+    ],
+    "isLandmark": true,
+    "description": "Benteng Vastenburg merupakan benteng pertahanan kolonial Belanda yang dibangun dekat Keraton Surakarta untuk mengawasi aktivitas kerajaan, kini dilestarikan sebagai landmark sejarah dan pusat kegiatan seni.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Benteng Vastenburg merupakan salah satu bangunan bersejarah paling ikonik di Kota Solo. Benteng ini dibangun oleh pemerintah kolonial Belanda pada pertengahan abad ke-18, tidak lama setelah berdirinya Keraton Surakarta. Pembangunan benteng bertujuan untuk mengawasi aktivitas Keraton Surakarta sekaligus memperkuat pengaruh Belanda di wilayah tersebut. Letaknya yang berada tidak jauh dari keraton menunjukkan adanya kepentingan politik kolonial untuk mengontrol pemerintahan kerajaan. Di tengah masyarakat Solo, Benteng Vastenburg tidak hanya dikenal sebagai bangunan sejarah, tetapi juga menyimpan berbagai kisah misteri dan sejarah perjuangan. Kini Benteng Vastenburg telah menjadi salah satu landmark sejarah Kota Solo dan sering digunakan untuk berbagai kegiatan budaya, festival seni, serta pertunjukan masyarakat.",
+    "location": "Surakarta, Jawa Tengah",
+    "period": "Pertengahan abad ke-18",
+    "image": "/img/cultures/benteng-vastenburg.jpg",
+    "tags": [
+      "Benteng",
+      "Kolonial Belanda",
+      "Sejarah",
+      "Landmark"
+    ],
+    "video": null
+  },
+  {
+    "id": "jateng-pasar-gede",
+    "provinceId": "jawa-tengah",
+    "category": "Bangunan Bersejarah",
+    "title": "Pasar Gede Harjonagoro",
+    "coordinates": [
+      -7.567,
+      110.83
+    ],
+    "isLandmark": true,
+    "description": "Pasar Gede Harjonagoro merupakan pasar tradisional tertua di Kota Solo yang dirancang oleh arsitek Belanda Thomas Karsten pada tahun 1927. Bangunan bersejarah ini memadukan arsitektur kolonial dengan fungsionalitas lokal Jawa.",
+    "youtubeId": "cyJ9fpoYh_M",
+    "narrator": "Pasar Gede Harjonagoro didirikan pada tahun 1927 atas prakarsa Susuhunan Pakubuwono X bersama pemerintah kolonial Belanda, dengan menunjuk Thomas Karsten sebagai arsitek perancangnya. Pasar ini memiliki keunikan berupa perpaduan harmonis antara arsitektur bergaya Eropa (seperti bentuk atap besar dan sirkulasi udara yang baik) dengan kearifan lokal Jawa (seperti struktur tiang kayu pendopo). Dinamai 'Harjonagoro' dari nama seorang tokoh keturunan Tionghoa yang diangkat menjadi abdi dalem keraton, pasar ini mencerminkan kerukunan multikultural dan menjadi denyut nadi perekonomian serta saksi sejarah interaksi sosial budaya masyarakat Solo lintas etnis selama hampir satu abad.",
+    "location": "Kota Surakarta, Jawa Tengah",
+    "period": "Tahun 1927",
+    "image": "/img/cultures/pasar-gede.jpg",
+    "tags": [
+      "Pasar Gede",
+      "Thomas Karsten",
+      "Pasar Tradisional",
+      "Kolonial",
+      "Solo"
+    ],
+    "video": null
+  }
+]

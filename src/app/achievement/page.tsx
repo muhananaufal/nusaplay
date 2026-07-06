@@ -2,6 +2,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useAchievement, ACHIEVEMENTS } from '@/contexts/Passport';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
+import { useProgress } from '@/contexts/Progress';
 import { motion } from 'framer-motion';
 import { AchievementIcon } from '@/components/ui/AchievementIcon';
 import { SearchIcon } from '@/components/ui/PremiumIcons';
@@ -45,7 +46,8 @@ const StatsCountUp = ({ end }: { end: number }) => {
 
 export default function AchievementPage() {
 	const { unlockedAchievements, completedQuizzes, perfectQuizzes } = useAchievement();
-	const { visitedByProvince, listenedByProvince, goTo } = useAppFlow();
+	const { visitedByProvince, listenedByProvince } = useProgress();
+	const { goTo } = useAppFlow();
 
 	useEffect(() => {
 		goTo('achievement', true);

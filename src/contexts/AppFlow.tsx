@@ -1,6 +1,8 @@
 'use client';
 import { createContext, useContext, useState, useMemo, useCallback, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { useTransition } from '@/contexts/Transition';
+import { useProgress } from '@/contexts/Progress';
 
 export const PHASES = {
   SPLASH: 'splash',
@@ -25,95 +27,24 @@ export const useListUI = () => useContext(ListUIContext);
 export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const { triggerNavigation } = useTransition();
+  const { markCultureVisited } = useProgress();
   const [phase, setPhase] = useState<Phase>(PHASES.SPLASH);
   const [selectedProvince, setSelectedProvince] = useState<any>(null);
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const [selectedCulture, setSelectedCulture] = useState<any>(null);
   const [quizProvince, setQuizProvince] = useState<any>(null);
-  const [visitedByProvince, setVisitedByProvince] = useState<Record<string, string[]>>({});
-  const [listenedByProvince, setListenedByProvince] = useState<Record<string, string[]>>({});
 
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategories, setActiveCategories] = useState(['Semua']);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [transitionProgress, setTransitionProgress] = useState(0);
-
-  // Turn off loading transition curtain when the route pathname actually changes
-  useEffect(() => {
-    if (isTransitioning) {
-      setTransitionProgress(100);
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-      }, 300);
-      return () => clearTimeout(timer);
-    }
-  }, [pathname]);
-
-  // Trickle load simulation
-  useEffect(() => {
-    if (!isTransitioning) {
-      setTransitionProgress(0);
-      return;
-    }
-
-    setTransitionProgress(5); // initial jump
-
-    const interval = setInterval(() => {
-      setTransitionProgress((prev) => {
-        if (prev >= 90) {
-          return Math.min(prev + 0.1, 95);
-        }
-        if (prev >= 70) {
-          return prev + 1.2;
-        }
-        return prev + 4;
-      });
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [isTransitioning]);
-
-  // Fallback safety timer to auto-dismiss loading overlay after 4s (e.g. if navigation fails or stays on same page)
-  useEffect(() => {
-    if (isTransitioning) {
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-      }, 4000);
-      return () => clearTimeout(timer);
-    }
-  }, [isTransitioning]);
-
-  useEffect(() => {
-    const handlePopState = () => {
-      setIsTransitioning(true);
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-      }, 550);
-      return () => clearTimeout(timer);
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, []);
 
   const resetListUI = useCallback(() => {
     setSearchQuery('');
     setActiveCategories(['Semua']);
     setCurrentPage(1);
     setTotalPages(1);
-  }, []);
-
-  // Delay actual route navigation by 550ms so the transition curtain fully covers screen first,
-  // then let the pathname observer dismiss it upon mount.
-  const triggerNavigation = useCallback((navAction: () => void) => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      navAction();
-    }, 550);
   }, []);
 
   const goTo = useCallback((nextPhase: Phase, skipPush: any = false) => {
@@ -211,14 +142,7 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
       setPhase(PHASES.DETAIL);
       // Mark as visited under its provinceId (in-memory, no localStorage)
       if (culture?.id && culture?.provinceId) {
-        setVisitedByProvince(prev => {
-          const list = prev[culture.provinceId] || [];
-          if (list.includes(culture.id)) return prev;
-          return {
-            ...prev,
-            [culture.provinceId]: [...list, culture.id]
-          };
-        });
+        markCultureVisited(culture.id, culture.provinceId);
       }
       if (skipPush !== true && culture) {
         router.push(`/culture/${culture.id}`);
@@ -230,7 +154,7 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     } else {
       triggerNavigation(doNav);
     }
-  }, [router, triggerNavigation]);
+  }, [router, triggerNavigation, markCultureVisited]);
 
   const startQuiz = useCallback((province: any, skipPush: any = false) => {
     const doNav = () => {
@@ -252,16 +176,7 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     }
   }, [router, triggerNavigation]);
 
-  const markCultureListened = useCallback((id: string, provinceId: string) => {
-    setListenedByProvince(prev => {
-      const list = prev[provinceId] || [];
-      if (list.includes(id)) return prev;
-      return {
-        ...prev,
-        [provinceId]: [...list, id]
-      };
-    });
-  }, []);
+
 
   const backToMap = useCallback((skipPush: any = false, useCurtain: boolean = false) => {
     const doNav = () => {
@@ -289,12 +204,9 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     selectedCategory,
     selectedCulture,
     quizProvince,
-    visitedByProvince,
-    listenedByProvince,
     selectProvince,
     selectCategory,
     selectCulture,
-    markCultureListened,
     startQuiz,
     backToMap,
     setPhase,
@@ -302,11 +214,9 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     setSelectedCategory,
     setSelectedCulture,
     setQuizProvince,
-    isTransitioning,
-    transitionProgress,
   }), [
-    phase, selectedProvince, selectedCategory, selectedCulture, quizProvince, visitedByProvince, listenedByProvince, isTransitioning, transitionProgress,
-    goTo, selectProvince, selectCategory, selectCulture, markCultureListened, startQuiz, backToMap,
+    phase, selectedProvince, selectedCategory, selectedCulture, quizProvince,
+    goTo, selectProvince, selectCategory, selectCulture, startQuiz, backToMap,
   ]);
 
   const listUIValue = useMemo(() => ({

@@ -1,8 +1,9 @@
 'use client';
 import { useState, useRef, useEffect, useMemo, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getCulturesByProvince } from '@/data/cultures';
+import { fetchCulturesByProvince } from '@/utils/fetchCultures';
 import { useAppFlow, useListUI } from '@/contexts/AppFlow';
+import { useProgress } from '@/contexts/Progress';
 import { getCategoryIcon, SearchIcon } from './PremiumIcons';
 import { useSmoothScroll } from './SmoothScroll';
 import { useIsMobile } from '@/utils/useIsMobile';
@@ -12,9 +13,12 @@ export const CultureList = ({ visible }) => {
     selectedProvince,
     selectedCategory,
     selectCulture,
+  } = useAppFlow();
+
+  const {
     visitedByProvince,
     listenedByProvince,
-  } = useAppFlow();
+  } = useProgress();
 
   // Isolated list-UI context â€” changes here do NOT re-render NavigationMenu,
   // MapView, or any other component that only subscribes to AppFlowContext.
@@ -115,8 +119,11 @@ export const CultureList = ({ visible }) => {
     }
   }, [selectedCategory, selectedProvince?.id, searchQuery, activeCategories, setCurrentPage]);
 
-  const rawCultures = useMemo(() => {
-    return selectedProvince ? getCulturesByProvince(selectedProvince.id) : [];
+  const [rawCultures, setRawCultures] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!selectedProvince?.id) { setRawCultures([]); return; }
+    fetchCulturesByProvince(selectedProvince.id).then(setRawCultures);
   }, [selectedProvince?.id]);
 
   const currentVisitedIds = useMemo(() => {
@@ -353,12 +360,12 @@ export const CultureList = ({ visible }) => {
 // Helper to get a safe fallback map image for the province
 const getProvinceFallbackImage = (provinceId: string) => {
   const map: Record<string, string> = {
-    'diy': '/images/diy.png',
-    'kalimantan-barat': '/images/kalimantan-barat.png',
-    'papua': '/images/papua.png',
-    'jawa-tengah': '/images/diy.png',
+    'diy': '/images/diy.webp',
+    'kalimantan-barat': '/images/kalimantan-barat.webp',
+    'papua': '/images/papua.webp',
+    'jawa-tengah': '/images/diy.webp',
   };
-  return map[provinceId] || '/images/grain.png';
+  return map[provinceId] || '/images/grain.webp';
 };
 
 // ── CultureRow ──────────────────────────────────────────────────────────────────────────
@@ -505,27 +512,20 @@ const CultureRow = memo(({ culture, index, listIndex, isHovered, setHoveredId, s
                   }}
                 />
               ) : (
-                <>
-                  <img
-                    src={culture.image || `https://img.youtube.com/vi/${culture.youtubeId}/mqdefault.jpg`}
-                    alt={culture.title}
-                    loading="lazy"
-                    className="cl-row-thumb-img"
-                    style={{ opacity: isHovered ? 0 : 1 }}
-                    onError={(e) => {
-                      const fallback = getProvinceFallbackImage(culture.provinceId);
-                      (e.target as HTMLImageElement).src = fallback;
-                    }}
-                  />
-                  {isHovered && (
-                    <iframe
-                      src={`https://www.youtube.com/embed/${culture.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${culture.youtubeId}&controls=0&playsinline=1&enablejsapi=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0`}
-                      allow="autoplay; encrypted-media"
-                      className="cl-row-thumb-iframe"
-                      title={culture.title}
-                    />
-                  )}
-                </>
+                <img
+                  src={culture.image || getProvinceFallbackImage(culture.provinceId)}
+                  alt={culture.title}
+                  loading="lazy"
+                  className="cl-row-thumb-img"
+                  style={{ 
+                    transform: isHovered ? 'scale(1.08)' : 'scale(1)', 
+                    transition: 'transform 0.4s ease' 
+                  }}
+                  onError={(e) => {
+                    const fallback = getProvinceFallbackImage(culture.provinceId);
+                    (e.target as HTMLImageElement).src = fallback;
+                  }}
+                />
               )}
             </>
           )}

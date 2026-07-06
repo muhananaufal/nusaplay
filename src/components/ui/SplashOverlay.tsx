@@ -166,6 +166,7 @@ const VideoBackground = ({ audioUnlocked, isMuted }: { audioUnlocked: boolean; i
       <video
         ref={videoRef}
         src="/video/splash-screen.mp4"
+        poster="/images/grain.webp"
         autoPlay
         loop
         muted

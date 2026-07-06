@@ -2,7 +2,8 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useAppFlow } from '@/contexts/AppFlow';
-import { getCulturesByProvince } from '@/data/cultures';
+import { useProgress } from '@/contexts/Progress';
+import { fetchCulturesByProvince } from '@/utils/fetchCultures';
 import { useIsMobile } from '@/utils/useIsMobile';
 import { usePassport } from '@/contexts/Passport';
 import { usePlay } from '@/contexts/Play';
@@ -15,7 +16,8 @@ const STAMP_SYMBOLS: Record<string, string> = {
 };
 
 export const ProvinceDestinations = ({ visible }) => {
-  const { selectedProvince, selectCategory, backToMap, visitedByProvince, listenedByProvince } = useAppFlow();
+  const { selectedProvince, selectCategory, backToMap } = useAppFlow();
+  const { visitedByProvince, listenedByProvince } = useProgress();
   const { visitedProvinces } = usePassport();
   const { tourActive } = usePlay();
 
@@ -62,10 +64,11 @@ export const ProvinceDestinations = ({ visible }) => {
   const isVisited = selectedProvince ? visitedProvinces.has(selectedProvince.id) : false;
 
   // Retrieve cultures for the selected province
-  const cultures = useMemo(() => {
-    if (!selectedProvince) return [];
-    return getCulturesByProvince(selectedProvince.id);
-  }, [selectedProvince]);
+  const [cultures, setCultures] = useState<any[]>([]);
+  useEffect(() => {
+    if (!selectedProvince?.id) { setCultures([]); return; }
+    fetchCulturesByProvince(selectedProvince.id).then(setCultures);
+  }, [selectedProvince?.id]);
 
   const totalCultures = cultures.length;
 
@@ -117,14 +120,24 @@ export const ProvinceDestinations = ({ visible }) => {
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         ) : (
-          <iframe
-            className="pd-bg-video-iframe"
-            src={`https://www.youtube.com/embed/${videoUrl}?autoplay=1&mute=1&loop=1&playlist=${videoUrl}&controls=0&rel=0&playsinline=1&enablejsapi=1&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0`}
-            title={selectedProvince.name}
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            loading="lazy"
-          />
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: '#0D1B2A',
+            overflow: 'hidden'
+          }}>
+            <img
+              src={selectedProvince.heroImage || '/images/grain.webp'}
+              alt={selectedProvince.name}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                opacity: 0.3,
+                filter: 'grayscale(0.2)'
+              }}
+            />
+          </div>
         )}
         <div className="pd-bg-overlay" />
       </div>

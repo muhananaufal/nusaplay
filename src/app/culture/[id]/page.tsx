@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getCultureById, getCultures } from '@/data/cultures';
 import { PROVINCES } from '@/data/provinces';
 import { CultureDetailClient } from './_client';
+import { CultureJsonLd } from '@/components/ui/JsonLd';
 
 export async function generateStaticParams() {
   // Pre-render all known culture pages at build time
@@ -27,5 +28,18 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function CultureDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  return <CultureDetailClient id={id} />;
+  const culture = getCultureById(id);
+  const province = culture ? PROVINCES.find(p => p.id === culture.provinceId) : undefined;
+
+  return (
+    <>
+      {culture && (
+        <CultureJsonLd
+          culture={culture}
+          provinceName={province?.name ?? 'Indonesia'}
+        />
+      )}
+      <CultureDetailClient id={id} />
+    </>
+  );
 }
