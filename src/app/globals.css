@@ -1203,6 +1203,7 @@ html, body, #root {
   }
   .map-stats-dashboard {
     margin-top: 18px;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     max-width: 280px;
   }
@@ -2246,8 +2247,8 @@ html, body, #root {
 
 .about-stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
   margin: 20px 0;
   border-top: 1px solid rgba(24, 23, 23, 0.08);
   border-bottom: 1px solid rgba(24, 23, 23, 0.08);
@@ -2263,7 +2264,7 @@ html, body, #root {
 
 .stat-num {
   font-family: 'Inter', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.55rem;
   color: var(--c-accent);
   line-height: 1.2;
   font-weight: 350;
@@ -2271,10 +2272,10 @@ html, body, #root {
 
 .stat-label {
   font-family: 'Inter', sans-serif;
-  font-size: 0.62rem;
+  font-size: 0.54rem;
   color: var(--c-text-soft);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   opacity: 0.6;
 }
 
@@ -2369,13 +2370,18 @@ html, body, #root {
   }
 
   .about-stats-grid {
-    gap: 8px;
+    gap: 6px;
     margin: 12px 0;
     padding: 12px 0;
   }
 
   .stat-num {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
+  }
+
+  .stat-label {
+    font-size: 0.5rem;
+    letter-spacing: 0.02em;
   }
 }
 

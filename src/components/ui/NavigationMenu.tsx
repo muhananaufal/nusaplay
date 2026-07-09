@@ -319,7 +319,7 @@ export const NavigationMenu = () => {
                       
                       <div className="about-stats-grid">
                         <div className="about-stat-item">
-                          <span className="stat-num">34</span>
+                          <span className="stat-num">38</span>
                           <span className="stat-label">Provinsi</span>
                         </div>
                         <div className="about-stat-item">
@@ -329,6 +329,10 @@ export const NavigationMenu = () => {
                         <div className="about-stat-item">
                           <span className="stat-num">700+</span>
                           <span className="stat-label">Bahasa Daerah</span>
+                        </div>
+                        <div className="about-stat-item">
+                          <span className="stat-num">2000+</span>
+                          <span className="stat-label">Warisan</span>
                         </div>
                       </div>
 

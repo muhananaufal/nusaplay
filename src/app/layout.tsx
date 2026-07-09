@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | NusaPlay",
   },
   description:
-    "Platform eksplorasi interaktif 3D untuk mengenal kekayaan budaya Nusantara — tari, musik, kuliner, dan lebih dari 34 provinsi Indonesia.",
+    "Platform eksplorasi interaktif 3D untuk mengenal kekayaan budaya Nusantara — tari, musik, kuliner, dan lebih dari 38 provinsi Indonesia.",
   keywords: ["budaya Indonesia", "warisan budaya", "nusantara", "tari tradisional", "musik daerah", "NusaPlay"],
   authors: [{ name: "NusaPlay Team" }],
   metadataBase: new URL("https://nusaplay.vercel.app"),

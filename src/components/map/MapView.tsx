@@ -653,12 +653,12 @@ export const MapView = ({ visible }) => {
       >
         <span className="editorial-num">THE ARCHIPELAGO</span>
         <h1>Peta <em>Budaya</em><br /><span>Nusantara</span></h1>
-        {/* <p>34 Provinsi — 300+ Suku — 700+ Bahasa</p> */}
+        {/* <p>38 Provinsi — 300+ Suku — 700+ Bahasa — 2000+ Warisan</p> */}
 
         {/* Animated Statistics Counters */}
         <div className="map-stats-dashboard">
           <div className="map-stat-item">
-            <span className="map-stat-num"><CountUp end={34} /></span>
+            <span className="map-stat-num"><CountUp end={38} /></span>
             <span className="map-stat-label">PROVINSI</span>
           </div>
           <div className="map-stat-item">
