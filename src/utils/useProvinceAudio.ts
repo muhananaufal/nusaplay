@@ -21,11 +21,11 @@ const PROVINCE_BACKSOUNDS: Record<string, string> = {
  * - Clean up on unmount
  */
 export function useProvinceAudio() {
-  const { selectedProvince } = useAppFlow();
+  const { selectedProvince, phase } = useAppFlow();
   const pathname = usePathname();
 
-  // BGM is allowed on all pages except the main splash page (/)
-  const isBgmAllowed = pathname !== '/';
+  // BGM is allowed on all pages except the main splash page (/) and during the journey flight
+  const isBgmAllowed = pathname !== '/' && phase !== PHASES.JOURNEY && phase !== PHASES.SPLASH;
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const currentTrackRef = useRef<string | null>(null);

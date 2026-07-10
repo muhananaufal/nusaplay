@@ -6,6 +6,7 @@ import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { preloadMapAssets } from '@/utils/mapAssetLoader';
 import { isWebGLAvailable } from '@/utils/webgl';
 import { useProvinceAudio } from '@/utils/useProvinceAudio';
+import { useJourneyAudio } from '@/utils/useJourneyAudio';
 import { SplashOverlay } from '@/components/ui/SplashOverlay';
 import { HUDCockpit } from '@/components/3d/HUDCockpit';
 import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
@@ -36,6 +37,9 @@ export function RootLayers() {
 
   // ── Province BGM — all audio logic lives in this hook ─────────────────────
   useProvinceAudio();
+
+  // ── Journey Intro Narration — plays narrator audio during flight ─────────
+  useJourneyAudio();
 
   // ── Track map activation so we never unmount it once mounted (Leaflet hates remounts)
   useEffect(() => {
