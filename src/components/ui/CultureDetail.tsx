@@ -576,6 +576,9 @@ export const CultureDetail = ({ visible }) => {
                   style={{
                     width: '36px',
                     height: '36px',
+                    padding: 0,
+                    margin: 0,
+                    outline: 'none',
                     borderRadius: '50%',
                     border: selectedCulture.audio ? '1px solid var(--c-accent)' : '1px solid var(--c-border-dark, #ccc)',
                     background: !selectedCulture.audio ? 'var(--c-bg-light, #f5f5f5)' : (isSpeaking && !isPaused ? 'var(--c-accent)' : 'transparent'),
@@ -597,7 +600,7 @@ export const CultureDetail = ({ visible }) => {
                       <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                     </svg>
                   ) : (!isSpeaking || isPaused ? (
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style={{ transform: 'translateX(1px)' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   ) : (

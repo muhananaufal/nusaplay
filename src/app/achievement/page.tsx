@@ -116,15 +116,15 @@ export default function AchievementPage() {
 
 			<div className="achievement-container">
 				{/* Header Section Group */}
-				<div className="achievement-header" style={{ gap: '16px' }}>
-					<span className="achievement-overline">Petualangan NusaPlay</span>
+				<div className="achievement-header">
+					{/* <span className="achievement	-overline">Petualangan NusaPlay</span> */}
 					<h1 className="achievement-title">Pencapaian Nusantara</h1>
 					<p className="achievement-desc">
-						Lacak penghargaan dan keahlian budaya yang telah kamu kuasai selama bertualang melintasi kepulauan Indonesia.
+						Lacak penghargaan budaya yang telah kamu kuasai
 					</p>
 
 					{/* Sleek inline progress bar under subtitle */}
-					<div className="achievement-sleek-progress" style={{ width: '100%', maxWidth: '480px', margin: '8px auto 0 auto' }}>
+					<div className="achievement-sleek-progress" style={{ width: '100%', maxWidth: '480px', margin: '20px auto 0 auto' }}>
 						<div style={{ display: 'flex', justifyContent: 'center', gap: '6px', fontSize: '0.8rem', color: 'var(--c-text-soft)', marginBottom: '8px' }}>
 							{/* <span>Progres Petualangan:</span> */}
 							<span style={{ fontWeight: 600, color: 'var(--c-primary)' }}>{unlockedCount} / {totalCount} Pencapaian Terbuka ({progressPercent}%)</span>

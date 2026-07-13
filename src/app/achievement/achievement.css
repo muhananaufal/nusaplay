@@ -37,20 +37,22 @@
 }
 
 .achievement-title {
-  font-family: var(--font-geist-sans), 'Inter', sans-serif;
-  font-size: 2.3rem;
-  font-weight: 300;
+  font-family: 'Inter', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 200;
   color: var(--c-text);
-  line-height: 1.1;
+  letter-spacing: -0.02em;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .achievement-desc {
-  font-size: 0.88rem;
-  color: var(--c-text-soft);
+  font-size: 0.9rem;
+  color: var(--c-text-soft-dark);
   max-width: 600px;
   line-height: 1.5;
-  margin: 8px auto 0 auto;
+  margin: 0 auto;
+  letter-spacing: 0.02em;
 }
 
 /* Dashboard cards */
@@ -418,7 +420,7 @@
 }
 
 .achievement-search-wrapper {
-  margin-top: -12px !important;
+  margin-top: 4px !important;
   margin-bottom: 20px !important;
 }
 
