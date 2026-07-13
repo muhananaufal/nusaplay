@@ -65,9 +65,9 @@ export const PageTransitionOverlay = () => {
                 }}
               />
             </div>
-            <span style={{ fontSize: '0.62rem', letterSpacing: '0.15em', color: 'rgba(255, 255, 255, 0.4)', marginTop: '8px', textTransform: 'uppercase', fontFamily: "'Inter', sans-serif" }}>
+            {/* <span style={{ fontSize: '0.62rem', letterSpacing: '0.15em', color: 'rgba(255, 255, 255, 0.4)', marginTop: '8px', textTransform: 'uppercase', fontFamily: "'Inter', sans-serif" }}>
               Memuat Halaman...
-            </span>
+            </span> */}
           </motion.div>
         </motion.div>
       )}
