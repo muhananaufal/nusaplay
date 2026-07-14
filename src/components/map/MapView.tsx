@@ -2,11 +2,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROVINCES } from '@/data/provinces';
-import { CULTURES } from '@/data/cultures';
 import { useAppFlow } from '@/contexts/AppFlow';
 import { getMapAssetsReady } from '@/utils/mapAssetLoader';
 import { useIsMobile } from '@/utils/useIsMobile';
 import { usePassport } from '@/contexts/Passport';
+import gsap from 'gsap';
 
 declare const L: any;
 
@@ -135,8 +135,16 @@ export const MapView = ({ visible }) => {
   const isMobile = useIsMobile(1024);
   const { selectProvince, selectedProvince, backToMap, selectCulture, goTo } = useAppFlow();
   const { visitedProvinces } = usePassport();
-  const [achievementBtnPos, setAchievementBtnPos] = useState({ x: 0, y: 0 });
   const achievementBtnRef = useRef<HTMLButtonElement>(null);
+  const achievementXTo = useRef<ReturnType<typeof gsap.quickTo> | null>(null);
+  const achievementYTo = useRef<ReturnType<typeof gsap.quickTo> | null>(null);
+
+  useEffect(() => {
+    const btn = achievementBtnRef.current;
+    if (!btn) return;
+    achievementXTo.current = gsap.quickTo(btn, 'x', { duration: 0.35, ease: 'power2.out' });
+    achievementYTo.current = gsap.quickTo(btn, 'y', { duration: 0.35, ease: 'power2.out' });
+  }, []);
 
   const handleAchievementMouseMove = (e: React.MouseEvent) => {
     if (isMobile) return;
@@ -144,11 +152,13 @@ export const MapView = ({ visible }) => {
     if (!rect) return;
     const x = e.clientX - (rect.left + rect.width / 2);
     const y = e.clientY - (rect.top + rect.height / 2);
-    setAchievementBtnPos({ x: x * 0.35, y: y * 0.35 });
+    achievementXTo.current?.(x * 0.35);
+    achievementYTo.current?.(y * 0.35);
   };
 
   const handleAchievementMouseLeave = () => {
-    setAchievementBtnPos({ x: 0, y: 0 });
+    achievementXTo.current?.(0);
+    achievementYTo.current?.(0);
   };
 
   const selectProvinceRef = useRef(selectProvince);
@@ -435,7 +445,12 @@ export const MapView = ({ visible }) => {
     return () => {
       active = false;
       if (leafletMapRef.current) {
-        leafletMapRef.current.remove();
+        try {
+          leafletMapRef.current.stop(); // Stop any running panning/zooming animations
+          leafletMapRef.current.remove();
+        } catch (e) {
+          console.warn('Error during map cleanup:', e);
+        }
         leafletMapRef.current = null;
       }
       markersGroupRef.current = null;
@@ -474,7 +489,11 @@ export const MapView = ({ visible }) => {
   // Effect to handle zooming and highlighting when selectedProvince changes
   useEffect(() => {
     const map = leafletMapRef.current;
-    if (!map || !mapReady) return;
+    if (!map || !mapReady || !visible) return;
+
+    try {
+      map.stop(); // Stop any active zooming/flyTo before running new one
+    } catch {}
 
     // Force size update to handle sidebar panel layout change
     map.invalidateSize();
@@ -505,10 +524,12 @@ export const MapView = ({ visible }) => {
         if (selectedProvince.id === 'diy') targetZoom = 9;
         if (selectedProvince.id === 'papua') targetZoom = 6;
 
-        map.flyTo(center, targetZoom, {
-          duration: 1.6,
-          easeLinearity: 0.2
-        });
+        try {
+          map.flyTo(center, targetZoom, {
+            duration: 1.6,
+            easeLinearity: 0.2
+          });
+        } catch {}
       }
 
       // 2. Dim all other provinces and highlight the active one
@@ -556,10 +577,13 @@ export const MapView = ({ visible }) => {
         // Delay zoom-out flyTo until map has flattened (600ms)
         const zoomOutTimer = setTimeout(() => {
           if (leafletMapRef.current && geoLayerRef.current) {
-            leafletMapRef.current.flyToBounds(geoLayerRef.current.getBounds(), {
-              padding: [30, 30],
-              duration: 1.2
-            });
+            try {
+              leafletMapRef.current.stop();
+              leafletMapRef.current.flyToBounds(geoLayerRef.current.getBounds(), {
+                padding: [30, 30],
+                duration: 1.2
+              });
+            } catch {}
           }
         }, 600);
 
@@ -577,7 +601,7 @@ export const MapView = ({ visible }) => {
         clearTimeout(styleTimeoutId);
       }
     };
-  }, [selectedProvince, mapReady, selectCulture]);
+  }, [selectedProvince, mapReady, selectCulture, visible]);
 
   // Invalidate map size when visibility changes (avoids rendering shifts)
   useEffect(() => {
@@ -693,12 +717,9 @@ export const MapView = ({ visible }) => {
           onMouseMove={handleAchievementMouseMove}
           onMouseLeave={handleAchievementMouseLeave}
           initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1, x: achievementBtnPos.x, y: achievementBtnPos.y }}
+          animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0, opacity: 0 }}
-          transition={achievementBtnPos.x === 0 && achievementBtnPos.y === 0 
-            ? { type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }
-            : { type: 'spring', stiffness: 300, damping: 20, mass: 0.1 }
-          }
+          transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
           aria-label="Buka Pencapaian"
         >
           <TrophyIcon />

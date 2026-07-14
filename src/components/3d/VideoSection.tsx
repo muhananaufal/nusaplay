@@ -40,20 +40,26 @@ const JOURNEY_STOPS = [
 
 export const VideoSection = ({ journeyStartTime }) => {
   const [activeStop, setActiveStop] = useState(null);
-  const [elapsed, setElapsed] = useState(0);
 
   useEffect(() => {
     if (!journeyStartTime) return;
 
-    const interval = setInterval(() => {
+    let rafId: number;
+    const tick = () => {
       const now = (Date.now() - journeyStartTime) / 1000;
-      setElapsed(now);
 
       const active = JOURNEY_STOPS.find(s => now >= s.startAt && now <= s.endAt);
-      setActiveStop(active || null);
-    }, 100);
+      setActiveStop(prev => {
+        const nextId = active?.id ?? null;
+        const prevId = (prev as any)?.id ?? null;
+        if (nextId === prevId) return prev;
+        return active || null;
+      });
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
 
-    return () => clearInterval(interval);
+    return () => cancelAnimationFrame(rafId);
   }, [journeyStartTime]);
 
   return (

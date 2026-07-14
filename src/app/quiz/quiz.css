@@ -62,6 +62,8 @@
 .quiz-question-card {
   flex: 1;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* Momentum scrolling on mobile Safari */
+  will-change: scroll-position; /* GPU acceleration hint for scrolling */
   padding: 48px 40px;
   max-width: 680px;
   width: 100%;

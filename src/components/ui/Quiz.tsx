@@ -11,12 +11,31 @@ import { SearchIcon } from './PremiumIcons';
 import { useProgress } from '@/contexts/Progress';
 import '@/app/quiz/quiz.css';
 
-// Synthesized sound effects using native Web Audio API
-const playCorrectSound = () => {
+// Shared synthesized sound effects using a single native Web Audio API Context
+let sharedAudioCtx: AudioContext | null = null;
+
+const getAudioContext = (): AudioContext | null => {
+  if (typeof window === 'undefined') return null;
   try {
     const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
-    if (!AudioContextClass) return;
-    const ctx = new AudioContextClass();
+    if (!AudioContextClass) return null;
+    if (!sharedAudioCtx) {
+      sharedAudioCtx = new AudioContextClass();
+    }
+    if (sharedAudioCtx.state === 'suspended') {
+      sharedAudioCtx.resume().catch(() => {});
+    }
+    return sharedAudioCtx;
+  } catch (e) {
+    console.warn('Web Audio not supported', e);
+    return null;
+  }
+};
+
+const playCorrectSound = () => {
+  const ctx = getAudioContext();
+  if (!ctx) return;
+  try {
     const playNote = (freq: number, start: number, duration: number) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -33,16 +52,14 @@ const playCorrectSound = () => {
     playNote(523.25, now, 0.12); // C5
     playNote(783.99, now + 0.08, 0.22); // G5
   } catch (e) {
-    console.warn('Web Audio not supported', e);
+    console.warn('Failed to play correct sound', e);
   }
 };
 
 const playIncorrectSound = () => {
+  const ctx = getAudioContext();
+  if (!ctx) return;
   try {
-    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
-    if (!AudioContextClass) return;
-    const ctx = new AudioContextClass();
-    
     const playTone = (freq1: number, freq2: number, start: number, duration: number) => {
       const osc1 = ctx.createOscillator();
       const osc2 = ctx.createOscillator();
@@ -76,15 +93,14 @@ const playIncorrectSound = () => {
     playTone(293.66, 300.0, now, 0.18); // Note 1: Out-of-tune D4
     playTone(220.00, 225.0, now + 0.1, 0.28); // Note 2: Out-of-tune A3
   } catch (e) {
-    console.warn('Web Audio not supported', e);
+    console.warn('Failed to play incorrect sound', e);
   }
 };
 
 const playSuccessSound = () => {
+  const ctx = getAudioContext();
+  if (!ctx) return;
   try {
-    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
-    if (!AudioContextClass) return;
-    const ctx = new AudioContextClass();
     const playNote = (freq: number, start: number, duration: number) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -103,7 +119,7 @@ const playSuccessSound = () => {
     playNote(392.00, now + 0.16, 0.15); // G4
     playNote(523.25, now + 0.24, 0.4); // C5
   } catch (e) {
-    console.warn('Web Audio not supported', e);
+    console.warn('Failed to play success sound', e);
   }
 };
 

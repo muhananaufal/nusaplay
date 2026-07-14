@@ -106,6 +106,8 @@ export function RootLayers() {
     }
   }, [phase, goTo]);
 
+  const shouldMountCanvas = play || phase === PHASES.JOURNEY;
+
   return (
     <>
       {/* ── 3D Canvas layer — only mounted during splash/journey phases ── */}
@@ -115,7 +117,7 @@ export function RootLayers() {
       >
         <ErrorBoundary name="CanvasContainer">
           <Suspense fallback={null}>
-            {isInJourney && <CanvasContainer active={isInJourney} />}
+            {shouldMountCanvas && <CanvasContainer active={isInJourney} />}
           </Suspense>
         </ErrorBoundary>
 

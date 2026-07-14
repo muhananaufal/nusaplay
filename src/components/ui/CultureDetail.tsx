@@ -413,6 +413,7 @@ export const CultureDetail = ({ visible }) => {
                     loop
                     muted
                     playsInline
+                    preload="metadata"
                     className="cd-iframe"
                     style={isMobile ? { 
                       objectFit: 'contain',

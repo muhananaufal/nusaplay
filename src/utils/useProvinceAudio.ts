@@ -90,19 +90,21 @@ export function useProvinceAudio() {
         currentTrackRef.current = targetTrack;
       }
 
-      const playPromise = audioRef.current.play();
-      playPromiseRef.current = playPromise;
+      if (audioRef.current.paused) {
+        const playPromise = audioRef.current.play();
+        playPromiseRef.current = playPromise;
 
-      playPromise
-        .then(() => {
-          if (playPromiseRef.current === playPromise) setAutoplayFailed(false);
-        })
-        .catch((err) => {
-          if (err.name !== 'AbortError') {
-            console.warn('Failed to play backsound, will retry on interaction:', err);
-          }
-          setAutoplayFailed(true);
-        });
+        playPromise
+          .then(() => {
+            if (playPromiseRef.current === playPromise) setAutoplayFailed(false);
+          })
+          .catch((err) => {
+            if (err.name !== 'AbortError') {
+              console.warn('Failed to play backsound, will retry on interaction:', err);
+            }
+            setAutoplayFailed(true);
+          });
+      }
     } else {
       if (audioRef.current) {
         const audioToPause = audioRef.current;

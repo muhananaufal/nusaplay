@@ -1,7 +1,7 @@
 // Server-compatible JSON-LD structured data components
 // Do NOT add 'use client' — these render as plain <script> tags on the server.
 
-const SITE_URL = 'https://nusaplay.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://nusaplay.vercel.app';
 
 export function CultureJsonLd({
   culture,

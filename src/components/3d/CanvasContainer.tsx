@@ -38,7 +38,7 @@ export const CanvasContainer = ({ active }: { active: boolean }) => {
 
   return (
     <Canvas
-      frameloop={play ? 'always' : 'demand'}
+      frameloop={active && play ? 'always' : 'demand'}
       // ── Performance: cap pixel ratio so high-DPI screens don't render 4× the pixels ──
       dpr={[1, 1.5]}
       // ── Power preference: request the discrete GPU on laptops with dual GPUs ──────

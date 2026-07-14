@@ -79,14 +79,16 @@ export function MascotAssistant() {
         }}
       >
         <div className="mascot-click-target">
-          <video 
-            src="/mascot/maskot.webm"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className={`mascot-sprite-body ${pose}`}
-          />
+          {!isSplashOrJourney && (
+            <video 
+              src="/mascot/maskot.webm"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className={`mascot-sprite-body ${pose}`}
+            />
+          )}
         </div>
       </motion.div>
     </div>

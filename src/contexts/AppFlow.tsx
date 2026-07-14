@@ -81,6 +81,21 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
       }
     };
     
+    // Prefetch destination url to warm Next.js cache during the transition delay
+    if (skipPush !== true) {
+      if (nextPhase === PHASES.SPLASH) router.prefetch('/');
+      else if (nextPhase === PHASES.JOURNEY) router.prefetch('/journey');
+      else if (nextPhase === PHASES.MAP) router.prefetch('/map');
+      else if (nextPhase === PHASES.QUIZ) router.prefetch(quizProvince ? `/quiz/${quizProvince.id}` : '/quiz');
+      else if (nextPhase === PHASES.PROVINCE && selectedProvince) router.prefetch(`/province/${selectedProvince.id}`);
+      else if (nextPhase === PHASES.LIST && selectedProvince) {
+        const cat = selectedCategory || 'Semua';
+        router.prefetch(cat === 'Semua' ? `/province/${selectedProvince.id}/list` : `/province/${selectedProvince.id}/list?category=${cat}`);
+      }
+      else if (nextPhase === PHASES.DETAIL && selectedCulture) router.prefetch(`/culture/${selectedCulture.id}`);
+      else if (nextPhase === 'achievement') router.prefetch('/achievement');
+    }
+    
     const isBypassCurtain = 
       nextPhase === PHASES.MAP || 
       nextPhase === PHASES.JOURNEY ||
@@ -90,7 +105,7 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     } else {
       triggerNavigation(doNav);
     }
-  }, [router, selectedProvince, selectedCategory, selectedCulture, quizProvince, triggerNavigation]);
+  }, [router, phase, selectedProvince, selectedCategory, selectedCulture, quizProvince, triggerNavigation]);
 
   const selectProvince = useCallback((province: any, skipPush: any = false) => {
     const doNav = () => {
@@ -103,6 +118,10 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
         router.push(`/province/${province.id}`);
       }
     };
+    
+    if (skipPush !== true && province) {
+      router.prefetch(`/province/${province.id}`);
+    }
     
     // Always skip curtain wipe to allow smooth Leaflet zoom-in
     doNav();
@@ -129,6 +148,10 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
       }
     };
     
+    if (skipPush !== true && selectedProvince) {
+      router.prefetch(category === 'Semua' ? `/province/${selectedProvince.id}/list` : `/province/${selectedProvince.id}/list?category=${category}`);
+    }
+    
     if (skipPush === true) {
       doNav();
     } else {
@@ -148,6 +171,10 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
         router.push(`/culture/${culture.id}`);
       }
     };
+    
+    if (skipPush !== true && culture) {
+      router.prefetch(`/culture/${culture.id}`);
+    }
     
     if (skipPush === true) {
       doNav();
@@ -169,14 +196,16 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
       }
     };
     
+    if (skipPush !== true) {
+      router.prefetch(province ? `/quiz/${province.id}` : '/quiz');
+    }
+    
     if (skipPush === true) {
       doNav();
     } else {
       triggerNavigation(doNav);
     }
   }, [router, triggerNavigation]);
-
-
 
   const backToMap = useCallback((skipPush: any = false, useCurtain: boolean = false) => {
     const doNav = () => {
@@ -189,6 +218,10 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
         router.push('/map');
       }
     };
+    
+    if (skipPush !== true) {
+      router.prefetch('/map');
+    }
     
     if (useCurtain) {
       triggerNavigation(doNav);

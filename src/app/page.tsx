@@ -8,7 +8,8 @@ export default function SplashPage() {
   useEffect(() => {
     // Sync the context state with the current page's route
     goTo(PHASES.SPLASH, true);
-  }, [goTo]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return null;
 }

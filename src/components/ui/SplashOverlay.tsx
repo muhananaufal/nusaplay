@@ -272,15 +272,24 @@ const CharReveal = ({ text, className, delay = 0 }: { text: string; className?: 
   </span>
 );
 
-// ── Magnetic button ───────────────────────────────────────────────────────────
+// ── Magnetic button (zero re-renders — GSAP drives transforms directly) ───
 const MagneticButton = ({ children, onClick, className }: { children: React.ReactNode; onClick: () => void; className?: string }) => {
   const ref = useRef<HTMLButtonElement>(null);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const xTo = useRef<ReturnType<typeof gsap.quickTo> | null>(null);
+  const yTo = useRef<ReturnType<typeof gsap.quickTo> | null>(null);
   const { tourActive } = usePlay();
 
   useEffect(() => {
+    const btn = ref.current;
+    if (!btn) return;
+    xTo.current = gsap.quickTo(btn, 'x', { duration: 0.35, ease: 'power2.out' });
+    yTo.current = gsap.quickTo(btn, 'y', { duration: 0.35, ease: 'power2.out' });
+  }, []);
+
+  useEffect(() => {
     if (tourActive) {
-      setPos({ x: 0, y: 0 });
+      xTo.current?.(0);
+      yTo.current?.(0);
     }
   }, [tourActive]);
 
@@ -295,26 +304,26 @@ const MagneticButton = ({ children, onClick, className }: { children: React.Reac
     const dist = Math.sqrt(dx * dx + dy * dy);
     const radius = 80;
     if (dist < radius) {
-      setPos({ x: dx * 0.35, y: dy * 0.35 });
+      xTo.current?.(dx * 0.35);
+      yTo.current?.(dy * 0.35);
     }
   };
 
   const handleMouseLeave = () => {
-    setPos({ x: 0, y: 0 });
+    xTo.current?.(0);
+    yTo.current?.(0);
   };
 
   return (
-    <motion.button
+    <button
       ref={ref}
       className={className}
       onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      animate={{ x: pos.x, y: pos.y }}
-      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
     >
       {children}
-    </motion.button>
+    </button>
   );
 };
 

@@ -58,8 +58,7 @@ export const preloadMapAssets = (): Promise<void> => {
       });
     };
 
-    loadLeafletJS()
-      .then(() => loadGeoJSON())
+    Promise.all([loadLeafletJS(), loadGeoJSON()])
       .then(() => resolve())
       .catch((err) => {
         console.error('Failed to preload map assets:', err);

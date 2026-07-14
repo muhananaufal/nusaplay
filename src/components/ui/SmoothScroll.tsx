@@ -1,6 +1,5 @@
 'use client';
 import { useEffect } from 'react';
-import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
 
 /**
@@ -20,22 +19,31 @@ export const useSmoothScroll = (ref: React.RefObject<any>, active = true) => {
     const timeoutId = setTimeout(() => {
       if (!ref.current) return;
       
-      try {
-        scrollInstance = new LocomotiveScroll({
-          el: ref.current,
-          lenisOptions: {
-            wrapper: ref.current,
-            // Target the scrollable content container
-            content: ref.current.firstElementChild || ref.current,
-            lerp: 0.07, // slightly smoother lerp for premium feel
-            duration: 1.2,
-            smoothWheel: true,
-            syncTouch: true,
+      import('locomotive-scroll')
+        .then((module) => {
+          const LocomotiveScroll = module.default;
+          if (!ref.current) return;
+          
+          try {
+            scrollInstance = new LocomotiveScroll({
+              el: ref.current,
+              lenisOptions: {
+                wrapper: ref.current,
+                // Target the scrollable content container
+                content: ref.current.firstElementChild || ref.current,
+                lerp: 0.07, // slightly smoother lerp for premium feel
+                duration: 1.2,
+                smoothWheel: true,
+                syncTouch: true,
+              }
+            } as any);
+          } catch (e) {
+            console.error('Failed to initialize Locomotive Scroll:', e);
           }
-        } as any);
-      } catch (e) {
-        console.error('Failed to initialize Locomotive Scroll:', e);
-      }
+        })
+        .catch((err) => {
+          console.error('Failed to load locomotive-scroll dynamically:', err);
+        });
     }, 200);
 
     return () => {

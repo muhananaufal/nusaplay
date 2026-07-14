@@ -22,9 +22,11 @@ export const CustomCursor = () => {
     };
 
     let currentStyle = 'default';
+    let lastTarget: HTMLElement | null = null;
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (!target) return;
+      if (!target || target === lastTarget) return;
+      lastTarget = target;
 
       if (target.closest('.pd-bg-click-area')) {
         if (currentStyle !== 'explore') {

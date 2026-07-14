@@ -52,7 +52,8 @@ export default function AchievementPage() {
 
 	useEffect(() => {
 		goTo('achievement', true);
-	}, [goTo]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const [searchQuery, setSearchQuery] = useState('');
 	const [currentPage, setCurrentPage] = useState(1);

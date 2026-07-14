@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useCallback, useMemo } from 'react';
 
 const PlayContext = createContext<any>({});
 
@@ -15,7 +15,7 @@ export const PlayProvider = ({ children }: { children: React.ReactNode }) => {
   const [tourActive, setTourActive] = useState(false);
   const [tourSelector, setTourSelector] = useState('');
 
-  const setJourneyStep = (step: number) => {
+  const setJourneyStep = useCallback((step: number) => {
     setJourneyStepState(prev => {
       // Only allow forward progress
       if (step > prev) {
@@ -23,22 +23,24 @@ export const PlayProvider = ({ children }: { children: React.ReactNode }) => {
       }
       return prev;
     });
-  };
+  }, []);
 
-  const setJourneyCompleted = (completed: boolean) => {
+  const setJourneyCompleted = useCallback((completed: boolean) => {
     setJourneyCompletedState(completed);
-  };
+  }, []);
+
+  const value = useMemo(() => ({
+    play, setPlay, 
+    hasScroll, setHasScroll, 
+    end, setEnd,
+    journeyStep, setJourneyStep,
+    journeyCompleted, setJourneyCompleted,
+    tourActive, setTourActive,
+    tourSelector, setTourSelector
+  }), [play, hasScroll, end, journeyStep, journeyCompleted, tourActive, tourSelector, setJourneyStep, setJourneyCompleted]);
 
   return (
-    <PlayContext.Provider value={{ 
-      play, setPlay, 
-      hasScroll, setHasScroll, 
-      end, setEnd,
-      journeyStep, setJourneyStep,
-      journeyCompleted, setJourneyCompleted,
-      tourActive, setTourActive,
-      tourSelector, setTourSelector
-    }}>
+    <PlayContext.Provider value={value}>
       {children}
     </PlayContext.Provider>
   );

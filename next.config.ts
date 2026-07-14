@@ -65,6 +65,11 @@ const nextConfig: NextConfig = {
 				source: '/:file*.svg',
 				headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }],
 			},
+			// Static JSON data (cultures, quizzes, metadata)
+			{
+				source: '/data/:path*',
+				headers: [{ key: 'Cache-Control', value: 'public, max-age=3600, stale-while-revalidate=86400' }],
+			},
 		];
 	},
 };
