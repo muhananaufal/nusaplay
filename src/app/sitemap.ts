@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getCultures } from '@/data/cultures';
 import { UNLOCKED_PROVINCES } from '@/data/provinces';
 
-const BASE_URL = 'https://nusaplay.vercel.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://nusaplay.vercel.app';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const cultures = getCultures();

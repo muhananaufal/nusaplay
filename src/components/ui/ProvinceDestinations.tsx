@@ -145,7 +145,7 @@ export const ProvinceDestinations = ({ visible }) => {
       {/* ── TOP HEADER (Logo and Back button) ── */}
       <div className="pd-header">
         <div className="pd-logo">{isMobile ? 'PROVINSI' : 'NUSAPLAY — PROVINSI'}</div>
-        <button className="pd-back-btn" onClick={backToMap}>
+        <button className="pd-back-btn" onClick={() => backToMap()}>
           <span>{isMobile ? '← KEMBALI' : '← KEMBALI KE PETA'}</span>
         </button>
       </div>

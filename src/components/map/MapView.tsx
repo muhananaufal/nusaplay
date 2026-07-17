@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROVINCES } from '@/data/provinces';
-import { useAppFlow } from '@/contexts/AppFlow';
+import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 import { getMapAssetsReady } from '@/utils/mapAssetLoader';
 import { useIsMobile } from '@/utils/useIsMobile';
 import { usePassport } from '@/contexts/Passport';
@@ -133,7 +133,7 @@ export const MapView = ({ visible }) => {
   const [deepZoomActive, setDeepZoomActive] = useState(false);
   const [isTilted, setIsTilted] = useState(false);
   const isMobile = useIsMobile(1024);
-  const { selectProvince, selectedProvince, backToMap, selectCulture, goTo } = useAppFlow();
+  const { selectProvince, selectedProvince, backToMap, selectCulture, goTo, phase } = useAppFlow();
   const { visitedProvinces } = usePassport();
   const achievementBtnRef = useRef<HTMLButtonElement>(null);
   const achievementXTo = useRef<ReturnType<typeof gsap.quickTo> | null>(null);
@@ -189,10 +189,10 @@ export const MapView = ({ visible }) => {
   // When the map becomes visible again (e.g. browser back button from a province page),
   // clear selectedProvince so the popup doesn't linger.
   useEffect(() => {
-    if (visible && selectedProvinceRef.current) {
+    if (visible && selectedProvinceRef.current && phase === PHASES.MAP) {
       backToMapRef.current(true); // skipPush=true: already on /map
     }
-  }, [visible]);
+  }, [visible, phase]);
 
   useEffect(() => {
     (window as any).selectProvince = selectProvince;
@@ -601,7 +601,7 @@ export const MapView = ({ visible }) => {
         clearTimeout(styleTimeoutId);
       }
     };
-  }, [selectedProvince, mapReady, selectCulture, visible]);
+  }, [selectedProvince, mapReady, visible]);
 
   // Invalidate map size when visibility changes (avoids rendering shifts)
   useEffect(() => {

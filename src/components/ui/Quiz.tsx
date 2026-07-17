@@ -771,7 +771,7 @@ export const Quiz = ({ visible, selectionOnly = false, activeOnly = false }: { v
         </>
       ) : (
         /* ── RESULT SCREEN ── */
-        <QuizResult score={score} total={questions.length} provinceName={quizProvince.name} onRetry={() => startQuiz(null)} onMap={backToMap} />
+        <QuizResult score={score} total={questions.length} provinceName={quizProvince.name} onRetry={() => startQuiz(null)} onMap={() => backToMap()} />
       )}
     </motion.div>
   );

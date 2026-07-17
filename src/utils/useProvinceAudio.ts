@@ -21,7 +21,7 @@ const PROVINCE_BACKSOUNDS: Record<string, string> = {
  * - Clean up on unmount
  */
 export function useProvinceAudio() {
-  const { selectedProvince, phase } = useAppFlow();
+  const { selectedProvince, phase, isAudioMuted } = useAppFlow();
   const pathname = usePathname();
 
   // BGM is allowed on all pages except the main splash page (/) and during the journey flight
@@ -51,15 +51,19 @@ export function useProvinceAudio() {
     };
   }, []);
 
-  // ── Update volume when narration state changes ────────────────────────────
+  // ── Update volume when narration state or mute state changes ────────────────────────────
   useEffect(() => {
     if (audioRef.current) {
-      const isCulturePage = pathname?.startsWith('/culture/');
-      audioRef.current.volume = isNarrationPlaying
-        ? (isCulturePage ? 0.02 : 0.08)
-        : 0.3;
+      if (isAudioMuted) {
+        audioRef.current.volume = 0;
+      } else {
+        const isCulturePage = pathname?.startsWith('/culture/');
+        audioRef.current.volume = isNarrationPlaying
+          ? (isCulturePage ? 0.02 : 0.08)
+          : 0.3;
+      }
     }
-  }, [isNarrationPlaying, pathname]);
+  }, [isNarrationPlaying, pathname, isAudioMuted]);
 
   // ── Track selection & playback ────────────────────────────────────────────
   useEffect(() => {
@@ -83,10 +87,14 @@ export function useProvinceAudio() {
       if (!audioRef.current) {
         audioRef.current = new Audio(targetTrack);
         audioRef.current.loop = true;
-        const isCulturePage = pathname?.startsWith('/culture/');
-        audioRef.current.volume = isNarrationPlaying
-          ? (isCulturePage ? 0.02 : 0.08)
-          : 0.3;
+        if (isAudioMuted) {
+          audioRef.current.volume = 0;
+        } else {
+          const isCulturePage = pathname?.startsWith('/culture/');
+          audioRef.current.volume = isNarrationPlaying
+            ? (isCulturePage ? 0.02 : 0.08)
+            : 0.3;
+        }
         currentTrackRef.current = targetTrack;
       }
 
@@ -118,7 +126,7 @@ export function useProvinceAudio() {
       }
       setAutoplayFailed(false);
     }
-  }, [selectedProvince?.id, isBgmAllowed, isNarrationPlaying, pathname]);
+  }, [selectedProvince?.id, isBgmAllowed, isNarrationPlaying, pathname, isAudioMuted]);
 
   // ── Retry on user interaction if autoplay failed ──────────────────────────
   useEffect(() => {

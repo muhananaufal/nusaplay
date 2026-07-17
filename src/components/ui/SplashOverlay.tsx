@@ -6,48 +6,7 @@ import { WayangLoader } from './WayangLoader';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 
-// ── Morphing Speaker Icon ─────────────────────────────────────────────────────
-// pathLength 0→1 draw/erase: sound waves dissolve while mute-X draws itself.
-const SpeakerIcon = ({ isMuted }: { isMuted: boolean }) => {
-  const wave = { duration: 0.28, ease: 'easeInOut' as const };
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ display: 'block' }}>
-      <path
-        d="M11 5L6 9H2v6h4l5 4V5z"
-        fill={isMuted ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.82)'}
-        style={{ transition: 'fill 0.28s ease' }}
-      />
-      <motion.path
-        d="M15.54 8.46a5 5 0 0 1 0 7.07"
-        stroke="rgba(255,255,255,0.82)" strokeWidth="1.5" strokeLinecap="round" fill="none"
-        initial={false}
-        animate={{ pathLength: isMuted ? 0 : 1, opacity: isMuted ? 0 : 1 }}
-        transition={wave}
-      />
-      <motion.path
-        d="M19.07 4.93a10 10 0 0 1 0 14.14"
-        stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" fill="none"
-        initial={false}
-        animate={{ pathLength: isMuted ? 0 : 1, opacity: isMuted ? 0 : 1 }}
-        transition={{ ...wave, delay: isMuted ? 0 : 0.06 }}
-      />
-      <motion.path
-        d="M17 9 L23 15"
-        stroke="rgba(255,255,255,0.6)" strokeWidth="1.75" strokeLinecap="round" fill="none"
-        initial={false}
-        animate={{ pathLength: isMuted ? 1 : 0, opacity: isMuted ? 1 : 0 }}
-        transition={{ ...wave, delay: isMuted ? 0.06 : 0 }}
-      />
-      <motion.path
-        d="M23 9 L17 15"
-        stroke="rgba(255,255,255,0.6)" strokeWidth="1.75" strokeLinecap="round" fill="none"
-        initial={false}
-        animate={{ pathLength: isMuted ? 1 : 0, opacity: isMuted ? 1 : 0 }}
-        transition={wave}
-      />
-    </svg>
-  );
-};
+import { SpeakerIcon } from './SpeakerIcon';
 
 // ── Video Background ───────────────────────────────────────────────────────────
 // Renders the local splash-screen.mp4 video.
@@ -329,15 +288,14 @@ const MagneticButton = ({ children, onClick, className }: { children: React.Reac
 
 export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
   const { play, setPlay, end, tourActive } = usePlay();
-  const { goTo } = useAppFlow();
+  const { goTo, isAudioMuted, setIsAudioMuted } = useAppFlow();
   const [logoClickCount, setLogoClickCount] = useState(0);
   const [showHaiku, setShowHaiku] = useState(false);
   const [audioUnlocked, setAudioUnlocked] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
   const startTimeoutRef = useRef<any>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
-  const handleToggleMute = () => setIsMuted(m => !m);
+  const handleToggleMute = () => setIsAudioMuted((m: boolean) => !m);
 
   // Auto-unlock audio on first user interaction (tap/click anywhere)
   useEffect(() => {
@@ -448,7 +406,7 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
           • user has made their first pointer interaction OR 3s have passed idle.
           This keeps page load network budget focused on the 3D model. */}
       {progress === 100 && (
-        <VideoBackground audioUnlocked={audioUnlocked} isMuted={isMuted} />
+        <VideoBackground audioUnlocked={audioUnlocked} isMuted={isAudioMuted} />
       )}
 
 
@@ -581,10 +539,10 @@ export const SplashOverlay = ({ progress = 100 }: { progress?: number }) => {
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.25 }}
             onClick={handleToggleMute}
-            aria-label={isMuted ? 'Aktifkan suara' : 'Matikan suara'}
-            title={isMuted ? 'Aktifkan suara' : 'Matikan suara'}
+            aria-label={isAudioMuted ? 'Aktifkan suara' : 'Matikan suara'}
+            title={isAudioMuted ? 'Aktifkan suara' : 'Matikan suara'}
           >
-            <SpeakerIcon isMuted={isMuted} />
+            <SpeakerIcon isMuted={isAudioMuted} />
           </motion.button>
         )}
       </AnimatePresence>

@@ -30,6 +30,7 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
   const { triggerNavigation } = useTransition();
   const { markCultureVisited } = useProgress();
   const [phase, setPhase] = useState<Phase>(PHASES.SPLASH);
+  const [isAudioMuted, setIsAudioMuted] = useState(false);
   const [selectedProvince, setSelectedProvince] = useState<any>(null);
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const [selectedCulture, setSelectedCulture] = useState<any>(null);
@@ -247,9 +248,12 @@ export const AppFlowProvider = ({ children }: { children: React.ReactNode }) => 
     setSelectedCategory,
     setSelectedCulture,
     setQuizProvince,
+    isAudioMuted,
+    setIsAudioMuted,
   }), [
     phase, selectedProvince, selectedCategory, selectedCulture, quizProvince,
     goTo, selectProvince, selectCategory, selectCulture, startQuiz, backToMap,
+    isAudioMuted,
   ]);
 
   const listUIValue = useMemo(() => ({

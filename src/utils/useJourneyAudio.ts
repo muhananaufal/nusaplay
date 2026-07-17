@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
 
 export function useJourneyAudio() {
-  const { phase } = useAppFlow();
+  const { phase, isAudioMuted } = useAppFlow();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const fadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const isFadingOutRef = useRef(false);
@@ -77,6 +77,17 @@ export function useJourneyAudio() {
     };
   }, []);
 
+  // ── Sync mute state to journey audio ──────────────────────────────────────
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isAudioMuted) {
+        audioRef.current.volume = 0;
+      } else if (phase === PHASES.JOURNEY && !isFadingOutRef.current) {
+        audioRef.current.volume = 0.8;
+      }
+    }
+  }, [isAudioMuted, phase]);
+
   const hasEndedRef = useRef(false);
 
   useEffect(() => {
@@ -114,7 +125,7 @@ export function useJourneyAudio() {
           .then(() => {
             console.log('[JourneyAudio] play() successful, starting fade-in');
             if (!hasEndedRef.current) {
-              fadeAudio(0.8, 800); // Fade in to 0.8 volume over 800ms
+              fadeAudio(isAudioMuted ? 0 : 0.8, 800); // Fade in to 0.8 volume over 800ms
             }
           })
           .catch(err => {
@@ -146,7 +157,7 @@ export function useJourneyAudio() {
         }
       }
     };
-  }, [phase]);
+  }, [phase, isAudioMuted]);
 
   // Clean up on unmount
   useEffect(() => {

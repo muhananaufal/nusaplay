@@ -2,6 +2,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAppFlow, PHASES } from '@/contexts/AppFlow';
+import { SpeakerIcon } from './SpeakerIcon';
 import { usePlay } from '@/contexts/Play';
 import { UNLOCKED_PROVINCES } from '@/data/provinces';
 import { useIsMobile } from '@/utils/useIsMobile';
@@ -64,7 +65,9 @@ export const NavigationMenu = () => {
     startQuiz,
     quizProvince,
     selectProvince,
-    selectedProvince
+    selectedProvince,
+    isAudioMuted,
+    setIsAudioMuted,
   } = useAppFlow();
   
   const { play, setPlay, setEnd, end } = usePlay();
@@ -212,6 +215,24 @@ export const NavigationMenu = () => {
           >
             <span>&larr;</span>
             <span>{getBackBtnText()}</span>
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* ── Global Volume On/Off Button ── */}
+      <AnimatePresence>
+        {phase !== PHASES.SPLASH && phase !== PHASES.JOURNEY && (
+          <motion.button
+            className={`global-mute-btn ${(phase === PHASES.JOURNEY || (play && !end) || (isNarrationPlaying && phase === PHASES.DETAIL)) && !isOpen && !showAbout ? 'menu-hidden' : ''}`}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setIsAudioMuted((m: boolean) => !m)}
+            aria-label={isAudioMuted ? 'Aktifkan suara' : 'Matikan suara'}
+            title={isAudioMuted ? 'Aktifkan suara' : 'Matikan suara'}
+          >
+            <SpeakerIcon isMuted={isAudioMuted} dark={true} />
           </motion.button>
         )}
       </AnimatePresence>

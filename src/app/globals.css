@@ -2877,7 +2877,7 @@ html, body, #root {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-right: 48px; /* Leave space for the floating hamburger button */
+  padding-right: 154px; /* Leave space for the floating hamburger and mute buttons */
   height: 42px; /* Match floating menu button height for vertical alignment */
   z-index: 20;
 }
@@ -3168,7 +3168,7 @@ html, body, #root {
 .floating-back-btn {
   position: fixed;
   top: 30px;
-  right: 98px;
+  right: 154px;
   height: 42px;
   display: flex;
   align-items: center;
@@ -3229,6 +3229,39 @@ html, body, #root {
   color: var(--c-dark);
   border-color: var(--c-accent);
   transform: scale(1.05);
+}
+
+.global-mute-btn {
+  position: fixed;
+  top: 30px;
+  right: 94px;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(85, 145, 185, 0.18);
+  color: var(--c-text);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.24, 0.43, 0.15, 0.97);
+}
+
+.global-mute-btn:hover {
+  background: var(--c-accent);
+  color: var(--c-dark);
+  border-color: var(--c-accent);
+  transform: scale(1.05);
+}
+
+.global-mute-btn.menu-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
 }
 
 /* Animated Hamburger icon using pure CSS transitions — 100% robust & mathematically centered */
@@ -3647,7 +3680,7 @@ html, body, #root {
 @media only screen and (max-width: 768px) {
   .floating-back-btn {
     top: 16px;
-    right: 64px;
+    right: 110px;
     left: auto;
     height: 36px;
     padding: 0 10px;
@@ -3661,6 +3694,13 @@ html, body, #root {
     height: 36px;
   }
 
+  .global-mute-btn {
+    top: 16px;
+    right: 60px;
+    width: 36px;
+    height: 36px;
+  }
+
   .pd-container {
     padding: 72px 24px 80px 24px;
   }
@@ -3669,7 +3709,7 @@ html, body, #root {
     position: absolute;
     top: 16px;
     left: 24px;
-    right: 64px;
+    right: 110px;
     width: auto;
     height: 36px;
     padding-right: 0; /* Reset desktop padding */

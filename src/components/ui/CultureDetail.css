@@ -744,7 +744,7 @@
 .cd-floating-controls {
   position: absolute;
   top: 24px;
-  right: 28px;
+  right: 154px;
   z-index: 190;
   display: flex;
   align-items: center;
